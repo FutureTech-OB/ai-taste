@@ -1,0 +1,41 @@
+category,title,ground_truth,domain,journal,n_correct,n_evaluators,sft2_correct,flagship_correct,expert_correct,student_correct
+hard,Are women less convincing or perceivers biased? Understanding differential reactions towards men and women's intentions to exert influence,fair,多元化与公平,LEADERSHIP QUARTERLY,0,4,0,0,0,0
+hard,"Expected and Experienced Daily Justice, Emotions, and Counterproductive Work Behavior",exceptional,AI与技术,JOURNAL OF APPLIED PSYCHOLOGY,0,4,0,0,0,0
+hard,How Leaders Compensate for Time Theft: A Moral Cleansing Perspective,limited,"领导力/管理者, 伦理与道德",JOURNAL OF BUSINESS AND PSYCHOLOGY,0,4,0,0,0,0
+hard,Longitudinal effects of multisource evaluation on justice climate and organizational performance: the moderating role of autonomy support,limited,"团队与组织, 绩效与成果, 社会心理/人际",JOURNAL OF MANAGERIAL PSYCHOLOGY,0,4,0,0,0,0
+hard,Navigating Representational Gaps: Traversing Construal Levels and Investing in Uncertainty,strong,AI与技术,PERSONNEL PSYCHOLOGY,0,4,0,0,0,0
+hard,No Rest for the Weary: Pay Uncertainty Reduces Engagement in Recovery,exceptional,"员工行为与态度, 工作压力与健康, AI与技术",JOURNAL OF APPLIED PSYCHOLOGY,0,4,0,0,0,0
+hard,Responding Abusively or Innovatively? Exploring Supervisors' Maladaptive and Adaptive Responses to Poor Subordinate Performance,limited,"领导力/管理者, 绩效与成果",JOURNAL OF BUSINESS AND PSYCHOLOGY,0,4,0,0,0,0
+hard,The Bright and Dark Side of Playful Work Design: Navigating Work Engagement and Workaholism,limited,员工行为与态度,JOURNAL OF BUSINESS AND PSYCHOLOGY,0,4,0,0,0,0
+hard,Understanding Desired Greater Collaboration Ties: Tie-Strengthening and Bypassing Approaches for Managing Formal Workflow Network Dependencies,strong,社会心理/人际,PERSONNEL PSYCHOLOGY,0,4,0,0,0,0
+hard,An Attribution Perspective of Personal Initiative and Colleagues' Proactive and Reactive Knowledge Sharing: The Role of Cooperative Goal Interdependence,limited,知识与学习,JOURNAL OF BUSINESS AND PSYCHOLOGY,0,3,0,0,0,0
+hard,Bottom-up effects of female strategic leadership: Firm performance effects through employees,exceptional,"领导力/管理者, 员工行为与态度, 绩效与成果",STRATEGIC MANAGEMENT JOURNAL,0,3,0,0,0,0
+hard,Chatting Towards Inclusivity: A Digital Approach to Inclusion Action Plans and Leader Development,fair,"领导力/管理者, 多元化与公平, AI与技术",HUMAN RESOURCE MANAGEMENT,0,3,0,0,0,0
+hard,Exploring the Duality of Voice Habit: Testing and Extending Theory and Measurement,exceptional,员工行为与态度,JOURNAL OF APPLIED PSYCHOLOGY,0,3,0,0,0,0
+hard,How does the Combination of Proactive Job Design and Developmental Human Resource Practices Relate to Employees' Perceived Work Uncertainty and Late-Career Outcomes?,limited,"员工行为与态度, 绩效与成果, 人力资源管理",JOURNAL OF BUSINESS AND PSYCHOLOGY,0,3,0,0,0,0
+hard,Social Class Signals in Recruitment: Investigating When and Why Signal Relevance and Job's Customer Contact Requirement Shape Hiring Outcomes,fair,"绩效与成果, 人力资源管理, 社会心理/人际",HUMAN RESOURCE MANAGEMENT,0,3,0,0,0,0
+hard,The Dark Side of Managing Human-AI Collaborations: Implications for Leaders' Moral Relativism and Unethical Behaviour,fair,"领导力/管理者, 伦理与道德, AI与技术",JOURNAL OF MANAGEMENT STUDIES,0,3,0,0,0,0
+hard,The idea endorser's dilemma: How status dynamics disincentivize creative idea endorsement,strong,创新与创业,ORGANIZATIONAL BEHAVIOR AND HUMAN DECISION PROCESSES,0,3,0,0,0,0
+hard,Time Is Not Enough: Exploring the Processes That Shape Team Psychological Safety,limited,团队与组织,JOURNAL OF BUSINESS AND PSYCHOLOGY,0,3,0,0,0,0
+hard,Trabajo Peligroso: Occupational Segregation Among Latino Workers and the Cycle of Precarious Work,limited,员工行为与态度,JOURNAL OF BUSINESS AND PSYCHOLOGY,0,3,0,0,0,0
+hard,Perceptions of knowledge transferability and entrepreneurial entry: The role of firm-initiated turnover,exceptional,"员工行为与态度, 创新与创业, 知识与学习",STRATEGIC MANAGEMENT JOURNAL,0,2,0,0,0,0
+easy,A Selfless Integrator or a Selfish Quasi-Professional? Relational Tactics for Organizational Professionals' Durable Influence,fair,团队与组织,JOURNAL OF MANAGEMENT STUDIES,4,4,1,1,1,1
+easy,Between Consistency and Adaptation: How Middle Managers Shape Compensation System Implementation,fair,"领导力/管理者, 人力资源管理",HUMAN RESOURCE MANAGEMENT,4,4,1,1,1,1
+easy,CrossFit in the Crosshairs: A Community-Embedded Theory of Firm Responsiveness to Social Issues,exceptional,"团队与组织, 多元化与公平, 社会心理/人际",ADMINISTRATIVE SCIENCE QUARTERLY,4,4,1,1,1,1
+easy,GROUP FLOW: A THEORY OF GROUP MEMBER INTERACTIONS IN THE MOMENT AND OVER TIME,exceptional,"团队与组织, 社会心理/人际",ACADEMY OF MANAGEMENT REVIEW,4,4,1,1,1,1
+easy,How discretionary HR practices can reduce counterproductive work behavior: the roles of emotional culture of joy and perceived organizational injustice,limited,"团队与组织, 人力资源管理",JOURNAL OF MANAGERIAL PSYCHOLOGY,4,4,1,1,1,1
+easy,Striving to Self-Verify in Teamwork: Linking Team Self-Verification Striving to Team Interaction Process and Team Creativity,fair,"团队与组织, 创新与创业, 社会心理/人际",JOURNAL OF ORGANIZATIONAL BEHAVIOR,4,4,1,1,1,1
+easy,"WOULD ARCHIMEDES SHOUT ""EUREKA"" WITH ALGORITHMS? THE HIDDEN HAND OF ALGORITHMIC DESIGN IN IDEA GENERATION, THE CREATION OF IDEATION BUBBLES, AND HOW EXPERTS CAN BURST THEM",exceptional,AI与技术,ACADEMY OF MANAGEMENT JOURNAL,4,4,1,1,1,1
+easy,A Social Hierarchy Perspective on the Detrimental Effects of Leader-Member Exchange Differentiation on Team Functioning: Leader-Conferred Status Versus Member-Conferred Status,strong,"领导力/管理者, 团队与组织, 社会心理/人际",PERSONNEL PSYCHOLOGY,3,4,0,1,1,1
+easy,Adaptive Secrecy in the Making of the Atomic Bomb: Toward a Process View of Secretive Innovation,exceptional,创新与创业,ORGANIZATION SCIENCE,3,4,1,1,0,1
+easy,Comparing Ratee Reactions to the Relative Percentile Method and the Graphic Rating Scale,limited,其他管理学研究,JOURNAL OF PERSONNEL PSYCHOLOGY,3,4,1,1,1,0
+easy,Compromise Leadership: Competing Board Subgroups and the Appointment of a Newcomer Chair,strong,"领导力/管理者, 团队与组织, 多元化与公平",JOURNAL OF MANAGEMENT,3,4,0,1,1,1
+easy,Do Women Executives Make Workplaces Safer? Evidence from Workplace Safety Violations,fair,"领导力/管理者, 多元化与公平",JOURNAL OF MANAGEMENT STUDIES,3,4,1,1,1,0
+easy,Dual Effects of Leader Pro-Group Unethical Behavior: The Role of Attribution in Shaping Employee Reactions,fair,"领导力/管理者, 员工行为与态度, 团队与组织",JOURNAL OF ORGANIZATIONAL BEHAVIOR,3,4,0,1,1,1
+easy,From Friction to Fulfillment: Examining When and How Spousal Active-Destructive Responsiveness to Employees' Sharing of Positive Events Benefits the Work Domain,fair,"员工行为与态度, AI与技术",JOURNAL OF ORGANIZATIONAL BEHAVIOR,3,4,1,1,0,1
+easy,Gaining Career Purpose Through Lightning Bolts: Examining the Strength and Psychological Foundations of Work-Related Epiphanies,strong,"人力资源管理, AI与技术, 职业发展",JOURNAL OF MANAGEMENT,3,4,1,0,1,1
+easy,INTERLACING SITUATED AND ALGORITHMIC MODES OF KNOWLEDGE WORK: A WORKPLACE JURISDICTION PERSPECTIVE,exceptional,"知识与学习, AI与技术",ACADEMY OF MANAGEMENT JOURNAL,3,4,1,1,1,0
+easy,It's getting HOT in here: Do hazardous organizations encourage workplace deviance?,limited,"团队与组织, 伦理与道德",JOURNAL OF MANAGERIAL PSYCHOLOGY,3,4,1,1,1,0
+easy,Multiple Identity Construction at Work: An Intrapersonal Identity Network Approach to Intersectionality,strong,社会心理/人际,PERSONNEL PSYCHOLOGY,3,4,1,0,1,1
+easy,Preparing for Tomorrow's Teamwork: Insights From eSports on How Human Expertise Shapes Training Needs for AI-Integrated Work,fair,"团队与组织, 人力资源管理, 知识与学习",JOURNAL OF ORGANIZATIONAL BEHAVIOR,3,4,0,1,1,1
+easy,Reputation on the Line: How the Third-Party Dilemma Shapes Trust in High-Risk Work,exceptional,社会心理/人际,ADMINISTRATIVE SCIENCE QUARTERLY,3,4,1,1,0,1

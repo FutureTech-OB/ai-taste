@@ -1,0 +1,192 @@
+{
+  "spearman_confidence_accuracy": {
+    "correlation": 0.09488667642903272,
+    "p_value": 1.742979922963565e-06
+  },
+  "spearman_familiarity_accuracy": {
+    "correlation": 0.035357262840474565,
+    "p_value": 0.07538484511622597
+  },
+  "mann_whitney_read_before": {
+    "statistic": 446935.0,
+    "p_value": 0.3931426867387561,
+    "rank_biserial": 0.02093574476661142
+  },
+  "ttest_vs_chance": {
+    "statistic": 6.2598382016240155,
+    "p_value": 2.9431009040672915e-09,
+    "mean": 0.31736764193660744,
+    "std": 0.14195897733999704,
+    "cohens_d": 0.4745571093771648
+  },
+  "majority_vote": {
+    "accuracy": 0.4077669902912621,
+    "macro_f1": 0.40524593559076316,
+    "n_articles": 103,
+    "n_ties": 17
+  },
+  "per_class_metrics": {
+    "exceptional": {
+      "precision": 0.6666666666666666,
+      "recall": 0.3333333333333333,
+      "f1": 0.4444444444444444,
+      "support": 24.0
+    },
+    "strong": {
+      "precision": 0.3125,
+      "recall": 0.38461538461538464,
+      "f1": 0.3448275862068966,
+      "support": 26.0
+    },
+    "fair": {
+      "precision": 0.3469387755102041,
+      "recall": 0.6538461538461539,
+      "f1": 0.45333333333333325,
+      "support": 26.0
+    },
+    "limited": {
+      "precision": 0.7,
+      "recall": 0.25925925925925924,
+      "f1": 0.37837837837837834,
+      "support": 27.0
+    }
+  },
+  "tier_accuracy": {
+    "exceptional": 0.3333333333333333,
+    "strong": 0.38461538461538464,
+    "fair": 0.6538461538461539,
+    "limited": 0.25925925925925924
+  },
+  "individual_student_stats": {
+    "n_students": 174,
+    "mean_accuracy": 0.31736764193660744,
+    "median_accuracy": 0.3125,
+    "std_accuracy": 0.14195897733999704,
+    "min_accuracy": 0.0,
+    "max_accuracy": 0.9375
+  },
+  "monte_carlo": [
+    {
+      "k": 2,
+      "mean_accuracy": 0.37454198512640197,
+      "std": 0.07904413170048252,
+      "ci_lower": 0.2222222222222222,
+      "ci_upper": 0.53125,
+      "n_trials": 5000
+    },
+    {
+      "k": 3,
+      "mean_accuracy": 0.3607320585240226,
+      "std": 0.048547340181584894,
+      "ci_lower": 0.2682926829268293,
+      "ci_upper": 0.4567901234567901,
+      "n_trials": 5000
+    },
+    {
+      "k": 4,
+      "mean_accuracy": 0.35664887961231984,
+      "std": 0.04503540620866593,
+      "ci_lower": 0.26881720430107525,
+      "ci_upper": 0.4479166666666667,
+      "n_trials": 5000
+    },
+    {
+      "k": 5,
+      "mean_accuracy": 0.3723709151189141,
+      "std": 0.04685739805894112,
+      "ci_lower": 0.279989247311828,
+      "ci_upper": 0.4634364111498255,
+      "n_trials": 5000
+    },
+    {
+      "k": 8,
+      "mean_accuracy": 0.38434137482748193,
+      "std": 0.04011065419176586,
+      "ci_lower": 0.3068181818181818,
+      "ci_upper": 0.46511627906976744,
+      "n_trials": 5000
+    },
+    {
+      "k": 10,
+      "mean_accuracy": 0.3935565802238043,
+      "std": 0.03767049911686844,
+      "ci_lower": 0.3191489361702128,
+      "ci_upper": 0.46808510638297873,
+      "n_trials": 5000
+    },
+    {
+      "k": 15,
+      "mean_accuracy": 0.3983337279030473,
+      "std": 0.029978206082400285,
+      "ci_lower": 0.33980124564938635,
+      "ci_upper": 0.4583333333333333,
+      "n_trials": 5000
+    },
+    {
+      "k": 20,
+      "mean_accuracy": 0.3920769435833769,
+      "std": 0.022333470257740552,
+      "ci_lower": 0.34994565217391305,
+      "ci_upper": 0.4358974358974359,
+      "n_trials": 5000
+    }
+  ],
+  "confidence_accuracy": {
+    "1": {
+      "accuracy": 0.2549019607843137,
+      "n": 51
+    },
+    "2": {
+      "accuracy": 0.2822822822822823,
+      "n": 333
+    },
+    "3": {
+      "accuracy": 0.27155727155727155,
+      "n": 777
+    },
+    "4": {
+      "accuracy": 0.3385964912280702,
+      "n": 1140
+    },
+    "5": {
+      "accuracy": 0.4366812227074236,
+      "n": 229
+    }
+  },
+  "familiarity_accuracy": {
+    "1": {
+      "accuracy": 0.326133909287257,
+      "n": 463
+    },
+    "2": {
+      "accuracy": 0.28739495798319326,
+      "n": 595
+    },
+    "3": {
+      "accuracy": 0.3065326633165829,
+      "n": 597
+    },
+    "4": {
+      "accuracy": 0.3170391061452514,
+      "n": 716
+    },
+    "5": {
+      "accuracy": 0.4528301886792453,
+      "n": 159
+    }
+  },
+  "mediocrity_bias": {
+    "actual_distribution": {
+      "exceptional": 24,
+      "strong": 26,
+      "fair": 26,
+      "limited": 27
+    },
+    "predicted_distribution": {
+      "exceptional": 12,
+      "strong": 32,
+      "fair": 49,
+      "limited": 10
+    }
+  }
+}

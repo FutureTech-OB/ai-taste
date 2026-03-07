@@ -1,0 +1,12 @@
+Model,Model Key,Mode,N Valid,N Discrete (excl ties),Tie Rate,Accuracy,Accuracy Majority,Accuracy Run1,Macro F1,Acc (exceptional),Acc (strong),Acc (fair),Acc (limited),Pred count (exceptional),Pred count (strong),Pred count (fair),Pred count (limited)
+Gemini 3.1 Pro,google/gemini-3.1-pro-preview,stochastic_thinking,120,115,0.0417,0.3876,0.3913,0.3667,0.3743,0.3793,0.4483,0.6071,0.1379,23,30,56,6
+GLM-5,z-ai/glm-5,stochastic_thinking,120,112,0.0667,0.335,0.3393,0.3667,0.3029,0.2963,0.5,0.5556,0.0333,22,33,56,1
+Grok 4.1 Fast,x-ai/grok-4.1-fast,stochastic_thinking,120,113,0.0583,0.3323,0.3451,0.3083,0.2806,0.5862,0.6429,0.1379,0.0,32,64,17,0
+Qwen 3.5 Plus,qwen/qwen3.5-plus-02-15,stochastic_thinking,120,113,0.0583,0.3289,0.3097,0.3167,0.2498,0.1071,0.3667,0.6897,0.0385,7,30,73,3
+Kimi K2.5,moonshotai/kimi-k2.5,stochastic_thinking,120,109,0.0917,0.3146,0.3211,0.3083,0.2391,0.0357,0.8,0.4643,0.0357,2,63,43,1
+GPT-5.2 High,openai/gpt-5.2-high,stochastic_thinking,120,117,0.025,0.3104,0.3162,0.3417,0.207,0.0,0.8,0.4643,0.0,0,67,50,0
+Gemini 2.5 Pro,google/gemini-2.5-pro,stochastic_thinking,120,112,0.0667,0.2948,0.3036,0.3,0.2499,0.7241,0.2963,0.1538,0.0333,52,38,21,1
+MiniMax M2.5,minimax/minimax-m2.5,stochastic_thinking,120,113,0.0583,0.2833,0.292,0.2667,0.1701,0.0,0.9655,0.1923,0.0,0,96,17,0
+Seed 2.0,doubao-seed-2-0-pro-260215,stochastic_thinking,120,113,0.0583,0.2823,0.3097,0.275,0.2257,0.4828,0.6667,0.0357,0.0,32,73,8,0
+Claude Opus 4.6,anthropic/claude-opus-4.6,stochastic_thinking,120,120,0.0,0.2802,0.275,0.2833,0.1445,0.0,1.0,0.1,0.0,0,104,16,0
+DeepSeek V3.2,deepseek/deepseek-v3.2-speciale,stochastic_thinking,120,112,0.0667,0.2667,0.2679,0.2833,0.1484,0.0345,0.931,0.0741,0.0,4,100,8,0

@@ -1,0 +1,23 @@
+{
+  "total": 240,
+  "total_correct": 183,
+  "overall_accuracy": 0.7625,
+  "weighted_accuracy": 0.7625000000000001,
+  "per_distance": {
+    "distance_1": {
+      "n": 80,
+      "correct": 46,
+      "accuracy": 0.575
+    },
+    "distance_2": {
+      "n": 80,
+      "correct": 64,
+      "accuracy": 0.8
+    },
+    "distance_3": {
+      "n": 80,
+      "correct": 73,
+      "accuracy": 0.9125
+    }
+  }
+}

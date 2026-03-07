@@ -1,0 +1,1446 @@
+{
+  "protocol": {
+    "frontier_primary_metric": "avg8_article_mean_for_stochastic__discrete_for_deterministic",
+    "frontier_discrete_policy": "majority_vote_labels_excluding_ties"
+  },
+  "n_articles": 120,
+  "n_models": 11,
+  "model_keys": [
+    "z-ai/glm-5",
+    "moonshotai/kimi-k2.5",
+    "google/gemini-2.5-pro",
+    "google/gemini-3.1-pro-preview",
+    "anthropic/claude-opus-4.6",
+    "openai/gpt-5.2-high",
+    "x-ai/grok-4.1-fast",
+    "minimax/minimax-m2.5",
+    "deepseek/deepseek-v3.2-speciale",
+    "qwen/qwen3.5-plus-02-15",
+    "doubao-seed-2-0-pro-260215"
+  ],
+  "model_performance": {
+    "GLM-5": {
+      "model_key": "z-ai/glm-5",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.335,
+      "accuracy_primary": 0.335,
+      "accuracy_majority": 0.3393,
+      "accuracy_run1": 0.3667,
+      "macro_f1": 0.3029,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 112,
+      "tie_rate": 0.0667,
+      "per_tier_accuracy": {
+        "exceptional": 0.2963,
+        "strong": 0.5,
+        "fair": 0.5556,
+        "limited": 0.0333
+      },
+      "prediction_distribution": {
+        "fair": 56,
+        "strong": 33,
+        "exceptional": 22,
+        "limited": 1
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.3636,
+          "recall": 0.2963,
+          "f1": 0.3265,
+          "support": 27.0
+        },
+        "strong": {
+          "precision": 0.4242,
+          "recall": 0.5,
+          "f1": 0.459,
+          "support": 28.0
+        },
+        "fair": {
+          "precision": 0.2679,
+          "recall": 0.5556,
+          "f1": 0.3614,
+          "support": 27.0
+        },
+        "limited": {
+          "precision": 1.0,
+          "recall": 0.0333,
+          "f1": 0.0645,
+          "support": 30.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          8,
+          12,
+          7,
+          0
+        ],
+        [
+          7,
+          14,
+          7,
+          0
+        ],
+        [
+          6,
+          6,
+          15,
+          0
+        ],
+        [
+          1,
+          1,
+          27,
+          1
+        ]
+      ]
+    },
+    "Kimi K2.5": {
+      "model_key": "moonshotai/kimi-k2.5",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.3146,
+      "accuracy_primary": 0.3146,
+      "accuracy_majority": 0.3211,
+      "accuracy_run1": 0.3083,
+      "macro_f1": 0.2391,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 109,
+      "tie_rate": 0.0917,
+      "per_tier_accuracy": {
+        "exceptional": 0.0357,
+        "strong": 0.8,
+        "fair": 0.4643,
+        "limited": 0.0357
+      },
+      "prediction_distribution": {
+        "fair": 43,
+        "strong": 63,
+        "exceptional": 2,
+        "limited": 1
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.5,
+          "recall": 0.0357,
+          "f1": 0.0667,
+          "support": 28.0
+        },
+        "strong": {
+          "precision": 0.3175,
+          "recall": 0.8,
+          "f1": 0.4545,
+          "support": 25.0
+        },
+        "fair": {
+          "precision": 0.3023,
+          "recall": 0.4643,
+          "f1": 0.3662,
+          "support": 28.0
+        },
+        "limited": {
+          "precision": 1.0,
+          "recall": 0.0357,
+          "f1": 0.069,
+          "support": 28.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          1,
+          24,
+          3,
+          0
+        ],
+        [
+          0,
+          20,
+          5,
+          0
+        ],
+        [
+          1,
+          14,
+          13,
+          0
+        ],
+        [
+          0,
+          5,
+          22,
+          1
+        ]
+      ]
+    },
+    "Gemini 2.5 Pro": {
+      "model_key": "google/gemini-2.5-pro",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.2948,
+      "accuracy_primary": 0.2948,
+      "accuracy_majority": 0.3036,
+      "accuracy_run1": 0.3,
+      "macro_f1": 0.2499,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 112,
+      "tie_rate": 0.0667,
+      "per_tier_accuracy": {
+        "exceptional": 0.7241,
+        "strong": 0.2963,
+        "fair": 0.1538,
+        "limited": 0.0333
+      },
+      "prediction_distribution": {
+        "fair": 21,
+        "strong": 38,
+        "exceptional": 52,
+        "limited": 1
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.4038,
+          "recall": 0.7241,
+          "f1": 0.5185,
+          "support": 29.0
+        },
+        "strong": {
+          "precision": 0.2105,
+          "recall": 0.2963,
+          "f1": 0.2462,
+          "support": 27.0
+        },
+        "fair": {
+          "precision": 0.1905,
+          "recall": 0.1538,
+          "f1": 0.1702,
+          "support": 26.0
+        },
+        "limited": {
+          "precision": 1.0,
+          "recall": 0.0333,
+          "f1": 0.0645,
+          "support": 30.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          21,
+          7,
+          1,
+          0
+        ],
+        [
+          19,
+          8,
+          0,
+          0
+        ],
+        [
+          10,
+          12,
+          4,
+          0
+        ],
+        [
+          2,
+          11,
+          16,
+          1
+        ]
+      ]
+    },
+    "Gemini 3.1 Pro": {
+      "model_key": "google/gemini-3.1-pro-preview",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.3876,
+      "accuracy_primary": 0.3876,
+      "accuracy_majority": 0.3913,
+      "accuracy_run1": 0.3667,
+      "macro_f1": 0.3743,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 115,
+      "tie_rate": 0.0417,
+      "per_tier_accuracy": {
+        "exceptional": 0.3793,
+        "strong": 0.4483,
+        "fair": 0.6071,
+        "limited": 0.1379
+      },
+      "prediction_distribution": {
+        "fair": 56,
+        "strong": 30,
+        "exceptional": 23,
+        "limited": 6
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.4783,
+          "recall": 0.3793,
+          "f1": 0.4231,
+          "support": 29.0
+        },
+        "strong": {
+          "precision": 0.4333,
+          "recall": 0.4483,
+          "f1": 0.4407,
+          "support": 29.0
+        },
+        "fair": {
+          "precision": 0.3036,
+          "recall": 0.6071,
+          "f1": 0.4048,
+          "support": 28.0
+        },
+        "limited": {
+          "precision": 0.6667,
+          "recall": 0.1379,
+          "f1": 0.2286,
+          "support": 29.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          11,
+          9,
+          9,
+          0
+        ],
+        [
+          8,
+          13,
+          8,
+          0
+        ],
+        [
+          4,
+          5,
+          17,
+          2
+        ],
+        [
+          0,
+          3,
+          22,
+          4
+        ]
+      ]
+    },
+    "Claude Opus 4.6": {
+      "model_key": "anthropic/claude-opus-4.6",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.2802,
+      "accuracy_primary": 0.2802,
+      "accuracy_majority": 0.275,
+      "accuracy_run1": 0.2833,
+      "macro_f1": 0.1445,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 120,
+      "tie_rate": 0.0,
+      "per_tier_accuracy": {
+        "exceptional": 0.0,
+        "strong": 1.0,
+        "fair": 0.1,
+        "limited": 0.0
+      },
+      "prediction_distribution": {
+        "fair": 16,
+        "strong": 104
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 30.0
+        },
+        "strong": {
+          "precision": 0.2885,
+          "recall": 1.0,
+          "f1": 0.4478,
+          "support": 30.0
+        },
+        "fair": {
+          "precision": 0.1875,
+          "recall": 0.1,
+          "f1": 0.1304,
+          "support": 30.0
+        },
+        "limited": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 30.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          29,
+          1,
+          0
+        ],
+        [
+          0,
+          30,
+          0,
+          0
+        ],
+        [
+          0,
+          27,
+          3,
+          0
+        ],
+        [
+          0,
+          18,
+          12,
+          0
+        ]
+      ]
+    },
+    "GPT-5.2 High": {
+      "model_key": "openai/gpt-5.2-high",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.3104,
+      "accuracy_primary": 0.3104,
+      "accuracy_majority": 0.3162,
+      "accuracy_run1": 0.3417,
+      "macro_f1": 0.207,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 117,
+      "tie_rate": 0.025,
+      "per_tier_accuracy": {
+        "exceptional": 0.0,
+        "strong": 0.8,
+        "fair": 0.4643,
+        "limited": 0.0
+      },
+      "prediction_distribution": {
+        "fair": 50,
+        "strong": 67
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 30.0
+        },
+        "strong": {
+          "precision": 0.3582,
+          "recall": 0.8,
+          "f1": 0.4948,
+          "support": 30.0
+        },
+        "fair": {
+          "precision": 0.26,
+          "recall": 0.4643,
+          "f1": 0.3333,
+          "support": 28.0
+        },
+        "limited": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 29.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          25,
+          5,
+          0
+        ],
+        [
+          0,
+          24,
+          6,
+          0
+        ],
+        [
+          0,
+          15,
+          13,
+          0
+        ],
+        [
+          0,
+          3,
+          26,
+          0
+        ]
+      ]
+    },
+    "Grok 4.1 Fast": {
+      "model_key": "x-ai/grok-4.1-fast",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.3323,
+      "accuracy_primary": 0.3323,
+      "accuracy_majority": 0.3451,
+      "accuracy_run1": 0.3083,
+      "macro_f1": 0.2806,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 113,
+      "tie_rate": 0.0583,
+      "per_tier_accuracy": {
+        "exceptional": 0.5862,
+        "strong": 0.6429,
+        "fair": 0.1379,
+        "limited": 0.0
+      },
+      "prediction_distribution": {
+        "fair": 17,
+        "strong": 64,
+        "exceptional": 32
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.5312,
+          "recall": 0.5862,
+          "f1": 0.5574,
+          "support": 29.0
+        },
+        "strong": {
+          "precision": 0.2812,
+          "recall": 0.6429,
+          "f1": 0.3913,
+          "support": 28.0
+        },
+        "fair": {
+          "precision": 0.2353,
+          "recall": 0.1379,
+          "f1": 0.1739,
+          "support": 29.0
+        },
+        "limited": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 27.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          17,
+          11,
+          1,
+          0
+        ],
+        [
+          10,
+          18,
+          0,
+          0
+        ],
+        [
+          4,
+          21,
+          4,
+          0
+        ],
+        [
+          1,
+          14,
+          12,
+          0
+        ]
+      ]
+    },
+    "MiniMax M2.5": {
+      "model_key": "minimax/minimax-m2.5",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.2833,
+      "accuracy_primary": 0.2833,
+      "accuracy_majority": 0.292,
+      "accuracy_run1": 0.2667,
+      "macro_f1": 0.1701,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 113,
+      "tie_rate": 0.0583,
+      "per_tier_accuracy": {
+        "exceptional": 0.0,
+        "strong": 0.9655,
+        "fair": 0.1923,
+        "limited": 0.0
+      },
+      "prediction_distribution": {
+        "strong": 96,
+        "fair": 17
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 29.0
+        },
+        "strong": {
+          "precision": 0.2917,
+          "recall": 0.9655,
+          "f1": 0.448,
+          "support": 29.0
+        },
+        "fair": {
+          "precision": 0.2941,
+          "recall": 0.1923,
+          "f1": 0.2326,
+          "support": 26.0
+        },
+        "limited": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 29.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          27,
+          2,
+          0
+        ],
+        [
+          0,
+          28,
+          1,
+          0
+        ],
+        [
+          0,
+          21,
+          5,
+          0
+        ],
+        [
+          0,
+          20,
+          9,
+          0
+        ]
+      ]
+    },
+    "DeepSeek V3.2": {
+      "model_key": "deepseek/deepseek-v3.2-speciale",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.2667,
+      "accuracy_primary": 0.2667,
+      "accuracy_majority": 0.2679,
+      "accuracy_run1": 0.2833,
+      "macro_f1": 0.1484,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 112,
+      "tie_rate": 0.0667,
+      "per_tier_accuracy": {
+        "exceptional": 0.0345,
+        "strong": 0.931,
+        "fair": 0.0741,
+        "limited": 0.0
+      },
+      "prediction_distribution": {
+        "strong": 100,
+        "exceptional": 4,
+        "fair": 8
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.25,
+          "recall": 0.0345,
+          "f1": 0.0606,
+          "support": 29.0
+        },
+        "strong": {
+          "precision": 0.27,
+          "recall": 0.931,
+          "f1": 0.4186,
+          "support": 29.0
+        },
+        "fair": {
+          "precision": 0.25,
+          "recall": 0.0741,
+          "f1": 0.1143,
+          "support": 27.0
+        },
+        "limited": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 27.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          1,
+          27,
+          1,
+          0
+        ],
+        [
+          2,
+          27,
+          0,
+          0
+        ],
+        [
+          1,
+          24,
+          2,
+          0
+        ],
+        [
+          0,
+          22,
+          5,
+          0
+        ]
+      ]
+    },
+    "Qwen 3.5 Plus": {
+      "model_key": "qwen/qwen3.5-plus-02-15",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.3289,
+      "accuracy_primary": 0.3289,
+      "accuracy_majority": 0.3097,
+      "accuracy_run1": 0.3167,
+      "macro_f1": 0.2498,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 113,
+      "tie_rate": 0.0583,
+      "per_tier_accuracy": {
+        "exceptional": 0.1071,
+        "strong": 0.3667,
+        "fair": 0.6897,
+        "limited": 0.0385
+      },
+      "prediction_distribution": {
+        "fair": 73,
+        "strong": 30,
+        "exceptional": 7,
+        "limited": 3
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.4286,
+          "recall": 0.1071,
+          "f1": 0.1714,
+          "support": 28.0
+        },
+        "strong": {
+          "precision": 0.3667,
+          "recall": 0.3667,
+          "f1": 0.3667,
+          "support": 30.0
+        },
+        "fair": {
+          "precision": 0.274,
+          "recall": 0.6897,
+          "f1": 0.3922,
+          "support": 29.0
+        },
+        "limited": {
+          "precision": 0.3333,
+          "recall": 0.0385,
+          "f1": 0.069,
+          "support": 26.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          3,
+          12,
+          13,
+          0
+        ],
+        [
+          3,
+          11,
+          16,
+          0
+        ],
+        [
+          1,
+          6,
+          20,
+          2
+        ],
+        [
+          0,
+          1,
+          24,
+          1
+        ]
+      ]
+    },
+    "Seed 2.0": {
+      "model_key": "doubao-seed-2-0-pro-260215",
+      "mode": "stochastic_thinking",
+      "accuracy": 0.2823,
+      "accuracy_primary": 0.2823,
+      "accuracy_majority": 0.3097,
+      "accuracy_run1": 0.275,
+      "macro_f1": 0.2257,
+      "n_valid_primary": 120,
+      "n_valid_discrete": 113,
+      "tie_rate": 0.0583,
+      "per_tier_accuracy": {
+        "exceptional": 0.4828,
+        "strong": 0.6667,
+        "fair": 0.0357,
+        "limited": 0.0
+      },
+      "prediction_distribution": {
+        "strong": 73,
+        "exceptional": 32,
+        "fair": 8
+      },
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.4375,
+          "recall": 0.4828,
+          "f1": 0.459,
+          "support": 29.0
+        },
+        "strong": {
+          "precision": 0.274,
+          "recall": 0.6667,
+          "f1": 0.3883,
+          "support": 30.0
+        },
+        "fair": {
+          "precision": 0.125,
+          "recall": 0.0357,
+          "f1": 0.0556,
+          "support": 28.0
+        },
+        "limited": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 26.0
+        }
+      },
+      "confusion_matrix": [
+        [
+          14,
+          14,
+          1,
+          0
+        ],
+        [
+          10,
+          20,
+          0,
+          0
+        ],
+        [
+          8,
+          19,
+          1,
+          0
+        ],
+        [
+          0,
+          20,
+          6,
+          0
+        ]
+      ]
+    }
+  },
+  "ranking_by_accuracy": [
+    {
+      "rank": 1,
+      "model": "Gemini 3.1 Pro",
+      "accuracy_primary": 0.3876,
+      "accuracy_majority": 0.3913,
+      "accuracy_run1": 0.3667,
+      "macro_f1": 0.3743
+    },
+    {
+      "rank": 2,
+      "model": "GLM-5",
+      "accuracy_primary": 0.335,
+      "accuracy_majority": 0.3393,
+      "accuracy_run1": 0.3667,
+      "macro_f1": 0.3029
+    },
+    {
+      "rank": 3,
+      "model": "Grok 4.1 Fast",
+      "accuracy_primary": 0.3323,
+      "accuracy_majority": 0.3451,
+      "accuracy_run1": 0.3083,
+      "macro_f1": 0.2806
+    },
+    {
+      "rank": 4,
+      "model": "Qwen 3.5 Plus",
+      "accuracy_primary": 0.3289,
+      "accuracy_majority": 0.3097,
+      "accuracy_run1": 0.3167,
+      "macro_f1": 0.2498
+    },
+    {
+      "rank": 5,
+      "model": "Kimi K2.5",
+      "accuracy_primary": 0.3146,
+      "accuracy_majority": 0.3211,
+      "accuracy_run1": 0.3083,
+      "macro_f1": 0.2391
+    },
+    {
+      "rank": 6,
+      "model": "GPT-5.2 High",
+      "accuracy_primary": 0.3104,
+      "accuracy_majority": 0.3162,
+      "accuracy_run1": 0.3417,
+      "macro_f1": 0.207
+    },
+    {
+      "rank": 7,
+      "model": "Gemini 2.5 Pro",
+      "accuracy_primary": 0.2948,
+      "accuracy_majority": 0.3036,
+      "accuracy_run1": 0.3,
+      "macro_f1": 0.2499
+    },
+    {
+      "rank": 8,
+      "model": "MiniMax M2.5",
+      "accuracy_primary": 0.2833,
+      "accuracy_majority": 0.292,
+      "accuracy_run1": 0.2667,
+      "macro_f1": 0.1701
+    },
+    {
+      "rank": 9,
+      "model": "Seed 2.0",
+      "accuracy_primary": 0.2823,
+      "accuracy_majority": 0.3097,
+      "accuracy_run1": 0.275,
+      "macro_f1": 0.2257
+    },
+    {
+      "rank": 10,
+      "model": "Claude Opus 4.6",
+      "accuracy_primary": 0.2802,
+      "accuracy_majority": 0.275,
+      "accuracy_run1": 0.2833,
+      "macro_f1": 0.1445
+    },
+    {
+      "rank": 11,
+      "model": "DeepSeek V3.2",
+      "accuracy_primary": 0.2667,
+      "accuracy_majority": 0.2679,
+      "accuracy_run1": 0.2833,
+      "macro_f1": 0.1484
+    }
+  ],
+  "cochran_q_test": {
+    "statistic": 8.571428571428571,
+    "p_value": 0.5732006660659902,
+    "df": 10,
+    "n_classifiers": 11,
+    "interpretation": "No significant differences among models"
+  },
+  "pairwise_mcnemar": {
+    "GLM-5 vs Kimi K2.5": {
+      "statistic": 0.05,
+      "p_value": 0.8230632737581214,
+      "b": 10.0,
+      "c": 10.0,
+      "n_paired": 103,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs Gemini 2.5 Pro": {
+      "statistic": 0.25,
+      "p_value": 0.6170750774519739,
+      "b": 20.0,
+      "c": 16.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs Gemini 3.1 Pro": {
+      "statistic": 0.45,
+      "p_value": 0.502334954360502,
+      "b": 8.0,
+      "c": 12.0,
+      "n_paired": 107,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs Claude Opus 4.6": {
+      "statistic": 1.0285714285714285,
+      "p_value": 0.3104944343172348,
+      "b": 21.0,
+      "c": 14.0,
+      "n_paired": 112,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs GPT-5.2 High": {
+      "statistic": 0.045454545454545456,
+      "p_value": 0.8311704095417624,
+      "b": 12.0,
+      "c": 10.0,
+      "n_paired": 109,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs Grok 4.1 Fast": {
+      "statistic": 0.3,
+      "p_value": 0.583882420770365,
+      "b": 17.0,
+      "c": 13.0,
+      "n_paired": 105,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs MiniMax M2.5": {
+      "statistic": 0.5517241379310345,
+      "p_value": 0.4576140668763148,
+      "b": 17.0,
+      "c": 12.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs DeepSeek V3.2": {
+      "statistic": 1.2894736842105263,
+      "p_value": 0.2561449666035265,
+      "b": 23.0,
+      "c": 15.0,
+      "n_paired": 104,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs Qwen 3.5 Plus": {
+      "statistic": 0.045454545454545456,
+      "p_value": 0.8311704095417624,
+      "b": 12.0,
+      "c": 10.0,
+      "n_paired": 105,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GLM-5 vs Seed 2.0": {
+      "statistic": 0.5517241379310345,
+      "p_value": 0.4576140668763148,
+      "b": 17.0,
+      "c": 12.0,
+      "n_paired": 105,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs Gemini 2.5 Pro": {
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "b": 22.0,
+      "c": 23.0,
+      "n_paired": 102,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs Gemini 3.1 Pro": {
+      "statistic": 1.4411764705882353,
+      "p_value": 0.2299490567942133,
+      "b": 13.0,
+      "c": 21.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs Claude Opus 4.6": {
+      "statistic": 1.894736842105263,
+      "p_value": 0.1686686188878147,
+      "b": 13.0,
+      "c": 6.0,
+      "n_paired": 109,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs GPT-5.2 High": {
+      "statistic": 0.1,
+      "p_value": 0.7518296340458492,
+      "b": 5.0,
+      "c": 5.0,
+      "n_paired": 107,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs Grok 4.1 Fast": {
+      "statistic": 0.025,
+      "p_value": 0.8743670611628918,
+      "b": 19.0,
+      "c": 21.0,
+      "n_paired": 103,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs MiniMax M2.5": {
+      "statistic": 0.9,
+      "p_value": 0.3427817111479112,
+      "b": 7.0,
+      "c": 3.0,
+      "n_paired": 102,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs DeepSeek V3.2": {
+      "statistic": 2.227272727272727,
+      "p_value": 0.13559300126630236,
+      "b": 15.0,
+      "c": 7.0,
+      "n_paired": 101,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs Qwen 3.5 Plus": {
+      "statistic": 0.045454545454545456,
+      "p_value": 0.8311704095417624,
+      "b": 12.0,
+      "c": 10.0,
+      "n_paired": 102,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Kimi K2.5 vs Seed 2.0": {
+      "statistic": 0.10256410256410256,
+      "p_value": 0.7487740417065472,
+      "b": 21.0,
+      "c": 18.0,
+      "n_paired": 102,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 2.5 Pro vs Gemini 3.1 Pro": {
+      "statistic": 0.9230769230769231,
+      "p_value": 0.3366683676100388,
+      "b": 16.0,
+      "c": 23.0,
+      "n_paired": 107,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 2.5 Pro vs Claude Opus 4.6": {
+      "statistic": 0.35555555555555557,
+      "p_value": 0.5509849875850935,
+      "b": 25.0,
+      "c": 20.0,
+      "n_paired": 112,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 2.5 Pro vs GPT-5.2 High": {
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "b": 26.0,
+      "c": 25.0,
+      "n_paired": 109,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 2.5 Pro vs Grok 4.1 Fast": {
+      "statistic": 0.07142857142857142,
+      "p_value": 0.7892680261342813,
+      "b": 6.0,
+      "c": 8.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 2.5 Pro vs MiniMax M2.5": {
+      "statistic": 0.022727272727272728,
+      "p_value": 0.8801684549067255,
+      "b": 23.0,
+      "c": 21.0,
+      "n_paired": 107,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 2.5 Pro vs DeepSeek V3.2": {
+      "statistic": 0.3902439024390244,
+      "p_value": 0.5321712241488488,
+      "b": 23.0,
+      "c": 18.0,
+      "n_paired": 104,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 2.5 Pro vs Qwen 3.5 Plus": {
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "b": 23.0,
+      "c": 22.0,
+      "n_paired": 105,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 2.5 Pro vs Seed 2.0": {
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "b": 10.0,
+      "c": 9.0,
+      "n_paired": 105,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 3.1 Pro vs Claude Opus 4.6": {
+      "statistic": 3.0638297872340425,
+      "p_value": 0.0800527823575794,
+      "b": 30.0,
+      "c": 17.0,
+      "n_paired": 115,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 3.1 Pro vs GPT-5.2 High": {
+      "statistic": 1.0909090909090908,
+      "p_value": 0.29626987148428663,
+      "b": 20.0,
+      "c": 13.0,
+      "n_paired": 112,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 3.1 Pro vs Grok 4.1 Fast": {
+      "statistic": 1.0285714285714285,
+      "p_value": 0.3104944343172348,
+      "b": 21.0,
+      "c": 14.0,
+      "n_paired": 108,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 3.1 Pro vs MiniMax M2.5": {
+      "statistic": 2.025,
+      "p_value": 0.15472892348537437,
+      "b": 25.0,
+      "c": 15.0,
+      "n_paired": 108,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 3.1 Pro vs DeepSeek V3.2": {
+      "statistic": 3.2,
+      "p_value": 0.073638270120303,
+      "b": 29.0,
+      "c": 16.0,
+      "n_paired": 107,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 3.1 Pro vs Qwen 3.5 Plus": {
+      "statistic": 0.64,
+      "p_value": 0.4237107971667936,
+      "b": 15.0,
+      "c": 10.0,
+      "n_paired": 108,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Gemini 3.1 Pro vs Seed 2.0": {
+      "statistic": 2.1315789473684212,
+      "p_value": 0.14429205544010104,
+      "b": 24.0,
+      "c": 14.0,
+      "n_paired": 109,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Claude Opus 4.6 vs GPT-5.2 High": {
+      "statistic": 0.5625,
+      "p_value": 0.4532547047537363,
+      "b": 6.0,
+      "c": 10.0,
+      "n_paired": 117,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Claude Opus 4.6 vs Grok 4.1 Fast": {
+      "statistic": 1.6333333333333333,
+      "p_value": 0.20124262095772383,
+      "b": 11.0,
+      "c": 19.0,
+      "n_paired": 113,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Claude Opus 4.6 vs MiniMax M2.5": {
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "b": 2.0,
+      "c": 3.0,
+      "n_paired": 113,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Claude Opus 4.6 vs DeepSeek V3.2": {
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "b": 3.0,
+      "c": 2.0,
+      "n_paired": 112,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Claude Opus 4.6 vs Qwen 3.5 Plus": {
+      "statistic": 0.09302325581395349,
+      "p_value": 0.7603683300552028,
+      "b": 20.0,
+      "c": 23.0,
+      "n_paired": 113,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Claude Opus 4.6 vs Seed 2.0": {
+      "statistic": 0.16,
+      "p_value": 0.6891565167793516,
+      "b": 11.0,
+      "c": 14.0,
+      "n_paired": 113,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GPT-5.2 High vs Grok 4.1 Fast": {
+      "statistic": 0.21428571428571427,
+      "p_value": 0.6434288435636206,
+      "b": 19.0,
+      "c": 23.0,
+      "n_paired": 111,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GPT-5.2 High vs MiniMax M2.5": {
+      "statistic": 0.1,
+      "p_value": 0.7518296340458492,
+      "b": 6.0,
+      "c": 4.0,
+      "n_paired": 111,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GPT-5.2 High vs DeepSeek V3.2": {
+      "statistic": 0.7619047619047619,
+      "p_value": 0.38273308888522595,
+      "b": 13.0,
+      "c": 8.0,
+      "n_paired": 109,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GPT-5.2 High vs Qwen 3.5 Plus": {
+      "statistic": 0.14814814814814814,
+      "p_value": 0.7003113729368903,
+      "b": 15.0,
+      "c": 12.0,
+      "n_paired": 110,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "GPT-5.2 High vs Seed 2.0": {
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "b": 21.0,
+      "c": 20.0,
+      "n_paired": 110,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Grok 4.1 Fast vs MiniMax M2.5": {
+      "statistic": 1.1612903225806452,
+      "p_value": 0.2811980995641793,
+      "b": 19.0,
+      "c": 12.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Grok 4.1 Fast vs DeepSeek V3.2": {
+      "statistic": 2.3703703703703702,
+      "p_value": 0.12365771040283369,
+      "b": 18.0,
+      "c": 9.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Grok 4.1 Fast vs Qwen 3.5 Plus": {
+      "statistic": 0.019230769230769232,
+      "p_value": 0.8897069355331011,
+      "b": 27.0,
+      "c": 25.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Grok 4.1 Fast vs Seed 2.0": {
+      "statistic": 0.125,
+      "p_value": 0.7236736098317629,
+      "b": 5.0,
+      "c": 3.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "MiniMax M2.5 vs DeepSeek V3.2": {
+      "statistic": 0.125,
+      "p_value": 0.7236736098317629,
+      "b": 5.0,
+      "c": 3.0,
+      "n_paired": 105,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "MiniMax M2.5 vs Qwen 3.5 Plus": {
+      "statistic": 0.027777777777777776,
+      "p_value": 0.8676323347781927,
+      "b": 19.0,
+      "c": 17.0,
+      "n_paired": 106,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "MiniMax M2.5 vs Seed 2.0": {
+      "statistic": 0.03571428571428571,
+      "p_value": 0.8501067391385259,
+      "b": 13.0,
+      "c": 15.0,
+      "n_paired": 107,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "DeepSeek V3.2 vs Qwen 3.5 Plus": {
+      "statistic": 0.35555555555555557,
+      "p_value": 0.5509849875850935,
+      "b": 20.0,
+      "c": 25.0,
+      "n_paired": 108,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "DeepSeek V3.2 vs Seed 2.0": {
+      "statistic": 0.4090909090909091,
+      "p_value": 0.5224312849615643,
+      "b": 9.0,
+      "c": 13.0,
+      "n_paired": 105,
+      "p_corrected": 1.0,
+      "significant": false
+    },
+    "Qwen 3.5 Plus vs Seed 2.0": {
+      "statistic": 0.019230769230769232,
+      "p_value": 0.8897069355331011,
+      "b": 27.0,
+      "c": 25.0,
+      "n_paired": 107,
+      "p_corrected": 1.0,
+      "significant": false
+    }
+  },
+  "bonferroni_n_tests": 55,
+  "bonferroni_n_significant": 0
+}

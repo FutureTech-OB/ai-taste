@@ -1,0 +1,12 @@
+model,mode,n_articles,n_with_8_runs,avg_vote_valid_n,avg8_acc,majority_acc_excl_ties,tie_rate,run1_acc,missing_count
+google/gemini-3.1-pro-preview,stochastic_thinking,120,120,7.8167,0.3876,0.3913,0.0417,0.3667,0
+z-ai/glm-5,stochastic_thinking,120,120,7.9667,0.335,0.3393,0.0667,0.3667,0
+x-ai/grok-4.1-fast,stochastic_thinking,120,120,8.0,0.3323,0.3451,0.0583,0.3083,0
+qwen/qwen3.5-plus-02-15,stochastic_thinking,120,120,7.9917,0.3289,0.3097,0.0583,0.3167,0
+moonshotai/kimi-k2.5,stochastic_thinking,120,120,8.0,0.3146,0.3211,0.0917,0.3083,0
+openai/gpt-5.2-high,stochastic_thinking,120,120,8.0,0.3104,0.3162,0.025,0.3417,0
+google/gemini-2.5-pro,stochastic_thinking,120,120,8.0,0.2948,0.3036,0.0667,0.3,0
+minimax/minimax-m2.5,stochastic_thinking,120,120,8.0,0.2833,0.292,0.0583,0.2667,0
+doubao-seed-2-0-pro-260215,stochastic_thinking,120,120,8.0,0.2823,0.3097,0.0583,0.275,0
+anthropic/claude-opus-4.6,stochastic_thinking,120,120,8.0,0.2802,0.275,0.0,0.2833,0
+deepseek/deepseek-v3.2-speciale,stochastic_thinking,120,120,8.0,0.2667,0.2679,0.0667,0.2833,0

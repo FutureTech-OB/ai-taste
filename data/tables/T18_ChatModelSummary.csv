@@ -1,0 +1,4 @@
+Evaluator,N,Accuracy (%),Macro F1,Macro F1 95% CI Lower,Macro F1 95% CI Upper,95% CI Lower,95% CI Upper
+"GPT-5.2 (chat, logp)",120,32.5,0.217,0.175,0.256,24.2,40.8
+"Kimi K2 Chat (chat, logp)",120,35.8,0.325,0.244,0.406,27.5,45.0
+"DeepSeek Chat (chat, logp)",120,27.5,0.149,0.103,0.203,20.0,35.8

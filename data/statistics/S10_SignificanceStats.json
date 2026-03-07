@@ -1,0 +1,70 @@
+{
+  "best_flagship_model": "google/gemini-3.1-pro-preview",
+  "best_flagship_name": "Gemini 3.1 Pro",
+  "frontier_model_count": 11,
+  "best_flagship_primary_accuracy": 0.3875992063492063,
+  "frontier_average_accuracy": 0.31054743867243867,
+  "n_articles": 120,
+  "evaluator_accuracies": {
+    "SFT 2-Model": 0.5583333333333333,
+    "Frontier Average": 0.31054743867243867,
+    "Best Flagship": 0.391304347826087,
+    "Expert Majority": 0.4157303370786517,
+    "Junior Majority (full)": 0.4077669902912621
+  },
+  "n_pairwise_tests": 4,
+  "pairwise_results": [
+    {
+      "evaluator_1": "SFT 2-Model",
+      "evaluator_2": "Frontier Average",
+      "n_paired": 120,
+      "acc_1": 0.5583333333333333,
+      "acc_2": 0.31054743867243867,
+      "test": "Exact binomial (one-sided)",
+      "statistic": null,
+      "p_value": 1.6970705868482348e-08,
+      "odds_ratio": null,
+      "acc_diff": 0.24778589466089468
+    },
+    {
+      "evaluator_1": "SFT 2-Model",
+      "evaluator_2": "Best Flagship",
+      "n_paired": 115,
+      "acc_1": 0.5478260869565217,
+      "acc_2": 0.391304347826087,
+      "test": "McNemar (continuity-corrected)",
+      "statistic": 5.160714285714286,
+      "p_value": 0.02310339380176413,
+      "odds_ratio": 1.9473684210526316,
+      "acc_diff": 0.1565217391304347
+    },
+    {
+      "evaluator_1": "SFT 2-Model",
+      "evaluator_2": "Expert Majority",
+      "n_paired": 89,
+      "acc_1": 0.550561797752809,
+      "acc_2": 0.4157303370786517,
+      "test": "McNemar (continuity-corrected)",
+      "statistic": 2.5208333333333335,
+      "p_value": 0.11235119769046403,
+      "odds_ratio": 1.6666666666666667,
+      "acc_diff": 0.1348314606741573
+    },
+    {
+      "evaluator_1": "SFT 2-Model",
+      "evaluator_2": "Junior Majority (full)",
+      "n_paired": 103,
+      "acc_1": 0.5631067961165048,
+      "acc_2": 0.4077669902912621,
+      "test": "McNemar (continuity-corrected)",
+      "statistic": 4.326923076923077,
+      "p_value": 0.03751400161554009,
+      "odds_ratio": 1.8888888888888888,
+      "acc_diff": 0.1553398058252427
+    }
+  ],
+  "summary": {
+    "rule": "Simplified core comparisons only; raw p-values only (no Bonferroni/FDR columns).",
+    "best_flagship_name": "Gemini 3.1 Pro"
+  }
+}

@@ -1,0 +1,373 @@
+{
+  "metrics": {
+    "SFT 2-Model Ensemble": {
+      "ece": 0.13587572270919387,
+      "brier_score": 0.6257508912641401,
+      "brier_decomposition": {
+        "brier_score": 0.6257508912641401,
+        "reliability": 0.0225181809947415,
+        "resolution": 0.021897564581388113,
+        "uncertainty": 0.75
+      },
+      "accuracy": 0.5583333333333333,
+      "n": 120,
+      "per_tier_ece": {
+        "exceptional": {
+          "ece": 0.17094241758642065,
+          "n": 30
+        },
+        "strong": {
+          "ece": 0.18975106415984241,
+          "n": 30
+        },
+        "fair": {
+          "ece": 0.3211896688767301,
+          "n": 30
+        },
+        "limited": {
+          "ece": 0.14732417131519598,
+          "n": 30
+        }
+      }
+    },
+    "Expert voting": {
+      "ece": 0.23055555555555554,
+      "brier_score": 0.8109953703703711,
+      "brier_decomposition": {
+        "brier_score": 0.8109953703703711,
+        "reliability": 0.07327715442122218,
+        "resolution": 0.015221598865666661,
+        "uncertainty": 0.75
+      },
+      "accuracy": 0.38333333333333336,
+      "n": 120,
+      "per_tier_ece": {
+        "exceptional": {
+          "ece": 0.4944444444444444,
+          "n": 30
+        },
+        "strong": {
+          "ece": 0.24722222222222218,
+          "n": 30
+        },
+        "fair": {
+          "ece": 0.27499999999999997,
+          "n": 30
+        },
+        "limited": {
+          "ece": 0.3666666666666667,
+          "n": 30
+        }
+      }
+    },
+    "Student voting": {
+      "ece": 0.0691176272674632,
+      "brier_score": 0.689956743984279,
+      "brier_decomposition": {
+        "brier_score": 0.689956743984279,
+        "reliability": 0.008975546367937914,
+        "resolution": 0.010997174730112042,
+        "uncertainty": 0.75
+      },
+      "accuracy": 0.4083333333333333,
+      "n": 120,
+      "per_tier_ece": {
+        "exceptional": {
+          "ece": 0.1795087236760562,
+          "n": 30
+        },
+        "strong": {
+          "ece": 0.08766778342519282,
+          "n": 30
+        },
+        "fair": {
+          "ece": 0.19208944501218622,
+          "n": 30
+        },
+        "limited": {
+          "ece": 0.2131458062734143,
+          "n": 30
+        }
+      }
+    },
+    "GPT-5.2 (chat)": {
+      "ece": 0.6571771821374236,
+      "brier_score": 1.3125555323013613,
+      "brier_decomposition": {
+        "brier_score": 1.3125555323013613,
+        "reliability": 0.43267775376823153,
+        "resolution": 0.005559210526315791,
+        "uncertainty": 0.75
+      },
+      "accuracy": 0.325,
+      "n": 120,
+      "per_tier_ece": {
+        "exceptional": {
+          "ece": 0.9652968126412507,
+          "n": 30
+        },
+        "strong": {
+          "ece": 0.28543672418980226,
+          "n": 30
+        },
+        "fair": {
+          "ece": 0.3863853949331253,
+          "n": 30
+        },
+        "limited": {
+          "ece": 0.9915897967855164,
+          "n": 30
+        }
+      }
+    },
+    "Kimi K2 Chat": {
+      "ece": 0.3656284494171285,
+      "brier_score": 0.9272128071870032,
+      "brier_decomposition": {
+        "brier_score": 0.9272128071870032,
+        "reliability": 0.15894715720079533,
+        "resolution": 0.005813545115015703,
+        "uncertainty": 0.75
+      },
+      "accuracy": 0.35833333333333334,
+      "n": 120,
+      "per_tier_ece": {
+        "exceptional": {
+          "ece": 0.6272911980135583,
+          "n": 30
+        },
+        "strong": {
+          "ece": 0.14453277721750443,
+          "n": 30
+        },
+        "fair": {
+          "ece": 0.555719127145936,
+          "n": 30
+        },
+        "limited": {
+          "ece": 0.36151714097284066,
+          "n": 30
+        }
+      }
+    },
+    "DeepSeek Chat": {
+      "ece": 0.693484357843436,
+      "brier_score": 1.3867469774149839,
+      "brier_decomposition": {
+        "brier_score": 1.3867469774149839,
+        "reliability": 0.48333506708072954,
+        "resolution": 0.004136904761904762,
+        "uncertainty": 0.75
+      },
+      "accuracy": 0.275,
+      "n": 120,
+      "per_tier_ece": {
+        "exceptional": {
+          "ece": 0.935492444403861,
+          "n": 30
+        },
+        "strong": {
+          "ece": 0.005480527426281082,
+          "n": 30
+        },
+        "fair": {
+          "ece": 0.888177463008664,
+          "n": 30
+        },
+        "limited": {
+          "ece": 0.9557480513875002,
+          "n": 30
+        }
+      }
+    }
+  },
+  "calibration_bins": {
+    "SFT 2-Model Ensemble": [
+      {
+        "mean_conf": 0.2981078489555928,
+        "frac_correct": 0.0,
+        "count": 1
+      },
+      {
+        "mean_conf": 0.3656377499646199,
+        "frac_correct": 0.42857142857142855,
+        "count": 7
+      },
+      {
+        "mean_conf": 0.457702287268503,
+        "frac_correct": 0.5555555555555556,
+        "count": 18
+      },
+      {
+        "mean_conf": 0.5445496633729032,
+        "frac_correct": 0.4444444444444444,
+        "count": 27
+      },
+      {
+        "mean_conf": 0.648046287589132,
+        "frac_correct": 0.4444444444444444,
+        "count": 18
+      },
+      {
+        "mean_conf": 0.7411907213854978,
+        "frac_correct": 0.5294117647058824,
+        "count": 17
+      },
+      {
+        "mean_conf": 0.8414273231194431,
+        "frac_correct": 0.8,
+        "count": 15
+      },
+      {
+        "mean_conf": 0.9538681234538348,
+        "frac_correct": 0.7647058823529411,
+        "count": 17
+      }
+    ],
+    "Expert voting": [
+      {
+        "mean_conf": 0.25,
+        "frac_correct": 0.0,
+        "count": 2
+      },
+      {
+        "mean_conf": 0.33333333333333326,
+        "frac_correct": 0.3181818181818182,
+        "count": 22
+      },
+      {
+        "mean_conf": 0.5,
+        "frac_correct": 0.4444444444444444,
+        "count": 18
+      },
+      {
+        "mean_conf": 0.6666666666666665,
+        "frac_correct": 0.3389830508474576,
+        "count": 59
+      },
+      {
+        "mean_conf": 0.75,
+        "frac_correct": 0.3333333333333333,
+        "count": 6
+      },
+      {
+        "mean_conf": 1.0,
+        "frac_correct": 0.6923076923076923,
+        "count": 13
+      }
+    ],
+    "Student voting": [
+      {
+        "mean_conf": 0.28143369788106626,
+        "frac_correct": 0.5,
+        "count": 8
+      },
+      {
+        "mean_conf": 0.35210421438702766,
+        "frac_correct": 0.37209302325581395,
+        "count": 43
+      },
+      {
+        "mean_conf": 0.4416048609660974,
+        "frac_correct": 0.3409090909090909,
+        "count": 44
+      },
+      {
+        "mean_conf": 0.5477462255965421,
+        "frac_correct": 0.5217391304347826,
+        "count": 23
+      },
+      {
+        "mean_conf": 0.6713554987212276,
+        "frac_correct": 1.0,
+        "count": 2
+      }
+    ],
+    "GPT-5.2 (chat)": [
+      {
+        "mean_conf": 0.5,
+        "frac_correct": 0.0,
+        "count": 1
+      },
+      {
+        "mean_conf": 0.6791787121629466,
+        "frac_correct": 0.0,
+        "count": 1
+      },
+      {
+        "mean_conf": 0.7772998577354079,
+        "frac_correct": 0.0,
+        "count": 3
+      },
+      {
+        "mean_conf": 0.8175744850834649,
+        "frac_correct": 0.0,
+        "count": 1
+      },
+      {
+        "mean_conf": 0.9959000797020894,
+        "frac_correct": 0.34210526315789475,
+        "count": 114
+      }
+    ],
+    "Kimi K2 Chat": [
+      {
+        "mean_conf": 0.37426567219304857,
+        "frac_correct": 0.0,
+        "count": 1
+      },
+      {
+        "mean_conf": 0.46108735260314754,
+        "frac_correct": 0.21428571428571427,
+        "count": 14
+      },
+      {
+        "mean_conf": 0.5506828895604166,
+        "frac_correct": 0.45454545454545453,
+        "count": 22
+      },
+      {
+        "mean_conf": 0.6507281172968219,
+        "frac_correct": 0.3333333333333333,
+        "count": 15
+      },
+      {
+        "mean_conf": 0.7473499615052764,
+        "frac_correct": 0.3333333333333333,
+        "count": 21
+      },
+      {
+        "mean_conf": 0.8456751508182604,
+        "frac_correct": 0.35294117647058826,
+        "count": 17
+      },
+      {
+        "mean_conf": 0.9366384412038526,
+        "frac_correct": 0.4,
+        "count": 30
+      }
+    ],
+    "DeepSeek Chat": [
+      {
+        "mean_conf": 0.6712498056988643,
+        "frac_correct": 0.0,
+        "count": 4
+      },
+      {
+        "mean_conf": 0.7657286369709797,
+        "frac_correct": 0.0,
+        "count": 2
+      },
+      {
+        "mean_conf": 0.8578712216163105,
+        "frac_correct": 0.3333333333333333,
+        "count": 9
+      },
+      {
+        "mean_conf": 0.9931507185707438,
+        "frac_correct": 0.2857142857142857,
+        "count": 105
+      }
+    ]
+  }
+}

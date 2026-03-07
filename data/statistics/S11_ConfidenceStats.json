@@ -1,0 +1,1077 @@
+{
+  "val_models_with_logp": {
+    "SFT-1 (GPT-4.1)": {
+      "n": 120,
+      "n_correct": 57,
+      "accuracy": 0.475,
+      "mean_confidence": 0.6945451698202466,
+      "median_confidence": 0.6818798607381229,
+      "std_confidence": 0.16293959798766502,
+      "min_confidence": 0.3632122848838467,
+      "max_confidence_val": 0.996375419972021,
+      "mean_entropy": 0.9817618865329205,
+      "mean_conf_correct": 0.7330893433418985,
+      "mean_conf_wrong": 0.6596718699673233,
+      "conf_gap": 0.07341747337457516,
+      "confidence_accuracy_corr": {
+        "r": 0.22500866888476664,
+        "p": 0.013480447244946089
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 2244.0,
+        "p": 0.009277941154424619
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.7,
+          "mean_max_prob": 0.7469358803677029,
+          "mean_entropy": 0.8191827895369262,
+          "mean_conf_correct": 0.7790735178498063,
+          "mean_conf_wrong": 0.671948059576128
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.5333333333333333,
+          "mean_max_prob": 0.7029681738102442,
+          "mean_entropy": 0.9286413135947958,
+          "mean_conf_correct": 0.7325334059496735,
+          "mean_conf_wrong": 0.6691793370794679
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.36666666666666664,
+          "mean_max_prob": 0.5947106775207129,
+          "mean_entropy": 1.2492024129841097,
+          "mean_conf_correct": 0.585778536484721,
+          "mean_conf_wrong": 0.599881917067866
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.3,
+          "mean_max_prob": 0.7335659475823266,
+          "mean_entropy": 0.93002103001585,
+          "mean_conf_correct": 0.8068278110128425,
+          "mean_conf_wrong": 0.7021680061121054
+        }
+      }
+    },
+    "SFT-2 (GPT-4.1-nano)": {
+      "n": 120,
+      "n_correct": 63,
+      "accuracy": 0.525,
+      "mean_confidence": 0.7292435566423284,
+      "median_confidence": 0.7226469952396624,
+      "std_confidence": 0.1833254668228142,
+      "min_confidence": 0.34031470637689565,
+      "max_confidence_val": 0.9999251537807445,
+      "mean_entropy": 0.910528911013401,
+      "mean_conf_correct": 0.7828362129721679,
+      "mean_conf_wrong": 0.670009568067243,
+      "conf_gap": 0.11282664490492489,
+      "confidence_accuracy_corr": {
+        "r": 0.30733734187496786,
+        "p": 0.0006389859020380771
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 2431.0,
+        "p": 0.000423348978259949
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.7333333333333333,
+          "mean_max_prob": 0.8016005951265209,
+          "mean_entropy": 0.7475736409904482,
+          "mean_conf_correct": 0.8362037046763452,
+          "mean_conf_wrong": 0.7064420438645038
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.4666666666666667,
+          "mean_max_prob": 0.7117962951849033,
+          "mean_entropy": 0.9700579332786635,
+          "mean_conf_correct": 0.7797623789681305,
+          "mean_conf_wrong": 0.6523259718745795
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.26666666666666666,
+          "mean_max_prob": 0.6827754265553474,
+          "mean_entropy": 1.050111117619032,
+          "mean_conf_correct": 0.6682503284774772,
+          "mean_conf_wrong": 0.6880572804018456
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.6333333333333333,
+          "mean_max_prob": 0.7208019097025423,
+          "mean_entropy": 0.8743729521654605,
+          "mean_conf_correct": 0.7715538937364909,
+          "mean_conf_wrong": 0.6331393918257219
+        }
+      }
+    },
+    "SFT-3 (Qwen3-30B)": {
+      "n": 120,
+      "n_correct": 58,
+      "accuracy": 0.48333333333333334,
+      "mean_confidence": 0.8852232650932711,
+      "median_confidence": 0.9502637372730527,
+      "std_confidence": 0.1474121648376005,
+      "min_confidence": 0.4123693466494247,
+      "max_confidence_val": 0.9999999957896362,
+      "mean_entropy": 0.44804876545235134,
+      "mean_conf_correct": 0.9273622107354921,
+      "mean_conf_wrong": 0.8458029611053869,
+      "conf_gap": 0.08155924963010519,
+      "confidence_accuracy_corr": {
+        "r": 0.2764830379920359,
+        "p": 0.002236854684451705
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 2614.0,
+        "p": 9.2342409723952e-06
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.8333333333333334,
+          "mean_max_prob": 0.9257222492327095,
+          "mean_entropy": 0.26503575105179455,
+          "mean_conf_correct": 0.9635575287505505,
+          "mean_conf_wrong": 0.7365458516435044
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.43333333333333335,
+          "mean_max_prob": 0.864423959842068,
+          "mean_entropy": 0.5319213477895561,
+          "mean_conf_correct": 0.9120092503501638,
+          "mean_conf_wrong": 0.8280352082770536
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.3,
+          "mean_max_prob": 0.8774167777832828,
+          "mean_entropy": 0.49387497980469325,
+          "mean_conf_correct": 0.8770565388206559,
+          "mean_conf_wrong": 0.8775711659101229
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.36666666666666664,
+          "mean_max_prob": 0.873330073515024,
+          "mean_entropy": 0.5013629831633615,
+          "mean_conf_correct": 0.9044037181778862,
+          "mean_conf_wrong": 0.8553400687102091
+        }
+      }
+    },
+    "SFT-4 (Qwen3-4B)": {
+      "n": 120,
+      "n_correct": 62,
+      "accuracy": 0.5166666666666667,
+      "mean_confidence": 0.6307475235419443,
+      "median_confidence": 0.5915327895351712,
+      "std_confidence": 0.18247907814202016,
+      "min_confidence": 0.31456606260435044,
+      "max_confidence_val": 0.9970840257662977,
+      "mean_entropy": 1.1835779264906268,
+      "mean_conf_correct": 0.6542668198411458,
+      "mean_conf_wrong": 0.6056062068083151,
+      "conf_gap": 0.048660613032830646,
+      "confidence_accuracy_corr": {
+        "r": 0.1332579393226231,
+        "p": 0.14678879686402807
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 2065.0,
+        "p": 0.08082555883577741
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.7666666666666667,
+          "mean_max_prob": 0.6746469964951504,
+          "mean_entropy": 1.0551273562784909,
+          "mean_conf_correct": 0.6848598808954641,
+          "mean_conf_wrong": 0.6410903763226898
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.36666666666666664,
+          "mean_max_prob": 0.5472850975735845,
+          "mean_entropy": 1.3681254751261644,
+          "mean_conf_correct": 0.49732330779900785,
+          "mean_conf_wrong": 0.5762103442851814
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.43333333333333335,
+          "mean_max_prob": 0.5837384897253384,
+          "mean_entropy": 1.3422698175236998,
+          "mean_conf_correct": 0.5925036726654751,
+          "mean_conf_wrong": 0.5770357027711164
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.5,
+          "mean_max_prob": 0.7173195103737042,
+          "mean_entropy": 0.9687890570341515,
+          "mean_conf_correct": 0.7759774292743403,
+          "mean_conf_wrong": 0.6586615914730681
+        }
+      }
+    },
+    "GPT-5.2 (baseline)": {
+      "n": 120,
+      "n_correct": 35,
+      "accuracy": 0.2916666666666667,
+      "mean_confidence": 0.9626131735207036,
+      "median_confidence": 0.9999994798095075,
+      "std_confidence": 0.10419467383170453,
+      "min_confidence": 0.5621765008857981,
+      "max_confidence_val": 1.0,
+      "mean_entropy": 0.1117017362248435,
+      "mean_conf_correct": 0.9621120129109264,
+      "mean_conf_wrong": 0.9628195337717886,
+      "conf_gap": -0.0007075208608622319,
+      "confidence_accuracy_corr": {
+        "r": -0.0030864267107001686,
+        "p": 0.973310714266996
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 1562.0,
+        "p": 0.33435838882389557
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.0,
+          "mean_max_prob": 0.9727298467349474,
+          "mean_entropy": 0.08304327846384925,
+          "mean_conf_correct": null,
+          "mean_conf_wrong": 0.9727298467349474
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.9333333333333333,
+          "mean_max_prob": 0.9528307619132522,
+          "mean_entropy": 0.12811955375343034,
+          "mean_conf_correct": 0.9642782289306929,
+          "mean_conf_wrong": 0.7925662236690822
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.23333333333333334,
+          "mean_max_prob": 0.9511105775498792,
+          "mean_entropy": 0.13816918286885013,
+          "mean_conf_correct": 0.9534471488318612,
+          "mean_conf_wrong": 0.9503994471597107
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.0,
+          "mean_max_prob": 0.9737815078847365,
+          "mean_entropy": 0.09747492981324424,
+          "mean_conf_correct": null,
+          "mean_conf_wrong": 0.9737815078847365
+        }
+      }
+    },
+    "Human Voting (old students)": {
+      "n": 120,
+      "n_correct": 49,
+      "accuracy": 0.4083333333333333,
+      "mean_confidence": 0.4555501288834622,
+      "median_confidence": 0.46153846153846145,
+      "std_confidence": 0.10518754912841712,
+      "min_confidence": 0.26666666666666666,
+      "max_confidence_val": 0.7333333333333333,
+      "mean_entropy": 1.6789588906119695,
+      "mean_conf_correct": 0.47481290440474117,
+      "mean_conf_wrong": 0.44225610070680493,
+      "conf_gap": 0.03255680369793623,
+      "confidence_accuracy_corr": {
+        "r": 0.15213298726691576,
+        "p": 0.09716416928386667
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 2008.5,
+        "p": 0.07521265614309419
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.3333333333333333,
+          "mean_max_prob": 0.41976190476190484,
+          "mean_entropy": 1.7553241686123315,
+          "mean_conf_correct": 0.4297435897435897,
+          "mean_conf_wrong": 0.41477106227106225
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.5,
+          "mean_max_prob": 0.46518586351919683,
+          "mean_entropy": 1.6685009277470526,
+          "mean_conf_correct": 0.4557197123863791,
+          "mean_conf_wrong": 0.4746520146520147
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.5,
+          "mean_max_prob": 0.43468864468864477,
+          "mean_entropy": 1.7360734172405812,
+          "mean_conf_correct": 0.47995115995116,
+          "mean_conf_wrong": 0.3894261294261294
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.3,
+          "mean_max_prob": 0.5025641025641026,
+          "mean_entropy": 1.5559370488479134,
+          "mean_conf_correct": 0.548148148148148,
+          "mean_conf_wrong": 0.483028083028083
+        }
+      }
+    },
+    "SFT 2-Model Ensemble": {
+      "n": 120,
+      "n_correct": 67,
+      "accuracy": 0.5583333333333333,
+      "mean_confidence": 0.6575108130522838,
+      "median_confidence": 0.6334349776415825,
+      "std_confidence": 0.18248211726364644,
+      "min_confidence": 0.2981078489555928,
+      "max_confidence_val": 0.9994517932417228,
+      "mean_entropy": 1.1308417076665913,
+      "mean_conf_correct": 0.6954382402277426,
+      "mean_conf_wrong": 0.609564820207836,
+      "conf_gap": 0.08587342001990661,
+      "confidence_accuracy_corr": {
+        "r": 0.2336859158562359,
+        "p": 0.010205815920777747
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 2233.0,
+        "p": 0.007865002698525775
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.7666666666666667,
+          "mean_max_prob": 0.7419709307047194,
+          "mean_entropy": 0.9014475244666038,
+          "mean_conf_correct": 0.7766898653906956,
+          "mean_conf_wrong": 0.6278944310222256
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.5333333333333333,
+          "mean_max_prob": 0.6192910725632036,
+          "mean_entropy": 1.206852814421025,
+          "mean_conf_correct": 0.6085885573565377,
+          "mean_conf_wrong": 0.6315225185136787
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.3333333333333333,
+          "mean_max_prob": 0.5946864927008655,
+          "mean_entropy": 1.3328205815592569,
+          "mean_conf_correct": 0.585784211900472,
+          "mean_conf_wrong": 0.5991376331010619
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.6,
+          "mean_max_prob": 0.674094756240347,
+          "mean_entropy": 1.0822459102194797,
+          "mean_conf_correct": 0.7297353419201902,
+          "mean_conf_wrong": 0.5906338777205818
+        }
+      }
+    },
+    "GPT-5.2 Chat": {
+      "n": 120,
+      "n_correct": 39,
+      "accuracy": 0.325,
+      "mean_confidence": 0.9821771821374237,
+      "median_confidence": 0.9999999847700205,
+      "std_confidence": 0.06606198595403527,
+      "min_confidence": 0.5,
+      "max_confidence_val": 1.0,
+      "mean_entropy": 0.0633272016466389,
+      "mean_conf_correct": 0.9977489017319124,
+      "mean_conf_wrong": 0.974679687517855,
+      "conf_gap": 0.023069214214057387,
+      "confidence_accuracy_corr": {
+        "r": 0.16355911176926835,
+        "p": 0.07426336293536051
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 1488.5,
+        "p": 0.696289998341205
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.0,
+          "mean_max_prob": 0.9652968126412508,
+          "mean_entropy": 0.10553654241641476,
+          "mean_conf_correct": null,
+          "mean_conf_wrong": 0.9652968126412508
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.7,
+          "mean_max_prob": 0.9854367241898021,
+          "mean_entropy": 0.05456449984963167,
+          "mean_conf_correct": 0.9999574114944112,
+          "mean_conf_wrong": 0.951555120479048
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.6,
+          "mean_max_prob": 0.9863853949331253,
+          "mean_entropy": 0.06018425108148336,
+          "mean_conf_correct": 0.995172307008997,
+          "mean_conf_wrong": 0.9732050268193176
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.0,
+          "mean_max_prob": 0.9915897967855165,
+          "mean_entropy": 0.03302351323902579,
+          "mean_conf_correct": null,
+          "mean_conf_wrong": 0.9915897967855165
+        }
+      }
+    },
+    "Kimi K2 Chat": {
+      "n": 120,
+      "n_correct": 43,
+      "accuracy": 0.35833333333333334,
+      "mean_confidence": 0.723961782750462,
+      "median_confidence": 0.7315132549214054,
+      "std_confidence": 0.17170250067714107,
+      "min_confidence": 0.37426567219304857,
+      "max_confidence_val": 0.9900532427680997,
+      "mean_entropy": 0.9351306928391535,
+      "mean_conf_correct": 0.7400295615980667,
+      "mean_conf_wrong": 0.7149888672901111,
+      "conf_gap": 0.025040694307955524,
+      "confidence_accuracy_corr": {
+        "r": 0.06993073462118304,
+        "p": 0.4478738473429095
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 1795.0,
+        "p": 0.2234078134159056
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.13333333333333333,
+          "mean_max_prob": 0.7606245313468916,
+          "mean_entropy": 0.8327147406879748,
+          "mean_conf_correct": 0.7981488473274999,
+          "mean_conf_wrong": 0.7548515596575673
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.7666666666666667,
+          "mean_max_prob": 0.7661611934277855,
+          "mean_entropy": 0.8599282309950346,
+          "mean_conf_correct": 0.7811008649948974,
+          "mean_conf_wrong": 0.7170737011358467
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.23333333333333334,
+          "mean_max_prob": 0.7075442652543296,
+          "mean_entropy": 0.9747380743113042,
+          "mean_conf_correct": 0.5419634009576175,
+          "mean_conf_wrong": 0.7579384413446333
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.3,
+          "mean_max_prob": 0.6615171409728404,
+          "mean_entropy": 1.0731417253623006,
+          "mean_conf_correct": 0.7632902286467673,
+          "mean_conf_wrong": 0.6179001033983005
+        }
+      }
+    },
+    "DeepSeek Chat": {
+      "n": 120,
+      "n_correct": 33,
+      "accuracy": 0.275,
+      "mean_confidence": 0.9684843578434361,
+      "median_confidence": 1.0,
+      "std_confidence": 0.07453667324279217,
+      "min_confidence": 0.6207832745194325,
+      "max_confidence_val": 1.0,
+      "mean_entropy": 0.11834642766694259,
+      "mean_conf_correct": 0.9856401061165648,
+      "mean_conf_wrong": 0.96197700505018,
+      "conf_gap": 0.023663101066384806,
+      "confidence_accuracy_corr": {
+        "r": 0.14175454868167658,
+        "p": 0.122491563751659
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 1614.0,
+        "p": 0.07026304049781915
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.03333333333333333,
+          "mean_max_prob": 0.9688257777371944,
+          "mean_entropy": 0.10846054510780125,
+          "mean_conf_correct": 0.8445593020423372,
+          "mean_conf_wrong": 0.9731108286232238
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 1.0,
+          "mean_max_prob": 0.9945194725737189,
+          "mean_entropy": 0.021492323857584705,
+          "mean_conf_correct": 0.9945194725737189,
+          "mean_conf_wrong": null
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.06666666666666667,
+          "mean_max_prob": 0.9548441296753306,
+          "mean_entropy": 0.17517286787332625,
+          "mean_conf_correct": 0.9229900112963687,
+          "mean_conf_wrong": 0.9571194238452564
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.0,
+          "mean_max_prob": 0.9557480513875002,
+          "mean_entropy": 0.16825997382905816,
+          "mean_conf_correct": null,
+          "mean_conf_wrong": 0.9557480513875002
+        }
+      }
+    }
+  },
+  "flagship_models_no_logp": {
+    "GLM-5": {
+      "n": 112,
+      "n_correct": 38,
+      "accuracy": 0.32637117346938777,
+      "accuracy_primary": 0.32637117346938777,
+      "accuracy_majority": 0.3392857142857143,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 27,
+          "accuracy": 0.2962962962962963
+        },
+        "strong": {
+          "n": 28,
+          "accuracy": 0.5
+        },
+        "fair": {
+          "n": 27,
+          "accuracy": 0.5555555555555556
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.03333333333333333
+        }
+      },
+      "prediction_distribution": {
+        "fair": 56,
+        "strong": 33,
+        "exceptional": 22,
+        "limited": 1
+      }
+    },
+    "Kimi K2.5": {
+      "n": 109,
+      "n_correct": 35,
+      "accuracy": 0.31422018348623854,
+      "accuracy_primary": 0.31422018348623854,
+      "accuracy_majority": 0.3211009174311927,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 28,
+          "accuracy": 0.03571428571428571
+        },
+        "strong": {
+          "n": 25,
+          "accuracy": 0.8
+        },
+        "fair": {
+          "n": 28,
+          "accuracy": 0.4642857142857143
+        },
+        "limited": {
+          "n": 28,
+          "accuracy": 0.03571428571428571
+        }
+      },
+      "prediction_distribution": {
+        "fair": 43,
+        "strong": 63,
+        "exceptional": 2,
+        "limited": 1
+      }
+    },
+    "Gemini 2.5 Pro": {
+      "n": 112,
+      "n_correct": 34,
+      "accuracy": 0.29799107142857145,
+      "accuracy_primary": 0.29799107142857145,
+      "accuracy_majority": 0.30357142857142855,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 29,
+          "accuracy": 0.7241379310344828
+        },
+        "strong": {
+          "n": 27,
+          "accuracy": 0.2962962962962963
+        },
+        "fair": {
+          "n": 26,
+          "accuracy": 0.15384615384615385
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.03333333333333333
+        }
+      },
+      "prediction_distribution": {
+        "fair": 21,
+        "strong": 38,
+        "exceptional": 52,
+        "limited": 1
+      }
+    },
+    "Gemini 3.1 Pro": {
+      "n": 115,
+      "n_correct": 45,
+      "accuracy": 0.3870600414078675,
+      "accuracy_primary": 0.3870600414078675,
+      "accuracy_majority": 0.391304347826087,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 29,
+          "accuracy": 0.3793103448275862
+        },
+        "strong": {
+          "n": 29,
+          "accuracy": 0.4482758620689655
+        },
+        "fair": {
+          "n": 28,
+          "accuracy": 0.6071428571428571
+        },
+        "limited": {
+          "n": 29,
+          "accuracy": 0.13793103448275862
+        }
+      },
+      "prediction_distribution": {
+        "fair": 56,
+        "strong": 30,
+        "exceptional": 23,
+        "limited": 6
+      }
+    },
+    "Claude Opus 4.6": {
+      "n": 120,
+      "n_correct": 33,
+      "accuracy": 0.28020833333333334,
+      "accuracy_primary": 0.28020833333333334,
+      "accuracy_majority": 0.275,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.0
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 1.0
+        },
+        "fair": {
+          "n": 30,
+          "accuracy": 0.1
+        },
+        "limited": {
+          "n": 30,
+          "accuracy": 0.0
+        }
+      },
+      "prediction_distribution": {
+        "fair": 16,
+        "strong": 104
+      }
+    },
+    "GPT-5.2 High": {
+      "n": 117,
+      "n_correct": 37,
+      "accuracy": 0.30982905982905984,
+      "accuracy_primary": 0.30982905982905984,
+      "accuracy_majority": 0.3162393162393162,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 30,
+          "accuracy": 0.0
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.8
+        },
+        "fair": {
+          "n": 28,
+          "accuracy": 0.4642857142857143
+        },
+        "limited": {
+          "n": 29,
+          "accuracy": 0.0
+        }
+      },
+      "prediction_distribution": {
+        "fair": 50,
+        "strong": 67
+      }
+    },
+    "Grok 4.1 Fast": {
+      "n": 113,
+      "n_correct": 39,
+      "accuracy": 0.3396017699115044,
+      "accuracy_primary": 0.3396017699115044,
+      "accuracy_majority": 0.34513274336283184,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 29,
+          "accuracy": 0.5862068965517241
+        },
+        "strong": {
+          "n": 28,
+          "accuracy": 0.6428571428571429
+        },
+        "fair": {
+          "n": 29,
+          "accuracy": 0.13793103448275862
+        },
+        "limited": {
+          "n": 27,
+          "accuracy": 0.0
+        }
+      },
+      "prediction_distribution": {
+        "fair": 17,
+        "strong": 64,
+        "exceptional": 32
+      }
+    },
+    "MiniMax M2.5": {
+      "n": 113,
+      "n_correct": 33,
+      "accuracy": 0.27876106194690264,
+      "accuracy_primary": 0.27876106194690264,
+      "accuracy_majority": 0.2920353982300885,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 29,
+          "accuracy": 0.0
+        },
+        "strong": {
+          "n": 29,
+          "accuracy": 0.9655172413793104
+        },
+        "fair": {
+          "n": 26,
+          "accuracy": 0.19230769230769232
+        },
+        "limited": {
+          "n": 29,
+          "accuracy": 0.0
+        }
+      },
+      "prediction_distribution": {
+        "strong": 96,
+        "fair": 17
+      }
+    },
+    "DeepSeek V3.2": {
+      "n": 112,
+      "n_correct": 30,
+      "accuracy": 0.27232142857142855,
+      "accuracy_primary": 0.27232142857142855,
+      "accuracy_majority": 0.26785714285714285,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 29,
+          "accuracy": 0.034482758620689655
+        },
+        "strong": {
+          "n": 29,
+          "accuracy": 0.9310344827586207
+        },
+        "fair": {
+          "n": 27,
+          "accuracy": 0.07407407407407407
+        },
+        "limited": {
+          "n": 27,
+          "accuracy": 0.0
+        }
+      },
+      "prediction_distribution": {
+        "strong": 100,
+        "exceptional": 4,
+        "fair": 8
+      }
+    },
+    "Qwen 3.5 Plus": {
+      "n": 113,
+      "n_correct": 35,
+      "accuracy": 0.31826801517067005,
+      "accuracy_primary": 0.31826801517067005,
+      "accuracy_majority": 0.30973451327433627,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 28,
+          "accuracy": 0.10714285714285714
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.36666666666666664
+        },
+        "fair": {
+          "n": 29,
+          "accuracy": 0.6896551724137931
+        },
+        "limited": {
+          "n": 26,
+          "accuracy": 0.038461538461538464
+        }
+      },
+      "prediction_distribution": {
+        "fair": 73,
+        "strong": 30,
+        "exceptional": 7,
+        "limited": 3
+      }
+    },
+    "Seed 2.0": {
+      "n": 113,
+      "n_correct": 35,
+      "accuracy": 0.290929203539823,
+      "accuracy_primary": 0.290929203539823,
+      "accuracy_majority": 0.30973451327433627,
+      "has_logp": false,
+      "per_tier": {
+        "exceptional": {
+          "n": 29,
+          "accuracy": 0.4827586206896552
+        },
+        "strong": {
+          "n": 30,
+          "accuracy": 0.6666666666666666
+        },
+        "fair": {
+          "n": 28,
+          "accuracy": 0.03571428571428571
+        },
+        "limited": {
+          "n": 26,
+          "accuracy": 0.0
+        }
+      },
+      "prediction_distribution": {
+        "strong": 73,
+        "exceptional": 32,
+        "fair": 8
+      }
+    }
+  },
+  "human_raters": {
+    "Human Expert": {
+      "n": 384,
+      "n_correct": 139,
+      "accuracy": 0.3619791666666667,
+      "mean_confidence_raw": 3.5026041666666665,
+      "median_confidence_raw": 4.0,
+      "std_confidence_raw": 0.8868210369907255,
+      "mean_confidence_normalized": 0.6256510416666666,
+      "mean_conf_correct_raw": 3.5755395683453237,
+      "mean_conf_wrong_raw": 3.4612244897959186,
+      "conf_gap_raw": 0.11431507854940515,
+      "confidence_accuracy_corr": {
+        "r": 0.05608495676459514,
+        "p": 0.27294035676119965
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 18087.0,
+        "p": 0.1363018432531109
+      },
+      "per_confidence_level": {
+        "1": {
+          "n": 13,
+          "accuracy": 0.23076923076923078
+        },
+        "2": {
+          "n": 32,
+          "accuracy": 0.3125
+        },
+        "3": {
+          "n": 120,
+          "accuracy": 0.35
+        },
+        "4": {
+          "n": 187,
+          "accuracy": 0.3850267379679144
+        },
+        "5": {
+          "n": 32,
+          "accuracy": 0.375
+        }
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 96,
+          "accuracy": 0.20833333333333334,
+          "mean_confidence": 3.2708333333333335
+        },
+        "strong": {
+          "n": 96,
+          "accuracy": 0.4270833333333333,
+          "mean_confidence": 3.5208333333333335
+        },
+        "fair": {
+          "n": 96,
+          "accuracy": 0.5208333333333334,
+          "mean_confidence": 3.4583333333333335
+        },
+        "limited": {
+          "n": 96,
+          "accuracy": 0.2916666666666667,
+          "mean_confidence": 3.7604166666666665
+        }
+      }
+    },
+    "Human Student": {
+      "n": 2530,
+      "n_correct": 804,
+      "accuracy": 0.31778656126482213,
+      "mean_confidence_raw": 3.459683794466403,
+      "median_confidence_raw": 4.0,
+      "std_confidence_raw": 0.901993345250241,
+      "mean_confidence_normalized": 0.6149209486166007,
+      "mean_conf_correct_raw": 3.5796019900497513,
+      "mean_conf_wrong_raw": 3.403823870220162,
+      "conf_gap_raw": 0.17577811982958913,
+      "confidence_accuracy_corr": {
+        "r": 0.09488667642903272,
+        "p": 1.742979922963565e-06
+      },
+      "mann_whitney_correct_gt_wrong": {
+        "U": 770282.0,
+        "p": 9.132040678843703e-07
+      },
+      "per_confidence_level": {
+        "1": {
+          "n": 51,
+          "accuracy": 0.2549019607843137
+        },
+        "2": {
+          "n": 333,
+          "accuracy": 0.2822822822822823
+        },
+        "3": {
+          "n": 777,
+          "accuracy": 0.27155727155727155
+        },
+        "4": {
+          "n": 1140,
+          "accuracy": 0.3385964912280702
+        },
+        "5": {
+          "n": 229,
+          "accuracy": 0.4366812227074236
+        }
+      },
+      "per_tier": {
+        "exceptional": {
+          "n": 632,
+          "accuracy": 0.27056962025316456,
+          "mean_confidence": 3.3512658227848102
+        },
+        "strong": {
+          "n": 633,
+          "accuracy": 0.3412322274881517,
+          "mean_confidence": 3.3933649289099526
+        },
+        "fair": {
+          "n": 632,
+          "accuracy": 0.37658227848101267,
+          "mean_confidence": 3.528481012658228
+        },
+        "limited": {
+          "n": 633,
+          "accuracy": 0.28278041074249605,
+          "mean_confidence": 3.565560821484992
+        }
+      }
+    }
+  },
+  "article_difficulty": {
+    "per_model": {
+      "SFT 2-Model Ensemble": {
+        "vs_expert": {
+          "spearman_r": 0.07336560448236192,
+          "p_value": 0.4258333788625456
+        },
+        "vs_student": {
+          "spearman_r": 0.008455653831155647,
+          "p_value": 0.9269688480476481
+        }
+      },
+      "SFT-1 (GPT-4.1)": {
+        "vs_expert": {
+          "spearman_r": 0.0024458918655010458,
+          "p_value": 0.9788481681482263
+        },
+        "vs_student": {
+          "spearman_r": 0.04135457144773413,
+          "p_value": 0.6538162870480548
+        }
+      },
+      "GPT-5.2 (baseline)": {
+        "vs_expert": {
+          "spearman_r": 0.07308358826848624,
+          "p_value": 0.4276190921694932
+        },
+        "vs_student": {
+          "spearman_r": -0.062200104242253786,
+          "p_value": 0.49974560377687105
+        }
+      }
+    },
+    "expert_vs_student": {
+      "spearman_r": -0.11400066124449354,
+      "p_value": 0.21505319625213964
+    }
+  }
+}

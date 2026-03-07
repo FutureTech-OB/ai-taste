@@ -1,0 +1,19 @@
+# Supplementary Figure Legends
+
+## Supplementary Fig. 1 | Prediction distribution comparison
+**a**, Predicted-tier shares are shown as 100% stacked bars for the frontier average (11 models), chat average (3 models), SFT single-model average (4 models), SFT 2-model ensemble, expert majority vote, and junior majority vote. This panel shows at a glance which evaluator classes collapse into the middle tiers and which use the full label space. **b**, Deviation from the balanced 25% benchmark is shown for each tier, making evaluator-specific bias toward or away from each tier explicit. **c**, Normalized prediction entropy summarizes distributional concentration, where higher values indicate broader use of the four tiers and lower values indicate stronger collapse into a narrow subset of labels.
+
+## Supplementary Fig. 2 | Expert individual accuracy distribution
+**a**, Histogram of per-expert accuracy for the unfiltered expert panel (`N = 48`, 8 articles each). The dashed line marks mean accuracy (36.2%), and the dotted line marks the 25% chance baseline. The panel highlights substantial heterogeneity across experts rather than a tight cluster around a common level of skill. **b**, Empirical cumulative distribution function of per-expert accuracy with the same chance reference, making it easier to see how much of the expert panel lies near chance versus in the higher-performing tail.
+
+## Supplementary Fig. 3 | Junior Monte Carlo subsampling curve
+**a**, Majority-vote accuracy versus junior panel size under repeated Monte Carlo subsampling (`5,000` draws), with a 95% confidence band and the 25% chance baseline. The curve shows that larger panels help early but then flatten. **b**, Marginal gain in accuracy from each additional rater, showing diminishing returns as panel size increases and clarifying why aggregation alone does not keep improving linearly.
+
+## Supplementary Fig. 4 | Flagship collapse-metric landscape
+**a**, Middle-tier concentration shows the share of predictions assigned to the strong and fair tiers for each of the 11 frontier flagships. **b**, A per-tier recall heatmap shows how each model distributes recall across the four quality tiers, making visible which classes are effectively never recovered. **c**, Overall accuracy is plotted against middle-tier concentration to show the tradeoff between collapse and discrimination. **d**, Normalized prediction entropy ranks models by distributional balance, with higher values indicating less collapse and broader use of the four-tier scale.
+
+## Supplementary Fig. 5 | AI-human error complementarity
+**a**, Correct and incorrect outcomes for the SFT 2-model ensemble and expert majority vote are decomposed on the expert-comparable subset (`N = 89` non-tied articles) into both correct, AI-only correct, human-only correct, and shared error. This panel shows directly how much of the two systems' success is overlapping versus complementary. **b**, Accuracy for the SFT ensemble and expert majority vote is compared with the oracle upper bound achieved when either system is correct on an article, quantifying the remaining room for hybrid routing strategies.
+
+## Supplementary Fig. 6 | Human confusion matrices
+Row-normalized confusion matrices are shown for expert and junior panels. **a**, Expert individual pooled (`N = 384` ratings). **b**, Junior individual pooled (`N = 2,530` ratings). **c**, Expert strict clear-majority voting (`N = 89` non-tied articles; 31 ties excluded). **d**, Junior strict clear-majority voting (`N = 103` non-tied articles; 17 ties excluded). Reading pooled and majority panels together clarifies how much disagreement is smoothed by voting and which off-diagonal confusions persist even after aggregation. Panel composition is summarized in Supplementary Table ST8, and majority-vote counts are summarized in Supplementary Table ST10.

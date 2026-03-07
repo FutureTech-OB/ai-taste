@@ -1,0 +1,164 @@
+{
+  "expert": {
+    "fleiss_kappa": 0.04690035264871944,
+    "fleiss_kappa_ci": {
+      "ci_lower": -0.011435775528012542,
+      "ci_upper": 0.1067641706389801,
+      "std": 0.03057397849442456
+    },
+    "krippendorff_alpha": {
+      "alpha": 0.3072201834628637,
+      "d_o": 21830.27361751152,
+      "d_e": 31511.12820611643
+    },
+    "pairwise_agreement_overall": 0.3225806451612903,
+    "n_articles": 120
+  },
+  "student": {
+    "fleiss_kappa": 0.031847987687973776,
+    "fleiss_kappa_ci": {
+      "ci_lower": 0.01941150240505111,
+      "ci_upper": 0.044579131472929044,
+      "std": 0.006392011209023016
+    },
+    "krippendorff_alpha": {
+      "alpha": 0.32392160013412064,
+      "d_o": 908882.5205063096,
+      "d_e": 1344344.8580617483
+    },
+    "pairwise_agreement_overall": 0.28955866523143164,
+    "n_articles": 120
+  },
+  "reliability_by_tier": {
+    "exceptional": {
+      "expert_kappa": -0.004071856287425251,
+      "expert_n": 30,
+      "student_kappa": 0.014618680979093555,
+      "student_n": 30
+    },
+    "strong": {
+      "expert_kappa": 0.01253616200578603,
+      "expert_n": 30,
+      "student_kappa": 0.028583757512013874,
+      "student_n": 30
+    },
+    "fair": {
+      "expert_kappa": 0.12432809773123911,
+      "expert_n": 30,
+      "student_kappa": 0.00845885824834145,
+      "student_n": 30
+    },
+    "limited": {
+      "expert_kappa": -0.05583256386580497,
+      "expert_n": 30,
+      "student_kappa": 0.027296624638601556,
+      "student_n": 30
+    }
+  },
+  "reliability_by_domain": {
+    "AI与技术": {
+      "expert_kappa": 0.05714285714285706,
+      "expert_n": 6,
+      "student_kappa": 0.03190226361366834,
+      "student_n": 6
+    },
+    "人力资源管理": {
+      "expert_kappa": -0.3125,
+      "expert_n": 3,
+      "student_kappa": 0.0474482508959099,
+      "student_n": 3
+    },
+    "伦理与道德": {
+      "expert_kappa": -0.15384615384615388,
+      "expert_n": 2,
+      "student_kappa": -0.005071315372424671,
+      "student_n": 2
+    },
+    "其他管理学研究": {
+      "expert_kappa": 0.013434103260869471,
+      "expert_n": 16,
+      "student_kappa": 0.02831075210100782,
+      "student_n": 16
+    },
+    "创新与创业": {
+      "expert_kappa": 0.10007122507122514,
+      "expert_n": 6,
+      "student_kappa": 0.0020276383763567713,
+      "student_n": 6
+    },
+    "员工行为与态度": {
+      "expert_kappa": -0.007376633121469011,
+      "expert_n": 16,
+      "student_kappa": 0.023279324019392204,
+      "student_n": 16
+    },
+    "团队与组织": {
+      "expert_kappa": 0.03492491144040322,
+      "expert_n": 17,
+      "student_kappa": 0.06377428496373205,
+      "student_n": 17
+    },
+    "多元化与公平": {
+      "expert_kappa": -0.05007309941520473,
+      "expert_n": 4,
+      "student_kappa": -0.02366927374026959,
+      "student_n": 4
+    },
+    "工作压力与健康": {
+      "expert_kappa": null,
+      "expert_n": 1,
+      "student_kappa": null,
+      "student_n": 1
+    },
+    "战略与决策": {
+      "expert_kappa": -0.16666666666666666,
+      "expert_n": 2,
+      "student_kappa": 0.024379719525350594,
+      "student_n": 2
+    },
+    "知识与学习": {
+      "expert_kappa": -0.09756097560975611,
+      "expert_n": 5,
+      "student_kappa": 0.017440599198122148,
+      "student_n": 5
+    },
+    "社会心理/人际": {
+      "expert_kappa": 0.1269841269841269,
+      "expert_n": 7,
+      "student_kappa": 0.03149762264324252,
+      "student_n": 7
+    },
+    "绩效与成果": {
+      "expert_kappa": -0.03181329028786662,
+      "expert_n": 7,
+      "student_kappa": -0.0017500647995655281,
+      "student_n": 7
+    },
+    "职业发展": {
+      "expert_kappa": null,
+      "expert_n": 1,
+      "student_kappa": null,
+      "student_n": 1
+    },
+    "领导力/管理者": {
+      "expert_kappa": 0.07366507611906385,
+      "expert_n": 27,
+      "student_kappa": 0.013597368653140028,
+      "student_n": 27
+    }
+  },
+  "comparison": {
+    "expert_fleiss_kappa": 0.04690035264871944,
+    "expert_krippendorff_alpha": 0.3072201834628637,
+    "student_fleiss_kappa": 0.031847987687973776,
+    "student_krippendorff_alpha": 0.32392160013412064,
+    "kappa_difference": 0.015052364960745662,
+    "alpha_difference": -0.016701416671256908
+  },
+  "permutation_test": {
+    "observed_kappa_diff": 0.015052364960745662,
+    "observed_agreement_diff": 0.03902088282853161,
+    "p_value": 0.1287742451509698,
+    "n_permutations": 5000
+  }
+}

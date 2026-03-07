@@ -1,0 +1,239 @@
+{
+  "best_flagship_model": "google/gemini-3.1-pro-preview",
+  "best_flagship_name": "Gemini 3.1 Pro",
+  "best_flagship_primary_accuracy": 0.3875992063492063,
+  "n_articles": 120,
+  "domain_mapping": {
+    "领导力/管理者": "Leadership",
+    "团队与组织": "Teams & Organizations",
+    "员工行为与态度": "Employee Behavior",
+    "其他管理学研究": "Other Management",
+    "社会心理/人际": "Social Psychology",
+    "绩效与成果": "Performance & Outcomes",
+    "创新与创业": "Innovation & Entrepreneurship",
+    "AI与技术": "AI & Technology",
+    "知识与学习": "Knowledge & Learning",
+    "多元化与公平": "Diversity & Equity",
+    "人力资源管理": "Human Resource Management",
+    "战略与决策": "Strategy & Decision-Making",
+    "伦理与道德": "Ethics & Morality",
+    "职业发展": "Career Development",
+    "工作压力与健康": "Work Stress & Health"
+  },
+  "primary_domain_counts": {
+    "Knowledge & Learning": 5,
+    "Employee Behavior": 16,
+    "Leadership": 27,
+    "Teams & Organizations": 17,
+    "Diversity & Equity": 4,
+    "Other Management": 16,
+    "Human Resource Management": 3,
+    "Social Psychology": 7,
+    "Innovation & Entrepreneurship": 6,
+    "Performance & Outcomes": 7,
+    "Career Development": 1,
+    "AI & Technology": 6,
+    "Strategy & Decision-Making": 2,
+    "Ethics & Morality": 2,
+    "Work Stress & Health": 1
+  },
+  "all_domain_counts": {
+    "Knowledge & Learning": 10,
+    "Employee Behavior": 23,
+    "Performance & Outcomes": 16,
+    "Social Psychology": 22,
+    "Leadership": 27,
+    "Ethics & Morality": 7,
+    "Teams & Organizations": 22,
+    "Human Resource Management": 10,
+    "Diversity & Equity": 17,
+    "AI & Technology": 25,
+    "Other Management": 16,
+    "Career Development": 3,
+    "Innovation & Entrepreneurship": 14,
+    "Work Stress & Health": 3,
+    "Strategy & Decision-Making": 2
+  },
+  "domains_analysed": [
+    "Leadership",
+    "Teams & Organizations",
+    "Employee Behavior",
+    "Other Management",
+    "Performance & Outcomes",
+    "Social Psychology",
+    "AI & Technology",
+    "Innovation & Entrepreneurship",
+    "Knowledge & Learning",
+    "Diversity & Equity",
+    "Human Resource Management"
+  ],
+  "kruskal_wallis": {
+    "SFT 2-Model": {
+      "statistic": 13.443744062208195,
+      "p_value": 0.19990847784257532,
+      "n_groups": 11,
+      "group_names": [
+        "Leadership",
+        "Teams & Organizations",
+        "Employee Behavior",
+        "Other Management",
+        "Performance & Outcomes",
+        "Social Psychology",
+        "AI & Technology",
+        "Innovation & Entrepreneurship",
+        "Knowledge & Learning",
+        "Diversity & Equity",
+        "Human Resource Management"
+      ]
+    },
+    "Best Flagship": {
+      "statistic": 8.864744967754605,
+      "p_value": 0.5449861839521705,
+      "n_groups": 11,
+      "group_names": [
+        "Leadership",
+        "Teams & Organizations",
+        "Employee Behavior",
+        "Other Management",
+        "Performance & Outcomes",
+        "Social Psychology",
+        "AI & Technology",
+        "Innovation & Entrepreneurship",
+        "Knowledge & Learning",
+        "Diversity & Equity",
+        "Human Resource Management"
+      ]
+    },
+    "Expert Majority": {
+      "statistic": 5.060831168831188,
+      "p_value": 0.8870775380705899,
+      "n_groups": 11,
+      "group_names": [
+        "Leadership",
+        "Teams & Organizations",
+        "Employee Behavior",
+        "Other Management",
+        "Performance & Outcomes",
+        "Social Psychology",
+        "AI & Technology",
+        "Innovation & Entrepreneurship",
+        "Knowledge & Learning",
+        "Diversity & Equity",
+        "Human Resource Management"
+      ]
+    },
+    "Student Majority": {
+      "statistic": 5.538636764076642,
+      "p_value": 0.8524227107481319,
+      "n_groups": 11,
+      "group_names": [
+        "Leadership",
+        "Teams & Organizations",
+        "Employee Behavior",
+        "Other Management",
+        "Performance & Outcomes",
+        "Social Psychology",
+        "AI & Technology",
+        "Innovation & Entrepreneurship",
+        "Knowledge & Learning",
+        "Diversity & Equity",
+        "Human Resource Management"
+      ]
+    }
+  },
+  "chi_square_domain_accuracy": {
+    "statistic": 13.56271524859944,
+    "p_value": 0.19388777571650734,
+    "cramers_v": 0.34492200044535165
+  },
+  "domain_performance": {
+    "Leadership": {
+      "domain": "Leadership",
+      "n_articles": 27,
+      "SFT 2-Model": 0.4074074074074074,
+      "Best Flagship": 0.4,
+      "Expert Majority": 0.47619047619047616,
+      "Student Majority": 0.5
+    },
+    "Teams & Organizations": {
+      "domain": "Teams & Organizations",
+      "n_articles": 17,
+      "SFT 2-Model": 0.6470588235294118,
+      "Best Flagship": 0.5294117647058824,
+      "Expert Majority": 0.5333333333333333,
+      "Student Majority": 0.47058823529411764
+    },
+    "Employee Behavior": {
+      "domain": "Employee Behavior",
+      "n_articles": 16,
+      "SFT 2-Model": 0.4375,
+      "Best Flagship": 0.2,
+      "Expert Majority": 0.3333333333333333,
+      "Student Majority": 0.46153846153846156
+    },
+    "Other Management": {
+      "domain": "Other Management",
+      "n_articles": 16,
+      "SFT 2-Model": 0.6875,
+      "Best Flagship": 0.4,
+      "Expert Majority": 0.36363636363636365,
+      "Student Majority": 0.3076923076923077
+    },
+    "Performance & Outcomes": {
+      "domain": "Performance & Outcomes",
+      "n_articles": 7,
+      "SFT 2-Model": 0.42857142857142855,
+      "Best Flagship": 0.5714285714285714,
+      "Expert Majority": 0.5,
+      "Student Majority": 0.25
+    },
+    "Social Psychology": {
+      "domain": "Social Psychology",
+      "n_articles": 7,
+      "SFT 2-Model": 0.8571428571428571,
+      "Best Flagship": 0.3333333333333333,
+      "Expert Majority": 0.42857142857142855,
+      "Student Majority": 0.3333333333333333
+    },
+    "AI & Technology": {
+      "domain": "AI & Technology",
+      "n_articles": 6,
+      "SFT 2-Model": 0.3333333333333333,
+      "Best Flagship": 0.6666666666666666,
+      "Expert Majority": 0.4,
+      "Student Majority": 0.2
+    },
+    "Innovation & Entrepreneurship": {
+      "domain": "Innovation & Entrepreneurship",
+      "n_articles": 6,
+      "SFT 2-Model": 0.5,
+      "Best Flagship": 0.3333333333333333,
+      "Expert Majority": 0.25,
+      "Student Majority": 0.5
+    },
+    "Knowledge & Learning": {
+      "domain": "Knowledge & Learning",
+      "n_articles": 5,
+      "SFT 2-Model": 0.8,
+      "Best Flagship": 0.4,
+      "Expert Majority": 0.3333333333333333,
+      "Student Majority": 0.4
+    },
+    "Diversity & Equity": {
+      "domain": "Diversity & Equity",
+      "n_articles": 4,
+      "SFT 2-Model": 0.75,
+      "Best Flagship": 0.25,
+      "Expert Majority": 0.0,
+      "Student Majority": 0.0
+    },
+    "Human Resource Management": {
+      "domain": "Human Resource Management",
+      "n_articles": 3,
+      "SFT 2-Model": 1.0,
+      "Best Flagship": 0.0,
+      "Expert Majority": 0.5,
+      "Student Majority": 0.6666666666666666
+    }
+  }
+}
