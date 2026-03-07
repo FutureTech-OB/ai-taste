@@ -58,6 +58,72 @@ def parse_confidence(raw: Any) -> int | None:
         return None
 
 
+def parse_phd_year(raw: Any) -> int | None:
+    text = str(raw).strip().lower()
+    if not text:
+        return None
+    if "postdoc" in text or "博士后" in text or "博后" in text:
+        return 7
+    if "master" in text or "硕士" in text:
+        return 0
+    lookup = {
+        "1st year": 1,
+        "first year": 1,
+        "2nd year": 2,
+        "second year": 2,
+        "3rd year": 3,
+        "third year": 3,
+        "4th year": 4,
+        "fourth year": 4,
+        "5th year": 5,
+        "fifth year": 5,
+        "博士一年级": 1,
+        "博士二年级": 2,
+        "博士三年级": 3,
+        "博士四年级": 4,
+        "博士五年级": 5,
+    }
+    for token, year in lookup.items():
+        if token in text:
+            return year
+    return None
+
+
+def parse_publications(raw: Any) -> float | None:
+    text = str(raw).strip()
+    if not text:
+        return None
+    digits = [int(part) for part in "".join(ch if ch.isdigit() else " " for ch in text).split()]
+    if not digits:
+        return None
+    if len(digits) == 1:
+        return float(digits[0])
+    return float(sum(digits[:2]) / 2.0)
+
+
+def normalize_student_background(raw: Any) -> Dict[str, Any]:
+    source = dict(raw or {})
+    if not source:
+        return {}
+
+    publications = source.get("publications")
+    if publications in (None, ""):
+        publications = parse_publications(source.get("published_papers"))
+
+    phd_year = source.get("phd_year")
+    if phd_year in (None, ""):
+        phd_year = parse_phd_year(source.get("current_identity"))
+
+    normalized = {
+        "gender": source.get("gender", ""),
+        "phd_year": phd_year,
+        "publications": publications,
+        "review_experience": source.get("review_experience", ""),
+        "ai_familiarity": source.get("ai_familiarity", ""),
+    }
+    return {key: value for key, value in normalized.items() if value not in (None, "", [])}
+
+
 def flatten_human_records(path: Path) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
     for article in load_jsonl(path):
@@ -74,12 +140,10 @@ def flatten_human_records(path: Path) -> List[Dict[str, Any]]:
                     "ground_truth": gt,
                     "predicted": pred,
                     "correct_int": int(pred == gt),
-                    "confidence_int": rating.get("confidence_int", parse_confidence(rating.get("q3_confidence"))),
-                    "familiarity_int": rating.get("familiarity_int", parse_confidence(rating.get("q4_familiarity"))),
-                    "duration_minutes": rating.get("duration_minutes"),
-                    "student_cohort": rating.get("student_cohort") or rating.get("cohort"),
-                    "background": rating.get("background") or {},
-                    "has_background": bool(rating.get("has_background")),
+                    "confidence_int": parse_confidence(rating.get("q3_confidence")),
+                    "familiarity_int": parse_confidence(rating.get("q4_familiarity")),
+                    "student_cohort": rating.get("student_cohort", ""),
+                    "background": normalize_student_background(rating.get("background")),
                 }
             )
     return out
@@ -126,13 +190,13 @@ def recompute_t24() -> None:
                 "correct": 0,
                 "total": 0,
                 "background": background,
-                "has_background": bool(record.get("has_background")),
+                "has_background": bool(background),
             }
         by_rater[rater_id]["total"] += 1
         by_rater[rater_id]["correct"] += int(record["correct_int"])
         if not by_rater[rater_id]["background"] and background:
             by_rater[rater_id]["background"] = background
-        if record.get("has_background"):
+        if background:
             by_rater[rater_id]["has_background"] = True
 
     rows: List[Dict[str, Any]] = []

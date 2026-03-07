@@ -99,7 +99,7 @@ def find_root() -> Path:
     for candidate in [here.parent, *here.parents]:
         if (candidate / "README.md").exists() and (candidate / "data").is_dir() and (candidate / "scripts").is_dir():
             return candidate
-    raise RuntimeError("Could not locate Nature_Submission_Package root")
+    raise RuntimeError("Could not locate repository root")
 
 
 def title_key(title: str) -> str:
@@ -373,11 +373,11 @@ def build_records(root: Path, best_flagship_key: str) -> List[Dict[str, Any]]:
     }
     experts = {
         title_key(row["title"]): row
-        for row in load_jsonl(root / "data" / "human_ratings" / "expert.jsonl")
+        for row in load_jsonl(root / "data" / "human_ratings" / "reproducibility" / "expert_reproducibility.jsonl")
     }
     students = {
         title_key(row["title"]): row
-        for row in load_jsonl(root / "data" / "human_ratings" / "student_merged.jsonl")
+        for row in load_jsonl(root / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl")
     }
 
     records: List[Dict[str, Any]] = []

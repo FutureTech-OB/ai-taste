@@ -197,7 +197,7 @@ def load_expert_filtered_ratings() -> List[Dict[str, Any]]:
 
 
 def load_student_new_ratings() -> List[Dict[str, Any]]:
-    """Load ``student_new.jsonl`` (new student ratings).
+    """Load the filtered public student reproducibility file.
 
     Returns:
         List of article records containing student survey responses.
@@ -206,7 +206,7 @@ def load_student_new_ratings() -> List[Dict[str, Any]]:
 
 
 def load_student_merged_ratings() -> List[Dict[str, Any]]:
-    """Load ``student_merged.jsonl`` (merged student ratings).
+    """Load the primary public student reproducibility file.
 
     Returns:
         List of article records containing merged student survey responses.

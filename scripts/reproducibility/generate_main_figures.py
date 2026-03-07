@@ -1037,16 +1037,16 @@ def make_figure3() -> plt.Figure:
     ax_c.set_title("c  Predictor effect sizes (rating-level)", loc="left")
 
     expert_candidates = [
-        ROOT / "data" / "human_ratings" / "expert_enriched.jsonl",
+        ROOT / "data" / "human_ratings" / "reproducibility" / "expert_reproducibility.jsonl",
     ]
     student_candidates = [
-        ROOT / "data" / "human_ratings" / "student_enriched_filtered.jsonl",
+        ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl",
     ]
 
     # Keep Fig. 3c on rating-level records for direct comparability with the
     # reported confidence/familiarity analyses.
-    expert_path = resolve_existing(expert_candidates, "expert enriched ratings")
-    student_path = resolve_existing(student_candidates, "student enriched filtered ratings")
+    expert_path = resolve_existing(expert_candidates, "expert reproducibility ratings")
+    student_path = resolve_existing(student_candidates, "student reproducibility ratings")
     expert_loader = _load_rating_level_xy
     student_loader = _load_rating_level_xy
 
@@ -1506,9 +1506,9 @@ def make_figure5() -> plt.Figure:
 
     trained_path = SFT_FILE
     chat_path = REPORTS_ROOT / "data" / "predictions" / "chat_predictions.jsonl"
-    expert_path = REPORTS_ROOT / "data" / "human_ratings" / "expert.jsonl"
-    student_new_path = REPORTS_ROOT / "data" / "human_ratings" / "student_new.jsonl"
-    student_merged_path = REPORTS_ROOT / "data" / "human_ratings" / "student_merged.jsonl"
+    expert_path = REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "expert_reproducibility.jsonl"
+    student_new_path = REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl"
+    student_merged_path = REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl"
 
     style = {
         "SFT 2-Model Ensemble": {

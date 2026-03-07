@@ -79,7 +79,7 @@ def main():
     # ------------------------------------------------------------------
     print("\n[1/9] Loading data...")
     expert_data = load_expert_ratings()
-    print(f"  Loaded {len(expert_data)} articles from expert.jsonl")
+    print(f"  Loaded {len(expert_data)} articles from the public expert reproducibility file")
 
     # ------------------------------------------------------------------
     # Extract all individual expert ratings

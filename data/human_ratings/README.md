@@ -7,21 +7,13 @@ Primary public files:
 - `expert_ratings_deidentified.jsonl`
 - `student_ratings_deidentified.jsonl`
 
-Stable anonymous reproducibility files:
+Canonical reproducibility files:
 
 - `reproducibility/expert_reproducibility.jsonl`
 - `reproducibility/expert_reproducibility_filtered.jsonl`
 - `reproducibility/student_reproducibility.jsonl`
 - `reproducibility/student_reproducibility_filtered.jsonl`
 
-Compatibility files retained for the current public rebuild scripts:
-
-- `expert.jsonl`
-- `expert_enriched.jsonl`
-- `student_merged.jsonl`
-- `student_new.jsonl`
-- `student_enriched_filtered.jsonl`
-- `archive/survey_all_expert.jsonl`
-- `archive/survey_all_student.jsonl`
+The student filtered reproducibility file retains only the background fields used for the released descriptive table: `gender`, `phd_year`, `publications`, `review_experience`, and `ai_familiarity`.
 
 All files in this release are de-identified. Direct participant identifiers such as names, response IDs, IP addresses, and raw timestamps are not included.

@@ -2,7 +2,7 @@
 """Script 05: Human Student Performance Analysis.
 
 Analyzes student rater performance on the 120-article research quality
-dataset. Uses all students (old + new combined from student_merged.jsonl).
+dataset using the public student reproducibility file.
 Old/new split is a data collection artifact with no significant difference
 (p=0.319). Students only -- experts are analyzed in script 04.
 
@@ -80,7 +80,7 @@ def main():
     # ------------------------------------------------------------------
     print("\n[1/8] Loading data...")
     student_merged = load_student_merged_ratings()
-    print(f"  Loaded {len(student_merged)} articles from student_merged.jsonl")
+    print(f"  Loaded {len(student_merged)} articles from the public student reproducibility file")
 
     # ------------------------------------------------------------------
     # Extract all individual student ratings from merged data

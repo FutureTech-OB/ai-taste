@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Build canonical frontier protocol file and protocol-audit table.
+"""Build the canonical frontier protocol file and protocol-audit table.
 
-Current canonical source:
-  - data/model_predictions/prompt_sensity/120_expert.jsonl
+Current canonical sources:
+  - data/predictions/prompt_variants/expert_prompt_predictions.jsonl
+  - data/predictions/gemini_3_1_pro_standalone.jsonl
 
 Protocol rules:
   - fixed frontier cohort from ``FRONTIER_MODELS`` (11 models)
@@ -11,7 +12,7 @@ Protocol rules:
   - discrete diagnostics: majority vote with ties excluded
 
 Outputs:
-  - data/model_predictions/120_frontier.jsonl
+  - data/predictions/frontier_10models_8runs.jsonl
   - results/tables/table_frontier_protocol_audit.csv
 """
 
@@ -92,7 +93,7 @@ def _normalize_stochastic_payload(gt: str, src: Dict[str, Any]) -> Dict[str, Any
     """Build strict canonical stochastic payload from one source payload."""
     votes = _normalize_votes(src.get("vote_predictions"))
     counts = _vote_counts(votes)
-    maj_from_counts, is_tie, tied_labels = _majority_from_counts(counts)
+    maj_from_counts, is_tie, _ = _majority_from_counts(counts)
 
     pred_majority = normalize_label(src.get("prediction_majority"))
     if pred_majority is None:
@@ -114,36 +115,26 @@ def _normalize_stochastic_payload(gt: str, src: Dict[str, Any]) -> Dict[str, Any
 
     return {
         "mode": "stochastic_thinking",
-        "logp": src.get("logp"),
-        "response_text": src.get("response_text"),
         "prediction": pred,
         "prediction_majority": pred_majority,
-        "prediction_run1": pred_run1,
-        "is_match": (pred == gt) if pred is not None else None,
-        "reasoning_content": src.get("reasoning_content"),
-        "reasoning_meta": src.get("reasoning_meta"),
-        "error": src.get("error"),
         "avg_accuracy": avg_accuracy,
-        "vote_n": 8,
         "vote_valid_n": vote_valid_n,
         "vote_counts": counts,
         "vote_is_tie": bool(is_tie),
-        "vote_tied": tied_labels if is_tie else None,
         "vote_predictions": votes,
     }
 
 
-def _build_gemini31_index(rows: List[Dict[str, Any]]) -> Dict[Tuple[Any, str], Dict[str, Any]]:
-    """Index Gemini 3.1 standalone rows by article_number/title for robust merge."""
-    index: Dict[Tuple[Any, str], Dict[str, Any]] = {}
+def _build_gemini31_index(rows: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    """Index Gemini 3.1 standalone rows by canonical title for robust merge."""
+    index: Dict[str, Dict[str, Any]] = {}
     for row in rows:
         rq = row.get("val_outcome", {}).get("rq_with_context", {}) or {}
         model_payload = rq.get(GEMINI31_KEY)
         if not isinstance(model_payload, dict):
             continue
-        article_number = row.get("article_number")
         tkey = _title_key(row.get("title", ""))
-        index[(article_number, tkey)] = model_payload
+        index[tkey] = model_payload
     return index
 
 
@@ -171,7 +162,7 @@ def main() -> None:
 
         for model_key in FRONTIER_MODELS:
             if model_key == GEMINI31_KEY:
-                lookup_key = (src_row.get("article_number"), _title_key(src_row.get("title", "")))
+                lookup_key = _title_key(src_row.get("title", ""))
                 src_model = gemini31_idx.get(lookup_key)
                 if isinstance(src_model, dict):
                     gemini31_merged_from_standalone += 1
@@ -202,7 +193,7 @@ def main() -> None:
         gts = [get_ground_truth(rec) for rec in canonical_rows]
 
         n_articles = len(model_entries)
-        n_with_8_runs = sum(1 for e in model_entries if int(e.get("vote_n") or 0) == 8)
+        n_with_8_runs = sum(1 for e in model_entries if len(e.get("vote_predictions") or []) == 8)
 
         vote_valid_vals: List[float] = []
         avg8_vals: List[float] = []
@@ -235,7 +226,9 @@ def main() -> None:
                 if maj_pred == gt:
                     maj_correct += 1
 
-            run1_pred = normalize_label(e.get("prediction_run1"))
+            run1_pred = _first_valid(_normalize_votes(e.get("vote_predictions")))
+            if run1_pred is None:
+                run1_pred = normalize_label(e.get("prediction"))
             if run1_pred is not None:
                 run1_total += 1
                 if run1_pred == gt:

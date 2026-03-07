@@ -127,7 +127,7 @@ def extract_discrete_prediction(
         model_output: per-model payload in canonical frontier file.
         policy:
             - ``majority`` (default): use ``prediction_majority``.
-            - ``run1``: use ``prediction_run1``.
+            - ``run1``: use the first valid vote from ``vote_predictions``.
             - ``prediction``: use backward-compatible ``prediction`` field.
         tie_policy:
             - ``exclude`` (default): if tied majority, return ``None``.

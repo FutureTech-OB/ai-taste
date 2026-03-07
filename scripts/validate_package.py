@@ -41,6 +41,42 @@ FORBIDDEN_TABLE_COLUMNS = {
     "end_date",
 }
 
+FORBIDDEN_PUBLIC_JSON_KEYS = {
+    "entries",
+    "package",
+    "file_name",
+    "group",
+    "total_raters",
+    "response_text",
+    "reasoning_content",
+    "reasoning_meta",
+    "prediction_run1",
+    "vote_n",
+    "vote_tied",
+    "error",
+    "metadata",
+    "status",
+    "split",
+    "subject",
+    "trial_count",
+    "doi",
+    "doi_first",
+    "doi_second",
+    "raw_response",
+    "career_stage",
+    "current_identity",
+    "published_papers",
+    "on_editor_list",
+    "duration_minutes",
+    "duration_seconds",
+    "finished",
+    "has_background",
+    "confidence_int",
+    "familiarity_int",
+    "read_before_bool",
+    "cohort",
+}
+
 EXPECTED_FRONTIER_MODELS = {
     "z-ai/glm-5",
     "moonshotai/kimi-k2.5",
@@ -117,6 +153,13 @@ REQUIRED_REPRO_HUMAN_JSONL = {
     "expert_reproducibility_filtered.jsonl",
     "student_reproducibility.jsonl",
     "student_reproducibility_filtered.jsonl",
+}
+
+ALLOWED_HUMAN_ROOT = {
+    "README.md",
+    "expert_ratings_deidentified.jsonl",
+    "student_ratings_deidentified.jsonl",
+    "reproducibility",
 }
 
 def fail(msg: str, errors: List[str]) -> None:
@@ -361,11 +404,44 @@ def main() -> int:
 
     # 4) Human ratings + reproducibility inputs are de-identified
     human_dir = root / "data" / "human_ratings"
+    actual_human_root = {p.name for p in human_dir.iterdir()} if human_dir.exists() else set()
+    extra_human_root = sorted(actual_human_root - ALLOWED_HUMAN_ROOT)
+    if extra_human_root:
+        fail(f"Unexpected files or directories in data/human_ratings: {extra_human_root}", errors)
     for name in sorted(REQUIRED_HUMAN_JSONL):
         _check_jsonl_no_forbidden_keys(human_dir / name, errors)
+        path = human_dir / name
+        if path.exists():
+            with path.open("r", encoding="utf-8") as f:
+                for i, line in enumerate(f, start=1):
+                    line = line.strip()
+                    if not line:
+                        continue
+                    obj = json.loads(line)
+                    if _has_forbidden_keys(obj, FORBIDDEN_PUBLIC_JSON_KEYS):
+                        fail(f"Forbidden public-schema key found in {path.relative_to(root)} line {i}", errors)
+                        break
     repro_human_dir = human_dir / "reproducibility"
+    actual_repro_files = {p.name for p in repro_human_dir.glob("*.jsonl")} if repro_human_dir.exists() else set()
+    missing_repro = sorted(REQUIRED_REPRO_HUMAN_JSONL - actual_repro_files)
+    extra_repro = sorted(actual_repro_files - REQUIRED_REPRO_HUMAN_JSONL)
+    if missing_repro:
+        fail(f"Missing reproducibility human files: {missing_repro}", errors)
+    if extra_repro:
+        fail(f"Unexpected reproducibility human files: {extra_repro}", errors)
     for name in sorted(REQUIRED_REPRO_HUMAN_JSONL):
         _check_jsonl_no_forbidden_keys(repro_human_dir / name, errors)
+        path = repro_human_dir / name
+        if path.exists():
+            with path.open("r", encoding="utf-8") as f:
+                for i, line in enumerate(f, start=1):
+                    line = line.strip()
+                    if not line:
+                        continue
+                    obj = json.loads(line)
+                    if _has_forbidden_keys(obj, FORBIDDEN_PUBLIC_JSON_KEYS):
+                        fail(f"Forbidden public-schema key found in {path.relative_to(root)} line {i}", errors)
+                        break
 
     # 5) Any optional manuscript markdown sources must be free of internal paths
     for path in sorted((root / "manuscript").glob("*.md")):
@@ -433,7 +509,6 @@ def main() -> int:
                 }
                 required_vendor_utils = {
                     "__init__.py",
-                    "background_data.py",
                     "constants.py",
                     "data_loader.py",
                     "frontier_protocol.py",
@@ -491,6 +566,10 @@ def main() -> int:
     for req in prompt_variant_files:
         if not (prompt_dir / req).exists():
             fail(f"Missing prompt-variant file: data/predictions/prompt_variants/{req}", errors)
+            continue
+        n_rows = _count_nonempty_lines(prompt_dir / req)
+        if n_rows != 120:
+            fail(f"Unexpected row count in data/predictions/prompt_variants/{req}: expected 120, got {n_rows}", errors)
 
     frontier_file = predictions_dir / "frontier_10models_8runs.jsonl"
     if frontier_file.exists():
@@ -522,6 +601,15 @@ def main() -> int:
     # Ensure prediction files are free of direct identifier keys
     for pred_file in sorted(predictions_dir.rglob("*.jsonl")):
         _check_jsonl_no_forbidden_keys(pred_file, errors)
+        with pred_file.open("r", encoding="utf-8") as f:
+            for i, line in enumerate(f, start=1):
+                line = line.strip()
+                if not line:
+                    continue
+                obj = json.loads(line)
+                if _has_forbidden_keys(obj, FORBIDDEN_PUBLIC_JSON_KEYS):
+                    fail(f"Forbidden public-schema key found in {pred_file.relative_to(root)} line {i}", errors)
+                    break
 
     # 9) Table package contract
     tables_dir = root / "data" / "tables"
@@ -563,8 +651,14 @@ def main() -> int:
         with benchmark_file.open("r", encoding="utf-8") as f:
             for i, line in enumerate(f, start=1):
                 rec = json.loads(line)
+                if "entries" in rec:
+                    fail(f"Legacy benchmark prompt wrapper found in line {i}; use top-level rq_with_context only", errors)
+                if "rq_with_context" not in rec:
+                    fail(f"Missing rq_with_context field in benchmark line {i}", errors)
                 if "file_path" in rec:
                     fail(f"PII leak: 'file_path' field present in benchmark line {i}", errors)
+                if _has_forbidden_keys(rec, FORBIDDEN_PUBLIC_JSON_KEYS):
+                    fail(f"Forbidden public-schema key found in benchmark line {i}", errors)
                 rec_text = json.dumps(rec)
                 for marker in FORBIDDEN_PATH_SUBSTRINGS:
                     if marker in rec_text:
@@ -649,6 +743,7 @@ def main() -> int:
     print("- Exclusion rules satisfied")
     print("- Required scripts and vendored analysis sources are present")
     print("- Prediction package contract satisfied (frontier/SFT/chat/RL)")
+    print("- Public JSON schemas stripped of compatibility-only fields")
     print("- Table index and naming contract satisfied")
     print("- No forbidden identifier columns in packaged tables")
     print("- CI field contract satisfied for reported analyses")

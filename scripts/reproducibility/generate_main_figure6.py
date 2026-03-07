@@ -34,10 +34,10 @@ AI_FILE = REPORTS_ROOT / "data" / "predictions" / "sft_predictions.jsonl"
 AI_MODELS = ["CYqJRxId", "ckpt-step-304", "ckppt-380", "ckppt-228"]
 AI_TO_HUMAN = {"exceptional": "top", "strong": "top-", "fair": "good", "limited": "fair"}
 
-# Human voting data (package-local deidentified archive copies)
-STUDENT_FILE = REPORTS_ROOT / "data" / "human_ratings" / "archive" / "survey_all_student.jsonl"
-# Use unfiltered expert file to stay consistent with Figure 4b majority definition.
-EXPERT_FILE = REPORTS_ROOT / "data" / "human_ratings" / "archive" / "survey_all_expert.jsonl"
+# Human voting data (canonical de-identified reproducibility files)
+STUDENT_FILE = REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl"
+# Use the unfiltered expert file to stay consistent with Figure 4b majority definition.
+EXPERT_FILE = REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "expert_reproducibility.jsonl"
 HUMAN_TO_AI = {"Top": "top", "Top-": "top-", "Good": "good", "Fair": "fair"}
 
 # Frontier voting data (conservative 11-model cohort)

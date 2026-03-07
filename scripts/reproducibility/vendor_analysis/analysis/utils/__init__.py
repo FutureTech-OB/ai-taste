@@ -1,8 +1,8 @@
 """Shared utility module for the research analysis pipeline.
 
 This package provides data loading, metric computation, voting/sampling,
-statistical testing, visualisation, and background data utilities for
-analysing whether SFT-trained LLMs can evaluate research idea quality.
+statistical testing, and visualisation utilities for analysing whether
+SFT-trained LLMs can evaluate research idea quality.
 120 articles are rated by AI models and human raters (experts and students).
 
 Submodules
@@ -20,8 +20,6 @@ statistical_tests
     corrections, and inter-rater reliability measures.
 visualization
     Nature/Science-style plotting utilities.
-background_data
-    Background data loading, field parsing, and encoding helpers.
 """
 
 # -- constants ---------------------------------------------------------------
@@ -139,24 +137,6 @@ from .statistical_tests import (
     spearman_correlation,
 )
 
-# -- background_data ---------------------------------------------------------
-from .background_data import (
-    encode_ai_familiarity,
-    load_enriched_data,
-    load_expert_profiles,
-    load_new_student_backgrounds_from_csv,
-    load_old_student_backgrounds,
-    parse_confidence,
-    parse_duration,
-    parse_familiarity,
-    parse_phd_year,
-    parse_publications,
-    parse_read_before,
-    parse_review_experience,
-    phd_year_to_group,
-    publications_to_group,
-)
-
 # -- visualization -----------------------------------------------------------
 from .visualization import (
     plot_accuracy_curve,
@@ -270,21 +250,6 @@ __all__ = [
     'one_sample_ttest',
     'permutation_test',
     'spearman_correlation',
-    # background_data
-    'encode_ai_familiarity',
-    'load_enriched_data',
-    'load_expert_profiles',
-    'load_new_student_backgrounds_from_csv',
-    'load_old_student_backgrounds',
-    'parse_confidence',
-    'parse_duration',
-    'parse_familiarity',
-    'parse_phd_year',
-    'parse_publications',
-    'parse_read_before',
-    'parse_review_experience',
-    'phd_year_to_group',
-    'publications_to_group',
     # visualization
     'plot_accuracy_curve',
     'plot_calibration_diagram',

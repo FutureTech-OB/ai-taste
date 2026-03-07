@@ -2130,12 +2130,10 @@ def make_sf8_human_confusions_v2() -> Tuple[Path, Path]:
     _set_style()
 
     expert_candidates = [
-        PROJECT_ROOT / "data" / "human_ratings" / "expert_enriched.jsonl",
-        PROJECT_ROOT / "data" / "human_ratings" / "archive" / "survey_all_expert.jsonl",
+        PROJECT_ROOT / "data" / "human_ratings" / "reproducibility" / "expert_reproducibility.jsonl",
     ]
     student_candidates = [
-        PROJECT_ROOT / "data" / "human_ratings" / "student_enriched_filtered.jsonl",
-        PROJECT_ROOT / "data" / "human_ratings" / "student_merged.jsonl",
+        PROJECT_ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl",
     ]
 
     expert_path = next((p for p in expert_candidates if p.exists()), None)
@@ -2278,10 +2276,10 @@ def make_supplementary_figures_core_v2() -> List[Tuple[Path, Path]]:
 
     # Human majority distributions (clear majority only)
     expert_counts, n_exp = _human_majority_prediction_distribution(
-        PROJECT_ROOT / "data" / "human_ratings" / "archive" / "survey_all_expert.jsonl"
+        PROJECT_ROOT / "data" / "human_ratings" / "reproducibility" / "expert_reproducibility.jsonl"
     )
     student_counts, n_stu = _human_majority_prediction_distribution(
-        PROJECT_ROOT / "data" / "human_ratings" / "student_merged.jsonl"
+        PROJECT_ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl"
     )
     expert_share = expert_counts / max(n_exp, 1)
     student_share = student_counts / max(n_stu, 1)

@@ -56,95 +56,95 @@
     }
   },
   "reliability_by_domain": {
-    "AI与技术": {
+    "AI & Technology": {
       "expert_kappa": 0.05714285714285706,
       "expert_n": 6,
       "student_kappa": 0.03190226361366834,
       "student_n": 6
     },
-    "人力资源管理": {
-      "expert_kappa": -0.3125,
-      "expert_n": 3,
-      "student_kappa": 0.0474482508959099,
-      "student_n": 3
+    "Career Development": {
+      "expert_kappa": null,
+      "expert_n": 1,
+      "student_kappa": null,
+      "student_n": 1
     },
-    "伦理与道德": {
-      "expert_kappa": -0.15384615384615388,
-      "expert_n": 2,
-      "student_kappa": -0.005071315372424671,
-      "student_n": 2
-    },
-    "其他管理学研究": {
-      "expert_kappa": 0.013434103260869471,
-      "expert_n": 16,
-      "student_kappa": 0.02831075210100782,
-      "student_n": 16
-    },
-    "创新与创业": {
-      "expert_kappa": 0.10007122507122514,
-      "expert_n": 6,
-      "student_kappa": 0.0020276383763567713,
-      "student_n": 6
-    },
-    "员工行为与态度": {
-      "expert_kappa": -0.007376633121469011,
-      "expert_n": 16,
-      "student_kappa": 0.023279324019392204,
-      "student_n": 16
-    },
-    "团队与组织": {
-      "expert_kappa": 0.03492491144040322,
-      "expert_n": 17,
-      "student_kappa": 0.06377428496373205,
-      "student_n": 17
-    },
-    "多元化与公平": {
+    "Diversity & Equity": {
       "expert_kappa": -0.05007309941520473,
       "expert_n": 4,
       "student_kappa": -0.02366927374026959,
       "student_n": 4
     },
-    "工作压力与健康": {
-      "expert_kappa": null,
-      "expert_n": 1,
-      "student_kappa": null,
-      "student_n": 1
+    "Employee Behavior & Attitudes": {
+      "expert_kappa": -0.007376633121469011,
+      "expert_n": 16,
+      "student_kappa": 0.023279324019392204,
+      "student_n": 16
     },
-    "战略与决策": {
-      "expert_kappa": -0.16666666666666666,
+    "Ethics & Morality": {
+      "expert_kappa": -0.15384615384615388,
       "expert_n": 2,
-      "student_kappa": 0.024379719525350594,
+      "student_kappa": -0.005071315372424671,
       "student_n": 2
     },
-    "知识与学习": {
+    "Human Resource Management": {
+      "expert_kappa": -0.3125,
+      "expert_n": 3,
+      "student_kappa": 0.0474482508959099,
+      "student_n": 3
+    },
+    "Innovation & Entrepreneurship": {
+      "expert_kappa": 0.10007122507122514,
+      "expert_n": 6,
+      "student_kappa": 0.0020276383763567713,
+      "student_n": 6
+    },
+    "Knowledge & Learning": {
       "expert_kappa": -0.09756097560975611,
       "expert_n": 5,
       "student_kappa": 0.017440599198122148,
       "student_n": 5
     },
-    "社会心理/人际": {
-      "expert_kappa": 0.1269841269841269,
-      "expert_n": 7,
-      "student_kappa": 0.03149762264324252,
-      "student_n": 7
+    "Leadership / Management": {
+      "expert_kappa": 0.07366507611906385,
+      "expert_n": 27,
+      "student_kappa": 0.013597368653140028,
+      "student_n": 27
     },
-    "绩效与成果": {
+    "Other Management Research": {
+      "expert_kappa": 0.013434103260869471,
+      "expert_n": 16,
+      "student_kappa": 0.02831075210100782,
+      "student_n": 16
+    },
+    "Performance & Outcomes": {
       "expert_kappa": -0.03181329028786662,
       "expert_n": 7,
       "student_kappa": -0.0017500647995655281,
       "student_n": 7
     },
-    "职业发展": {
+    "Social Psychology / Interpersonal": {
+      "expert_kappa": 0.1269841269841269,
+      "expert_n": 7,
+      "student_kappa": 0.03149762264324252,
+      "student_n": 7
+    },
+    "Strategy & Decision-Making": {
+      "expert_kappa": -0.16666666666666666,
+      "expert_n": 2,
+      "student_kappa": 0.024379719525350594,
+      "student_n": 2
+    },
+    "Team & Organization": {
+      "expert_kappa": 0.03492491144040322,
+      "expert_n": 17,
+      "student_kappa": 0.06377428496373205,
+      "student_n": 17
+    },
+    "Work Stress & Health": {
       "expert_kappa": null,
       "expert_n": 1,
       "student_kappa": null,
       "student_n": 1
-    },
-    "领导力/管理者": {
-      "expert_kappa": 0.07366507611906385,
-      "expert_n": 27,
-      "student_kappa": 0.013597368653140028,
-      "student_n": 27
     }
   },
   "comparison": {

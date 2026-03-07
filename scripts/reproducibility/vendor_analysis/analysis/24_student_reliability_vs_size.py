@@ -42,7 +42,7 @@ from analysis.utils.visualization import save_figure, set_nature_style
 
 
 def _extract_article_ratings() -> List[Dict]:
-    """Load student_merged.jsonl and return per-article rating lists."""
+    """Load the public student reproducibility file and return per-article rating lists."""
     data = load_student_merged_ratings()
     articles = []
     for art in data:
@@ -171,7 +171,7 @@ def main():
     min_raters = min(a["n_raters"] for a in articles)
     max_raters = max(a["n_raters"] for a in articles)
     mean_raters = np.mean([a["n_raters"] for a in articles])
-    print(f"\nLoaded {n_articles} articles from student_merged.jsonl")
+    print(f"\nLoaded {n_articles} articles from the public student reproducibility file")
     print(f"Raters/article: min={min_raters}, max={max_raters}, mean={mean_raters:.2f}")
 
     sample_sizes = sorted(set(args.sample_sizes))

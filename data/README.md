@@ -7,7 +7,7 @@ This folder contains the released inputs and numerical outputs needed for the pu
 | `benchmark/` | Benchmark article records |
 | `predictions/` | Model prediction files used in the paper |
 | `pairwise/` | Pairwise comparison outputs and summary metrics |
-| `human_ratings/` | De-identified human ratings and anonymous reproducibility inputs |
+| `human_ratings/` | De-identified human ratings and reproducibility inputs |
 | `tables/` | Released tables and figure-data files |
 | `statistics/` | Released summary statistics |
 | `training_dataset/` | Training-data documentation and release-boundary files |
@@ -22,4 +22,4 @@ Two index files are the main entry points for readers:
 - `tables/TABLE_INDEX.csv`
 - `tables/FIGURE_DATA_INDEX.csv`
 
-Human data in this release are de-identified. Direct participant identifiers and raw survey exports are not included.
+Human data in this release are de-identified. Compatibility copies and raw survey exports are not included.

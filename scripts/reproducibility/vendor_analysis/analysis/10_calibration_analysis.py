@@ -105,7 +105,7 @@ def _get_human_voting_probs(val_data):
 
 
 def _get_expert_voting_probs(expert_data):
-    """Build expert-only voting probabilities from expert.jsonl.
+    """Build expert-only voting probabilities from the public expert file.
 
     Returns:
         y_true: list of ground-truth labels.
@@ -137,7 +137,7 @@ def _get_expert_voting_probs(expert_data):
 
 
 def _get_student_voting_probs(student_data):
-    """Build student voting probabilities from student_merged.jsonl.
+    """Build student voting probabilities from the public student file.
 
     Returns:
         y_true: list of ground-truth labels.

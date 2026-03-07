@@ -201,7 +201,7 @@ def extract_human_voting_predictions(val_data):
 # ===================================================================
 
 def compute_expert_majority_votes(expert_data):
-    """Compute expert majority vote predictions from expert.jsonl.
+    """Compute expert majority vote predictions from the public expert file.
 
     Uses tie_policy='exclude': articles without a clear majority get
     pred=None and are excluded from accuracy computation.
@@ -240,7 +240,7 @@ def compute_expert_majority_votes(expert_data):
 
 
 def compute_student_majority_votes(student_data):
-    """Compute student majority vote predictions from student_merged.jsonl.
+    """Compute student majority vote predictions from the public student file.
 
     Uses tie_policy='exclude' for consistency with expert analysis.
 
