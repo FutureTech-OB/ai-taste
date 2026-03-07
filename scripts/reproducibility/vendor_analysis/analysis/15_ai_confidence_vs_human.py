@@ -11,7 +11,7 @@ Covers ALL models:
   - Voting: human_voting
   - 10 Flagship models (point predictions only, no logp)
   - Human experts (42 raters, q3_confidence 1-5)
-  - Human students (new students with confidence data)
+  - Human students (filtered combined junior panel with confidence data)
 
 Key insight: When AI predicts a label, the softmax probability represents
 the model's "confidence" in that prediction — directly comparable to human
@@ -69,8 +69,7 @@ from analysis.utils import (
     TRAINED_PATH as _TRAINED_PATH,
     CHAT_PATH as _CHAT_PATH,
     EXPERT_PATH as _EXPERT_PATH,
-    STUDENT_NEW_PATH as _STUDENT_NEW_PATH,
-    STUDENT_MERGED_PATH as _STUDENT_MERGED_PATH,
+    STUDENT_FILTERED_PATH as _STUDENT_FILTERED_PATH,
     THINKING_PATH as _THINKING_PATH,
 )
 
@@ -83,8 +82,7 @@ VAL_PATH = ROOT / _TRAINED_PATH        # SFT models (was 120_val.jsonl)
 CHAT_PATH = ROOT / _CHAT_PATH          # Chat models with logp
 THINKING_PATH = ROOT / _THINKING_PATH
 EXPERT_PATH = ROOT / _EXPERT_PATH      # Now unfiltered (47+ experts)
-STUDENT_NEW_PATH = ROOT / _STUDENT_NEW_PATH
-STUDENT_MERGED_PATH = ROOT / _STUDENT_MERGED_PATH
+STUDENT_FILTERED_PATH = ROOT / _STUDENT_FILTERED_PATH
 
 FIGS = ROOT / FIGURES_DIR
 TABS = ROOT / TABLES_DIR
@@ -306,7 +304,7 @@ def load_flagship_predictions():
 
 
 def load_human_ratings_with_confidence():
-    """Load expert and new-student ratings with confidence."""
+    """Load expert and filtered combined junior ratings with confidence."""
     result = {'expert': [], 'student': []}
 
     expert_data = load_jsonl(EXPERT_PATH)
@@ -330,7 +328,7 @@ def load_human_ratings_with_confidence():
                 'article_number': art.get('article_number'),
             })
 
-    student_data = load_jsonl(STUDENT_NEW_PATH)
+    student_data = load_jsonl(STUDENT_FILTERED_PATH)
     for art in student_data:
         gt = normalize_level(art.get('level', ''))
         if not gt:
@@ -342,12 +340,15 @@ def load_human_ratings_with_confidence():
             fam = _extract_int(r.get('q4_familiarity'))
             if not predicted or conf is None:
                 continue
+            correct = r.get('is_correct')
+            if correct is None:
+                correct = int(predicted == gt)
             result['student'].append({
                 'ground_truth': gt,
                 'predicted': predicted,
                 'confidence': conf,
                 'familiarity': fam,
-                'correct': int(predicted == gt),
+                'correct': int(correct),
                 'article_number': art.get('article_number'),
             })
 
@@ -388,7 +389,7 @@ def load_human_voting_per_article():
             'agreement_ratio': c.most_common(1)[0][1] / n,
         })
 
-    student_data = load_jsonl(STUDENT_MERGED_PATH)
+    student_data = load_jsonl(STUDENT_FILTERED_PATH)
     for art in student_data:
         gt = normalize_level(art.get('level', ''))
         if not gt:

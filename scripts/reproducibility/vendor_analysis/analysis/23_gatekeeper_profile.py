@@ -775,7 +775,7 @@ def main() -> None:
     chat_data = load_chat_data()
     trained_data = load_trained_data()
     expert_data = load_expert_ratings()
-    student_data = load_student_merged_ratings()
+    student_data = load_student_filtered_ratings()
 
     all_metrics: Dict[str, Dict[str, Any]] = {}
     evaluator_order: List[str] = []

@@ -177,23 +177,29 @@ VAL_PATH: str = TRAINED_PATH  # backward compat alias (120_val.jsonl no longer e
 # Expert paths: unfiltered is PRIMARY, filtered is for sensitivity analysis
 EXPERT_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/expert_reproducibility.jsonl'
 EXPERT_FILTERED_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/expert_reproducibility_filtered.jsonl'
-STUDENT_OLD_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/student_reproducibility.jsonl'
-STUDENT_NEW_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/student_reproducibility_filtered.jsonl'
-STUDENT_MERGED_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/student_reproducibility_filtered.jsonl'
-ALL_COMBINED_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/student_reproducibility.jsonl'
+
+# Junior paths: final manuscript analyses use the filtered combined junior
+# panel (old + new pooled). Legacy aliases are retained only so older
+# scripts can still import them without ambiguity in the underlying file.
+STUDENT_FILTERED_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/student_reproducibility_filtered.jsonl'
+STUDENT_UNFILTERED_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/student_reproducibility.jsonl'
+STUDENT_NEW_PATH: str = STUDENT_FILTERED_PATH   # deprecated alias; not new-only
+STUDENT_MERGED_PATH: str = STUDENT_FILTERED_PATH  # deprecated alias
+STUDENT_OLD_PATH: str = STUDENT_UNFILTERED_PATH   # deprecated alias; not old-only
+ALL_COMBINED_PATH: str = STUDENT_UNFILTERED_PATH
 
 # Unfiltered archive paths (EXPERT_PATH already points to unfiltered)
 UNFILTERED_EXPERT_PATH: str = EXPERT_PATH
-UNFILTERED_STUDENT_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/student_reproducibility.jsonl'
+UNFILTERED_STUDENT_PATH: str = STUDENT_UNFILTERED_PATH
 
 # Enriched dataset paths
 ENRICHED_EXPERT_PATH: str = EXPERT_PATH
 ENRICHED_EXPERT_FILTERED_PATH: str = EXPERT_FILTERED_PATH
-ENRICHED_STUDENT_PATH: str = UNFILTERED_STUDENT_PATH
-ENRICHED_STUDENT_FILTERED_PATH: str = STUDENT_MERGED_PATH
+ENRICHED_STUDENT_PATH: str = STUDENT_UNFILTERED_PATH
+ENRICHED_STUDENT_FILTERED_PATH: str = STUDENT_FILTERED_PATH
 
 # Background data paths
-OLD_STUDENT_BG_PATH: str = f'{DATA_ROOT}/human_ratings/reproducibility/student_reproducibility.jsonl'
+OLD_STUDENT_BG_PATH: str = STUDENT_UNFILTERED_PATH
 EXPERT_PROFILES_DIR: str = f'{DATA_ROOT}/human_ratings/reproducibility'
 # ---------------------------------------------------------------------------
 # Results paths

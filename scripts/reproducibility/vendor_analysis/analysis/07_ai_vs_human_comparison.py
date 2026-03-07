@@ -240,7 +240,7 @@ def compute_expert_majority_votes(expert_data):
 
 
 def compute_student_majority_votes(student_data):
-    """Compute student majority vote predictions from the public student file.
+    """Compute student majority vote predictions from the filtered combined junior panel.
 
     Uses tie_policy='exclude' for consistency with expert analysis.
 
@@ -971,7 +971,7 @@ def main():
     frontier_data = load_frontier_data()
     assert_frontier_models_present(frontier_data, FLAGSHIP_KEYS)
     expert_data = load_expert_ratings()
-    student_data = load_student_merged_ratings()
+    student_data = load_student_filtered_ratings()
 
     n_val = len(val_data)
     n_think = len(frontier_data)

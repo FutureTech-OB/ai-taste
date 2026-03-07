@@ -229,7 +229,7 @@ def main():
 
     # Load data
     expert_data = load_expert_ratings()
-    student_merged_data = load_student_merged_ratings()
+    student_merged_data = load_student_filtered_ratings()
 
     # ---- 1: Fleiss' kappa / Krippendorff's alpha for experts ------------
     expert_fleiss_mat, expert_meta = _build_fleiss_matrix(expert_data)

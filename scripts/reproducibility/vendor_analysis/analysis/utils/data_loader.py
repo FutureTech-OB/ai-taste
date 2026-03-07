@@ -29,6 +29,7 @@ from .constants import (
     HUMAN_TO_AI,
     LEVEL_TO_AI,
     FRONTIER_PATH,
+    STUDENT_FILTERED_PATH,
     STUDENT_MERGED_PATH,
     STUDENT_NEW_PATH,
     STUDENT_OLD_PATH,
@@ -197,7 +198,11 @@ def load_expert_filtered_ratings() -> List[Dict[str, Any]]:
 
 
 def load_student_new_ratings() -> List[Dict[str, Any]]:
-    """Load the filtered public student reproducibility file.
+    """Load the filtered combined junior ratings.
+
+    Deprecated compatibility alias. Despite the historical name, this
+    loader returns the full filtered junior panel (old + new pooled),
+    not a new-only subset.
 
     Returns:
         List of article records containing student survey responses.
@@ -206,21 +211,29 @@ def load_student_new_ratings() -> List[Dict[str, Any]]:
 
 
 def load_student_merged_ratings() -> List[Dict[str, Any]]:
-    """Load the primary public student reproducibility file.
+    """Load the filtered combined junior ratings.
 
     Returns:
-        List of article records containing merged student survey responses.
+        List of article records containing filtered junior survey responses.
     """
     return load_jsonl(STUDENT_MERGED_PATH)
 
 
 def load_student_old_ratings() -> List[Dict[str, Any]]:
-    """Load ``student_old.jsonl`` (old student ratings).
+    """Load the unfiltered combined junior ratings.
+
+    Deprecated compatibility alias. Despite the historical name, this
+    loader returns the full unfiltered junior panel, not an old-only subset.
 
     Returns:
-        List of article records containing old student survey responses.
+        List of article records containing unfiltered junior survey responses.
     """
     return load_jsonl(STUDENT_OLD_PATH)
+
+
+def load_student_filtered_ratings() -> List[Dict[str, Any]]:
+    """Load the final filtered combined junior panel (old + new pooled)."""
+    return load_jsonl(STUDENT_FILTERED_PATH)
 
 
 def load_all_combined() -> List[Dict[str, Any]]:

@@ -137,7 +137,7 @@ def _get_expert_voting_probs(expert_data):
 
 
 def _get_student_voting_probs(student_data):
-    """Build student voting probabilities from the public student file.
+    """Build student voting probabilities from the filtered combined junior panel.
 
     Returns:
         y_true: list of ground-truth labels.
@@ -329,7 +329,7 @@ def main():
     # Load data
     val_data = load_val_data()
     expert_data = load_expert_ratings()
-    student_merged_data = load_student_merged_ratings()
+    student_merged_data = load_student_filtered_ratings()
 
     # ---- Extract probabilities for each evaluator -----------------------
     evaluators = {}

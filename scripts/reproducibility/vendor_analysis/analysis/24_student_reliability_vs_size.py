@@ -42,8 +42,8 @@ from analysis.utils.visualization import save_figure, set_nature_style
 
 
 def _extract_article_ratings() -> List[Dict]:
-    """Load the public student reproducibility file and return per-article rating lists."""
-    data = load_student_merged_ratings()
+    """Load the filtered combined junior panel and return per-article rating lists."""
+    data = load_student_filtered_ratings()
     articles = []
     for art in data:
         gt = normalize_level(art["level"])
@@ -171,7 +171,7 @@ def main():
     min_raters = min(a["n_raters"] for a in articles)
     max_raters = max(a["n_raters"] for a in articles)
     mean_raters = np.mean([a["n_raters"] for a in articles])
-    print(f"\nLoaded {n_articles} articles from the public student reproducibility file")
+    print(f"\nLoaded {n_articles} articles from the filtered combined junior panel")
     print(f"Raters/article: min={min_raters}, max={max_raters}, mean={mean_raters:.2f}")
 
     sample_sizes = sorted(set(args.sample_sizes))

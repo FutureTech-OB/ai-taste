@@ -1507,8 +1507,9 @@ def make_figure5() -> plt.Figure:
     trained_path = SFT_FILE
     chat_path = REPORTS_ROOT / "data" / "predictions" / "chat_predictions.jsonl"
     expert_path = REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "expert_reproducibility.jsonl"
-    student_new_path = REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl"
-    student_merged_path = REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl"
+    student_filtered_path = (
+        REPORTS_ROOT / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl"
+    )
 
     style = {
         "SFT 2-Model Ensemble": {
@@ -1588,12 +1589,12 @@ def make_figure5() -> plt.Figure:
         "Kimi K2 Chat": _collect_logp_confidence_records(chat_path, "kimi-k2-0905-preview"),
         "DeepSeek Chat": _collect_logp_confidence_records(chat_path, "deepseek-chat"),
         "Expert voting": _collect_human_voting_confidence_records(expert_path),
-        "Student voting": _collect_human_voting_confidence_records(student_merged_path),
+        "Student voting": _collect_human_voting_confidence_records(student_filtered_path),
     }
 
     human_records = {
         "Human Expert": _collect_human_rating_confidence_records(expert_path),
-        "Human Student": _collect_human_rating_confidence_records(student_new_path),
+        "Human Student": _collect_human_rating_confidence_records(student_filtered_path),
     }
 
     fig = plt.figure(figsize=(FIG_WIDTH, 7.25))
@@ -1646,7 +1647,7 @@ def make_figure5() -> plt.Figure:
     ax_a.text(
         0.98,
         0.92,
-        "Human conf: (x-1)/4 -> 0-1\np: two-sided Mann-Whitney U\n(correct vs incorrect, rating-level)",
+        "Human conf: (x-1)/4 -> 0-1\np: one-sided Mann-Whitney U\n(correct > incorrect, rating-level)",
         transform=ax_a.transAxes,
         ha="right",
         va="center",
