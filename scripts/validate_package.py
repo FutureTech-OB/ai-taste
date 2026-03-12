@@ -39,6 +39,17 @@ FORBIDDEN_TABLE_COLUMNS = {
     "ip_address",
     "start_date",
     "end_date",
+    "expert_id",
+    "student_id",
+    "cohort",
+    "gender",
+    "phd_year",
+    "phd_group",
+    "publications",
+    "pub_group",
+    "review_experience",
+    "ai_familiarity",
+    "has_background",
 }
 
 FORBIDDEN_PUBLIC_JSON_KEYS = {
@@ -63,6 +74,8 @@ FORBIDDEN_PUBLIC_JSON_KEYS = {
     "doi_first",
     "doi_second",
     "raw_response",
+    "background",
+    "student_cohort",
     "career_stage",
     "current_identity",
     "published_papers",
@@ -167,6 +180,23 @@ ALLOWED_HUMAN_ROOT = {
     "reproducibility",
 }
 
+REQUIRED_HUMAN_RECORD_KEYS = {
+    "title",
+    "journal",
+    "domain",
+    "level",
+    "ratings",
+}
+
+ALLOWED_HUMAN_RATING_KEYS = {
+    "rater_id",
+    "rater_type",
+    "q1_read_before",
+    "q2_rating",
+    "q3_confidence",
+    "q4_familiarity",
+}
+
 REQUIRED_TRAIN_DATA_JSON = {
     "RIOB.Article.json",
     "RIOB_old.Article.json",
@@ -228,6 +258,57 @@ def _check_jsonl_no_forbidden_keys(path: Path, errors: List[str]) -> None:
             if _has_forbidden_keys(obj, FORBIDDEN_ID_KEYS):
                 fail(f"Forbidden identifier key found in {path} line {i}", errors)
                 return
+
+
+def _check_human_jsonl_schema(path: Path, errors: List[str]) -> None:
+    if not path.exists():
+        return
+
+    with path.open("r", encoding="utf-8") as f:
+        for i, line in enumerate(f, start=1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError as exc:
+                fail(f"Invalid JSON in {path} line {i}: {exc}", errors)
+                return
+            if not isinstance(obj, dict):
+                fail(f"Human ratings row must be an object in {path} line {i}", errors)
+                return
+            keys = set(obj.keys())
+            missing = sorted(REQUIRED_HUMAN_RECORD_KEYS - keys)
+            extra = sorted(keys - REQUIRED_HUMAN_RECORD_KEYS)
+            if missing or extra:
+                fail(
+                    f"Unexpected human record schema in {path} line {i}: "
+                    f"missing={missing or '[]'} extra={extra or '[]'}",
+                    errors,
+                )
+                return
+            ratings = obj.get("ratings")
+            if not isinstance(ratings, list):
+                fail(f"'ratings' must be a list in {path} line {i}", errors)
+                return
+            for j, rating in enumerate(ratings, start=1):
+                if not isinstance(rating, dict):
+                    fail(f"Rating entry must be an object in {path} line {i} rating {j}", errors)
+                    return
+                rating_keys = set(rating.keys())
+                missing_rating = sorted(ALLOWED_HUMAN_RATING_KEYS - rating_keys)
+                extra_rating = sorted(rating_keys - ALLOWED_HUMAN_RATING_KEYS)
+                if missing_rating or extra_rating:
+                    fail(
+                        f"Unexpected rating schema in {path} line {i} rating {j}: "
+                        f"missing={missing_rating or '[]'} extra={extra_rating or '[]'}",
+                        errors,
+                    )
+                    return
+                rid = str(rating.get("rater_id", "")).strip()
+                if not rid:
+                    fail(f"Blank rater_id in {path} line {i} rating {j}", errors)
+                    return
 
 
 def _first_row_model_keys(path: Path) -> Set[str]:
@@ -567,6 +648,7 @@ def main() -> int:
         fail(f"Unexpected files or directories in data/human_ratings: {extra_human_root}", errors)
     for name in sorted(REQUIRED_HUMAN_JSONL):
         _check_jsonl_no_forbidden_keys(human_dir / name, errors)
+        _check_human_jsonl_schema(human_dir / name, errors)
         path = human_dir / name
         if path.exists():
             with path.open("r", encoding="utf-8") as f:
@@ -588,6 +670,7 @@ def main() -> int:
         fail(f"Unexpected reproducibility human files: {extra_repro}", errors)
     for name in sorted(REQUIRED_REPRO_HUMAN_JSONL):
         _check_jsonl_no_forbidden_keys(repro_human_dir / name, errors)
+        _check_human_jsonl_schema(repro_human_dir / name, errors)
         path = repro_human_dir / name
         if path.exists():
             with path.open("r", encoding="utf-8") as f:

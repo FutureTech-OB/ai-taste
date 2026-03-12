@@ -8,7 +8,7 @@ T06,T06_GatekeeperProfileMain.csv,table23_gatekeeper_profile_main.csv,"Main, SI"
 T07,T07_GatekeeperPerClass.csv,table23_gatekeeper_per_class.csv,SI,Per-class precision/recall/F1 diagnostics
 T08,T08_HumanVariantsSummary.csv,table23_human_variants_summary.csv,SI,Human variant comparison summary
 T09,T09_PairwiseMcNemarCompendium.csv,scripts/reproducibility/recompute_core_tables_and_stats.py,SI (ST11),Simplified pairwise comparison block aligned with main text
-T10,T10_IndividualExpertAccuracy_Anonymized.csv,table_s2_individual_expert.csv,SI (ST12),Per-expert accuracy (de-identified)
+T10,T10_IndividualExpertAccuracy_Anonymized.csv,table_s2_individual_expert.csv,SI (ST12),Per-expert accuracy distribution support
 T11,T11_MonteCarloMatchedPanel.csv,table_s3_monte_carlo.csv,SI (ST13),Monte Carlo matched-N summary
 T12,T12_ConfidenceComparison.csv,table_s12_confidence_comparison.csv,"Main, SI",Confidence discrimination metrics
 T13,T13_CalibrationMetrics.csv,table_s7_calibration_metrics.csv,"Main, ED, SI",Calibration and reliability metrics
@@ -19,4 +19,4 @@ T17,T17_AllModelsSummary.csv,table_s13_all_models_summary.csv,SI,Cross-model sum
 T18,T18_ChatModelSummary.csv,table_s_chat_models.csv,SI (ST16b),Chat model summary
 T19,T19_StudentReliabilityByPanelSize.csv,table_s24_student_reliability_vs_size.csv,SI,Student reliability vs panel size
 T20,T20_ExpertReliabilityByPanelSize.csv,table_s25_expert_reliability_vs_size.csv,SI,Expert reliability vs panel size
-T21,T21_StudentDescriptive.csv,table_s24_student_descriptive.csv,"Main (Fig. 3 script support)",Student individual descriptive profile used for Figure 3 distributions
+T21,T21_StudentDescriptive.csv,table_s24_student_descriptive.csv,"Main (Fig. 3 script support)",Student individual accuracy summary used for Figure 3 distributions

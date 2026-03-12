@@ -37,14 +37,13 @@ def write_t10_anonymized(src: Path, dst: Path) -> None:
     with src.open("r", encoding="utf-8", newline="") as fh:
         rows = list(csv.DictReader(fh))
 
-    fieldnames = ["expert_id", "n_articles", "n_correct", "accuracy"]
+    fieldnames = ["n_articles", "n_correct", "accuracy"]
     with dst.open("w", encoding="utf-8", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=fieldnames)
         writer.writeheader()
-        for idx, row in enumerate(rows, start=1):
+        for row in rows:
             writer.writerow(
                 {
-                    "expert_id": f"Expert_{idx:03d}",
                     "n_articles": row.get("n_articles", ""),
                     "n_correct": row.get("n_correct", ""),
                     "accuracy": row.get("accuracy", ""),
