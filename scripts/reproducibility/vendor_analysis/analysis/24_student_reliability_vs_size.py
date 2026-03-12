@@ -34,7 +34,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from analysis.utils.constants import LABEL_ORDER, COLORS, FIGURES_DIR, TABLES_DIR, STATS_DIR
-from analysis.utils.data_loader import get_project_root, load_student_merged_ratings, normalize_level
+from analysis.utils.data_loader import (
+    get_project_root,
+    load_student_filtered_ratings,
+    load_student_merged_ratings,
+    normalize_level,
+)
 from analysis.utils.metrics import compute_accuracy
 from analysis.utils.voting import majority_vote
 from analysis.utils.statistical_tests import fleiss_kappa

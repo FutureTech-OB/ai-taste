@@ -40,7 +40,7 @@ expected = []
 for name in ["Figure2", "Figure3", "Figure4", "Figure5", "Figure6"]:
     expected.append(repro / "main" / f"{name}.png")
     expected.append(repro / "main" / f"{name}.pdf")
-for i in range(1, 6):
+for i in range(1, 7):
     expected.append(repro / "extended_data" / f"ed_fig{i}.png")
     expected.append(repro / "extended_data" / f"ed_fig{i}.pdf")
 for i in range(1, 7):

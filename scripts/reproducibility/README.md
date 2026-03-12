@@ -19,10 +19,4 @@ PYTHON_BIN=python3 bash scripts/reproduce_tables.sh
 PYTHON_BIN=python3 bash scripts/reproduce_figures.sh
 ```
 
-Generated figure outputs are written under `reproduced/`. Released tables and statistics are refreshed in place under `data/tables/` and `data/statistics/`.
-*** Add File: /Users/ningli/Nutstore Files/reports/.repo_release/.gitignore
-reproduced/
-.venv/
-__pycache__/
-*.pyc
-.DS_Store
+Generated figure outputs are written under `reproduced/` as local build output. Released tables and statistics are refreshed in place under `data/tables/` and `data/statistics/`.

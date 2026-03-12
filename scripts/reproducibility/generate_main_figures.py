@@ -48,6 +48,7 @@ OUTPUT_DIR = ROOT / "reproduced" / "figures" / "main"
 REPORTS_ROOT = ROOT
 
 SFT_FILE = REPORTS_ROOT / "data" / "predictions" / "sft_predictions.jsonl"
+CHAT_FILE = REPORTS_ROOT / "data" / "predictions" / "chat_predictions.jsonl"
 
 FIG_WIDTH = 7.2  # Nature double-column width equivalent (inches)
 
@@ -67,6 +68,25 @@ PALETTE = {
 
 TIER_ORDER = ["exceptional", "strong", "fair", "limited"]
 TIER_LABELS = ["Exceptional", "Strong", "Fair", "Limited"]
+PAIRWISE_ROOT = DATA_DIR / "pairwise"
+PAIRWISE_METRIC_DIRS = {
+    "SFT GPT-4.1": PAIRWISE_ROOT / "sft_gpt4_1",
+    "Gemini 3.1 Pro": PAIRWISE_ROOT / "frontier_gemini3_1_pro",
+    "GPT-5.2 High": PAIRWISE_ROOT / "frontier_gpt5_2_high",
+    "GPT-4.1 Baseline": PAIRWISE_ROOT / "baseline_gpt4_1",
+}
+PAIRWISE_SHORT_LABELS = {
+    "SFT GPT-4.1": "SFT GPT-4.1",
+    "Gemini 3.1 Pro": "Gemini 3.1",
+    "GPT-5.2 High": "GPT-5.2 High",
+    "GPT-4.1 Baseline": "GPT-4.1 base",
+}
+PAIRWISE_COLORS = {
+    "SFT GPT-4.1": PALETTE["sft"],
+    "Gemini 3.1 Pro": "#009E73",
+    "GPT-5.2 High": "#56B4E9",
+    "GPT-4.1 Baseline": PALETTE["frontier"],
+}
 
 
 def set_style() -> None:
@@ -181,6 +201,12 @@ def binomial_ci(p: np.ndarray, n: np.ndarray, z: float = 1.96) -> np.ndarray:
     return z * np.sqrt((p * (1.0 - p)) / n_safe)
 
 
+def _format_p_value(p: float) -> str:
+    if p < 0.001:
+        return f"{p:.2e}"
+    return f"{p:.4f}"
+
+
 def _softmax_from_logp(logp_dict: Dict[str, float]) -> Dict[str, float]:
     labels = list(logp_dict.keys())
     vals = np.array([float(logp_dict[k]) for k in labels], dtype=float)
@@ -238,6 +264,108 @@ def _extract_truth_label(record: Dict) -> str:
     if rank:
         return rank
     return _canonical_label(record.get("level", ""))
+
+
+def _prediction_from_logp_label_order(logp_dict: Dict[str, object]) -> str | None:
+    best_label: str | None = None
+    best_score = float("-inf")
+    for label in TIER_ORDER:
+        try:
+            score = float(logp_dict.get(label, float("-inf")))
+        except (TypeError, ValueError):
+            score = float("-inf")
+        if score > best_score:
+            best_score = score
+            best_label = label
+    return best_label
+
+
+def _load_logp_predictions(path: Path, model_key: str) -> Tuple[np.ndarray, np.ndarray]:
+    idx = {label: i for i, label in enumerate(TIER_ORDER)}
+    y_true: List[int] = []
+    y_pred: List[int] = []
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            rec = json.loads(line)
+            gt = _extract_truth_label(rec)
+            if gt not in idx:
+                continue
+            entry = rec.get("val_outcome", {}).get("rq_with_context", {}).get(model_key, {})
+            logp = entry.get("logp", {}) if isinstance(entry, dict) else {}
+            if not isinstance(logp, dict) or not logp:
+                continue
+            pred = _prediction_from_logp_label_order(logp)
+            if pred not in idx:
+                continue
+            y_true.append(idx[gt])
+            y_pred.append(idx[pred])
+    return np.asarray(y_true, dtype=int), np.asarray(y_pred, dtype=int)
+
+
+def _macro_f1_from_codes(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    if y_true.size == 0 or y_pred.size == 0:
+        return float("nan")
+    n_classes = len(TIER_ORDER)
+    f1_scores = np.zeros(n_classes, dtype=float)
+    for cls_idx in range(n_classes):
+        tp = float(np.sum((y_true == cls_idx) & (y_pred == cls_idx)))
+        fp = float(np.sum((y_true != cls_idx) & (y_pred == cls_idx)))
+        fn = float(np.sum((y_true == cls_idx) & (y_pred != cls_idx)))
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        if (precision + recall) > 0:
+            f1_scores[cls_idx] = 2.0 * precision * recall / (precision + recall)
+    return float(np.mean(f1_scores))
+
+
+def _bootstrap_classifier_cis(
+    y_true: np.ndarray,
+    y_pred: np.ndarray,
+    n_bootstrap: int = 3000,
+    seed: int = 42,
+) -> Dict[str, Tuple[float, float]]:
+    if y_true.size == 0 or y_pred.size == 0:
+        return {"acc": (float("nan"), float("nan")), "macro_f1": (float("nan"), float("nan"))}
+    n = min(y_true.size, y_pred.size)
+    y_true = y_true[:n]
+    y_pred = y_pred[:n]
+
+    rng = np.random.default_rng(seed)
+    acc_samples = np.empty(n_bootstrap, dtype=float)
+    f1_samples = np.empty(n_bootstrap, dtype=float)
+    for i in range(n_bootstrap):
+        sample_idx = rng.integers(0, n, size=n)
+        yt = y_true[sample_idx]
+        yp = y_pred[sample_idx]
+        acc_samples[i] = float(np.mean(yt == yp))
+        f1_samples[i] = _macro_f1_from_codes(yt, yp)
+
+    acc_lo, acc_hi = np.percentile(acc_samples, [2.5, 97.5])
+    f1_lo, f1_hi = np.percentile(f1_samples, [2.5, 97.5])
+    return {
+        "acc": (float(acc_lo), float(acc_hi)),
+        "macro_f1": (float(f1_lo), float(f1_hi)),
+    }
+
+
+def _summarize_logp_model(path: Path, model_key: str, *, seed: int) -> Dict[str, float]:
+    y_true, y_pred = _load_logp_predictions(path, model_key)
+    if y_true.size == 0:
+        raise ValueError(f"No valid logp predictions found for model '{model_key}' in {path}")
+    acc = float(np.mean(y_true == y_pred))
+    macro_f1 = _macro_f1_from_codes(y_true, y_pred)
+    cis = _bootstrap_classifier_cis(y_true, y_pred, seed=seed)
+    acc_lo, acc_hi = cis["acc"]
+    f1_lo, f1_hi = cis["macro_f1"]
+    return {
+        "n": float(y_true.size),
+        "acc": acc,
+        "acc_lo": acc_lo,
+        "acc_hi": acc_hi,
+        "macro_f1": macro_f1,
+        "macro_f1_lo": f1_lo,
+        "macro_f1_hi": f1_hi,
+    }
 
 
 def _collect_logp_confidence_records(path: Path, model_key: str) -> List[Tuple[float, int]]:
@@ -317,6 +445,76 @@ def _selective_curve_from_confidence(records: List[Tuple[float, int]]) -> pd.Dat
     return pd.DataFrame({"coverage": coverage, "accuracy": accuracy})
 
 
+def _format_pct_label(value: float) -> str:
+    """Format a percentage for compact annotation labels."""
+    rounded = round(float(value))
+    if abs(float(value) - rounded) < 0.05:
+        return f"{rounded:.0f}%"
+    return f"{float(value):.1f}%"
+
+
+def _selective_curve_callouts(curve: pd.DataFrame) -> List[Dict[str, object]]:
+    """Pick stable, data-driven callouts for the SFT selective-prediction curve."""
+    if len(curve) == 0:
+        return []
+
+    curve = curve.reset_index(drop=True)
+    callouts: List[Dict[str, object]] = []
+
+    perfect = curve[np.isclose(curve["accuracy"].to_numpy(dtype=float), 100.0)]
+    if len(perfect) > 0:
+        row = perfect.iloc[-1]
+        callouts.append(
+            {
+                "coverage": float(row["coverage"]),
+                "accuracy": float(row["accuracy"]),
+                "xytext": (7, -2),
+                "ha": "left",
+                "va": "top",
+            }
+        )
+
+    high_cov = curve[curve["coverage"] >= 10.0]
+    if len(high_cov) == 0:
+        high_cov = curve
+    above_80 = high_cov[high_cov["accuracy"] >= 80.0]
+    if len(above_80) > 0:
+        row = above_80.iloc[-1]
+    else:
+        idx = int(np.argmin(np.abs(high_cov["accuracy"].to_numpy(dtype=float) - 80.0)))
+        row = high_cov.iloc[idx]
+    callouts.append(
+        {
+            "coverage": float(row["coverage"]),
+            "accuracy": float(row["accuracy"]),
+            "xytext": (8, 10),
+            "ha": "left",
+            "va": "bottom",
+        }
+    )
+
+    row = curve.iloc[-1]
+    callouts.append(
+        {
+            "coverage": float(row["coverage"]),
+            "accuracy": float(row["accuracy"]),
+            "xytext": (-8, 6),
+            "ha": "right",
+            "va": "bottom",
+        }
+    )
+
+    deduped: List[Dict[str, object]] = []
+    seen: set[Tuple[int, int]] = set()
+    for item in callouts:
+        key = (int(round(float(item["coverage"]) * 10)), int(round(float(item["accuracy"]) * 10)))
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(item)
+    return deduped
+
+
 def _human_calibration_by_level(records: List[Tuple[float, int, int]]) -> List[Dict[str, float]]:
     """Return calibration points by self-reported confidence level (1..5)."""
     if not records:
@@ -361,6 +559,34 @@ def _human_selective_curve(records: List[Tuple[float, int, int]]) -> pd.DataFram
             "threshold": [r[2] for r in rows],
         }
     )
+
+
+def _load_figure5_pairwise_bundle() -> Dict[str, object]:
+    stats = load_json("S14_ED2PairwiseRawPValues")
+    order = [str(model) for model in stats.get("summary", {}).get("plotted_models", [])]
+    if not order:
+        raise ValueError("S14_ED2PairwiseRawPValues.json is missing plotted_models for Figure 5.")
+
+    metrics: Dict[str, Dict[str, float]] = {}
+    for model in order:
+        model_dir = PAIRWISE_METRIC_DIRS.get(model)
+        if model_dir is None:
+            raise ValueError(f"Unrecognized Figure 5 pairwise model label: {model}")
+        metrics_path = model_dir / "metrics.json"
+        if not metrics_path.exists():
+            raise FileNotFoundError(f"Missing Figure 5 pairwise metrics file: {metrics_path}")
+        payload = json.loads(metrics_path.read_text(encoding="utf-8"))
+        metrics[model] = {
+            "weighted_accuracy": float(payload["weighted_accuracy"]),
+            "total": float(payload["total"]),
+        }
+
+    comparisons = {
+        str(item["evaluator_2"]): item
+        for item in stats.get("comparisons", [])
+        if str(item.get("evaluator_1", "")) == "SFT GPT-4.1"
+    }
+    return {"stats": stats, "order": order, "metrics": metrics, "comparisons": comparisons}
 
 
 def _spearman_rho(x: np.ndarray, y: np.ndarray) -> float:
@@ -1214,6 +1440,7 @@ def make_figure3() -> plt.Figure:
 def make_figure4() -> plt.Figure:
     """Figure 4: SFT recovers tier discrimination across architectures."""
     table4 = load_csv("T03_SFTPerformance.csv")
+    table_base = load_csv("extended_data/ExtendedDataTable1_BaseModelControls.csv")
     table8 = load_csv("T04_AIvsHumanSummary.csv")
     stats23 = load_json("S12_GatekeeperStats")
     best_flagship_eval = (
@@ -1229,53 +1456,198 @@ def make_figure4() -> plt.Figure:
     )
 
     fig = plt.figure(figsize=(FIG_WIDTH, 7.1))
-    gs = gridspec.GridSpec(2, 2, hspace=0.45, wspace=0.52, width_ratios=[1.0, 1.25])
+    gs = gridspec.GridSpec(2, 2, hspace=0.45, wspace=0.58, width_ratios=[1.05, 1.20])
 
-    # Panel a: cleaner base -> SFT dumbbell by architecture
+    # Panel a: paired architecture view with accuracy above macro-F1.
     ax_a = fig.add_subplot(gs[0, 0])
     ax_a.set_title("a  Base-to-SFT gains by architecture", loc="left")
 
-    arch = ["GPT-4.1-nano", "Qwen3-4B", "Qwen3-30B", "GPT-4.1"]
-    base = np.array([24.2, 25.0, 22.5, 32.5])
-    sft = np.array([52.5, 51.7, 48.3, 47.5])
-    gains = sft - base
-
-    y = np.arange(len(arch))
-    for i in range(len(arch)):
-        ax_a.plot([base[i], sft[i]], [i, i], color="#B0B0B0", linewidth=1.2, zorder=1)
-        ax_a.scatter(base[i], i, color=PALETTE["frontier"], s=24, zorder=3, edgecolor="white", linewidth=0.4)
-        ax_a.scatter(sft[i], i, color=PALETTE["sft"], s=28, zorder=3, edgecolor="white", linewidth=0.4)
-        ax_a.text(sft[i] + 0.8, i, f"+{gains[i]:.1f} pp", va="center", fontsize=5.2)
-
-    ax_a.set_yticks(y)
-    ax_a.set_yticklabels(arch)
-    ax_a.invert_yaxis()
-    ax_a.set_ylabel("Accuracy (%)")
-    ax_a.set_xlabel("Accuracy (%)")
-    ax_a.set_xlim(19, 58)
-    ax_a.axvline(25, color=PALETTE["chance"], linestyle="--", linewidth=0.8)
-
-    handles_a = [
-        plt.Line2D([0], [0], marker="o", linestyle="", markersize=5, color=PALETTE["frontier"], label="Base model"),
-        plt.Line2D([0], [0], marker="o", linestyle="", markersize=5, color=PALETTE["sft"], label="SFT model"),
+    panel_a_specs = [
+        ("GPT-4.1-nano", "gpt-4.1-nano", "ckpt-step-304"),
+        ("Qwen3-4B", "qwen3-4b", "ckppt-228"),
+        ("Qwen3-30B", "qwen3-30b-a3b", "ckppt-380"),
+        ("GPT-4.1", "gpt-4.1", "CYqJRxId"),
     ]
-    legend_a = ax_a.legend(
-        handles=handles_a,
+    arch = [item[0] for item in panel_a_specs]
+    base_map: Dict[str, float] = {}
+    base_f1_map: Dict[str, float] = {}
+    for _, r in table_base.iterrows():
+        model = str(r["Model"])
+        if model.startswith("Base (") and model.endswith(")"):
+            base_map[model[len("Base (") : -1]] = float(r["Accuracy (%)"])
+            base_f1_map[model[len("Base (") : -1]] = float(r["Macro F1"]) * 100.0
+
+    sft_map: Dict[str, float] = {}
+    sft_f1_map: Dict[str, float] = {}
+    for _, r in table4.iterrows():
+        model = str(r["Model"])
+        if model.startswith("SFT (") and model.endswith(")"):
+            sft_map[model[len("SFT (") : -1]] = float(r["Accuracy"]) * 100.0
+            sft_f1_map[model[len("SFT (") : -1]] = float(r["Macro F1"]) * 100.0
+
+    missing_base = [name for name in arch if name not in base_map]
+    missing_sft = [name for name in arch if name not in sft_map]
+    if missing_base or missing_sft:
+        raise ValueError(
+            f"Figure 4 panel-a inputs missing values (base={missing_base}, sft={missing_sft})."
+        )
+
+    panel_a_rows = []
+    for idx, (name, base_key, sft_key) in enumerate(panel_a_specs):
+        base_metrics = _summarize_logp_model(CHAT_FILE, base_key, seed=110 + idx)
+        sft_metrics = _summarize_logp_model(SFT_FILE, sft_key, seed=210 + idx)
+        if abs(base_metrics["acc"] * 100.0 - base_map[name]) > 0.11:
+            raise ValueError(f"Base accuracy mismatch for {name}: table={base_map[name]:.1f}, raw={base_metrics['acc'] * 100.0:.2f}")
+        if abs(sft_metrics["acc"] * 100.0 - sft_map[name]) > 0.11:
+            raise ValueError(f"SFT accuracy mismatch for {name}: table={sft_map[name]:.1f}, raw={sft_metrics['acc'] * 100.0:.2f}")
+        if abs(base_metrics["macro_f1"] * 100.0 - base_f1_map[name]) > 0.11:
+            raise ValueError(
+                f"Base macro-F1 mismatch for {name}: table={base_f1_map[name]:.1f}, raw={base_metrics['macro_f1'] * 100.0:.2f}"
+            )
+        if abs(sft_metrics["macro_f1"] * 100.0 - sft_f1_map[name]) > 0.11:
+            raise ValueError(
+                f"SFT macro-F1 mismatch for {name}: table={sft_f1_map[name]:.1f}, raw={sft_metrics['macro_f1'] * 100.0:.2f}"
+            )
+        panel_a_rows.append({"arch": name, "base": base_metrics, "sft": sft_metrics})
+
+    y_center = np.arange(len(panel_a_rows), dtype=float) * 1.75
+    y_acc = y_center - 0.22
+    y_f1 = y_center + 0.22
+    gain_x = 72.0
+    marker_size = 5.0
+
+    for i, row in enumerate(panel_a_rows):
+        base_acc = float(row["base"]["acc"]) * 100.0
+        sft_acc = float(row["sft"]["acc"]) * 100.0
+        base_f1 = float(row["base"]["macro_f1"]) * 100.0
+        sft_f1 = float(row["sft"]["macro_f1"]) * 100.0
+
+        for y_val, base_val, sft_val in [
+            (y_acc[i], base_acc, sft_acc),
+            (y_f1[i], base_f1, sft_f1),
+        ]:
+            ax_a.plot([base_val, sft_val], [y_val, y_val], color="#B5B5B5", linewidth=1.15, zorder=1)
+
+        ax_a.errorbar(
+            base_acc,
+            y_acc[i],
+            xerr=[[base_acc - float(row["base"]["acc_lo"]) * 100.0], [float(row["base"]["acc_hi"]) * 100.0 - base_acc]],
+            fmt="o",
+            ms=marker_size,
+            color=PALETTE["frontier"],
+            ecolor=PALETTE["frontier"],
+            elinewidth=0.85,
+            capsize=2.0,
+            markeredgecolor="white",
+            markeredgewidth=0.45,
+            zorder=3,
+        )
+        ax_a.errorbar(
+            sft_acc,
+            y_acc[i],
+            xerr=[[sft_acc - float(row["sft"]["acc_lo"]) * 100.0], [float(row["sft"]["acc_hi"]) * 100.0 - sft_acc]],
+            fmt="o",
+            ms=marker_size + 0.2,
+            color=PALETTE["sft"],
+            ecolor=PALETTE["sft"],
+            elinewidth=0.9,
+            capsize=2.0,
+            markeredgecolor="white",
+            markeredgewidth=0.45,
+            zorder=4,
+        )
+        ax_a.errorbar(
+            base_f1,
+            y_f1[i],
+            xerr=[[base_f1 - float(row["base"]["macro_f1_lo"]) * 100.0], [float(row["base"]["macro_f1_hi"]) * 100.0 - base_f1]],
+            fmt="s",
+            ms=marker_size - 0.4,
+            color=PALETTE["frontier"],
+            ecolor=PALETTE["frontier"],
+            elinewidth=0.85,
+            capsize=2.0,
+            markeredgecolor="white",
+            markeredgewidth=0.45,
+            zorder=3,
+        )
+        ax_a.errorbar(
+            sft_f1,
+            y_f1[i],
+            xerr=[[sft_f1 - float(row["sft"]["macro_f1_lo"]) * 100.0], [float(row["sft"]["macro_f1_hi"]) * 100.0 - sft_f1]],
+            fmt="s",
+            ms=marker_size - 0.2,
+            color=PALETTE["sft"],
+            ecolor=PALETTE["sft"],
+            elinewidth=0.9,
+            capsize=2.0,
+            markeredgecolor="white",
+            markeredgewidth=0.45,
+            zorder=4,
+        )
+
+        ax_a.text(gain_x, y_acc[i], f"+{sft_acc - base_acc:.1f} pp", va="center", ha="left", fontsize=5.0, color="#333333")
+        ax_a.text(gain_x, y_f1[i], f"+{sft_f1 - base_f1:.1f} pp", va="center", ha="left", fontsize=5.0, color="#555555")
+
+    ax_a.set_yticks(y_center)
+    ax_a.set_yticklabels([row["arch"] for row in panel_a_rows])
+    ax_a.invert_yaxis()
+    ax_a.set_ylabel("Architecture")
+    ax_a.set_xlabel("Score (%)")
+    ax_a.set_xlim(0, 80)
+    ax_a.set_ylim(y_center[-1] + 0.85, -1.15)
+    ax_a.set_xticks(np.arange(0, 81, 10))
+    ax_a.axvline(25, color=PALETTE["chance"], linestyle="--", linewidth=0.8)
+    ax_a.grid(axis="x", color="#ECECEC", linewidth=0.55)
+
+    color_handles = [
+        plt.Line2D([0], [0], marker="o", linestyle="", markersize=4.8, color=PALETTE["frontier"], label="Base"),
+        plt.Line2D([0], [0], marker="o", linestyle="", markersize=4.8, color=PALETTE["sft"], label="SFT"),
+    ]
+    metric_handles = [
+        plt.Line2D([0], [0], marker="o", linestyle="", markersize=4.6, color=PALETTE["neutral"], markerfacecolor="white", label="Accuracy"),
+        plt.Line2D([0], [0], marker="s", linestyle="", markersize=4.2, color=PALETTE["neutral"], markerfacecolor="white", label="Macro-F1"),
+    ]
+    legend_color = ax_a.legend(
+        handles=color_handles,
         loc="upper left",
-        bbox_to_anchor=(1.02, 1.02),
-        ncol=1,
-        fontsize=4.8,
+        bbox_to_anchor=(0.03, 0.985),
+        ncol=2,
+        fontsize=4.5,
         borderaxespad=0.0,
-        handletextpad=0.3,
-        labelspacing=0.35,
+        handletextpad=0.25,
+        columnspacing=0.8,
+        labelspacing=0.2,
+    )
+    ax_a.add_artist(legend_color)
+    legend_a = ax_a.legend(
+        handles=metric_handles,
+        loc="upper left",
+        bbox_to_anchor=(0.43, 0.985),
+        ncol=2,
+        fontsize=4.5,
+        borderaxespad=0.0,
+        handletextpad=0.25,
+        columnspacing=0.8,
+        labelspacing=0.2,
     )
     place_reference_label_safely(
         ax_a,
         "Chance (25%)",
         preferred_anchor="lower left",
-        blockers=[legend_a, getattr(ax_a, "_left_title", None)],
+        blockers=[legend_color, legend_a, getattr(ax_a, "_left_title", None)],
         color=PALETTE["chance"],
-        fontsize=5.1,
+        fontsize=5.0,
+    )
+    ax_a.text(
+        0.98,
+        0.03,
+        "95% bootstrap CI",
+        transform=ax_a.transAxes,
+        ha="right",
+        va="bottom",
+        fontsize=4.9,
+        color="#666666",
+        bbox={"boxstyle": "round,pad=0.14", "facecolor": "white", "edgecolor": "#D8D8D8"},
     )
 
     # Panel b: Expanded comparison with requested evaluators + CI
@@ -1499,10 +1871,8 @@ def make_figure4() -> plt.Figure:
 
 
 def make_figure5() -> plt.Figure:
-    """Figure 5: Calibration, triage, and human-AI complementarity."""
-    stats10 = load_json("S07_CalibrationStats")
+    """Figure 5: Self-knowledge, selective triage, and pairwise ranking generalization."""
     table_s12 = load_csv("T12_ConfidenceComparison.csv")
-    table_s7 = load_csv("T13_CalibrationMetrics.csv")
 
     trained_path = SFT_FILE
     chat_path = REPORTS_ROOT / "data" / "predictions" / "chat_predictions.jsonl"
@@ -1536,18 +1906,6 @@ def make_figure5() -> plt.Figure:
             "marker": "o",
             "linestyle": "-",
         },
-        "Expert voting": {
-            "color": "#4DBBD5",
-            "label": "Expert voting",
-            "marker": "^",
-            "linestyle": "-",
-        },
-        "Student voting": {
-            "color": "#00A087",
-            "label": "Junior voting",
-            "marker": "^",
-            "linestyle": "-",
-        },
         "Human Expert": {
             "color": "#1F78B4",
             "label": "Human expert (1-5)",
@@ -1562,21 +1920,7 @@ def make_figure5() -> plt.Figure:
         },
     }
 
-    calibration_order = [
-        "SFT 2-Model Ensemble",
-        "GPT-5.2 (chat)",
-        "Kimi K2 Chat",
-        "DeepSeek Chat",
-        "Expert voting",
-        "Student voting",
-    ]
     panel_b_order = [
-        "SFT 2-Model Ensemble",
-        "GPT-5.2 (chat)",
-        "Kimi K2 Chat",
-        "DeepSeek Chat",
-    ]
-    panel_cd_order = [
         "SFT 2-Model Ensemble",
         "GPT-5.2 (chat)",
         "Kimi K2 Chat",
@@ -1588,16 +1932,18 @@ def make_figure5() -> plt.Figure:
         "GPT-5.2 (chat)": _collect_logp_confidence_records(chat_path, "gpt-5.2"),
         "Kimi K2 Chat": _collect_logp_confidence_records(chat_path, "kimi-k2-0905-preview"),
         "DeepSeek Chat": _collect_logp_confidence_records(chat_path, "deepseek-chat"),
-        "Expert voting": _collect_human_voting_confidence_records(expert_path),
-        "Student voting": _collect_human_voting_confidence_records(student_filtered_path),
     }
-
     human_records = {
         "Human Expert": _collect_human_rating_confidence_records(expert_path),
         "Human Student": _collect_human_rating_confidence_records(student_filtered_path),
     }
+    pairwise_bundle = _load_figure5_pairwise_bundle()
+    pairwise_stats = pairwise_bundle["stats"]  # type: ignore[assignment]
+    pairwise_order = pairwise_bundle["order"]  # type: ignore[assignment]
+    pairwise_metrics = pairwise_bundle["metrics"]  # type: ignore[assignment]
+    pairwise_comparisons = pairwise_bundle["comparisons"]  # type: ignore[assignment]
 
-    fig = plt.figure(figsize=(FIG_WIDTH, 7.25))
+    fig = plt.figure(figsize=(FIG_WIDTH, 7.0))
     gs = gridspec.GridSpec(2, 2, hspace=0.60, wspace=0.35)
 
     # Panel a: Confidence discrimination
@@ -1610,18 +1956,14 @@ def make_figure5() -> plt.Figure:
         "Human Expert",
         "Human Student",
     ]
-
     rows = []
     for name in keep_order:
         row = table_s12.loc[table_s12["model"] == name].iloc[0]
         corr = row["conf_correct"]
         wrong = row["conf_wrong"]
-
-        # Human rows use 1-5 raw scale; map to 0-1 via (x-1)/4.
         if pd.isna(corr) or pd.isna(wrong):
             corr = _normalize_confidence_1_to_5(float(row["conf_correct_raw"]))
             wrong = _normalize_confidence_1_to_5(float(row["conf_wrong_raw"]))
-
         rows.append(
             {
                 "name": name,
@@ -1633,7 +1975,6 @@ def make_figure5() -> plt.Figure:
 
     x = np.arange(len(rows))
     width = 0.34
-
     colors = [PALETTE["sft"], PALETTE["frontier"], PALETTE["expert"], PALETTE["junior"]]
     for i, row in enumerate(rows):
         ax_a.bar(i - width / 2, row["correct"], width=width, color=colors[i], alpha=0.9)
@@ -1655,115 +1996,18 @@ def make_figure5() -> plt.Figure:
         color="#555555",
         bbox={"boxstyle": "round,pad=0.14", "facecolor": "white", "edgecolor": "none", "alpha": 0.85},
     )
-    # Panel b: Reliability diagrams
+
+    # Panel b: Selective prediction
     ax_b = fig.add_subplot(gs[0, 1])
-    ax_b.set_title("b  Reliability curves", loc="left")
-
-    ax_b.plot([0, 1], [0, 1], linestyle="--", color=PALETTE["chance"], linewidth=0.8)
-
-    for key in panel_b_order:
-        bins = stats10["calibration_bins"].get(key, [])
-        if not bins:
-            continue
-        x_vals = [float(b["mean_conf"]) for b in bins]
-        y_vals = [float(b["frac_correct"]) for b in bins]
-        st = style[key]
-        ax_b.plot(
-            x_vals,
-            y_vals,
-            marker=st["marker"],
-            linestyle=st["linestyle"],
-            color=st["color"],
-            markersize=3,
-            linewidth=1.0,
-            label=st["label"],
-        )
-
-    # Human confidence-level calibration points (1..5 -> 0..1).
-    for human_name in ["Human Expert", "Human Student"]:
-        points = _human_calibration_by_level(human_records[human_name])
-        if not points:
-            continue
-        x_vals = [float(p["mean_conf"]) for p in points]
-        y_vals = [float(p["frac_correct"]) for p in points]
-        st = style[human_name]
-        ax_b.plot(
-            x_vals,
-            y_vals,
-            marker=st["marker"],
-            linestyle=st["linestyle"],
-            color=st["color"],
-            markersize=3,
-            linewidth=1.0,
-            label=st["label"],
-        )
-        for p in points:
-            # Annotate only endpoints (1 and 5) to reduce in-panel text clutter.
-            if int(p["level"]) not in {1, 5}:
-                continue
-            dx = 0.01 if int(p["level"]) == 1 else 0.004
-            dy = 0.01 if int(p["level"]) == 1 else 0.006
-            ax_b.text(
-                float(p["mean_conf"]) + dx,
-                float(p["frac_correct"]) + dy,
-                str(int(p["level"])),
-                fontsize=4.2,
-                color=st["color"],
-            )
-
-    ax_b.set_xlabel("Mean predicted confidence")
-    ax_b.set_ylabel("Observed accuracy")
-    ax_b.set_xlim(0, 1)
-    ax_b.set_ylim(0, 1)
-    legend_b = ax_b.legend(
-        loc="upper center",
-        bbox_to_anchor=(0.5, -0.18),
-        fontsize=4.5,
-        ncol=2,
-        columnspacing=0.9,
-        handlelength=2.0,
-        borderaxespad=0.2,
-        frameon=True,
-    )
-    legend_b.get_frame().set_facecolor("white")
-    legend_b.get_frame().set_alpha(0.92)
-    legend_b.get_frame().set_edgecolor("#C8C8C8")
-
-    metric_rows = table_s7.set_index("evaluator")
-    ece_rows = [
-        ("SFT", "SFT 2-Model Ensemble"),
-        ("GPT", "GPT-5.2 (chat)"),
-        ("Kimi", "Kimi K2 Chat"),
-        ("DeepSeek", "DeepSeek Chat"),
-    ]
-    ece_lines = ["ECE/Brier (logp)"]
-    for short, key in ece_rows:
-        if key in metric_rows.index:
-            ece = float(metric_rows.loc[key, "ece"])
-            brier = float(metric_rows.loc[key, "brier_score"])
-            ece_lines.append(f"{short}: {ece:.3f}/{brier:.3f}")
-
-    ax_b.text(
-        0.02,
-        0.98,
-        "\n".join(ece_lines),
-        transform=ax_b.transAxes,
-        va="top",
-        fontsize=4.2,
-        bbox={"boxstyle": "round,pad=0.25", "facecolor": "white", "edgecolor": "#CCCCCC"},
-    )
-
-    # Panel c: Selective prediction (risk-coverage)
-    ax_c = fig.add_subplot(gs[1, 0])
-    ax_c.set_title("c  Selective prediction", loc="left")
+    ax_b.set_title("b  Selective prediction", loc="left")
 
     sft_curve = pd.DataFrame(columns=["coverage", "accuracy"])
-    for key in panel_cd_order:
+    for key in panel_b_order:
         curve = _selective_curve_from_confidence(ai_confidence_records.get(key, []))
         if len(curve) == 0:
             continue
         st = style[key]
-        ax_c.plot(
+        ax_b.plot(
             curve["coverage"],
             curve["accuracy"],
             color=st["color"],
@@ -1772,7 +2016,7 @@ def make_figure5() -> plt.Figure:
             label=st["label"],
         )
         step = max(1, len(curve) // 10)
-        ax_c.scatter(
+        ax_b.scatter(
             curve["coverage"].iloc[::step],
             curve["accuracy"].iloc[::step],
             color=st["color"],
@@ -1788,7 +2032,7 @@ def make_figure5() -> plt.Figure:
         if len(curve) == 0:
             continue
         st = style[human_name]
-        ax_c.plot(
+        ax_b.plot(
             curve["coverage"],
             curve["accuracy"],
             color=st["color"],
@@ -1800,24 +2044,29 @@ def make_figure5() -> plt.Figure:
         )
 
     if len(sft_curve) > 0:
-        for target_cov in [8, 27, 100]:
-            idx = int(np.argmin(np.abs(sft_curve["coverage"].to_numpy(dtype=float) - float(target_cov))))
-            cov_val = float(sft_curve.iloc[idx]["coverage"])
-            acc_val = float(sft_curve.iloc[idx]["accuracy"])
-            ax_c.scatter([cov_val], [acc_val], color="#111111", s=14, zorder=4)
-            if target_cov == 100:
-                ax_c.text(cov_val - 11.0, acc_val + 1.2, f"{cov_val:.0f}% -> {acc_val:.1f}%", fontsize=4.8)
-            elif target_cov == 8:
-                ax_c.text(cov_val + 1.5, min(acc_val + 1.2, 99.2), f"{cov_val:.0f}% -> {acc_val:.1f}%", fontsize=4.8)
-            else:
-                ax_c.text(cov_val + 1.5, acc_val + 1.2, f"{cov_val:.0f}% -> {acc_val:.1f}%", fontsize=4.8)
+        for item in _selective_curve_callouts(sft_curve):
+            cov_val = float(item["coverage"])
+            acc_val = float(item["accuracy"])
+            ax_b.scatter([cov_val], [acc_val], color="#111111", s=14, zorder=4)
+            ax_b.annotate(
+                f"{_format_pct_label(cov_val)} -> {acc_val:.1f}%",
+                xy=(cov_val, acc_val),
+                xytext=item["xytext"],
+                textcoords="offset points",
+                ha=str(item["ha"]),
+                va=str(item["va"]),
+                fontsize=4.8,
+                bbox={"boxstyle": "round,pad=0.12", "facecolor": "white", "edgecolor": "none", "alpha": 0.88},
+                annotation_clip=False,
+                zorder=5,
+            )
 
-    ax_c.axhline(25, color=PALETTE["chance"], linestyle="--", linewidth=0.7)
-    ax_c.set_xlabel("Coverage (% highest-confidence predictions)")
-    ax_c.set_ylabel("Accuracy (%)")
-    ax_c.set_xlim(0, 100)
-    ax_c.set_ylim(20, 100)
-    legend_c = ax_c.legend(
+    ax_b.axhline(25, color=PALETTE["chance"], linestyle="--", linewidth=0.7)
+    ax_b.set_xlabel("Coverage (% highest-confidence predictions)")
+    ax_b.set_ylabel("Accuracy (%)")
+    ax_b.set_xlim(0, 100)
+    ax_b.set_ylim(20, 100)
+    legend_b = ax_b.legend(
         loc="upper right",
         bbox_to_anchor=(0.985, 0.90),
         fontsize=4.4,
@@ -1828,95 +2077,98 @@ def make_figure5() -> plt.Figure:
         borderaxespad=0.25,
         frameon=True,
     )
-    legend_c.get_frame().set_facecolor("white")
-    legend_c.get_frame().set_alpha(0.92)
-    legend_c.get_frame().set_edgecolor("#C8C8C8")
+    legend_b.get_frame().set_facecolor("white")
+    legend_b.get_frame().set_alpha(0.92)
+    legend_b.get_frame().set_edgecolor("#C8C8C8")
 
-    # Panel d: Confidence-accuracy overview
+    # Panel c: Overall pairwise accuracy with raw paired tests
+    ax_c = fig.add_subplot(gs[1, 0])
+    ax_c.set_title("c  Pairwise ranking generalizes beyond tier labels", loc="left")
+
+    pairwise_colors = [PAIRWISE_COLORS[model] for model in pairwise_order]
+    x = np.arange(len(pairwise_order))
+    acc_vals = []
+    ci_vals = []
+    for model in pairwise_order:
+        p = float(pairwise_metrics[model]["weighted_accuracy"])
+        n = float(pairwise_metrics[model]["total"])
+        acc_vals.append(p * 100.0)
+        ci_vals.append(float(binomial_ci(np.array([p]), np.array([n]))[0]) * 100.0)
+
+    bars = ax_c.bar(x, acc_vals, yerr=ci_vals, capsize=3, color=pairwise_colors, edgecolor="white")
+    ax_c.set_xticks(x)
+    ax_c.set_xticklabels([PAIRWISE_SHORT_LABELS[model] for model in pairwise_order], rotation=18, ha="right")
+    ax_c.set_ylabel("Weighted accuracy (%)")
+    ax_c.set_ylim(65, 90)
+    for i, bar in enumerate(bars):
+        ax_c.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + ci_vals[i] + 0.25,
+            f"{acc_vals[i]:.1f}",
+            ha="center",
+            fontsize=5.8,
+        )
+    for i, model in enumerate(pairwise_order[1:], start=1):
+        comp = pairwise_comparisons.get(model)
+        if comp is None:
+            continue
+        ax_c.text(
+            x[i],
+            66.0,
+            f"p={_format_p_value(float(comp['p_value_raw']))}",
+            ha="center",
+            va="bottom",
+            fontsize=5.1,
+            color="white",
+        )
+    ax_c.text(
+        0.98,
+        0.97,
+        "95% binomial CI\nraw exact McNemar p vs SFT",
+        transform=ax_c.transAxes,
+        ha="right",
+        va="top",
+        fontsize=4.6,
+        bbox={"boxstyle": "round,pad=0.18", "facecolor": "white", "edgecolor": "#CCCCCC", "alpha": 0.9},
+    )
+
+    # Panel d: Hard-boundary pairwise summary
     ax_d = fig.add_subplot(gs[1, 1])
-    ax_d.set_title("d  Mean confidence vs accuracy", loc="left")
+    ax_d.set_title("d  Pairwise gains peak at the hardest boundaries", loc="left")
 
-    short_label = {
-        "SFT 2-Model Ensemble": "SFT ensemble",
-        "GPT-5.2 (chat)": "GPT-5.2 chat",
-        "Kimi K2 Chat": "Kimi K2 chat",
-        "DeepSeek Chat": "DeepSeek chat",
-        "Human Expert": "Human expert",
-        "Human Student": "Human junior",
+    pair_type_accuracy = pairwise_stats["pair_type_accuracy_pct"]  # type: ignore[index]
+    x_pair_type = "strong_exceptional"
+    y_pair_type = "fair_strong"
+    label_offsets = {
+        "SFT GPT-4.1": (0.8, 0.2),
+        "Gemini 3.1 Pro": (0.6, 0.3),
+        "GPT-5.2 High": (0.6, 0.1),
+        "GPT-4.1 Baseline": (0.6, -0.4),
     }
-    text_offsets = {
-        "SFT 2-Model Ensemble": (0.010, 0.012),
-        "GPT-5.2 (chat)": (0.010, 0.007),
-        "Kimi K2 Chat": (0.035, -0.008),
-        "DeepSeek Chat": (0.008, -0.012),
-        "Human Expert": (-0.120, 0.012),
-        "Human Student": (0.008, 0.004),
-    }
-    label_style = {
-        "fontsize": 5.0,
-        "bbox": {
-            "boxstyle": "round,pad=0.10",
-            "facecolor": "white",
-            "edgecolor": "none",
-            "alpha": 0.82,
-        },
-    }
+    for model in pairwise_order:
+        x_val = float(pair_type_accuracy[model][x_pair_type]["accuracy_pct"])
+        y_val = float(pair_type_accuracy[model][y_pair_type]["accuracy_pct"])
+        color = PAIRWISE_COLORS[model]
+        ax_d.scatter(x_val, y_val, s=64, color=color, edgecolor="white", linewidth=0.6, zorder=3)
+        dx, dy = label_offsets.get(model, (0.6, 0.2))
+        ax_d.text(x_val + dx, y_val + dy, PAIRWISE_SHORT_LABELS[model], fontsize=5.4, color=color, va="center")
 
-    for key in panel_cd_order:
-        recs = ai_confidence_records.get(key, [])
-        if not recs:
-            continue
-        conf_vals = np.asarray([r[0] for r in recs], dtype=float)
-        correct_vals = np.asarray([r[1] for r in recs], dtype=float)
-        x_val = float(np.mean(conf_vals))
-        y_val = float(np.mean(correct_vals))
-        st = style[key]
-        ax_d.scatter(
-            [x_val],
-            [y_val],
-            s=58,
-            color=st["color"],
-            marker=st["marker"],
-            edgecolor="black",
-            linewidths=0.35,
-            alpha=0.95,
-        )
-        dx, dy = text_offsets[key]
-        ax_d.text(x_val + dx, y_val + dy, short_label[key], **label_style)
-
-    for key in ["Human Expert", "Human Student"]:
-        recs = human_records.get(key, [])
-        if not recs:
-            continue
-        x_val = float(np.mean([r[0] for r in recs]))
-        y_val = float(np.mean([r[2] for r in recs]))
-        st = style[key]
-        ax_d.scatter(
-            [x_val],
-            [y_val],
-            s=62,
-            color=st["color"],
-            marker=st["marker"],
-            edgecolor="black",
-            linewidths=0.35,
-            alpha=0.95,
-        )
-        dx, dy = text_offsets[key]
-        ax_d.annotate(
-            short_label[key],
-            xy=(x_val, y_val),
-            xytext=(x_val + dx, y_val + dy),
-            textcoords="data",
-            arrowprops={"arrowstyle": "-", "lw": 0.45, "color": st["color"], "alpha": 0.7},
-            **label_style,
-        )
-
-    ax_d.plot([0, 1], [0, 1], linestyle="--", color=PALETTE["chance"], linewidth=0.8)
-    ax_d.set_xlim(0.0, 1.0)
-    ax_d.set_ylim(0.0, 1.0)
-    ax_d.set_aspect("equal", adjustable="box")
-    ax_d.set_xlabel("Mean confidence")
-    ax_d.set_ylabel("Accuracy")
+    ax_d.set_xlim(48, 66.5)
+    ax_d.set_ylim(64, 86.5)
+    ax_d.set_xlabel("Strong vs Exceptional accuracy (%)")
+    ax_d.set_ylabel("Fair vs Strong accuracy (%)")
+    ax_d.grid(linestyle=":", alpha=0.4, zorder=0)
+    ax_d.text(
+        0.98,
+        0.02,
+        "50 pairs per boundary\nhardest adjacent and top-end contrasts",
+        transform=ax_d.transAxes,
+        ha="right",
+        va="bottom",
+        fontsize=4.8,
+        color="#444444",
+        bbox={"boxstyle": "round,pad=0.14", "facecolor": "white", "edgecolor": "none", "alpha": 0.82},
+    )
 
     fig.tight_layout()
     return fig

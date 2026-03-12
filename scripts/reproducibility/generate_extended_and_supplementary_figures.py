@@ -10,6 +10,7 @@ Design goals:
 from __future__ import annotations
 
 import json
+import itertools
 import math
 from collections import Counter
 from pathlib import Path
@@ -21,6 +22,7 @@ matplotlib.use("Agg")
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
+import matplotlib.transforms as mtransforms
 import numpy as np
 import pandas as pd
 
@@ -43,6 +45,7 @@ OUT_NOTES = ROOT / "reproduced" / "notes"
 
 STATS_DIR = ROOT / "data" / "statistics"
 TABLES_DIR = ROOT / "data" / "tables"
+PAIRWISE_RAW_STATS_PATH = STATS_DIR / "S14_ED2PairwiseRawPValues.json"
 
 PROMPT_SIMPLE = PROJECT_ROOT / "data" / "predictions" / "prompt_variants" / "simple_prompt_predictions.jsonl"
 PROMPT_JOURNAL = PROJECT_ROOT / "data" / "predictions" / "prompt_variants" / "journal_prompt_predictions.jsonl"
@@ -52,14 +55,30 @@ THINKING_PATH = PROJECT_ROOT / "data" / "predictions" / "frontier_10models_8runs
 TRAINED_PATH = PROJECT_ROOT / "data" / "predictions" / "sft_predictions.jsonl"
 CHAT_PATH = PROJECT_ROOT / "data" / "predictions" / "chat_predictions.jsonl"
 RL_PATH = PROJECT_ROOT / "data" / "predictions" / "rl_predictions.jsonl"
+TEMPORAL_OLD_PATH = PROJECT_ROOT / "data" / "predictions" / "sft_temporal_old_predictions.jsonl"
 
 PAIRWISE_ROOT = PROJECT_ROOT / "data" / "pairwise"
 PAIRWISE_FRONTIER_GEMINI = PAIRWISE_ROOT / "frontier_gemini3_1_pro"
-PAIRWISE_FRONTIER_GROK = PAIRWISE_ROOT / "frontier_grok4_1_fast"
 
 LABELS = ["exceptional", "strong", "fair", "limited"]
 LABELS_SHORT = ["Exc", "Str", "Fair", "Ltd"]
 LABELS_TITLE = ["Exceptional", "Strong", "Fair", "Limited"]
+PAIR_TYPE_ORDER = [
+    "strong_exceptional",
+    "fair_strong",
+    "fair_exceptional",
+    "limited_fair",
+    "limited_exceptional",
+    "limited_strong",
+]
+PAIR_TYPE_LABELS = {
+    "strong_exceptional": "Strong vs Exceptional",
+    "fair_strong": "Fair vs Strong",
+    "fair_exceptional": "Fair vs Exceptional",
+    "limited_fair": "Limited vs Fair",
+    "limited_exceptional": "Limited vs Exceptional",
+    "limited_strong": "Limited vs Strong",
+}
 
 COLORS = {
     "sft": "#0072B2",
@@ -112,6 +131,12 @@ def _binom_ci95(p: float, n: int) -> float:
     if n <= 0:
         return 0.0
     return 1.96 * math.sqrt(max(p * (1.0 - p), 0.0) / n)
+
+
+def _format_p_value(p: float) -> str:
+    if p < 0.001:
+        return f"{p:.2e}"
+    return f"{p:.4f}"
 
 
 def _bootstrap_mean_ci(values: np.ndarray, n_boot: int = 4000, seed: int = 42) -> Tuple[float, float]:
@@ -1051,16 +1076,319 @@ def make_sf7_prompt_sensitivity_all_models_v2(
     return _save(fig, out_base)
 
 
+def _compute_classifier_metrics(records: List[Tuple[str, str]]) -> Dict[str, object]:
+    cm = _compute_confusion_from_records(records)
+    n = int(cm.sum())
+    tp = np.diag(cm).astype(float)
+    row_sum = cm.sum(axis=1).astype(float)
+    col_sum = cm.sum(axis=0).astype(float)
+    acc = float(tp.sum() / n) if n > 0 else float("nan")
+    recall = np.divide(tp, row_sum, out=np.zeros_like(tp), where=row_sum > 0)
+    precision = np.divide(tp, col_sum, out=np.zeros_like(tp), where=col_sum > 0)
+    f1 = np.divide(
+        2.0 * precision * recall,
+        precision + recall,
+        out=np.zeros_like(tp),
+        where=(precision + recall) > 0,
+    )
+    return {
+        "records": records,
+        "cm": cm,
+        "n": n,
+        "acc": acc,
+        "acc_ci": _binom_ci95(acc, n),
+        "macro_f1": float(np.mean(f1)),
+        "recall": recall,
+        "precision": precision,
+        "pred_dist": np.divide(cm.sum(axis=0), n, out=np.zeros(4, dtype=float), where=n > 0),
+        "exceptional_recall": float(recall[0]) if recall.size > 0 else float("nan"),
+        "exceptional_precision": float(precision[0]) if precision.size > 0 else float("nan"),
+        "strong_to_exceptional": float(cm[1, 0] / row_sum[1]) if row_sum[1] > 0 else float("nan"),
+        "one_step_over": float((cm[1, 0] + cm[2, 1] + cm[3, 2]) / n) if n > 0 else float("nan"),
+        "one_step_under": float((cm[0, 1] + cm[1, 2] + cm[2, 3]) / n) if n > 0 else float("nan"),
+    }
+
+
+def _bootstrap_classifier_metrics(records: List[Tuple[str, str]], n_boot: int = 4000, seed: int = 42) -> Dict[str, Tuple[float, float]]:
+    if not records:
+        nan_pair = (float("nan"), float("nan"))
+        return {
+            "macro_f1": nan_pair,
+            "exceptional_precision": nan_pair,
+            "exceptional_recall": nan_pair,
+            "strong_to_exceptional": nan_pair,
+        }
+
+    rng = np.random.default_rng(seed)
+    arr = np.asarray(records, dtype=object)
+    out = {
+        "macro_f1": [],
+        "exceptional_precision": [],
+        "exceptional_recall": [],
+        "strong_to_exceptional": [],
+    }
+    for _ in range(n_boot):
+        idx = rng.integers(0, len(arr), size=len(arr))
+        sample = [(str(gt), str(pred)) for gt, pred in arr[idx]]
+        metrics = _compute_classifier_metrics(sample)
+        for key in out:
+            out[key].append(float(metrics[key]))
+    return {
+        key: (float(np.percentile(values, 2.5)), float(np.percentile(values, 97.5)))
+        for key, values in out.items()
+    }
+
+
+def _load_prediction_records(path: Path, allowed_keys: set[str] | None = None) -> Dict[str, List[Tuple[str, str]]]:
+    per_model: Dict[str, List[Tuple[str, str]]] = {}
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            row = json.loads(line)
+            gt = _normalize_pred_label(row.get("rank", ""))
+            if gt not in LABELS:
+                continue
+            rq = row.get("val_outcome", {}).get("rq_with_context", {})
+            if not isinstance(rq, dict):
+                continue
+            for model_key, model_out in rq.items():
+                if allowed_keys is not None and model_key not in allowed_keys:
+                    continue
+                if not isinstance(model_out, dict):
+                    continue
+                pred = _normalize_pred_label(model_out.get("prediction_majority") or model_out.get("prediction"))
+                if pred not in LABELS:
+                    pred = _extract_prediction_from_model_output(model_out)
+                if pred in LABELS:
+                    per_model.setdefault(model_key, []).append((gt, pred))
+    return per_model
+
+
+def _prediction_from_logp_label_order(logp: Dict[str, object]) -> str | None:
+    """Resolve a log-probability prediction with canonical label-order tie handling."""
+    best_label: str | None = None
+    best_score = float("-inf")
+    for label in LABELS:
+        score = float("-inf")
+        for raw_label, raw_score in logp.items():
+            if _normalize_pred_label(str(raw_label)) != label:
+                continue
+            try:
+                score = float(raw_score)
+            except (TypeError, ValueError):
+                score = float("-inf")
+            break
+        if score > best_score:
+            best_score = score
+            best_label = label
+    return best_label
+
+
+def _load_prediction_records_label_order(path: Path, allowed_keys: set[str] | None = None) -> Dict[str, List[Tuple[str, str]]]:
+    """Load fixed-label predictions using the package's canonical label-order tie rule."""
+    per_model: Dict[str, List[Tuple[str, str]]] = {}
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            row = json.loads(line)
+            gt = _normalize_pred_label(row.get("rank", ""))
+            if gt not in LABELS:
+                continue
+            rq = row.get("val_outcome", {}).get("rq_with_context", {})
+            if not isinstance(rq, dict):
+                continue
+            for model_key, model_out in rq.items():
+                if allowed_keys is not None and model_key not in allowed_keys:
+                    continue
+                if not isinstance(model_out, dict):
+                    continue
+                pred = _normalize_pred_label(model_out.get("prediction_majority") or model_out.get("prediction"))
+                if pred not in LABELS:
+                    logp = model_out.get("logp")
+                    if isinstance(logp, dict) and logp:
+                        pred = _prediction_from_logp_label_order(logp)
+                    else:
+                        pred = _extract_prediction_from_model_output(model_out)
+                if pred in LABELS:
+                    per_model.setdefault(model_key, []).append((gt, pred))
+    return per_model
+
+
+def _logp_to_probability_vector(logp: Dict[str, object]) -> np.ndarray:
+    vals = np.array([float(logp.get(label, -1e10)) for label in LABELS], dtype=float)
+    vals = vals - np.max(vals)
+    probs = np.exp(vals)
+    denom = float(np.sum(probs))
+    if denom <= 0:
+        return np.zeros(len(LABELS), dtype=float)
+    return probs / denom
+
+
+def _build_probability_averaged_ensemble(
+    path: Path,
+    model_keys: Tuple[str, ...],
+    key: str,
+    label: str,
+    color: str,
+    marker: str,
+) -> Dict[str, object]:
+    records: List[Tuple[str, str]] = []
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            row = json.loads(line)
+            gt = _normalize_pred_label(row.get("rank", ""))
+            if gt not in LABELS:
+                continue
+            rq = row.get("val_outcome", {}).get("rq_with_context", {})
+            if not isinstance(rq, dict):
+                continue
+            probs: List[np.ndarray] = []
+            for model_key in model_keys:
+                model_out = rq.get(model_key, {})
+                logp = model_out.get("logp") if isinstance(model_out, dict) else None
+                if not isinstance(logp, dict) or not logp:
+                    probs = []
+                    break
+                probs.append(_logp_to_probability_vector(logp))
+            if not probs:
+                continue
+            pred = LABELS[int(np.argmax(np.mean(probs, axis=0)))]
+            records.append((gt, pred))
+
+    if not records:
+        raise ValueError(f"No rows available to build ensemble {label} from {path.name}.")
+
+    metrics = _compute_classifier_metrics(records)
+    metrics["macro_f1_ci"] = _bootstrap_classifier_metrics(records)["macro_f1"]
+    return {
+        "key": key,
+        "label": label,
+        "color": color,
+        "marker": marker,
+        "member_keys": list(model_keys),
+        **metrics,
+    }
+
+
+def load_temporal_trace_comparison_data() -> Dict[str, object]:
+    recent_specs = [
+        ("ckpt-step-304", "Recent GPT-4.1-nano", COLORS["sft"], "o"),
+        ("ckppt-380", "Recent Qwen3-30B", COLORS["sft"], "o"),
+    ]
+    recent_keys = {key for key, _, _, _ in recent_specs}
+    recent_records = _load_prediction_records_label_order(TRAINED_PATH, allowed_keys=recent_keys)
+
+    recent_items: List[Dict[str, object]] = []
+    for model_key, label, color, marker in recent_specs:
+        records = recent_records.get(model_key, [])
+        if not records:
+            continue
+        metrics = _compute_classifier_metrics(records)
+        metrics["macro_f1_ci"] = _bootstrap_classifier_metrics(records)["macro_f1"]
+        recent_items.append(
+            {
+                "key": model_key,
+                "label": label,
+                "color": color,
+                "marker": marker,
+                **metrics,
+            }
+        )
+
+    if not recent_items:
+        raise ValueError("No recent SFT records found in package-local sft_predictions.jsonl.")
+
+    ensemble = _build_probability_averaged_ensemble(
+        TRAINED_PATH,
+        ("ckpt-step-304", "ckppt-380"),
+        "matched_2_model_combo",
+        "Recent matched 2-model ensemble",
+        "#003B73",
+        "D",
+    )
+    recent_items.append(ensemble)
+
+    old_specs = [
+        ("ft:gpt-4.1-nano-2025-04-14:personal:ob-rqcontext-old:DI3q8ijY", "Older-trace GPT-4.1-nano", "#C44E52", "s"),
+        ("old_qwen30b_checkpoint_178", "Older-trace Qwen3-30B", "#8172B2", "s"),
+    ]
+    old_keys = {key for key, _, _, _ in old_specs}
+    old_records_by_key = _load_prediction_records_label_order(TEMPORAL_OLD_PATH, allowed_keys=old_keys)
+    if not old_records_by_key:
+        raise ValueError(f"No old-trace prediction records found in {TEMPORAL_OLD_PATH}")
+    old_items: List[Dict[str, object]] = []
+    for model_key, label, color, marker in old_specs:
+        records = old_records_by_key.get(model_key, [])
+        if not records:
+            continue
+        metrics = _compute_classifier_metrics(records)
+        metrics["macro_f1_ci"] = _bootstrap_classifier_metrics(records)["macro_f1"]
+        old_items.append(
+            {
+                "key": model_key,
+                "label": label,
+                "color": color,
+                "marker": marker,
+                **metrics,
+            }
+        )
+
+    if not old_items:
+        raise ValueError(f"No recognized old-trace prediction tracks found in {TEMPORAL_OLD_PATH}")
+
+    old_focus = _build_probability_averaged_ensemble(
+        TEMPORAL_OLD_PATH,
+        ("ft:gpt-4.1-nano-2025-04-14:personal:ob-rqcontext-old:DI3q8ijY", "old_qwen30b_checkpoint_178"),
+        "matched_2_model_combo",
+        "Older-trace matched 2-model ensemble",
+        "#8C2D04",
+        "D",
+    )
+    old_items.append(old_focus)
+
+    t04 = pd.read_csv(TABLES_DIR / "T04_AIvsHumanSummary.csv")
+    ref_specs = [
+        ("Best frontier", "Best Flagship (Gemini 3.1 Pro)", "#4D4D4D"),
+        ("Frontier average", "Flagship Average (11 models)", "#999999"),
+        ("Expert majority", "Expert Majority Vote (excl. ties)", "#009E73"),
+        ("Student majority", "Student Majority Vote (full, excl. ties)", "#E69F00"),
+    ]
+    references: List[Dict[str, object]] = []
+    for label, evaluator, color in ref_specs:
+        row = t04.loc[t04["Evaluator"] == evaluator]
+        if row.empty:
+            continue
+        rec = row.iloc[0]
+        references.append(
+            {
+                "label": label,
+                "color": color,
+                "acc": float(rec["Accuracy (%)"]) / 100.0,
+                "acc_lo": float(rec["95% CI Lower"]) / 100.0,
+                "acc_hi": float(rec["95% CI Upper"]) / 100.0,
+                "macro_f1": float(rec["Macro F1"]),
+                "macro_f1_lo": float(rec["Macro F1 95% CI Lower"]),
+                "macro_f1_hi": float(rec["Macro F1 95% CI Upper"]),
+            }
+        )
+
+    return {
+        "recent_items": recent_items,
+        "recent_ensemble": ensemble,
+        "old_items": old_items,
+        "old_focus": old_focus,
+        "references": references,
+        "old_singleton_only": False,
+    }
+
+
 def load_pairwise_metrics() -> Dict[str, Dict[str, object]]:
     pairwise_files = {
         "SFT GPT-4.1": PAIRWISE_ROOT / "sft_gpt4_1",
-        "GPT-5.2": PAIRWISE_ROOT / "frontier_gpt5_2_high",
+        "GPT-5.2 High": PAIRWISE_ROOT / "frontier_gpt5_2_high",
         "GPT-4.1 Baseline": PAIRWISE_ROOT / "baseline_gpt4_1",
     }
-    if PAIRWISE_FRONTIER_GEMINI.exists():
-        pairwise_files["Gemini 3.1 Pro"] = PAIRWISE_FRONTIER_GEMINI
-    else:
-        pairwise_files["Grok 4.1 Fast"] = PAIRWISE_FRONTIER_GROK
+    if not PAIRWISE_FRONTIER_GEMINI.exists():
+        raise FileNotFoundError(f"Missing required pairwise directory: {PAIRWISE_FRONTIER_GEMINI}")
+    pairwise_files["Gemini 3.1 Pro"] = PAIRWISE_FRONTIER_GEMINI
 
     out: Dict[str, Dict[str, object]] = {}
     for model_name, model_dir in pairwise_files.items():
@@ -1072,6 +1400,148 @@ def load_pairwise_metrics() -> Dict[str, Dict[str, object]]:
                 rows.append(row)
         out[model_name] = {"metrics": metrics, "rows": rows}
     return out
+
+
+def _pairwise_item_key(row: Dict[str, object]) -> Tuple[str, int, str]:
+    pair_id = str(row.get("pair_id", "")).strip()
+    if not pair_id:
+        raise ValueError("Pairwise row is missing required public pair_id field.")
+    return (
+        str(row.get("pair_type", "")),
+        int(row.get("distance", 0) or 0),
+        pair_id,
+    )
+
+
+def _exact_mcnemar_p_raw(left_only: int, right_only: int) -> float:
+    n = left_only + right_only
+    if n <= 0:
+        return 1.0
+    tail = sum(math.comb(n, k) for k in range(0, min(left_only, right_only) + 1)) / (2**n)
+    return float(min(1.0, 2.0 * tail))
+
+
+def _write_ed2_pairwise_raw_stats(pairwise: Dict[str, Dict[str, object]], frontier_label: str) -> Dict[str, object]:
+    plotted_models = ["SFT GPT-4.1", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]
+    correctness = {}
+    for model in plotted_models:
+        rows = pairwise[model]["rows"]  # type: ignore[index]
+        correctness[model] = {_pairwise_item_key(row): bool(row.get("is_correct", False)) for row in rows}
+
+    reference_keys = set(correctness["SFT GPT-4.1"])
+    for model, vector in correctness.items():
+        if set(vector) != reference_keys:
+            raise ValueError(f"ED2 pairwise item mismatch for {model}: expected {len(reference_keys)} shared items")
+
+    comparisons = []
+    significant = []
+    discordance_by_pair_type: Dict[str, Dict[str, Dict[str, int]]] = {}
+    for comparator in plotted_models[1:]:
+        sft_only = 0
+        comparator_only = 0
+        both_correct = 0
+        both_wrong = 0
+        pair_type_breakdown: Dict[str, Dict[str, int]] = {}
+        for item_key in reference_keys:
+            sft_ok = correctness["SFT GPT-4.1"][item_key]
+            comparator_ok = correctness[comparator][item_key]
+            pair_type = str(item_key[0])
+            bucket = pair_type_breakdown.setdefault(
+                pair_type,
+                {
+                    "sft_only_correct": 0,
+                    "comparator_only_correct": 0,
+                    "both_correct": 0,
+                    "both_wrong": 0,
+                    "net_sft_advantage": 0,
+                },
+            )
+            if sft_ok and not comparator_ok:
+                sft_only += 1
+                bucket["sft_only_correct"] += 1
+                bucket["net_sft_advantage"] += 1
+            elif comparator_ok and not sft_ok:
+                comparator_only += 1
+                bucket["comparator_only_correct"] += 1
+                bucket["net_sft_advantage"] -= 1
+            elif sft_ok and comparator_ok:
+                both_correct += 1
+                bucket["both_correct"] += 1
+            else:
+                both_wrong += 1
+                bucket["both_wrong"] += 1
+
+        n_items = len(reference_keys)
+        sft_acc = sum(correctness["SFT GPT-4.1"].values()) / n_items
+        comparator_acc = sum(correctness[comparator].values()) / n_items
+        p_raw = _exact_mcnemar_p_raw(sft_only, comparator_only)
+        record = {
+            "evaluator_1": "SFT GPT-4.1",
+            "evaluator_2": comparator,
+            "n_paired_items": n_items,
+            "accuracy_1": sft_acc,
+            "accuracy_2": comparator_acc,
+            "accuracy_diff_pp": (sft_acc - comparator_acc) * 100.0,
+            "sft_only_correct": sft_only,
+            "comparator_only_correct": comparator_only,
+            "both_correct": both_correct,
+            "both_wrong": both_wrong,
+            "test": "Exact McNemar (two-sided binomial on discordant pairs)",
+            "p_value_raw": p_raw,
+            "p_value_adjustment": "none",
+            "significant_at_0_05_raw": p_raw < 0.05,
+        }
+        comparisons.append(record)
+        if record["significant_at_0_05_raw"]:
+            significant.append(comparator)
+        discordance_by_pair_type[comparator] = {
+            pair_type: pair_type_breakdown.get(
+                pair_type,
+                {
+                    "sft_only_correct": 0,
+                    "comparator_only_correct": 0,
+                    "both_correct": 0,
+                    "both_wrong": 0,
+                    "net_sft_advantage": 0,
+                },
+            )
+            for pair_type in PAIR_TYPE_ORDER
+        }
+
+    pair_type_accuracy_pct: Dict[str, Dict[str, Dict[str, float]]] = {}
+    for model in plotted_models:
+        rows = pairwise[model]["rows"]  # type: ignore[index]
+        by_pair_type: Dict[str, Dict[str, float]] = {}
+        for pair_type in PAIR_TYPE_ORDER:
+            subset = [row for row in rows if str(row.get("pair_type")) == pair_type]
+            n_rows = len(subset)
+            correct = sum(int(bool(row.get("is_correct", False))) for row in subset)
+            by_pair_type[pair_type] = {
+                "n": float(n_rows),
+                "correct": float(correct),
+                "accuracy_pct": (100.0 * correct / n_rows) if n_rows else float("nan"),
+            }
+        pair_type_accuracy_pct[model] = by_pair_type
+
+    payload = {
+        "figure": "ExtendedDataFigure2",
+        "summary": {
+            "plotted_models": plotted_models,
+            "frontier_comparator_plotted": frontier_label,
+            "source_root": "data/pairwise",
+            "paired_item_alignment": "300 shared canonical pairwise items",
+            "test_method": "Exact McNemar (two-sided binomial on discordant paired correctness outcomes)",
+            "p_values_reported": "raw_unadjusted_only",
+            "alpha_reference": 0.05,
+            "significant_comparisons_raw": significant,
+        },
+        "pair_type_order": [{"key": pair_type, "label": PAIR_TYPE_LABELS[pair_type]} for pair_type in PAIR_TYPE_ORDER],
+        "pair_type_accuracy_pct": pair_type_accuracy_pct,
+        "discordance_by_pair_type": discordance_by_pair_type,
+        "comparisons": comparisons,
+    }
+    PAIRWISE_RAW_STATS_PATH.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    return payload
 
 
 def load_rl_metrics() -> Dict[str, object]:
@@ -1169,122 +1639,76 @@ def load_rl_metrics() -> Dict[str, object]:
 def make_ed2_pairwise_intrinsic_v2() -> Tuple[Path, Path]:
     _set_style()
     d = load_pairwise_metrics()
-    frontier_label = "Gemini 3.1 Pro" if "Gemini 3.1 Pro" in d else "Grok 4.1 Fast"
-    frontier_color = COLORS["gemini"] if frontier_label == "Gemini 3.1 Pro" else COLORS["grok"]
-    order = ["SFT GPT-4.1", frontier_label, "GPT-5.2", "GPT-4.1 Baseline"]
+    frontier_label = "Gemini 3.1 Pro"
+    frontier_color = COLORS["gemini"]
+    stats = _write_ed2_pairwise_raw_stats(d, frontier_label)
+    order = ["SFT GPT-4.1", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]
     colors = [COLORS["sft"], frontier_color, COLORS["gpt52"], COLORS["baseline"]]
+    short_names = {
+        "SFT GPT-4.1": "SFT GPT-4.1",
+        "Gemini 3.1 Pro": "Gemini 3.1",
+        "GPT-5.2 High": "GPT-5.2 High",
+        "GPT-4.1 Baseline": "GPT-4.1 base",
+    }
 
-    fig = plt.figure(figsize=(10.8, 8.0))
-    gs = gridspec.GridSpec(2, 2, figure=fig, hspace=0.34, wspace=0.28)
+    fig = plt.figure(figsize=(11.0, 4.8))
+    gs = gridspec.GridSpec(1, 2, figure=fig, wspace=0.38)
 
-    # a) Overall weighted accuracy
+    # a) Pair-type heatmap
     ax = fig.add_subplot(gs[0, 0])
-    acc = []
-    ci = []
-    ns = []
-    for k in order:
-        m = d[k]["metrics"]  # type: ignore[index]
-        p = float(m["weighted_accuracy"])  # type: ignore[index]
-        n = int(m["total"])  # type: ignore[index]
-        acc.append(p * 100.0)
-        ci.append(_binom_ci95(p, n) * 100.0)
-        ns.append(n)
-    x = np.arange(len(order))
-    bars = ax.bar(x, acc, yerr=ci, capsize=3, color=colors, edgecolor="white")
-    ax.set_xticks(x)
-    ax.set_xticklabels(order, rotation=20, ha="right")
-    ax.set_ylabel("Weighted accuracy (%)")
-    ax.set_ylim(45, 100)
-    ax.set_title("a  Overall pairwise discrimination (no tier labels)", loc="left")
-    for i, b in enumerate(bars):
-        ax.text(
-            b.get_x() + b.get_width() / 2,
-            b.get_height() + ci[i] + 0.5,
-            f"{acc[i]:.2f}%\n(n={ns[i]})",
-            ha="center",
-            fontsize=6,
-        )
+    heat = np.array(
+        [
+            [float(stats["pair_type_accuracy_pct"][model][pair_type]["accuracy_pct"]) for model in order]  # type: ignore[index]
+            for pair_type in PAIR_TYPE_ORDER
+        ]
+    )
+    im = ax.imshow(heat, cmap="Blues", vmin=50, vmax=100, aspect="auto")
+    ax.set_xticks(np.arange(len(order)))
+    ax.set_xticklabels([short_names[k] for k in order], rotation=18, ha="right")
+    ax.set_yticks(np.arange(len(PAIR_TYPE_ORDER)))
+    ax.set_yticklabels([PAIR_TYPE_LABELS[key] for key in PAIR_TYPE_ORDER])
+    ax.set_title("a  Six pair types localize the real boundary gains", loc="left")
+    for i in range(heat.shape[0]):
+        for j in range(heat.shape[1]):
+            value = heat[i, j]
+            ax.text(j, i, f"{value:.0f}", ha="center", va="center", fontsize=5.8, color="white" if value >= 78 else "black")
+    ax.axhline(2.5, color="white", linewidth=0.9)
+    ax.text(0.98, 0.02, "Accuracy (%) on 50 pairs per row", transform=ax.transAxes, ha="right", va="bottom", fontsize=5.4, color="#444444")
+    cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.02)
+    cbar.ax.tick_params(labelsize=5.4)
+    cbar.set_label("Accuracy (%)", fontsize=6)
 
-    # b) Distance-stratified accuracy
+    # b) Net paired discordance by pair type
     ax = fig.add_subplot(gs[0, 1])
-    dist_x = np.array([1, 2, 3])
-    for k, c in zip(order, colors):
-        m = d[k]["metrics"]  # type: ignore[index]
-        y = []
-        yerr = []
-        for dd in [1, 2, 3]:
-            item = m["per_distance"][f"distance_{dd}"]  # type: ignore[index]
-            p = float(item["accuracy"])  # type: ignore[index]
-            n = int(item["n"])  # type: ignore[index]
-            y.append(p * 100.0)
-            yerr.append(_binom_ci95(p, n) * 100.0)
-        y = np.array(y)
-        yerr = np.array(yerr)
-        ax.plot(dist_x, y, "-o", color=c, label=k, linewidth=1.4, markersize=4)
-        ax.fill_between(dist_x, y - yerr, y + yerr, color=c, alpha=0.14)
-    ax.set_xticks(dist_x)
-    ax.set_xticklabels(["Distance 1", "Distance 2", "Distance 3"])
-    ax.set_ylabel("Accuracy (%)")
-    ax.set_ylim(50, 100)
-    ax.set_title("b  Accuracy rises with tier distance for all models", loc="left")
-    ax.legend(fontsize=6, loc="lower right")
-
-    # c) Hardest-case decomposition (Distance 1)
-    ax = fig.add_subplot(gs[1, 0])
-    d1 = {}
-    for k in order:
-        item = d[k]["metrics"]["per_distance"]["distance_1"]  # type: ignore[index]
-        d1[k] = float(item["accuracy"]) * 100.0
-    vals = [d1[k] for k in order]
-    d1_ci = []
-    for k in order:
-        item = d[k]["metrics"]["per_distance"]["distance_1"]  # type: ignore[index]
-        p = float(item["accuracy"])  # type: ignore[index]
-        n = int(item["n"])  # type: ignore[index]
-        d1_ci.append(_binom_ci95(p, n) * 100.0)
-    bars = ax.bar(order, vals, yerr=d1_ci, capsize=3, color=colors, edgecolor="white")
-    ax.set_ylim(40, 100)
-    ax.set_ylabel("Distance-1 accuracy (%)")
-    ax.set_title("c  Hardest pairs (adjacent tiers): where SFT gains are largest", loc="left")
-    for b, v, e in zip(bars, vals, d1_ci):
-        ax.text(b.get_x() + b.get_width() / 2, v + e + 0.6, f"{v:.2f}", ha="center", fontsize=6)
-    gain_vs_baseline = d1["SFT GPT-4.1"] - d1["GPT-4.1 Baseline"]
-    gain_vs_frontier = d1["SFT GPT-4.1"] - d1[frontier_label]
-    gain_vs_gpt52 = d1["SFT GPT-4.1"] - d1["GPT-5.2"]
+    comparators = [frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]
+    offsets = [-0.24, 0.0, 0.24]
+    y_base = np.arange(len(PAIR_TYPE_ORDER))
+    for offset, model, color in zip(offsets, comparators, colors[1:]):
+        vals = np.array(
+            [int(stats["discordance_by_pair_type"][model][pair_type]["net_sft_advantage"]) for pair_type in PAIR_TYPE_ORDER]  # type: ignore[index]
+        )
+        ax.barh(y_base + offset, vals, height=0.22, color=color, alpha=0.9, label=f"SFT vs {short_names[model]}")
+        for yv, xv in zip(y_base + offset, vals):
+            if xv != 0:
+                ax.text(xv + (0.18 if xv >= 0 else -0.18), yv, f"{xv:+d}", va="center", ha="left" if xv >= 0 else "right", fontsize=5.5)
+    ax.axvline(0, color="#444444", linewidth=0.8)
+    ax.set_yticks(y_base)
+    ax.set_yticklabels([PAIR_TYPE_LABELS[key] for key in PAIR_TYPE_ORDER])
+    ax.invert_yaxis()
+    ax.set_xlim(-4.5, 10.5)
+    ax.set_xlabel("Net paired advantage for SFT on discordant pairs")
+    ax.set_title("b  Raw paired wins cluster in the hardest pair types", loc="left")
+    ax.legend(fontsize=5.1, loc="lower right")
     ax.text(
-        0.98,
-        0.04,
-        (
-            f"SFT gain vs baseline: +{gain_vs_baseline:.2f} pp\n"
-            f"SFT gain vs {frontier_label}: +{gain_vs_frontier:.2f} pp\n"
-            f"SFT gain vs GPT-5.2: +{gain_vs_gpt52:.2f} pp"
-        ),
+        0.02,
+        0.02,
+        "Positive values = SFT-only correct exceeds comparator-only correct",
         transform=ax.transAxes,
-        ha="right",
+        ha="left",
         va="bottom",
-        fontsize=6.2,
-        bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor="#cccccc"),
+        fontsize=5.3,
+        color="#444444",
     )
-
-    # d) Per-distance deltas vs baseline
-    ax = fig.add_subplot(gs[1, 1])
-    sft = np.array([float(d["SFT GPT-4.1"]["metrics"]["per_distance"][f"distance_{dd}"]["accuracy"]) * 100.0 for dd in [1, 2, 3]])  # type: ignore[index]
-    frontier = np.array(
-        [float(d[frontier_label]["metrics"]["per_distance"][f"distance_{dd}"]["accuracy"]) * 100.0 for dd in [1, 2, 3]]  # type: ignore[index]
-    )
-    gpt52 = np.array([float(d["GPT-5.2"]["metrics"]["per_distance"][f"distance_{dd}"]["accuracy"]) * 100.0 for dd in [1, 2, 3]])  # type: ignore[index]
-    base = np.array([float(d["GPT-4.1 Baseline"]["metrics"]["per_distance"][f"distance_{dd}"]["accuracy"]) * 100.0 for dd in [1, 2, 3]])  # type: ignore[index]
-    x = np.arange(3)
-    w = 0.26
-    ax.bar(x - w, sft - base, width=w, color=COLORS["sft"], label="SFT - Baseline")
-    ax.bar(x, frontier - base, width=w, color=frontier_color, label=f"{frontier_label} - Baseline")
-    ax.bar(x + w, gpt52 - base, width=w, color=COLORS["gpt52"], label="GPT-5.2 - Baseline")
-    ax.axhline(0, color="#444444", linewidth=0.8)
-    ax.set_xticks(x)
-    ax.set_xticklabels(["D1", "D2", "D3"])
-    ax.set_ylabel("Delta accuracy (pp)")
-    ax.set_title("d  Improvement decomposition by distance", loc="left")
-    ax.legend(fontsize=5.6, loc="upper right")
 
     return _save(fig, OUT_EXT / "ed_fig2")
 
@@ -1353,15 +1777,56 @@ def _load_chat_baseline_confusions() -> Dict[str, Dict[str, object]]:
 
 
 def _load_st7_ensemble_table() -> pd.DataFrame:
-    # Canonical ST7 numbers from refined supplementary info.
-    data = [
-        ("GPT-4.1-nano", "Qwen3-30B", 55.8),
-        ("GPT-4.1-nano", "GPT-4.1", 47.5),
-        ("GPT-4.1-nano", "Qwen3-4B", 48.3),
-        ("Qwen3-30B", "GPT-4.1", 50.0),
-        ("Qwen3-30B", "Qwen3-4B", 49.2),
-        ("GPT-4.1", "Qwen3-4B", 50.8),
-    ]
+    model_names = {
+        "CYqJRxId": "GPT-4.1",
+        "ckpt-step-304": "GPT-4.1-nano",
+        "ckppt-380": "Qwen3-30B",
+        "ckppt-228": "Qwen3-4B",
+    }
+    sft_keys = list(model_names.keys())
+
+    def _logp_to_probs(logp: Dict[str, object]) -> Dict[str, float]:
+        vals = np.array([float(logp.get(label, -1e10)) for label in LABELS], dtype=float)
+        vals = vals - np.max(vals)
+        probs = np.exp(vals)
+        denom = float(np.sum(probs))
+        if denom <= 0:
+            return {label: 0.0 for label in LABELS}
+        probs = probs / denom
+        return {label: float(prob) for label, prob in zip(LABELS, probs)}
+
+    rows: List[Dict[str, object]] = []
+    with TRAINED_PATH.open("r", encoding="utf-8") as f:
+        for line in f:
+            rows.append(json.loads(line))
+
+    data = []
+    for combo in itertools.combinations(sft_keys, 2):
+        correct = 0
+        total = 0
+        for row in rows:
+            rq = (row.get("val_outcome", {}).get("rq_with_context", {}) or {})
+            gt = _normalize_pred_label(str(row.get("rank", "")))
+            if gt not in LABELS:
+                continue
+            logps = []
+            for model_key in combo:
+                model_out = rq.get(model_key, {})
+                logp = model_out.get("logp") if isinstance(model_out, dict) else None
+                if not isinstance(logp, dict) or not logp:
+                    logps = []
+                    break
+                logps.append(logp)
+            if not logps:
+                continue
+            probs = [_logp_to_probs(logp) for logp in logps]
+            avg = {label: float(np.mean([prob[label] for prob in probs])) for label in LABELS}
+            pred = max(avg.items(), key=lambda item: (item[1], item[0]))[0]
+            total += 1
+            correct += int(pred == gt)
+        acc = (correct / total * 100.0) if total else float("nan")
+        data.append((model_names[combo[0]], model_names[combo[1]], acc))
+
     return pd.DataFrame(data, columns=["model_1", "model_2", "accuracy_pct"])
 
 
@@ -1369,6 +1834,7 @@ def make_ed3_confusion_ensemble_v2() -> Tuple[Path, Path]:
     _set_style()
     stats02 = json.loads((STATS_DIR / "S01_FlagshipStats.json").read_text(encoding="utf-8"))
     stats03 = json.loads((STATS_DIR / "S02_SFTStats.json").read_text(encoding="utf-8"))
+    t3 = pd.read_csv(TABLES_DIR / "T03_SFTPerformance.csv")
     t8 = pd.read_csv(TABLES_DIR / "T04_AIvsHumanSummary.csv")
     st7 = _load_st7_ensemble_table()
 
@@ -1447,12 +1913,19 @@ def make_ed3_confusion_ensemble_v2() -> Tuple[Path, Path]:
         _plot_confusion(ax, cm, f"{display_name}\n{acc:.1f}%", cmap=cmap)
 
     # d) Singles vs all pairwise ensembles
-    single_acc = {
-        "GPT-4.1": 47.5,
-        "GPT-4.1-nano": 52.5,
-        "Qwen3-30B": 48.3,
-        "Qwen3-4B": 51.7,
-    }
+    single_acc: Dict[str, float] = {}
+    for _, r in t3.iterrows():
+        model = str(r["Model"])
+        if not (model.startswith("SFT (") and model.endswith(")")):
+            continue
+        name = model[len("SFT (") : -1]
+        single_acc[name] = float(r["Accuracy"]) * 100.0
+
+    expected_single = {"GPT-4.1", "GPT-4.1-nano", "Qwen3-30B", "Qwen3-4B"}
+    missing_single = sorted(expected_single - set(single_acc.keys()))
+    if missing_single:
+        raise ValueError(f"Missing SFT single-model rows in T03_SFTPerformance.csv: {missing_single}")
+
     ax = fig.add_subplot(gs[1, 1])
     bars = []
     labels = []
@@ -1934,15 +2407,252 @@ def make_ed5_rl_checkpoint_diagnostics_v3() -> Tuple[Path, Path]:
     )
 
 
+def make_ed6_temporal_trace_persistence_v1(
+    out_base: Path | None = None,
+) -> Tuple[Path, Path]:
+    _set_style()
+    d = load_temporal_trace_comparison_data()
+    recent_items: List[Dict[str, object]] = d["recent_items"]  # type: ignore[assignment]
+    recent_ensemble: Dict[str, object] = d["recent_ensemble"]  # type: ignore[assignment]
+    old_items: List[Dict[str, object]] = d["old_items"]  # type: ignore[assignment]
+    old_focus: Dict[str, object] = d["old_focus"]  # type: ignore[assignment]
+    references: List[Dict[str, object]] = d["references"]  # type: ignore[assignment]
+
+    recent_by_key = {str(item["key"]): item for item in recent_items}
+    old_by_key = {str(item["key"]): item for item in old_items}
+    matched_specs = [
+        ("ckpt-step-304", "ft:gpt-4.1-nano-2025-04-14:personal:ob-rqcontext-old:DI3q8ijY", "GPT-4.1-nano"),
+        ("ckppt-380", "old_qwen30b_checkpoint_178", "Qwen3-30B"),
+        ("matched_2_model_combo", "matched_2_model_combo", "Matched\n2-model ensemble"),
+    ]
+    matched_groups: List[Dict[str, object]] = []
+    for recent_key, old_key, label in matched_specs:
+        recent_item = recent_by_key.get(recent_key)
+        old_item = old_by_key.get(old_key)
+        if recent_item is None or old_item is None:
+            continue
+        matched_groups.append({"label": label, "recent": recent_item, "old": old_item})
+
+    if not matched_groups:
+        raise ValueError("ED6 requires matched recent-vs-old groups.")
+
+    benchmark_refs = [ref for ref in references if str(ref["label"]) in {"Frontier average", "Expert majority"}]
+    reference_styles = {
+        "Frontier average": ("--", 1.2),
+        "Expert majority": ("-.", 1.2),
+    }
+
+    recent_span = "2021-2025"
+    old_span = "2015-2020"
+    recent_label = f"Recent training ({recent_span})"
+    old_label = f"Older training ({old_span})"
+    recent_ensemble_title = f"c  Recent matched ensemble\n({recent_span})"
+    old_ensemble_title = f"Older-trace matched ensemble\n({old_span})"
+
+    recent_color = COLORS["sft"]
+    old_color = "#D55E00"
+    fig = plt.figure(figsize=(11.9, 9.0))
+    gs = gridspec.GridSpec(2, 2, figure=fig, hspace=0.34, wspace=0.28)
+    x = np.arange(len(matched_groups))
+    width = 0.34
+
+    def _plot_grouped_metric(
+        ax: plt.Axes,
+        metric_key: str,
+        title: str,
+        ymax: float,
+    ) -> None:
+        recent_vals = np.array([float(group["recent"][metric_key]) * 100.0 for group in matched_groups])
+        old_vals = np.array([float(group["old"][metric_key]) * 100.0 for group in matched_groups])
+        if metric_key == "acc":
+            recent_yerr = np.array([float(group["recent"]["acc_ci"]) * 100.0 for group in matched_groups])
+            old_yerr = np.array([float(group["old"]["acc_ci"]) * 100.0 for group in matched_groups])
+        else:
+            recent_yerr = np.array(
+                [
+                    [
+                        recent_vals[i] - float(group["recent"]["macro_f1_ci"][0]) * 100.0,
+                        float(group["recent"]["macro_f1_ci"][1]) * 100.0 - recent_vals[i],
+                    ]
+                    for i, group in enumerate(matched_groups)
+                ],
+                dtype=float,
+            ).T
+            old_yerr = np.array(
+                [
+                    [
+                        old_vals[i] - float(group["old"]["macro_f1_ci"][0]) * 100.0,
+                        float(group["old"]["macro_f1_ci"][1]) * 100.0 - old_vals[i],
+                    ]
+                    for i, group in enumerate(matched_groups)
+                ],
+                dtype=float,
+            ).T
+
+        recent_bars = ax.bar(
+            x - width / 2,
+            recent_vals,
+            width=width,
+            yerr=recent_yerr,
+            capsize=2.3,
+            color=recent_color,
+            edgecolor="white",
+            linewidth=0.8,
+            label=recent_label,
+        )
+        old_bars = ax.bar(
+            x + width / 2,
+            old_vals,
+            width=width,
+            yerr=old_yerr,
+            capsize=2.3,
+            color=old_color,
+            edgecolor="white",
+            linewidth=0.8,
+            label=old_label,
+        )
+
+        label_transform = mtransforms.blended_transform_factory(ax.transAxes, ax.transData)
+        for ref in benchmark_refs:
+            linestyle, line_width = reference_styles[str(ref["label"])]
+            y_ref = float(ref[metric_key]) * 100.0
+            ax.axhline(
+                y_ref,
+                color=str(ref["color"]),
+                linestyle=linestyle,
+                linewidth=line_width,
+                alpha=1.0,
+                zorder=5,
+            )
+            ax.text(
+                1.01,
+                y_ref,
+                str(ref["label"]),
+                transform=label_transform,
+                ha="left",
+                va="center",
+                fontsize=5.2,
+                color=str(ref["color"]),
+                clip_on=False,
+                bbox=dict(boxstyle="round,pad=0.12", facecolor="white", edgecolor="none", alpha=0.9),
+            )
+
+        label_dx = width * 0.16
+        for bars in [recent_bars, old_bars]:
+            for bar in bars:
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2 + label_dx,
+                    bar.get_height() + 1.0,
+                    f"{bar.get_height():.1f}",
+                    ha="left",
+                    va="bottom",
+                    fontsize=5.6,
+                )
+
+        ax.set_xticks(x)
+        ax.set_xticklabels([str(group["label"]) for group in matched_groups])
+        ax.set_ylabel("Score (%)")
+        ax.set_ylim(0, ymax)
+        ax.set_title(title, loc="left")
+
+    ax_acc = fig.add_subplot(gs[0, 0])
+    _plot_grouped_metric(ax_acc, "acc", "a  Accuracy", 75)
+    ax_acc.legend(
+        handles=[
+            plt.Rectangle((0, 0), 1, 1, facecolor=recent_color, edgecolor="white", label=recent_label),
+            plt.Rectangle((0, 0), 1, 1, facecolor=old_color, edgecolor="white", label=old_label),
+        ],
+        fontsize=5.2,
+        loc="upper left",
+        ncol=1,
+    )
+
+    ax_f1 = fig.add_subplot(gs[0, 1])
+    _plot_grouped_metric(ax_f1, "macro_f1", "b  Macro-F1", 75)
+
+    # c) Confusion comparison for the matched ensemble summary.
+    gs_c = gridspec.GridSpecFromSubplotSpec(1, 2, subplot_spec=gs[1, 0], wspace=0.18)
+    cm_recent = np.asarray(recent_ensemble["cm"], dtype=float)
+    cm_old = np.asarray(old_focus["cm"], dtype=float)
+    vmax = float(max(np.nanmax(_row_norm(cm_recent) * 100.0), np.nanmax(_row_norm(cm_old) * 100.0), 40.0))
+    c_axes = [fig.add_subplot(gs_c[0, 0]), fig.add_subplot(gs_c[0, 1])]
+    for ax, cm, title in [
+        (c_axes[0], cm_recent, recent_ensemble_title),
+        (c_axes[1], cm_old, old_ensemble_title),
+    ]:
+        cm_norm = _row_norm(cm) * 100.0
+        im = ax.imshow(cm_norm, cmap="YlOrBr", vmin=0, vmax=vmax, aspect="auto")
+        ax.set_xticks(range(4))
+        ax.set_yticks(range(4))
+        ax.set_xticklabels(LABELS_SHORT, rotation=22, ha="right")
+        ax.set_yticklabels(LABELS_SHORT if ax is c_axes[0] else [])
+        ax.set_xlabel("Predicted tier")
+        ax.set_ylabel("True tier" if ax is c_axes[0] else "")
+        ax.set_title(title, loc="left")
+        for i in range(4):
+            for j in range(4):
+                val = float(cm_norm[i, j])
+                ax.text(j, i, f"{val:.0f}", ha="center", va="center", fontsize=5.5, color="white" if val >= 0.58 * vmax else "#111111")
+    cb = fig.colorbar(im, ax=c_axes, fraction=0.035, pad=0.03)
+    cb.set_label("Row-normalized share (%)")
+
+    # d) Predicted-tier shift and top-tier inflation diagnostics.
+    gs_d = gridspec.GridSpecFromSubplotSpec(1, 2, subplot_spec=gs[1, 1], wspace=0.30)
+    ax = fig.add_subplot(gs_d[0, 0])
+    dist = np.vstack([np.asarray(recent_ensemble["pred_dist"], dtype=float), np.asarray(old_focus["pred_dist"], dtype=float)]) * 100.0
+    names = [f"Recent\nmatched ens.\n({recent_span})", f"Older-trace\nmatched ens.\n({old_span})"]
+    bottoms = np.zeros(2)
+    tier_cols = ["#0072B2", "#56B4E9", "#E69F00", "#D55E00"]
+    for i in range(4):
+        vals = dist[:, i]
+        ax.bar(names, vals, bottom=bottoms, color=tier_cols[i], edgecolor="white", label=LABELS_TITLE[i])
+        bottoms += vals
+    ax.set_ylim(0, 100)
+    ax.set_ylabel("Predicted share (%)")
+    ax.set_title("d  Old training over-predicts exceptional", loc="left")
+    ax.legend(fontsize=5.4, loc="upper left", ncol=2)
+
+    ax = fig.add_subplot(gs_d[0, 1])
+    metric_labels = ["Exceptional\nprecision", "Fair\nrecall", "Strong→Exceptional"]
+    recent_vals = np.array(
+        [
+            float(recent_ensemble["exceptional_precision"]),
+            float(recent_ensemble["recall"][2]),
+            float(recent_ensemble["strong_to_exceptional"]),
+        ]
+    ) * 100.0
+    old_vals = np.array(
+        [
+            float(old_focus["exceptional_precision"]),
+            float(old_focus["recall"][2]),
+            float(old_focus["strong_to_exceptional"]),
+        ]
+    ) * 100.0
+    xx = np.arange(len(metric_labels))
+    ax.bar(xx - width / 2, recent_vals, width=width, color=recent_color, edgecolor="white")
+    ax.bar(xx + width / 2, old_vals, width=width, color=old_color, edgecolor="white")
+    ax.set_xticks(xx)
+    ax.set_xticklabels(metric_labels)
+    ax.set_ylabel("Rate (%)")
+    ax.set_ylim(0, 80)
+    for i, (rv, ov) in enumerate(zip(recent_vals, old_vals)):
+        ax.text(i - width / 2, rv + 1.0, f"{rv:.1f}", ha="center", fontsize=5.5)
+        ax.text(i + width / 2, ov + 1.0, f"{ov:.1f}", ha="center", fontsize=5.5)
+
+    if out_base is None:
+        out_base = OUT_EXT / "ed_fig6"
+    return _save(fig, out_base)
+
+
 def make_supp_table_figures_v2() -> List[Tuple[Path, Path]]:
     _set_style()
     outputs: List[Tuple[Path, Path]] = []
 
     # ST4-like pairwise detailed table figure
     pairwise = load_pairwise_metrics()
-    frontier_label = "Gemini 3.1 Pro" if "Gemini 3.1 Pro" in pairwise else "Grok 4.1 Fast"
+    frontier_label = "Gemini 3.1 Pro"
     rows = []
-    for model in ["SFT GPT-4.1", frontier_label, "GPT-5.2", "GPT-4.1 Baseline"]:
+    for model in ["SFT GPT-4.1", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]:
         m = pairwise[model]["metrics"]  # type: ignore[index]
         d1 = m["per_distance"]["distance_1"]  # type: ignore[index]
         d2 = m["per_distance"]["distance_2"]  # type: ignore[index]
@@ -2556,6 +3266,7 @@ def write_design_notes(generated_ext: List[Tuple[Path, Path]], generated_supp: L
         "- Avoid direct duplication of headline panels from main figures.",
         "- Push detail to dense multi-panel diagnostics (full confusion atlases, matched base-vs-SFT maps, ensemble landscape ranking, calibration/error/reliability internals).",
         "- Trace pairwise figure directly to `data/pairwise/*` trial files and `metrics.json` summaries.",
+        "- Add ED6 as a temporal persistence diagnostic using the package-local recent SFT predictions, both verified older-trace checkpoints, and the old 2-model ensemble.",
         "",
         "Generated Extended Data figures:",
     ]
@@ -2577,17 +3288,18 @@ def write_design_notes(generated_ext: List[Tuple[Path, Path]], generated_supp: L
     lines += [
         "",
         "Pairwise design rationale:",
-        "- Uses intrinsic pairwise task by tier distance (D1/D2/D3), not ST11 McNemar system-vs-system matrix.",
-        "- Matches manuscript method/results claims: overall weighted accuracy and monotonic distance scaling.",
+        "- Uses intrinsic pairwise task with a six-pair-type heatmap and paired discordance decomposition in ED2, while Main Fig. 5 now carries the headline overall-accuracy and hard-boundary panels.",
+        "- Matches manuscript method/results claims: overall weighted accuracy, concentration of gains at the fair-strong and strong-exceptional boundaries, and raw exact paired significance against the plotted comparator set.",
         "- Supersedes earlier ad-hoc ED11/ST11 pairwise artifacts generated from evaluator-vs-evaluator significance tables.",
         "",
         "RL update (new data ingested):",
         "- Added ED5 from `data/predictions/rl_predictions.jsonl` (run-pooled avg8, majority-vote robustness, confusion structure, and distribution profile).",
         "- Current workspace contains one RL checkpoint key; architecture-specific mapping for ED Table 3 still requires metadata confirmation if two RL architectures are to be reported separately.",
+        "- ED6 packages the historical comparison as recent singles + recent ensemble + two old singles + the old 2-model ensemble, while keeping the old-trace result in a supporting role.",
         "",
         "Non-overlap examples:",
         "- Main Fig. 2 shows selected collapse exemplars; ED3 now shows all 11 flagship confusions + matched base-vs-SFT confusion maps + pairwise ensemble landscape ranking.",
-        "- Main Fig. 5 shows headline calibration/triage; ED4 now emphasizes directional error profile + calibration landscape + panel-size/tie-rate internals.",
+        "- Main Fig. 5 now combines confidence separation, selective prediction, overall pairwise accuracy, and hard-boundary pairwise generalization; ED4 emphasizes calibration/error internals and ED2 keeps the detailed pairwise decomposition.",
     ]
     p.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return p
@@ -2605,6 +3317,7 @@ def main() -> None:
         make_ed3_confusion_ensemble_v2(),
         make_ed4_calibration_error_reliability_v2(),
         make_ed5_rl_checkpoint_diagnostics_v2(),
+        make_ed6_temporal_trace_persistence_v1(),
     ]
     generated_supp = []
     generated_supp.extend(make_supp_table_figures_v2())

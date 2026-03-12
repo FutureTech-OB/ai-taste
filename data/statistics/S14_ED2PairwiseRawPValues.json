@@ -1,0 +1,362 @@
+{
+  "figure": "ExtendedDataFigure2",
+  "summary": {
+    "plotted_models": [
+      "SFT GPT-4.1",
+      "Gemini 3.1 Pro",
+      "GPT-5.2 High",
+      "GPT-4.1 Baseline"
+    ],
+    "frontier_comparator_plotted": "Gemini 3.1 Pro",
+    "source_root": "data/pairwise",
+    "paired_item_alignment": "300 shared canonical pairwise items",
+    "test_method": "Exact McNemar (two-sided binomial on discordant paired correctness outcomes)",
+    "p_values_reported": "raw_unadjusted_only",
+    "alpha_reference": 0.05,
+    "significant_comparisons_raw": [
+      "Gemini 3.1 Pro",
+      "GPT-5.2 High",
+      "GPT-4.1 Baseline"
+    ]
+  },
+  "pair_type_order": [
+    {
+      "key": "strong_exceptional",
+      "label": "Strong vs Exceptional"
+    },
+    {
+      "key": "fair_strong",
+      "label": "Fair vs Strong"
+    },
+    {
+      "key": "fair_exceptional",
+      "label": "Fair vs Exceptional"
+    },
+    {
+      "key": "limited_fair",
+      "label": "Limited vs Fair"
+    },
+    {
+      "key": "limited_exceptional",
+      "label": "Limited vs Exceptional"
+    },
+    {
+      "key": "limited_strong",
+      "label": "Limited vs Strong"
+    }
+  ],
+  "pair_type_accuracy_pct": {
+    "SFT GPT-4.1": {
+      "strong_exceptional": {
+        "n": 50.0,
+        "correct": 32.0,
+        "accuracy_pct": 64.0
+      },
+      "fair_strong": {
+        "n": 50.0,
+        "correct": 42.0,
+        "accuracy_pct": 84.0
+      },
+      "fair_exceptional": {
+        "n": 50.0,
+        "correct": 39.0,
+        "accuracy_pct": 78.0
+      },
+      "limited_fair": {
+        "n": 50.0,
+        "correct": 44.0,
+        "accuracy_pct": 88.0
+      },
+      "limited_exceptional": {
+        "n": 50.0,
+        "correct": 46.0,
+        "accuracy_pct": 92.0
+      },
+      "limited_strong": {
+        "n": 50.0,
+        "correct": 50.0,
+        "accuracy_pct": 100.0
+      }
+    },
+    "Gemini 3.1 Pro": {
+      "strong_exceptional": {
+        "n": 50.0,
+        "correct": 25.0,
+        "accuracy_pct": 50.0
+      },
+      "fair_strong": {
+        "n": 50.0,
+        "correct": 35.0,
+        "accuracy_pct": 70.0
+      },
+      "fair_exceptional": {
+        "n": 50.0,
+        "correct": 40.0,
+        "accuracy_pct": 80.0
+      },
+      "limited_fair": {
+        "n": 50.0,
+        "correct": 43.0,
+        "accuracy_pct": 86.0
+      },
+      "limited_exceptional": {
+        "n": 50.0,
+        "correct": 43.0,
+        "accuracy_pct": 86.0
+      },
+      "limited_strong": {
+        "n": 50.0,
+        "correct": 46.0,
+        "accuracy_pct": 92.0
+      }
+    },
+    "GPT-5.2 High": {
+      "strong_exceptional": {
+        "n": 50.0,
+        "correct": 28.0,
+        "accuracy_pct": 56.0
+      },
+      "fair_strong": {
+        "n": 50.0,
+        "correct": 34.0,
+        "accuracy_pct": 68.0
+      },
+      "fair_exceptional": {
+        "n": 50.0,
+        "correct": 39.0,
+        "accuracy_pct": 78.0
+      },
+      "limited_fair": {
+        "n": 50.0,
+        "correct": 42.0,
+        "accuracy_pct": 84.0
+      },
+      "limited_exceptional": {
+        "n": 50.0,
+        "correct": 47.0,
+        "accuracy_pct": 94.0
+      },
+      "limited_strong": {
+        "n": 50.0,
+        "correct": 46.0,
+        "accuracy_pct": 92.0
+      }
+    },
+    "GPT-4.1 Baseline": {
+      "strong_exceptional": {
+        "n": 50.0,
+        "correct": 27.0,
+        "accuracy_pct": 54.0
+      },
+      "fair_strong": {
+        "n": 50.0,
+        "correct": 33.0,
+        "accuracy_pct": 66.0
+      },
+      "fair_exceptional": {
+        "n": 50.0,
+        "correct": 32.0,
+        "accuracy_pct": 64.0
+      },
+      "limited_fair": {
+        "n": 50.0,
+        "correct": 44.0,
+        "accuracy_pct": 88.0
+      },
+      "limited_exceptional": {
+        "n": 50.0,
+        "correct": 45.0,
+        "accuracy_pct": 90.0
+      },
+      "limited_strong": {
+        "n": 50.0,
+        "correct": 47.0,
+        "accuracy_pct": 94.0
+      }
+    }
+  },
+  "discordance_by_pair_type": {
+    "Gemini 3.1 Pro": {
+      "strong_exceptional": {
+        "sft_only_correct": 9,
+        "comparator_only_correct": 2,
+        "both_correct": 23,
+        "both_wrong": 16,
+        "net_sft_advantage": 7
+      },
+      "fair_strong": {
+        "sft_only_correct": 12,
+        "comparator_only_correct": 5,
+        "both_correct": 30,
+        "both_wrong": 3,
+        "net_sft_advantage": 7
+      },
+      "fair_exceptional": {
+        "sft_only_correct": 3,
+        "comparator_only_correct": 4,
+        "both_correct": 36,
+        "both_wrong": 7,
+        "net_sft_advantage": -1
+      },
+      "limited_fair": {
+        "sft_only_correct": 5,
+        "comparator_only_correct": 4,
+        "both_correct": 39,
+        "both_wrong": 2,
+        "net_sft_advantage": 1
+      },
+      "limited_exceptional": {
+        "sft_only_correct": 5,
+        "comparator_only_correct": 2,
+        "both_correct": 41,
+        "both_wrong": 2,
+        "net_sft_advantage": 3
+      },
+      "limited_strong": {
+        "sft_only_correct": 4,
+        "comparator_only_correct": 0,
+        "both_correct": 46,
+        "both_wrong": 0,
+        "net_sft_advantage": 4
+      }
+    },
+    "GPT-5.2 High": {
+      "strong_exceptional": {
+        "sft_only_correct": 8,
+        "comparator_only_correct": 4,
+        "both_correct": 24,
+        "both_wrong": 14,
+        "net_sft_advantage": 4
+      },
+      "fair_strong": {
+        "sft_only_correct": 12,
+        "comparator_only_correct": 4,
+        "both_correct": 30,
+        "both_wrong": 4,
+        "net_sft_advantage": 8
+      },
+      "fair_exceptional": {
+        "sft_only_correct": 5,
+        "comparator_only_correct": 5,
+        "both_correct": 34,
+        "both_wrong": 6,
+        "net_sft_advantage": 0
+      },
+      "limited_fair": {
+        "sft_only_correct": 6,
+        "comparator_only_correct": 4,
+        "both_correct": 38,
+        "both_wrong": 2,
+        "net_sft_advantage": 2
+      },
+      "limited_exceptional": {
+        "sft_only_correct": 1,
+        "comparator_only_correct": 2,
+        "both_correct": 45,
+        "both_wrong": 2,
+        "net_sft_advantage": -1
+      },
+      "limited_strong": {
+        "sft_only_correct": 4,
+        "comparator_only_correct": 0,
+        "both_correct": 46,
+        "both_wrong": 0,
+        "net_sft_advantage": 4
+      }
+    },
+    "GPT-4.1 Baseline": {
+      "strong_exceptional": {
+        "sft_only_correct": 7,
+        "comparator_only_correct": 2,
+        "both_correct": 25,
+        "both_wrong": 16,
+        "net_sft_advantage": 5
+      },
+      "fair_strong": {
+        "sft_only_correct": 13,
+        "comparator_only_correct": 4,
+        "both_correct": 29,
+        "both_wrong": 4,
+        "net_sft_advantage": 9
+      },
+      "fair_exceptional": {
+        "sft_only_correct": 9,
+        "comparator_only_correct": 2,
+        "both_correct": 30,
+        "both_wrong": 9,
+        "net_sft_advantage": 7
+      },
+      "limited_fair": {
+        "sft_only_correct": 3,
+        "comparator_only_correct": 3,
+        "both_correct": 41,
+        "both_wrong": 3,
+        "net_sft_advantage": 0
+      },
+      "limited_exceptional": {
+        "sft_only_correct": 3,
+        "comparator_only_correct": 2,
+        "both_correct": 43,
+        "both_wrong": 2,
+        "net_sft_advantage": 1
+      },
+      "limited_strong": {
+        "sft_only_correct": 3,
+        "comparator_only_correct": 0,
+        "both_correct": 47,
+        "both_wrong": 0,
+        "net_sft_advantage": 3
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "evaluator_1": "SFT GPT-4.1",
+      "evaluator_2": "Gemini 3.1 Pro",
+      "n_paired_items": 300,
+      "accuracy_1": 0.8433333333333334,
+      "accuracy_2": 0.7733333333333333,
+      "accuracy_diff_pp": 7.000000000000006,
+      "sft_only_correct": 38,
+      "comparator_only_correct": 17,
+      "both_correct": 215,
+      "both_wrong": 30,
+      "test": "Exact McNemar (two-sided binomial on discordant pairs)",
+      "p_value_raw": 0.006455803109956637,
+      "p_value_adjustment": "none",
+      "significant_at_0_05_raw": true
+    },
+    {
+      "evaluator_1": "SFT GPT-4.1",
+      "evaluator_2": "GPT-5.2 High",
+      "n_paired_items": 300,
+      "accuracy_1": 0.8433333333333334,
+      "accuracy_2": 0.7866666666666666,
+      "accuracy_diff_pp": 5.666666666666675,
+      "sft_only_correct": 36,
+      "comparator_only_correct": 19,
+      "both_correct": 217,
+      "both_wrong": 28,
+      "test": "Exact McNemar (two-sided binomial on discordant pairs)",
+      "p_value_raw": 0.030028945411892494,
+      "p_value_adjustment": "none",
+      "significant_at_0_05_raw": true
+    },
+    {
+      "evaluator_1": "SFT GPT-4.1",
+      "evaluator_2": "GPT-4.1 Baseline",
+      "n_paired_items": 300,
+      "accuracy_1": 0.8433333333333334,
+      "accuracy_2": 0.76,
+      "accuracy_diff_pp": 8.333333333333337,
+      "sft_only_correct": 38,
+      "comparator_only_correct": 13,
+      "both_correct": 215,
+      "both_wrong": 34,
+      "test": "Exact McNemar (two-sided binomial on discordant pairs)",
+      "p_value_raw": 0.0006210434562277101,
+      "p_value_adjustment": "none",
+      "significant_at_0_05_raw": true
+    }
+  ]
+}

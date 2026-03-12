@@ -53,6 +53,7 @@ from analysis.utils.data_loader import (  # noqa: E402
     get_project_root,
     load_chat_data,
     load_expert_ratings,
+    load_student_filtered_ratings,
     load_student_merged_ratings,
     load_thinking_data,
     load_trained_data,

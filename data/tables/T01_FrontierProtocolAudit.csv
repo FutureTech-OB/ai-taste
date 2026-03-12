@@ -7,6 +7,6 @@ moonshotai/kimi-k2.5,stochastic_thinking,120,120,8.0,0.3146,0.3211,0.0917,0.3083
 openai/gpt-5.2-high,stochastic_thinking,120,120,8.0,0.3104,0.3162,0.025,0.3417,0
 google/gemini-2.5-pro,stochastic_thinking,120,120,8.0,0.2948,0.3036,0.0667,0.3,0
 minimax/minimax-m2.5,stochastic_thinking,120,120,8.0,0.2833,0.292,0.0583,0.2667,0
-doubao-seed-2-0-pro-260215,stochastic_thinking,120,120,8.0,0.2823,0.3097,0.0583,0.275,0
+doubao-seed-2-0-pro-260215,stochastic_thinking,120,120,8.0,0.2823,0.3009,0.0583,0.275,0
 anthropic/claude-opus-4.6,stochastic_thinking,120,120,8.0,0.2802,0.275,0.0,0.2833,0
 deepseek/deepseek-v3.2-speciale,stochastic_thinking,120,120,8.0,0.2667,0.2679,0.0667,0.2833,0

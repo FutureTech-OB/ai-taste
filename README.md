@@ -1,10 +1,10 @@
-# Tacit Scientific Judgment
+# ai-taste
 
 This repository releases the paper, figures, tables, de-identified evaluation data, and reproducibility code for the study:
 
 **"Fine-tuned AI learns tacit scientific judgment from institutional traces."**
 
-The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. The release includes a 120-article benchmark, model predictions, de-identified human ratings, released figures and tables, and the scripts used to regenerate the public results from repository-local files.
+The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. The release includes a 120-article benchmark, released training-data article pools, model predictions, de-identified human ratings, released figures and tables, and the scripts used to regenerate the public results from repository-local files.
 
 ## Contents
 
@@ -18,7 +18,7 @@ The study tests whether supervised fine-tuning can teach language models to eval
 | `data/human_ratings/` | De-identified human ratings and stable anonymous reproducibility inputs |
 | `data/tables/` | Released tables and figure-data files |
 | `data/statistics/` | Released statistics used by the analysis pipeline |
-| training-data documentation under `data/` | Documentation for the supervised training-data release boundary |
+| `data/train_data/` | Released training-data article pools for recent-trace and old-trace SFT preparation |
 | `scripts/` | Validation and reproduction scripts |
 
 ## Setup
@@ -50,7 +50,7 @@ These commands:
 - rebuild the released public tables and core statistics
 - regenerate the released figures
 
-Regenerated outputs are written under `reproduced/`.
+Regenerated outputs are written under `reproduced/` as local build output.
 
 ## Scope
 
@@ -64,13 +64,13 @@ Key release indices:
 The package rebuilds:
 
 - `data/tables/T01` through `data/tables/T21`
-- `data/statistics/S01` through `data/statistics/S12`
+- `data/statistics/S01` through `data/statistics/S14`
 
-`data/statistics/S13_Figure6NumbersAudit.json` is included as a shipped audit artifact used by Figure 6.
+`data/statistics/S13_Figure6NumbersAudit.json` and `data/statistics/S14_ED2PairwiseRawPValues.json` are included as shipped audit artifacts used by Figures 6 and 5 / Extended Data Figure 2.
 
 ## Data note
 
-Human-rating files are de-identified. The public release excludes direct participant identifiers, raw survey exports, the full internal training corpus, and model checkpoints.
+Human-rating files are de-identified. The public release excludes direct participant identifiers, raw survey exports, model checkpoints, and unreleased preprocessing intermediates beyond the shipped `data/train_data` article pools.
 
 ## Citation and license
 

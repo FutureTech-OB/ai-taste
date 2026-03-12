@@ -1,5 +1,5 @@
 Evaluator,N,Exact Match,Exact Match %,Off-by-One,Off-by-One %,Off-by-Two+,Off-by-Two+ %,Overestimation,Over %,Underestimation,Under %,Bias
-SFT 2-Model,120,67,55.8,30,25.0,23,19.2,37,30.8,16,13.3,Optimistic
+SFT 2-Model,120,73,60.8,33,27.5,14,11.7,35,29.2,12,10.0,Optimistic
 Best Flagship,115,45,39.1,54,47.0,16,13.9,42,36.5,28,24.3,Optimistic
 Expert Majority,89,37,41.6,37,41.6,15,16.9,25,28.1,27,30.3,Pessimistic
 Student Majority,103,42,40.8,43,41.7,18,17.5,31,30.1,30,29.1,Optimistic

@@ -1,7 +1,7 @@
 Model,Model Key,N Valid,Accuracy,Macro F1,Acc (exceptional),Acc (strong),Acc (fair),Acc (limited),Pred count (exceptional),Pred count (strong),Pred count (fair),Pred count (limited)
 GPT-5.2 (Baseline),gpt-5.2,120,0.2917,0.1758,0.0,0.9333,0.2333,0.0,0,84,36,0
-SFT (GPT-4.1),CYqJRxId,120,0.475,0.4676,0.7,0.5333,0.3667,0.3,38,36,33,13
-SFT (GPT-4.1-nano),ckpt-step-304,120,0.525,0.5105,0.7333,0.4667,0.2667,0.6333,45,23,18,34
-SFT (Qwen3-30B),ckppt-380,120,0.4833,0.4703,0.8333,0.4333,0.3,0.3667,51,28,27,14
-SFT (Qwen3-4B),ckppt-228,120,0.5167,0.5101,0.7667,0.3667,0.4333,0.5,48,18,31,23
-2-Model Ensemble,best_2_model_combo,120,0.5583,0.55,0.7667,0.5333,0.3333,0.6,46,24,21,29
+SFT (GPT-4.1),CYqJRxId,120,0.55,0.5577,0.6333,0.4667,0.5,0.6,43,23,33,21
+SFT (GPT-4.1-nano),ckpt-step-304,120,0.575,0.573,0.7,0.4333,0.6333,0.5333,36,24,38,22
+SFT (Qwen3-30B),ckppt-380,120,0.5583,0.5576,0.7333,0.4667,0.5,0.5333,41,27,31,21
+SFT (Qwen3-4B),ckppt-228,120,0.5917,0.5908,0.8,0.5667,0.5333,0.4667,39,30,35,16
+2-Model Ensemble,best_2_model_combo,120,0.6083,0.6067,0.8,0.6,0.5667,0.4667,38,29,36,17

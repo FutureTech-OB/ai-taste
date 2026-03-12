@@ -5,19 +5,19 @@
   "n_articles": 120,
   "n_complete_records": 74,
   "difficulty_distribution": {
-    "0": 21,
-    "1": 41,
-    "2": 31,
-    "3": 20,
-    "4": 7
+    "0": 23,
+    "1": 36,
+    "2": 32,
+    "3": 19,
+    "4": 10
   },
-  "n_easy_articles": 8,
-  "n_hard_articles": 21,
+  "n_easy_articles": 11,
+  "n_hard_articles": 23,
   "error_magnitude": {
     "SFT 2-Model": {
-      "exact": 67,
-      "off_by_one": 30,
-      "off_by_two_plus": 23,
+      "exact": 73,
+      "off_by_one": 33,
+      "off_by_two_plus": 14,
       "total": 120
     },
     "Best Flagship": {
@@ -41,12 +41,12 @@
   },
   "error_direction": {
     "SFT 2-Model": {
-      "overestimation": 37,
-      "underestimation": 16,
-      "exact": 67,
+      "overestimation": 35,
+      "underestimation": 12,
+      "exact": 73,
       "total": 120,
-      "over_pct": 30.833333333333332,
-      "under_pct": 13.333333333333334
+      "over_pct": 29.166666666666668,
+      "under_pct": 10.0
     },
     "Best Flagship": {
       "overestimation": 42,
@@ -74,19 +74,19 @@
     }
   },
   "ai_right_expert_wrong": {
-    "count": 30,
+    "count": 31,
     "tier_distribution": {
-      "exceptional": 13,
-      "strong": 5,
-      "fair": 4,
-      "limited": 8
+      "exceptional": 14,
+      "strong": 6,
+      "fair": 7,
+      "limited": 4
     },
     "articles": [
       {
-        "title": "Hair and Its Ramifications (HAIR): A Model Describing How Hair Bias Shapes Black Women's Work Experiences When Wearing Natural Hair",
-        "tier": "exceptional",
-        "domain": "多元化与公平, AI与技术",
-        "journal": "JOURNAL OF APPLIED PSYCHOLOGY"
+        "title": "Chatting Towards Inclusivity: A Digital Approach to Inclusion Action Plans and Leader Development",
+        "tier": "fair",
+        "domain": "领导力/管理者, 多元化与公平, AI与技术",
+        "journal": "HUMAN RESOURCE MANAGEMENT"
       },
       {
         "title": "From Friction to Fulfillment: Examining When and How Spousal Active-Destructive Responsiveness to Employees' Sharing of Positive Events Benefits the Work Domain",
@@ -119,22 +119,22 @@
         "journal": "ORGANIZATIONAL BEHAVIOR AND HUMAN DECISION PROCESSES"
       },
       {
-        "title": "Beyond the Sweet Spot: Testing Nonlinear Relationships Between Two Autonomy Facets and Work Intensification",
-        "tier": "limited",
-        "domain": "社会心理/人际",
-        "journal": "JOURNAL OF PERSONNEL PSYCHOLOGY"
-      },
-      {
-        "title": "Unwitting costs of leader narcissism: employees' heightened uncertainty and cheating behavior",
-        "tier": "limited",
-        "domain": "领导力/管理者, 员工行为与态度, AI与技术",
-        "journal": "JOURNAL OF MANAGERIAL PSYCHOLOGY"
+        "title": "Working on an Empty Stomach: How Food Insecurity Impacts Job Performance Through Rumination",
+        "tier": "strong",
+        "domain": "绩效与成果, 人力资源管理",
+        "journal": "PERSONNEL PSYCHOLOGY"
       },
       {
         "title": "Signaling with babble? Exploring the effects of gender and speaking time on leader emergence",
         "tier": "fair",
         "domain": "领导力/管理者, 多元化与公平",
         "journal": "LEADERSHIP QUARTERLY"
+      },
+      {
+        "title": "The Dark Side of Managing Human-AI Collaborations: Implications for Leaders' Moral Relativism and Unethical Behaviour",
+        "tier": "fair",
+        "domain": "领导力/管理者, 伦理与道德, AI与技术",
+        "journal": "JOURNAL OF MANAGEMENT STUDIES"
       },
       {
         "title": "Good Lessons Despite Bad Feelings: How Boundary-Spanning Teams Learn from Collaboration Failure",
@@ -147,12 +147,6 @@
         "tier": "limited",
         "domain": "绩效与成果, 社会心理/人际, AI与技术",
         "journal": "JOURNAL OF MANAGERIAL PSYCHOLOGY"
-      },
-      {
-        "title": "Illegitimate Tasks and Demand Crafting: How Configurations of Illegitimacy Shape Proactive Coping at Work",
-        "tier": "limited",
-        "domain": "其他管理学研究",
-        "journal": "JOURNAL OF BUSINESS AND PSYCHOLOGY"
       },
       {
         "title": "Near-Histories and Strategy Emergence: A Microhistorical Perspective",
@@ -185,10 +179,28 @@
         "journal": "JOURNAL OF MANAGERIAL PSYCHOLOGY"
       },
       {
-        "title": "Is There a Sweet Spot for Gender Diversity Effects on Financial Performance in Organizations? An S-Curve Model Explanation",
+        "title": "Are women less convincing or perceivers biased? Understanding differential reactions towards men and women's intentions to exert influence",
         "tier": "fair",
-        "domain": "团队与组织, 绩效与成果, 多元化与公平",
-        "journal": "JOURNAL OF ORGANIZATIONAL BEHAVIOR"
+        "domain": "多元化与公平",
+        "journal": "LEADERSHIP QUARTERLY"
+      },
+      {
+        "title": "The Dynamics and Complexities of Return-to-Office Policies",
+        "tier": "fair",
+        "domain": "其他管理学研究",
+        "journal": "HUMAN RESOURCE MANAGEMENT"
+      },
+      {
+        "title": "NAVIGATING MENTAL ILLNESS AT WORK USING DISENGAGEMENT AND ENGAGEMENT PATHWAYS",
+        "tier": "exceptional",
+        "domain": "员工行为与态度",
+        "journal": "ACADEMY OF MANAGEMENT JOURNAL"
+      },
+      {
+        "title": "No Rest for the Weary: Pay Uncertainty Reduces Engagement in Recovery",
+        "tier": "exceptional",
+        "domain": "员工行为与态度, 工作压力与健康, AI与技术",
+        "journal": "JOURNAL OF APPLIED PSYCHOLOGY"
       },
       {
         "title": "Founders' pre-entry knowledge and the heterogeneous returns to accelerator participation",
@@ -239,12 +251,6 @@
         "journal": "ADMINISTRATIVE SCIENCE QUARTERLY"
       },
       {
-        "title": "Gender Differences on Dual-Earners' Money as Achievement Congruence and Needs-Supplies Fit",
-        "tier": "limited",
-        "domain": "多元化与公平",
-        "journal": "JOURNAL OF BUSINESS AND PSYCHOLOGY"
-      },
-      {
         "title": "Gender differences in dishonesty when leaders make decisions on behalf of their team☆",
         "tier": "fair",
         "domain": "领导力/管理者, 团队与组织, 多元化与公平",
@@ -265,19 +271,25 @@
     ]
   },
   "expert_right_ai_wrong": {
-    "count": 18,
+    "count": 13,
     "tier_distribution": {
       "exceptional": 0,
-      "strong": 7,
-      "fair": 9,
+      "strong": 6,
+      "fair": 5,
       "limited": 2
     },
     "articles": [
       {
-        "title": "Supervisor Meddling: How Supervisor Helping Motives Can Invite Negative Employee Behaviors-And the Moderating Role of Perspective-Taking",
+        "title": "Scarcity undermines directed attention and pleasurable thinking",
         "tier": "strong",
-        "domain": "领导力/管理者, 员工行为与态度",
-        "journal": "PERSONNEL PSYCHOLOGY"
+        "domain": "其他管理学研究",
+        "journal": "ORGANIZATIONAL BEHAVIOR AND HUMAN DECISION PROCESSES"
+      },
+      {
+        "title": "The Mirror's Eye: Daily Work Events, Self-Conscious Emotions, and Job (Dis)Engagement",
+        "tier": "limited",
+        "domain": "员工行为与态度, AI与技术",
+        "journal": "JOURNAL OF BUSINESS AND PSYCHOLOGY"
       },
       {
         "title": "Political promotion of CEOs of state-controlled firms in China: A state capitalism view",
@@ -304,52 +316,16 @@
         "journal": "JOURNAL OF MANAGEMENT"
       },
       {
-        "title": "Dual Effects of Leader Pro-Group Unethical Behavior: The Role of Attribution in Shaping Employee Reactions",
+        "title": "Striving to Self-Verify in Teamwork: Linking Team Self-Verification Striving to Team Interaction Process and Team Creativity",
         "tier": "fair",
-        "domain": "领导力/管理者, 员工行为与态度, 团队与组织",
+        "domain": "团队与组织, 创新与创业, 社会心理/人际",
         "journal": "JOURNAL OF ORGANIZATIONAL BEHAVIOR"
-      },
-      {
-        "title": "I Am Not Who You Think I Am: The Role of Appraisal in Responses to Non-Verifying Feedback",
-        "tier": "fair",
-        "domain": "AI与技术",
-        "journal": "JOURNAL OF ORGANIZATIONAL BEHAVIOR"
-      },
-      {
-        "title": "The Cost of Surveillance: How Perceived Invasiveness of Electronic Performance Monitoring Triggers Workplace Cheating",
-        "tier": "fair",
-        "domain": "绩效与成果",
-        "journal": "HUMAN RESOURCE MANAGEMENT"
-      },
-      {
-        "title": "Helicopter Bosses: Development and Validation of the Micromanagement Scale",
-        "tier": "strong",
-        "domain": "领导力/管理者",
-        "journal": "JOURNAL OF MANAGEMENT"
-      },
-      {
-        "title": "Corporate social responsibility participation and emotional exhaustion: a countervailing-paths test",
-        "tier": "limited",
-        "domain": "工作压力与健康, 社会心理/人际, AI与技术",
-        "journal": "JOURNAL OF MANAGERIAL PSYCHOLOGY"
-      },
-      {
-        "title": "Expanding Our Understanding of Quiet Quitting: Antecedents, Correlates, and Consequences",
-        "tier": "fair",
-        "domain": "其他管理学研究",
-        "journal": "HUMAN RESOURCE MANAGEMENT"
       },
       {
         "title": "Connected to a Sinking Ship? Firm Performance in a Besieged Autocracy",
         "tier": "strong",
         "domain": "绩效与成果",
         "journal": "JOURNAL OF MANAGEMENT"
-      },
-      {
-        "title": "Authentic leadership and employee voice: a self-verification perspective",
-        "tier": "limited",
-        "domain": "领导力/管理者, 员工行为与态度",
-        "journal": "JOURNAL OF MANAGERIAL PSYCHOLOGY"
       },
       {
         "title": "Opportunity Search in the Era of GenAI: Navigating Uncertainty in an Expanding Universe of Imaginable but Unknowable Futures",
@@ -364,38 +340,38 @@
         "journal": "JOURNAL OF MANAGEMENT"
       },
       {
-        "title": "The Role of AI in Performance Appraisal: A Mixed-Method Study of Employee Experience Through a Relational Lens",
+        "title": "It's getting HOT in here: Do hazardous organizations encourage workplace deviance?",
+        "tier": "limited",
+        "domain": "团队与组织, 伦理与道德",
+        "journal": "JOURNAL OF MANAGERIAL PSYCHOLOGY"
+      },
+      {
+        "title": "Do Women Executives Make Workplaces Safer? Evidence from Workplace Safety Violations",
         "tier": "fair",
-        "domain": "员工行为与态度, 绩效与成果, 人力资源管理",
-        "journal": "HUMAN RESOURCE MANAGEMENT"
+        "domain": "领导力/管理者, 多元化与公平",
+        "journal": "JOURNAL OF MANAGEMENT STUDIES"
       },
       {
         "title": "Leadership Influence in Times of Change: A Social Network Perspective",
         "tier": "strong",
         "domain": "领导力/管理者, 社会心理/人际",
         "journal": "PERSONNEL PSYCHOLOGY"
-      },
-      {
-        "title": "Preparing for Tomorrow's Teamwork: Insights From eSports on How Human Expertise Shapes Training Needs for AI-Integrated Work",
-        "tier": "fair",
-        "domain": "团队与组织, 人力资源管理, 知识与学习",
-        "journal": "JOURNAL OF ORGANIZATIONAL BEHAVIOR"
       }
     ]
   },
   "chi_square_error_patterns": {
-    "statistic": 14.001941180754901,
-    "p_value": 0.029614487330877647,
-    "cramers_v": 0.1280457561511949
+    "statistic": 15.765620983751335,
+    "p_value": 0.015068817665770192,
+    "cramers_v": 0.13587094796489713
   },
   "chi_square_error_direction": {
-    "statistic": 14.407247235649194,
-    "p_value": 0.025403477009587835,
-    "cramers_v": 0.12988576874433105
+    "statistic": 22.22087810109503,
+    "p_value": 0.001104176597783442,
+    "cramers_v": 0.16130642759797395
   },
   "chi_square_tier_difficulty": {
-    "statistic": 16.52269304259863,
-    "p_value": 0.16845094959807322,
-    "cramers_v": 0.21423437997383607
+    "statistic": 28.652923976608186,
+    "p_value": 0.004435044235777714,
+    "cramers_v": 0.2821195765815947
   }
 }

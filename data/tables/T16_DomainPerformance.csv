@@ -1,12 +1,12 @@
 Domain,N Articles,SFT 2-Model Accuracy,Best Flagship Accuracy,Expert Majority Accuracy,Student Majority Accuracy
-Leadership,27,0.407,0.400,0.476,0.500
-Teams & Organizations,17,0.647,0.529,0.533,0.471
-Employee Behavior,16,0.438,0.200,0.333,0.462
+Leadership,27,0.556,0.400,0.476,0.500
+Teams & Organizations,17,0.529,0.529,0.533,0.471
+Employee Behavior,16,0.562,0.200,0.333,0.462
 Other Management,16,0.688,0.400,0.364,0.308
-Performance & Outcomes,7,0.429,0.571,0.500,0.250
-Social Psychology,7,0.857,0.333,0.429,0.333
-AI & Technology,6,0.333,0.667,0.400,0.200
-Innovation & Entrepreneurship,6,0.500,0.333,0.250,0.500
-Knowledge & Learning,5,0.800,0.400,0.333,0.400
-Diversity & Equity,4,0.750,0.250,0.000,0.000
+Performance & Outcomes,7,0.571,0.571,0.500,0.250
+Social Psychology,7,0.714,0.333,0.429,0.333
+AI & Technology,6,0.500,0.667,0.400,0.200
+Innovation & Entrepreneurship,6,0.833,0.333,0.250,0.500
+Knowledge & Learning,5,0.600,0.400,0.333,0.400
+Diversity & Equity,4,0.500,0.250,0.000,0.000
 Human Resource Management,3,1.000,0.000,0.500,0.667

@@ -776,22 +776,22 @@
       "mode": "stochastic_thinking",
       "accuracy": 0.2823,
       "accuracy_primary": 0.2823,
-      "accuracy_majority": 0.3097,
+      "accuracy_majority": 0.3009,
       "accuracy_run1": 0.275,
-      "macro_f1": 0.2257,
+      "macro_f1": 0.2109,
       "n_valid_primary": 120,
       "n_valid_discrete": 113,
       "tie_rate": 0.0583,
       "per_tier_accuracy": {
         "exceptional": 0.4828,
         "strong": 0.6667,
-        "fair": 0.0357,
+        "fair": 0.0,
         "limited": 0.0
       },
       "prediction_distribution": {
-        "strong": 73,
+        "strong": 74,
         "exceptional": 32,
-        "fair": 8
+        "fair": 7
       },
       "per_class_metrics": {
         "exceptional": {
@@ -801,15 +801,15 @@
           "support": 29.0
         },
         "strong": {
-          "precision": 0.274,
+          "precision": 0.2703,
           "recall": 0.6667,
-          "f1": 0.3883,
+          "f1": 0.3846,
           "support": 30.0
         },
         "fair": {
-          "precision": 0.125,
-          "recall": 0.0357,
-          "f1": 0.0556,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
           "support": 28.0
         },
         "limited": {
@@ -834,8 +834,8 @@
         ],
         [
           8,
-          19,
-          1,
+          20,
+          0,
           0
         ],
         [
@@ -916,9 +916,9 @@
       "rank": 9,
       "model": "Seed 2.0",
       "accuracy_primary": 0.2823,
-      "accuracy_majority": 0.3097,
+      "accuracy_majority": 0.3009,
       "accuracy_run1": 0.275,
-      "macro_f1": 0.2257
+      "macro_f1": 0.2109
     },
     {
       "rank": 10,
@@ -1027,9 +1027,9 @@
       "significant": false
     },
     "GLM-5 vs Seed 2.0": {
-      "statistic": 0.5517241379310345,
-      "p_value": 0.4576140668763148,
-      "b": 17.0,
+      "statistic": 0.8333333333333334,
+      "p_value": 0.3613104285261789,
+      "b": 18.0,
       "c": 12.0,
       "n_paired": 105,
       "p_corrected": 1.0,
@@ -1108,9 +1108,9 @@
       "significant": false
     },
     "Kimi K2.5 vs Seed 2.0": {
-      "statistic": 0.10256410256410256,
-      "p_value": 0.7487740417065472,
-      "b": 21.0,
+      "statistic": 0.225,
+      "p_value": 0.6352562959972483,
+      "b": 22.0,
       "c": 18.0,
       "n_paired": 102,
       "p_corrected": 1.0,
@@ -1180,9 +1180,9 @@
       "significant": false
     },
     "Gemini 2.5 Pro vs Seed 2.0": {
-      "statistic": 0.0,
-      "p_value": 1.0,
-      "b": 10.0,
+      "statistic": 0.05,
+      "p_value": 0.8230632737581214,
+      "b": 11.0,
       "c": 9.0,
       "n_paired": 105,
       "p_corrected": 1.0,
@@ -1243,10 +1243,10 @@
       "significant": false
     },
     "Gemini 3.1 Pro vs Seed 2.0": {
-      "statistic": 2.1315789473684212,
-      "p_value": 0.14429205544010104,
+      "statistic": 2.7027027027027026,
+      "p_value": 0.10017829422626812,
       "b": 24.0,
-      "c": 14.0,
+      "c": 13.0,
       "n_paired": 109,
       "p_corrected": 1.0,
       "significant": false
@@ -1297,9 +1297,9 @@
       "significant": false
     },
     "Claude Opus 4.6 vs Seed 2.0": {
-      "statistic": 0.16,
-      "p_value": 0.6891565167793516,
-      "b": 11.0,
+      "statistic": 0.038461538461538464,
+      "p_value": 0.8445192674729399,
+      "b": 12.0,
       "c": 14.0,
       "n_paired": 113,
       "p_corrected": 1.0,
@@ -1342,9 +1342,9 @@
       "significant": false
     },
     "GPT-5.2 High vs Seed 2.0": {
-      "statistic": 0.0,
-      "p_value": 1.0,
-      "b": 21.0,
+      "statistic": 0.023809523809523808,
+      "p_value": 0.8773705560641434,
+      "b": 22.0,
       "c": 20.0,
       "n_paired": 110,
       "p_corrected": 1.0,
@@ -1378,9 +1378,9 @@
       "significant": false
     },
     "Grok 4.1 Fast vs Seed 2.0": {
-      "statistic": 0.125,
-      "p_value": 0.7236736098317629,
-      "b": 5.0,
+      "statistic": 0.4444444444444444,
+      "p_value": 0.5049850750938457,
+      "b": 6.0,
       "c": 3.0,
       "n_paired": 106,
       "p_corrected": 1.0,
@@ -1405,9 +1405,9 @@
       "significant": false
     },
     "MiniMax M2.5 vs Seed 2.0": {
-      "statistic": 0.03571428571428571,
-      "p_value": 0.8501067391385259,
-      "b": 13.0,
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "b": 14.0,
       "c": 15.0,
       "n_paired": 107,
       "p_corrected": 1.0,
@@ -1432,10 +1432,10 @@
       "significant": false
     },
     "Qwen 3.5 Plus vs Seed 2.0": {
-      "statistic": 0.019230769230769232,
-      "p_value": 0.8897069355331011,
+      "statistic": 0.0784313725490196,
+      "p_value": 0.779434528427275,
       "b": 27.0,
-      "c": 25.0,
+      "c": 24.0,
       "n_paired": 107,
       "p_corrected": 1.0,
       "significant": false

@@ -26,9 +26,9 @@
       "accuracy": 0.3105474386724386,
       "ci_lower": 0.26265309343434345,
       "ci_upper": 0.35963474025974024,
-      "macro_f1": 0.235671272274822,
-      "macro_f1_ci_lower": 0.21336839035694374,
-      "macro_f1_ci_upper": 0.2532517697321235
+      "macro_f1": 0.23432377942247481,
+      "macro_f1_ci_lower": 0.2122161248703732,
+      "macro_f1_ci_upper": 0.2516735862071724
     },
     {
       "evaluator": "GPT-5.2 (pre-SFT)",
@@ -49,33 +49,33 @@
     {
       "evaluator": "Best SFT Single",
       "n": 120,
-      "accuracy": 0.525,
-      "ci_lower": 0.43333333333333335,
-      "ci_upper": 0.6166666666666667,
-      "macro_f1": 0.5105129716981132,
-      "macro_f1_ci_lower": 0.4225502678200349,
-      "macro_f1_ci_upper": 0.5972264844775437,
+      "accuracy": 0.575,
+      "ci_lower": 0.48333333333333334,
+      "ci_upper": 0.6583333333333333,
+      "macro_f1": 0.5730133156603745,
+      "macro_f1_ci_lower": 0.48580215728529247,
+      "macro_f1_ci_upper": 0.6583926275084008,
       "per_tier_accuracy": {
-        "exceptional": 0.7333333333333333,
-        "strong": 0.4666666666666667,
-        "fair": 0.26666666666666666,
-        "limited": 0.6333333333333333
+        "exceptional": 0.7,
+        "strong": 0.43333333333333335,
+        "fair": 0.6333333333333333,
+        "limited": 0.5333333333333333
       }
     },
     {
       "evaluator": "SFT 2-Model Ensemble",
       "n": 120,
-      "accuracy": 0.5583333333333333,
-      "ci_lower": 0.4666666666666667,
-      "ci_upper": 0.65,
-      "macro_f1": 0.5500455261894628,
-      "macro_f1_ci_lower": 0.46187188784583405,
-      "macro_f1_ci_upper": 0.6354475250545407,
+      "accuracy": 0.6083333333333333,
+      "ci_lower": 0.5166666666666667,
+      "ci_upper": 0.6916666666666667,
+      "macro_f1": 0.6067370101172949,
+      "macro_f1_ci_lower": 0.517139051254309,
+      "macro_f1_ci_upper": 0.6906767083525834,
       "per_tier_accuracy": {
-        "exceptional": 0.7666666666666667,
-        "strong": 0.5333333333333333,
-        "fair": 0.3333333333333333,
-        "limited": 0.6
+        "exceptional": 0.8,
+        "strong": 0.6,
+        "fair": 0.5666666666666667,
+        "limited": 0.4666666666666667
       }
     },
     {
@@ -159,9 +159,9 @@
   },
   "flagship_average": {
     "accuracy": 0.3105474386724386,
-    "macro_f1": 0.235671272274822,
-    "macro_f1_ci_lower": 0.21336839035694374,
-    "macro_f1_ci_upper": 0.2532517697321235,
+    "macro_f1": 0.23432377942247481,
+    "macro_f1_ci_lower": 0.2122161248703732,
+    "macro_f1_ci_upper": 0.2516735862071724,
     "per_model_accuracies": {
       "z-ai/glm-5": 0.335,
       "moonshotai/kimi-k2.5": 0.3146,
@@ -186,7 +186,7 @@
       "minimax/minimax-m2.5": 0.17014,
       "deepseek/deepseek-v3.2-speciale": 0.148374,
       "qwen/qwen3.5-plus-02-15": 0.249804,
-      "doubao-seed-2-0-pro-260215": 0.22573
+      "doubao-seed-2-0-pro-260215": 0.210908
     },
     "ci_lower": 0.26265309343434345,
     "ci_upper": 0.35963474025974024
@@ -241,8 +241,8 @@
       [
         1.0,
         0.36010644732067254,
-        0.20583157490888163,
-        0.20224719101123598,
+        0.18439716312056745,
+        0.26165666771918744,
         0.2568735271013354,
         0.1949984657870512,
         0.1795511221945137
@@ -250,35 +250,35 @@
       [
         0.36010644732067254,
         1.0,
-        0.055671829217245714,
-        0.09766726480389644,
+        0.032439527470466877,
+        0.062231964166587224,
         0.12195633921074724,
         0.1508788303002022,
         0.12401574803149606
       ],
       [
-        0.20583157490888163,
-        0.055671829217245714,
+        0.18439716312056745,
+        0.032439527470466877,
         1.0,
-        0.781063952371807,
-        0.1360576170346016,
-        0.07536026458776279,
-        0.06136145733461172
+        0.6148763451010005,
+        0.1382707660947851,
+        0.09881626351003608,
+        0.055424528301886745
       ],
       [
-        0.20224719101123598,
-        0.09766726480389644,
-        0.781063952371807,
+        0.26165666771918744,
+        0.062231964166587224,
+        0.6148763451010005,
         1.0,
-        0.1260690528983212,
-        0.15236596877647346,
-        0.07216158983547812
+        0.14657534246575343,
+        0.1922087940344561,
+        0.17005764665988468
       ],
       [
         0.2568735271013354,
         0.12195633921074724,
-        0.1360576170346016,
-        0.1260690528983212,
+        0.1382707660947851,
+        0.14657534246575343,
         1.0,
         0.2484984984984985,
         0.08949287371561154
@@ -286,8 +286,8 @@
       [
         0.1949984657870512,
         0.1508788303002022,
-        0.07536026458776279,
-        0.15236596877647346,
+        0.09881626351003608,
+        0.1922087940344561,
         0.2484984984984985,
         1.0,
         0.41538461538461535
@@ -295,8 +295,8 @@
       [
         0.1795511221945137,
         0.12401574803149606,
-        0.06136145733461172,
-        0.07216158983547812,
+        0.055424528301886745,
+        0.17005764665988468,
         0.08949287371561154,
         0.41538461538461535,
         1.0
@@ -305,57 +305,57 @@
   },
   "kappa_pairwise": {
     "Best Flagship (Gemini 3.1 Pro) vs GPT-5.2 (pre-SFT)": 0.36010644732067254,
-    "Best Flagship (Gemini 3.1 Pro) vs Best SFT Single": 0.20583157490888163,
-    "Best Flagship (Gemini 3.1 Pro) vs SFT 2-Model Ensemble": 0.20224719101123598,
+    "Best Flagship (Gemini 3.1 Pro) vs Best SFT Single": 0.18439716312056745,
+    "Best Flagship (Gemini 3.1 Pro) vs SFT 2-Model Ensemble": 0.26165666771918744,
     "Best Flagship (Gemini 3.1 Pro) vs Expert Majority (excl. ties)": 0.2568735271013354,
     "Best Flagship (Gemini 3.1 Pro) vs Student Majority (full, excl. ties)": 0.1949984657870512,
     "Best Flagship (Gemini 3.1 Pro) vs Student Matched N (excl. ties)": 0.1795511221945137,
-    "GPT-5.2 (pre-SFT) vs Best SFT Single": 0.055671829217245714,
-    "GPT-5.2 (pre-SFT) vs SFT 2-Model Ensemble": 0.09766726480389644,
+    "GPT-5.2 (pre-SFT) vs Best SFT Single": 0.032439527470466877,
+    "GPT-5.2 (pre-SFT) vs SFT 2-Model Ensemble": 0.062231964166587224,
     "GPT-5.2 (pre-SFT) vs Expert Majority (excl. ties)": 0.12195633921074724,
     "GPT-5.2 (pre-SFT) vs Student Majority (full, excl. ties)": 0.1508788303002022,
     "GPT-5.2 (pre-SFT) vs Student Matched N (excl. ties)": 0.12401574803149606,
-    "Best SFT Single vs SFT 2-Model Ensemble": 0.781063952371807,
-    "Best SFT Single vs Expert Majority (excl. ties)": 0.1360576170346016,
-    "Best SFT Single vs Student Majority (full, excl. ties)": 0.07536026458776279,
-    "Best SFT Single vs Student Matched N (excl. ties)": 0.06136145733461172,
-    "SFT 2-Model Ensemble vs Expert Majority (excl. ties)": 0.1260690528983212,
-    "SFT 2-Model Ensemble vs Student Majority (full, excl. ties)": 0.15236596877647346,
-    "SFT 2-Model Ensemble vs Student Matched N (excl. ties)": 0.07216158983547812,
+    "Best SFT Single vs SFT 2-Model Ensemble": 0.6148763451010005,
+    "Best SFT Single vs Expert Majority (excl. ties)": 0.1382707660947851,
+    "Best SFT Single vs Student Majority (full, excl. ties)": 0.09881626351003608,
+    "Best SFT Single vs Student Matched N (excl. ties)": 0.055424528301886745,
+    "SFT 2-Model Ensemble vs Expert Majority (excl. ties)": 0.14657534246575343,
+    "SFT 2-Model Ensemble vs Student Majority (full, excl. ties)": 0.1922087940344561,
+    "SFT 2-Model Ensemble vs Student Matched N (excl. ties)": 0.17005764665988468,
     "Expert Majority (excl. ties) vs Student Majority (full, excl. ties)": 0.2484984984984985,
     "Expert Majority (excl. ties) vs Student Matched N (excl. ties)": 0.08949287371561154,
     "Student Majority (full, excl. ties) vs Student Matched N (excl. ties)": 0.41538461538461535
   },
   "complementarity": {
-    "both_correct": 19,
-    "ai_only_correct": 30,
-    "human_only_correct": 18,
-    "neither_correct": 22,
+    "both_correct": 24,
+    "ai_only_correct": 31,
+    "human_only_correct": 13,
+    "neither_correct": 21,
     "total": 89,
-    "both_correct_pct": 21.34831460674157,
-    "ai_only_pct": 33.70786516853933,
-    "human_only_pct": 20.224719101123593,
-    "neither_pct": 24.719101123595504,
-    "shared_error_pct": 31.428571428571427,
-    "complementary_error_pct": 68.57142857142857,
-    "combined_accuracy": 0.5056179775280899
+    "both_correct_pct": 26.96629213483146,
+    "ai_only_pct": 34.831460674157306,
+    "human_only_pct": 14.606741573033707,
+    "neither_pct": 23.595505617977526,
+    "shared_error_pct": 32.30769230769231,
+    "complementary_error_pct": 67.6923076923077,
+    "combined_accuracy": 0.550561797752809
   },
   "mcnemar_tests": {
     "SFT 2-Ensemble vs Expert": {
-      "statistic": 2.5208333333333335,
-      "p_value": 0.11235119769046409,
-      "p_corrected": 1.0,
+      "statistic": 6.568181818181818,
+      "p_value": 0.010381795789701775,
+      "p_corrected": 0.09343616210731598,
       "significant": false,
-      "b": 30.0,
-      "c": 18.0
+      "b": 31.0,
+      "c": 13.0
     },
     "SFT 2-Ensemble vs Student (Full)": {
-      "statistic": 4.326923076923077,
-      "p_value": 0.03751400161554008,
-      "p_corrected": 0.33762601453986074,
-      "significant": false,
-      "b": 34.0,
-      "c": 18.0
+      "statistic": 8.88888888888889,
+      "p_value": 0.002869112792076578,
+      "p_corrected": 0.025822015128689202,
+      "significant": true,
+      "b": 33.0,
+      "c": 12.0
     },
     "Expert vs Student (Full)": {
       "statistic": 0.03333333333333333,
@@ -366,36 +366,36 @@
       "c": 15.0
     },
     "SFT 2-Ensemble vs GPT-5.2": {
-      "statistic": 10.414285714285715,
-      "p_value": 0.0012504421134105215,
-      "p_corrected": 0.011253979020694693,
+      "statistic": 15.557142857142857,
+      "p_value": 8.004864125543687e-05,
+      "p_corrected": 0.0007204377712989318,
       "significant": true,
-      "b": 49.0,
-      "c": 21.0
+      "b": 52.0,
+      "c": 18.0
     },
     "SFT Single vs GPT-5.2": {
-      "statistic": 7.148648648648648,
-      "p_value": 0.007502049219659579,
-      "p_corrected": 0.06751844297693621,
-      "significant": false,
-      "b": 49.0,
-      "c": 25.0
+      "statistic": 12.014285714285714,
+      "p_value": 0.0005279431738299811,
+      "p_corrected": 0.00475148856446983,
+      "significant": true,
+      "b": 50.0,
+      "c": 20.0
     },
     "SFT 2-Ensemble vs SFT Single": {
-      "statistic": 0.5625,
-      "p_value": 0.4532547047537363,
+      "statistic": 0.34615384615384615,
+      "p_value": 0.5562984612747348,
       "p_corrected": 1.0,
       "significant": false,
-      "b": 10.0,
-      "c": 6.0
+      "b": 15.0,
+      "c": 11.0
     },
     "SFT 2-Ensemble vs Flagship": {
-      "statistic": 5.160714285714286,
-      "p_value": 0.023103393801764183,
-      "p_corrected": 0.20793054421587764,
-      "significant": false,
-      "b": 37.0,
-      "c": 19.0
+      "statistic": 10.173076923076923,
+      "p_value": 0.001425062561992374,
+      "p_corrected": 0.012825563057931366,
+      "significant": true,
+      "b": 38.0,
+      "c": 14.0
     },
     "Flagship vs Expert": {
       "statistic": 0.0,
@@ -420,16 +420,16 @@
   },
   "bootstrap_accuracy_differences": {
     "SFT 2-Ensemble vs Expert": {
-      "estimate": 0.1348314606741573,
-      "ci_lower": -0.011235955056179775,
-      "ci_upper": 0.29213483146067415,
-      "std": 0.07719611927611268
+      "estimate": 0.20224719101123595,
+      "ci_lower": 0.06741573033707865,
+      "ci_upper": 0.34831460674157305,
+      "std": 0.0714448733250392
     },
     "SFT 2-Ensemble vs Student (Full)": {
-      "estimate": 0.1553398058252427,
-      "ci_lower": 0.019417475728155338,
-      "ci_upper": 0.2815533980582524,
-      "std": 0.06821545453250687
+      "estimate": 0.20388349514563106,
+      "ci_lower": 0.07766990291262135,
+      "ci_upper": 0.32038834951456313,
+      "std": 0.062277032174426615
     },
     "Expert vs Student (Full)": {
       "estimate": 0.0,
@@ -438,22 +438,22 @@
       "std": 0.07094243823001724
     },
     "SFT 2-Ensemble vs GPT-5.2": {
-      "estimate": 0.23333333333333334,
-      "ci_lower": 0.1,
-      "ci_upper": 0.35833333333333334,
-      "std": 0.0660814200468448
+      "estimate": 0.2833333333333333,
+      "ci_lower": 0.15833333333333333,
+      "ci_upper": 0.4083333333333333,
+      "std": 0.06467388236370915
     },
     "SFT Single vs GPT-5.2": {
-      "estimate": 0.2,
-      "ci_lower": 0.06645833333333517,
-      "ci_upper": 0.3333333333333333,
-      "std": 0.06926310091333972
+      "estimate": 0.25,
+      "ci_lower": 0.11666666666666667,
+      "ci_upper": 0.375,
+      "std": 0.06651452534670227
     },
     "SFT 2-Ensemble vs SFT Single": {
       "estimate": 0.03333333333333333,
-      "ci_lower": -0.03333333333333333,
-      "ci_upper": 0.1,
-      "std": 0.033225783246607875
+      "ci_lower": -0.05,
+      "ci_upper": 0.11666666666666667,
+      "std": 0.04265769760709942
     }
   },
   "student_matched_n_monte_carlo": {

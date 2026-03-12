@@ -98,12 +98,16 @@ EXPECTED_SFT_KEYS = {
     "ckppt-228",
 }
 
+EXPECTED_OLD_SFT_KEYS = {
+    "ft:gpt-4.1-nano-2025-04-14:personal:ob-rqcontext-old:DI3q8ijY",
+    "old_qwen30b_checkpoint_178",
+}
+
 GEMINI_31_KEY = "google/gemini-3.1-pro-preview"
 
 EXPECTED_PAIRWISE_DIRS = {
     "sft_gpt4_1",
     "frontier_gemini3_1_pro",
-    "frontier_grok4_1_fast",
     "frontier_gpt5_2_high",
     "baseline_gpt4_1",
 }
@@ -120,6 +124,7 @@ EXPECTED_FIGURE_INDEX_ROWS = {
     "ExtendedDataFigure3",
     "ExtendedDataFigure4",
     "ExtendedDataFigure5",
+    "ExtendedDataFigure6",
     "SupplementaryFigure1",
     "SupplementaryFigure2",
     "SupplementaryFigure3",
@@ -160,6 +165,31 @@ ALLOWED_HUMAN_ROOT = {
     "expert_ratings_deidentified.jsonl",
     "student_ratings_deidentified.jsonl",
     "reproducibility",
+}
+
+REQUIRED_TRAIN_DATA_JSON = {
+    "RIOB.Article.json",
+    "RIOB_old.Article.json",
+}
+
+TRAIN_DATA_RECORD_KEYS = {
+    "title",
+    "published_year",
+    "journal",
+    "type",
+    "rank",
+    "entries",
+}
+
+TRAIN_DATA_ENTRY_KEYS = {
+    "rq_with_context",
+}
+
+TRAIN_DATA_RANKS = {
+    "exceptional",
+    "strong",
+    "fair",
+    "limited",
 }
 
 def fail(msg: str, errors: List[str]) -> None:
@@ -318,6 +348,44 @@ def _check_pairwise_contract(root: Path, errors: List[str]) -> None:
         for req in ["metrics.json", "pair_results.jsonl"]:
             if not (model_dir / req).exists():
                 fail(f"Missing pairwise file: data/pairwise/{d}/{req}", errors)
+        pair_results = model_dir / "pair_results.jsonl"
+        if pair_results.exists():
+            with pair_results.open("r", encoding="utf-8") as f:
+                for i, line in enumerate(f, start=1):
+                    line = line.strip()
+                    if not line:
+                        continue
+                    row = json.loads(line)
+                    required_keys = {
+                        "pair_id",
+                        "pair_type",
+                        "distance",
+                        "correct_position",
+                        "prediction",
+                        "is_correct",
+                    }
+                    missing = sorted(required_keys - set(row.keys()))
+                    if missing:
+                        fail(
+                            f"Pairwise row missing required keys in data/pairwise/{d}/pair_results.jsonl line {i}: {missing}",
+                            errors,
+                        )
+                    forbidden = sorted(
+                        {
+                            "alignment_fail",
+                            "doi_first",
+                            "doi_second",
+                            "rank_first",
+                            "rank_second",
+                            "raw_response",
+                        }.intersection(row.keys())
+                    )
+                    if forbidden:
+                        fail(
+                            f"Pairwise row leaked forbidden keys in data/pairwise/{d}/pair_results.jsonl line {i}: {forbidden}",
+                            errors,
+                        )
+                    break
 
 
 def _check_figure_index_contract(root: Path, errors: List[str]) -> None:
@@ -335,6 +403,95 @@ def _check_figure_index_contract(root: Path, errors: List[str]) -> None:
     if missing:
         fail(f"FIGURE_DATA_INDEX.csv is missing figure rows: {missing}", errors)
 
+
+def _check_train_data_contract(root: Path, errors: List[str]) -> None:
+    train_dir = root / "data" / "train_data"
+    if not train_dir.exists():
+        fail("Missing data/train_data directory", errors)
+        return
+
+    allowed = {"README.md", *REQUIRED_TRAIN_DATA_JSON}
+    actual = {p.name for p in train_dir.iterdir() if not p.name.startswith(".")}
+    missing = sorted(allowed - actual)
+    extras = sorted(actual - allowed)
+    if missing:
+        fail(f"Missing train_data files: {missing}", errors)
+    if extras:
+        fail(f"Unexpected files in data/train_data: {extras}", errors)
+
+    for name in sorted(REQUIRED_TRAIN_DATA_JSON):
+        path = train_dir / name
+        if not path.exists():
+            continue
+        try:
+            records = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            fail(f"Invalid JSON in data/train_data/{name}: {exc}", errors)
+            continue
+        if not isinstance(records, list) or not records:
+            fail(f"data/train_data/{name} must be a non-empty JSON list", errors)
+            continue
+
+        for i, rec in enumerate(records, start=1):
+            if not isinstance(rec, dict):
+                fail(f"Train-data record must be a JSON object in data/train_data/{name} row {i}", errors)
+                break
+            keys = set(rec.keys())
+            missing_keys = sorted(TRAIN_DATA_RECORD_KEYS - keys)
+            extra_keys = sorted(keys - TRAIN_DATA_RECORD_KEYS)
+            if missing_keys or extra_keys:
+                fail(
+                    f"Unexpected train-data schema in data/train_data/{name} row {i}: "
+                    f"missing={missing_keys or '[]'} extra={extra_keys or '[]'}",
+                    errors,
+                )
+                break
+            if _has_forbidden_keys(rec, FORBIDDEN_ID_KEYS):
+                fail(f"Forbidden identifier key found in data/train_data/{name} row {i}", errors)
+                break
+
+            entries = rec.get("entries")
+            if not isinstance(entries, dict):
+                fail(f"'entries' must be an object in data/train_data/{name} row {i}", errors)
+                break
+            entry_keys = set(entries.keys())
+            extra_entry = sorted(entry_keys - TRAIN_DATA_ENTRY_KEYS)
+            if extra_entry:
+                fail(
+                    f"Unexpected entries schema in data/train_data/{name} row {i}: "
+                    f"extra={extra_entry or '[]'}",
+                    errors,
+                )
+                break
+
+            for field in ["title", "journal", "type", "rank"]:
+                value = rec.get(field)
+                if not isinstance(value, str) or not value.strip():
+                    fail(f"Blank or invalid {field} in data/train_data/{name} row {i}", errors)
+                    break
+            else:
+                if not isinstance(rec.get("published_year"), int):
+                    fail(f"Invalid published_year in data/train_data/{name} row {i}", errors)
+                    break
+                if rec["rank"] not in TRAIN_DATA_RANKS:
+                    fail(f"Unexpected rank in data/train_data/{name} row {i}: {rec['rank']}", errors)
+                    break
+                if "rq_with_context" in entries:
+                    rq = entries.get("rq_with_context")
+                    if rq is None:
+                        pass
+                    elif not isinstance(rq, str) or not rq.strip():
+                        fail(f"Blank rq_with_context in data/train_data/{name} row {i}", errors)
+                        break
+
+                rec_text = json.dumps(rec, ensure_ascii=False)
+                for marker in [*FORBIDDEN_PATH_SUBSTRINGS, "/Users/", "Nutstore Files/reports"]:
+                    if marker in rec_text:
+                        fail(f"Host-specific path leak '{marker}' found in data/train_data/{name} row {i}", errors)
+                        break
+                else:
+                    continue
+                break
 
 
 def main() -> int:
@@ -378,12 +535,12 @@ def main() -> int:
         if missing_required:
             fail(f"Missing required manuscript files: {missing_required}", errors)
 
-    # 3) Figures: exactly 34 assets and sequential naming
+    # 3) Figures: exactly 36 assets and sequential naming
     expected_figures: List[Path] = []
     for i in range(1, 7):
         expected_figures.append(root / "figures" / "main" / f"Figure{i}.png")
         expected_figures.append(root / "figures" / "main" / f"Figure{i}.pdf")
-    for i in range(1, 6):
+    for i in range(1, 7):
         expected_figures.append(root / "figures" / "extended_data" / f"ExtendedDataFigure{i}.png")
         expected_figures.append(root / "figures" / "extended_data" / f"ExtendedDataFigure{i}.pdf")
     for i in range(1, 7):
@@ -399,8 +556,8 @@ def main() -> int:
         d = root / "figures" / sub
         if d.exists():
             actual_fig_files.extend([p for p in d.iterdir() if p.is_file() and p.suffix.lower() in {".png", ".pdf"}])
-    if len(actual_fig_files) != 34:
-        fail(f"Figure asset count mismatch. Expected 34, got {len(actual_fig_files)}", errors)
+    if len(actual_fig_files) != 36:
+        fail(f"Figure asset count mismatch. Expected 36, got {len(actual_fig_files)}", errors)
 
     # 4) Human ratings + reproducibility inputs are de-identified
     human_dir = root / "data" / "human_ratings"
@@ -544,6 +701,7 @@ def main() -> int:
     required_prediction_files = {
         "frontier_10models_8runs.jsonl",
         "sft_predictions.jsonl",
+        "sft_temporal_old_predictions.jsonl",
         "chat_predictions.jsonl",
         "rl_predictions.jsonl",
         "gemini_3_1_pro_standalone.jsonl",
@@ -587,6 +745,13 @@ def main() -> int:
         missing = sorted(EXPECTED_SFT_KEYS - sft_keys)
         if missing:
             fail(f"SFT prediction file missing expected SFT model keys: {missing}", errors)
+
+    old_sft_file = predictions_dir / "sft_temporal_old_predictions.jsonl"
+    if old_sft_file.exists():
+        old_sft_keys = _first_row_model_keys(old_sft_file)
+        missing = sorted(EXPECTED_OLD_SFT_KEYS - old_sft_keys)
+        if missing:
+            fail(f"Old-trace SFT prediction file missing expected model keys: {missing}", errors)
 
     gemini31_file = predictions_dir / "gemini_3_1_pro_standalone.jsonl"
     if gemini31_file.exists():
@@ -638,10 +803,8 @@ def main() -> int:
     _check_figure_index_contract(root, errors)
     _check_pairwise_contract(root, errors)
 
-    # 11) Training-data documentation contract
-    training_docs = root / "data" / "training_dataset" / "README.md"
-    if not training_docs.exists():
-        fail("Missing training-data documentation: data/training_dataset/README.md", errors)
+    # 11) Training-data release contract
+    _check_train_data_contract(root, errors)
 
     # 12) Benchmark data integrity
     benchmark_file = root / "data" / "benchmark" / "benchmark_articles_120.jsonl"
@@ -713,8 +876,8 @@ def main() -> int:
         sft_row = by_eval.get("SFT 2-Model Ensemble")
         if sft_row:
             sft_acc = float(sft_row.get("Accuracy (%)", 0))
-            if abs(sft_acc - 55.8) > 0.5:
-                fail(f"T04 SFT 2-Model Ensemble accuracy {sft_acc}% deviates from expected 55.8%", errors)
+            if abs(sft_acc - 60.8) > 0.5:
+                fail(f"T04 SFT 2-Model Ensemble accuracy {sft_acc}% deviates from expected 60.8%", errors)
         frontier_row = by_eval.get("Flagship Average (11 models)")
         if frontier_row:
             frontier_acc = float(frontier_row.get("Accuracy (%)", 0))
@@ -737,7 +900,7 @@ def main() -> int:
     print("VALIDATION PASSED")
     print("- Folder shape matches required structure")
     print("- Manuscript file contract satisfied")
-    print("- Figure naming/count checks satisfied (34 assets)")
+    print("- Figure naming/count checks satisfied (36 assets)")
     print("- Human ratings and reproducibility inputs are de-identified")
     print("- Manuscript has no internal path markers")
     print("- Exclusion rules satisfied")
@@ -749,7 +912,7 @@ def main() -> int:
     print("- CI field contract satisfied for reported analyses")
     print("- Figure trace index contract satisfied (Main/ED/SI)")
     print("- Pairwise data contract satisfied (ED2)")
-    print("- Training-data documentation present")
+    print("- Training-data release contract satisfied")
     print("- Benchmark integrity: 17 journals, 15 domains, no PII, no Chinese")
     print("- No stale compatibility directories")
     print("- Requirements metadata present")

@@ -78,83 +78,13 @@
     "SFT (GPT-4.1)": {
       "display_name": "SFT (GPT-4.1)",
       "n_valid": 120,
-      "accuracy": 0.475,
-      "macro_f1": 0.4676,
+      "accuracy": 0.55,
+      "macro_f1": 0.5577,
       "per_class_metrics": {
         "exceptional": {
-          "precision": 0.5526,
-          "recall": 0.7,
-          "f1": 0.6176,
-          "support": 30.0
-        },
-        "strong": {
-          "precision": 0.4444,
-          "recall": 0.5333,
-          "f1": 0.4848,
-          "support": 30.0
-        },
-        "fair": {
-          "precision": 0.3333,
-          "recall": 0.3667,
-          "f1": 0.3492,
-          "support": 30.0
-        },
-        "limited": {
-          "precision": 0.6923,
-          "recall": 0.3,
-          "f1": 0.4186,
-          "support": 30.0
-        }
-      },
-      "per_tier_accuracy": {
-        "exceptional": 0.7,
-        "strong": 0.5333,
-        "fair": 0.3667,
-        "limited": 0.3
-      },
-      "prediction_distribution": {
-        "limited": 13,
-        "fair": 33,
-        "exceptional": 38,
-        "strong": 36
-      },
-      "confusion_matrix": [
-        [
-          21,
-          4,
-          4,
-          1
-        ],
-        [
-          13,
-          16,
-          1,
-          0
-        ],
-        [
-          4,
-          12,
-          11,
-          3
-        ],
-        [
-          0,
-          4,
-          17,
-          9
-        ]
-      ]
-    },
-    "SFT (GPT-4.1-nano)": {
-      "display_name": "SFT (GPT-4.1-nano)",
-      "n_valid": 120,
-      "accuracy": 0.525,
-      "macro_f1": 0.5105,
-      "per_class_metrics": {
-        "exceptional": {
-          "precision": 0.4889,
-          "recall": 0.7333,
-          "f1": 0.5867,
+          "precision": 0.4419,
+          "recall": 0.6333,
+          "f1": 0.5205,
           "support": 30.0
         },
         "strong": {
@@ -164,264 +94,334 @@
           "support": 30.0
         },
         "fair": {
-          "precision": 0.4444,
-          "recall": 0.2667,
-          "f1": 0.3333,
+          "precision": 0.4545,
+          "recall": 0.5,
+          "f1": 0.4762,
           "support": 30.0
         },
         "limited": {
-          "precision": 0.5588,
-          "recall": 0.6333,
-          "f1": 0.5938,
+          "precision": 0.8571,
+          "recall": 0.6,
+          "f1": 0.7059,
           "support": 30.0
         }
       },
       "per_tier_accuracy": {
-        "exceptional": 0.7333,
+        "exceptional": 0.6333,
         "strong": 0.4667,
-        "fair": 0.2667,
-        "limited": 0.6333
+        "fair": 0.5,
+        "limited": 0.6
       },
       "prediction_distribution": {
-        "limited": 34,
-        "fair": 18,
-        "strong": 23,
-        "exceptional": 45
+        "limited": 21,
+        "fair": 33,
+        "exceptional": 43,
+        "strong": 23
       },
       "confusion_matrix": [
         [
-          22,
-          3,
-          2,
-          3
+          19,
+          4,
+          6,
+          1
         ],
         [
-          11,
+          15,
           14,
-          2,
-          3
+          1,
+          0
         ],
         [
           9,
           4,
-          8,
-          9
+          15,
+          2
         ],
         [
-          3,
+          0,
+          1,
+          11,
+          18
+        ]
+      ]
+    },
+    "SFT (GPT-4.1-nano)": {
+      "display_name": "SFT (GPT-4.1-nano)",
+      "n_valid": 120,
+      "accuracy": 0.575,
+      "macro_f1": 0.573,
+      "per_class_metrics": {
+        "exceptional": {
+          "precision": 0.5833,
+          "recall": 0.7,
+          "f1": 0.6364,
+          "support": 30.0
+        },
+        "strong": {
+          "precision": 0.5417,
+          "recall": 0.4333,
+          "f1": 0.4815,
+          "support": 30.0
+        },
+        "fair": {
+          "precision": 0.5,
+          "recall": 0.6333,
+          "f1": 0.5588,
+          "support": 30.0
+        },
+        "limited": {
+          "precision": 0.7273,
+          "recall": 0.5333,
+          "f1": 0.6154,
+          "support": 30.0
+        }
+      },
+      "per_tier_accuracy": {
+        "exceptional": 0.7,
+        "strong": 0.4333,
+        "fair": 0.6333,
+        "limited": 0.5333
+      },
+      "prediction_distribution": {
+        "limited": 22,
+        "strong": 24,
+        "fair": 38,
+        "exceptional": 36
+      },
+      "confusion_matrix": [
+        [
+          21,
           2,
+          5,
+          2
+        ],
+        [
+          10,
+          13,
           6,
-          19
+          1
+        ],
+        [
+          4,
+          4,
+          19,
+          3
+        ],
+        [
+          1,
+          5,
+          8,
+          16
         ]
       ]
     },
     "SFT (Qwen3-30B)": {
       "display_name": "SFT (Qwen3-30B)",
       "n_valid": 120,
-      "accuracy": 0.4833,
-      "macro_f1": 0.4703,
+      "accuracy": 0.5583,
+      "macro_f1": 0.5576,
       "per_class_metrics": {
         "exceptional": {
-          "precision": 0.4902,
-          "recall": 0.8333,
-          "f1": 0.6173,
+          "precision": 0.5366,
+          "recall": 0.7333,
+          "f1": 0.6197,
           "support": 30.0
         },
         "strong": {
-          "precision": 0.4643,
-          "recall": 0.4333,
-          "f1": 0.4483,
+          "precision": 0.5185,
+          "recall": 0.4667,
+          "f1": 0.4912,
           "support": 30.0
         },
         "fair": {
-          "precision": 0.3333,
-          "recall": 0.3,
-          "f1": 0.3158,
+          "precision": 0.4839,
+          "recall": 0.5,
+          "f1": 0.4918,
           "support": 30.0
         },
         "limited": {
-          "precision": 0.7857,
-          "recall": 0.3667,
-          "f1": 0.5,
+          "precision": 0.7619,
+          "recall": 0.5333,
+          "f1": 0.6275,
           "support": 30.0
         }
       },
       "per_tier_accuracy": {
-        "exceptional": 0.8333,
-        "strong": 0.4333,
-        "fair": 0.3,
-        "limited": 0.3667
+        "exceptional": 0.7333,
+        "strong": 0.4667,
+        "fair": 0.5,
+        "limited": 0.5333
       },
       "prediction_distribution": {
-        "limited": 14,
-        "fair": 27,
-        "exceptional": 51,
-        "strong": 28
+        "limited": 21,
+        "fair": 31,
+        "exceptional": 41,
+        "strong": 27
       },
       "confusion_matrix": [
         [
-          25,
-          3,
-          2,
-          0
-        ],
-        [
-          11,
-          13,
-          4,
+          22,
+          5,
+          1,
           2
         ],
         [
-          10,
-          10,
-          9,
+          13,
+          14,
+          2,
           1
         ],
         [
-          5,
-          2,
-          12,
-          11
+          6,
+          7,
+          15,
+          2
+        ],
+        [
+          0,
+          1,
+          13,
+          16
         ]
       ]
     },
     "SFT (Qwen3-4B)": {
       "display_name": "SFT (Qwen3-4B)",
       "n_valid": 120,
-      "accuracy": 0.5167,
-      "macro_f1": 0.5101,
+      "accuracy": 0.5917,
+      "macro_f1": 0.5908,
       "per_class_metrics": {
         "exceptional": {
-          "precision": 0.4792,
-          "recall": 0.7667,
-          "f1": 0.5897,
+          "precision": 0.6154,
+          "recall": 0.8,
+          "f1": 0.6957,
           "support": 30.0
         },
         "strong": {
-          "precision": 0.6111,
-          "recall": 0.3667,
-          "f1": 0.4583,
+          "precision": 0.5667,
+          "recall": 0.5667,
+          "f1": 0.5667,
           "support": 30.0
         },
         "fair": {
-          "precision": 0.4194,
-          "recall": 0.4333,
-          "f1": 0.4262,
+          "precision": 0.4571,
+          "recall": 0.5333,
+          "f1": 0.4923,
           "support": 30.0
         },
         "limited": {
-          "precision": 0.6522,
-          "recall": 0.5,
-          "f1": 0.566,
+          "precision": 0.875,
+          "recall": 0.4667,
+          "f1": 0.6087,
           "support": 30.0
         }
       },
       "per_tier_accuracy": {
-        "exceptional": 0.7667,
-        "strong": 0.3667,
-        "fair": 0.4333,
-        "limited": 0.5
+        "exceptional": 0.8,
+        "strong": 0.5667,
+        "fair": 0.5333,
+        "limited": 0.4667
       },
       "prediction_distribution": {
-        "limited": 23,
-        "fair": 31,
-        "exceptional": 48,
-        "strong": 18
+        "strong": 30,
+        "limited": 16,
+        "fair": 35,
+        "exceptional": 39
       },
       "confusion_matrix": [
         [
-          23,
-          2,
-          2,
-          3
+          24,
+          3,
+          3,
+          0
         ],
         [
-          14,
-          11,
-          3,
+          9,
+          17,
+          4,
+          0
+        ],
+        [
+          6,
+          6,
+          16,
           2
         ],
         [
-          11,
-          3,
-          13,
-          3
-        ],
-        [
           0,
-          2,
-          13,
-          15
+          4,
+          12,
+          14
         ]
       ]
     },
     "2-Model Ensemble": {
       "display_name": "2-Model Ensemble",
       "n_valid": 120,
-      "accuracy": 0.5583,
-      "macro_f1": 0.55,
+      "accuracy": 0.6083,
+      "macro_f1": 0.6067,
       "per_class_metrics": {
         "exceptional": {
-          "precision": 0.5,
-          "recall": 0.7667,
-          "f1": 0.6053,
+          "precision": 0.6316,
+          "recall": 0.8,
+          "f1": 0.7059,
           "support": 30.0
         },
         "strong": {
-          "precision": 0.6667,
-          "recall": 0.5333,
-          "f1": 0.5926,
-          "support": 30.0
-        },
-        "fair": {
-          "precision": 0.4762,
-          "recall": 0.3333,
-          "f1": 0.3922,
-          "support": 30.0
-        },
-        "limited": {
           "precision": 0.6207,
           "recall": 0.6,
           "f1": 0.6102,
           "support": 30.0
+        },
+        "fair": {
+          "precision": 0.4722,
+          "recall": 0.5667,
+          "f1": 0.5152,
+          "support": 30.0
+        },
+        "limited": {
+          "precision": 0.8235,
+          "recall": 0.4667,
+          "f1": 0.5957,
+          "support": 30.0
         }
       },
       "per_tier_accuracy": {
-        "exceptional": 0.7667,
-        "strong": 0.5333,
-        "fair": 0.3333,
-        "limited": 0.6
+        "exceptional": 0.8,
+        "strong": 0.6,
+        "fair": 0.5667,
+        "limited": 0.4667
       },
       "prediction_distribution": {
-        "limited": 29,
-        "strong": 24,
-        "fair": 21,
-        "exceptional": 46
+        "strong": 29,
+        "limited": 17,
+        "fair": 36,
+        "exceptional": 38
       },
       "confusion_matrix": [
         [
-          23,
-          1,
+          24,
+          2,
           3,
-          3
+          1
         ],
         [
-          11,
-          16,
-          1,
+          8,
+          18,
+          4,
+          0
+        ],
+        [
+          6,
+          5,
+          17,
           2
         ],
         [
-          10,
+          0,
           4,
-          10,
-          6
-        ],
-        [
-          2,
-          3,
-          7,
-          18
+          12,
+          14
         ]
       ]
     }
@@ -430,7 +430,7 @@
     "2-Model Ensemble": {
       "component_models": [
         "ckpt-step-304",
-        "ckppt-380"
+        "ckppt-228"
       ],
       "method": "prob_avg"
     }
@@ -438,46 +438,46 @@
   "mcnemar_comparisons": {
     "Baseline vs Best SFT Single": {
       "model_1": "GPT-5.2 (Baseline)",
-      "model_2": "SFT (GPT-4.1-nano)",
-      "statistic": 10.414285714285715,
-      "p_value": 0.0012504421134105215,
-      "b": 21.0,
-      "c": 49.0,
+      "model_2": "SFT (Qwen3-4B)",
+      "statistic": 18.014705882352942,
+      "p_value": 2.1920504286510045e-05,
+      "b": 16.0,
+      "c": 52.0,
       "significant": true
     },
     "Baseline vs 2-Model Ensemble": {
       "model_1": "GPT-5.2 (Baseline)",
       "model_2": "2-Model Ensemble",
-      "statistic": 14.56060606060606,
-      "p_value": 0.0001357225090812264,
-      "b": 17.0,
-      "c": 49.0,
+      "statistic": 20.13235294117647,
+      "p_value": 7.2263899881797045e-06,
+      "b": 15.0,
+      "c": 53.0,
       "significant": true
     },
     "Best SFT Single vs 2-Model Ensemble": {
-      "model_1": "SFT (GPT-4.1-nano)",
+      "model_1": "SFT (Qwen3-4B)",
       "model_2": "2-Model Ensemble",
-      "statistic": 0.5625,
-      "p_value": 0.4532547047537363,
-      "b": 6.0,
-      "c": 10.0,
+      "statistic": 0.5,
+      "p_value": 0.47950012218695337,
+      "b": 0.0,
+      "c": 2.0,
       "significant": false
     }
   },
   "bootstrap_accuracy_differences": {
     "baseline_vs_best_sft": {
-      "comparison": "GPT-5.2 vs SFT (GPT-4.1-nano)",
-      "accuracy_diff": 0.23333333333333334,
-      "ci_lower": 0.1,
-      "ci_upper": 0.35833333333333334,
-      "std": 0.06665690659608038
+      "comparison": "GPT-5.2 vs SFT (Qwen3-4B)",
+      "accuracy_diff": 0.3,
+      "ci_lower": 0.175,
+      "ci_upper": 0.4166666666666667,
+      "std": 0.06293002190497109
     },
     "baseline_vs_2_ensemble": {
       "comparison": "GPT-5.2 vs 2-Model Ensemble",
-      "accuracy_diff": 0.26666666666666666,
-      "ci_lower": 0.14166666666666666,
-      "ci_upper": 0.39166666666666666,
-      "std": 0.06384049571806473
+      "accuracy_diff": 0.31666666666666665,
+      "ci_lower": 0.19166666666666668,
+      "ci_upper": 0.43333333333333335,
+      "std": 0.06231508356077315
     }
   },
   "mediocrity_bias_analysis": {
@@ -490,23 +490,23 @@
       }
     },
     "best_sft": {
-      "model": "SFT (GPT-4.1-nano)",
-      "middle_tier_pct": 0.3417,
+      "model": "SFT (Qwen3-4B)",
+      "middle_tier_pct": 0.5417,
       "distribution": {
-        "limited": 34,
-        "fair": 18,
-        "strong": 23,
-        "exceptional": 45
+        "strong": 30,
+        "limited": 16,
+        "fair": 35,
+        "exceptional": 39
       }
     },
     "2_model_ensemble": {
       "model": "2-Model Ensemble",
-      "middle_tier_pct": 0.375,
+      "middle_tier_pct": 0.5417,
       "distribution": {
-        "limited": 29,
-        "strong": 24,
-        "fair": 21,
-        "exceptional": 46
+        "strong": 29,
+        "limited": 17,
+        "fair": 36,
+        "exceptional": 38
       }
     }
   },

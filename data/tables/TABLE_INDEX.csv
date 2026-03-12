@@ -3,18 +3,18 @@ T01,T01_FrontierProtocolAudit.csv,table_frontier_protocol_audit.csv,"Methods, SI
 T02,T02_FlagshipPerformance.csv,table3_flagship_performance.csv,"Main, ED, SI",Flagship model performance summary
 T03,T03_SFTPerformance.csv,table4_sft_performance.csv,"Main, ED, SI",SFT checkpoint and ensemble performance
 T04,T04_AIvsHumanSummary.csv,table8_ai_vs_human.csv,"Main, ED, SI",Primary AI vs human performance table
-T05,T05_SignificanceMain.csv,table9_significance_tests.csv,"Methods, SI",Simplified core significance comparisons (raw p-values only)
+T05,T05_SignificanceMain.csv,scripts/reproducibility/recompute_core_tables_and_stats.py,"Methods, SI",Simplified core significance comparisons (raw p-values only)
 T06,T06_GatekeeperProfileMain.csv,table23_gatekeeper_profile_main.csv,"Main, SI",Gatekeeper profile summary metrics
 T07,T07_GatekeeperPerClass.csv,table23_gatekeeper_per_class.csv,SI,Per-class precision/recall/F1 diagnostics
 T08,T08_HumanVariantsSummary.csv,table23_human_variants_summary.csv,SI,Human variant comparison summary
-T09,T09_PairwiseMcNemarCompendium.csv,table_s11_all_pairwise.csv,SI (ST11),Simplified pairwise comparison block aligned with main text
+T09,T09_PairwiseMcNemarCompendium.csv,scripts/reproducibility/recompute_core_tables_and_stats.py,SI (ST11),Simplified pairwise comparison block aligned with main text
 T10,T10_IndividualExpertAccuracy_Anonymized.csv,table_s2_individual_expert.csv,SI (ST12),Per-expert accuracy (de-identified)
 T11,T11_MonteCarloMatchedPanel.csv,table_s3_monte_carlo.csv,SI (ST13),Monte Carlo matched-N summary
 T12,T12_ConfidenceComparison.csv,table_s12_confidence_comparison.csv,"Main, SI",Confidence discrimination metrics
 T13,T13_CalibrationMetrics.csv,table_s7_calibration_metrics.csv,"Main, ED, SI",Calibration and reliability metrics
-T14,T14_ErrorAnalysis.csv,table_s8_error_analysis.csv,SI,Error structure summary
-T15,T15_HardestArticles.csv,table_s9_hardest_articles.csv,SI,Hardest/easiest article diagnostics
-T16,T16_DomainPerformance.csv,table_s10_domain_performance.csv,SI,Domain-level performance profile
+T14,T14_ErrorAnalysis.csv,scripts/reproducibility/recompute_core_tables_and_stats.py,SI,Error structure summary
+T15,T15_HardestArticles.csv,scripts/reproducibility/recompute_core_tables_and_stats.py,SI,Hardest/easiest article diagnostics
+T16,T16_DomainPerformance.csv,scripts/reproducibility/recompute_core_tables_and_stats.py,SI,Domain-level performance profile
 T17,T17_AllModelsSummary.csv,table_s13_all_models_summary.csv,SI,Cross-model summary
 T18,T18_ChatModelSummary.csv,table_s_chat_models.csv,SI (ST16b),Chat model summary
 T19,T19_StudentReliabilityByPanelSize.csv,table_s24_student_reliability_vs_size.csv,SI,Student reliability vs panel size

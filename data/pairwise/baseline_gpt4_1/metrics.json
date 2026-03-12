@@ -1,23 +1,54 @@
 {
-  "total": 240,
-  "total_correct": 183,
-  "overall_accuracy": 0.7625,
-  "weighted_accuracy": 0.7625000000000001,
+  "total": 300,
+  "total_correct": 228,
+  "weighted_accuracy": 0.7599999999999999,
   "per_distance": {
     "distance_1": {
-      "n": 80,
-      "correct": 46,
-      "accuracy": 0.575
+      "n": 150,
+      "correct": 104,
+      "accuracy": 0.6933333333333334
     },
     "distance_2": {
-      "n": 80,
-      "correct": 64,
-      "accuracy": 0.8
+      "n": 100,
+      "correct": 79,
+      "accuracy": 0.79
     },
     "distance_3": {
-      "n": 80,
-      "correct": 73,
-      "accuracy": 0.9125
+      "n": 50,
+      "correct": 45,
+      "accuracy": 0.9
+    }
+  },
+  "per_pair_type": {
+    "fair_exceptional": {
+      "n": 50,
+      "correct": 32,
+      "accuracy": 0.64
+    },
+    "fair_strong": {
+      "n": 50,
+      "correct": 33,
+      "accuracy": 0.66
+    },
+    "limited_exceptional": {
+      "n": 50,
+      "correct": 45,
+      "accuracy": 0.9
+    },
+    "limited_fair": {
+      "n": 50,
+      "correct": 44,
+      "accuracy": 0.88
+    },
+    "limited_strong": {
+      "n": 50,
+      "correct": 47,
+      "accuracy": 0.94
+    },
+    "strong_exceptional": {
+      "n": 50,
+      "correct": 27,
+      "accuracy": 0.54
     }
   }
 }

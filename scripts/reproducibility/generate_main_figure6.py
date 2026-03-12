@@ -32,6 +32,7 @@ REPORTS_ROOT = ROOT
 # SFT voting data (4 SFT checkpoints on 120 held-out samples)
 AI_FILE = REPORTS_ROOT / "data" / "predictions" / "sft_predictions.jsonl"
 AI_MODELS = ["CYqJRxId", "ckpt-step-304", "ckppt-380", "ckppt-228"]
+AI_LABEL_ORDER = ["exceptional", "strong", "fair", "limited"]
 AI_TO_HUMAN = {"exceptional": "top", "strong": "top-", "fair": "good", "limited": "fair"}
 
 # Human voting data (canonical de-identified reproducibility files)
@@ -84,6 +85,13 @@ def majority_vote(labels: list[str]) -> tuple[str | None, int, int, bool]:
     return pred, top_count, len(labels), len(modes) == 1
 
 
+def argmax_logp_label(logp: dict[str, float]) -> str | None:
+    if not logp:
+        return None
+    full_logp = {label: logp.get(label, float("-inf")) for label in AI_LABEL_ORDER}
+    return max(full_logp, key=full_logp.get)
+
+
 def resolve_existing(candidates: list[Path], label: str) -> Path:
     for p in candidates:
         if p.exists():
@@ -125,7 +133,11 @@ def load_sft_cross_model_metrics() -> dict:
                 if not logp:
                     ok = False
                     break
-                pred = AI_TO_HUMAN[max(logp, key=logp.get)]
+                pred_label = argmax_logp_label(logp)
+                if pred_label is None:
+                    ok = False
+                    break
+                pred = AI_TO_HUMAN[pred_label]
                 preds.append(pred)
                 per_model_correct.append(int(pred == gt))
             if not ok:

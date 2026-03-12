@@ -2,225 +2,225 @@
   "val_models_with_logp": {
     "SFT-1 (GPT-4.1)": {
       "n": 120,
-      "n_correct": 57,
-      "accuracy": 0.475,
-      "mean_confidence": 0.6945451698202466,
-      "median_confidence": 0.6818798607381229,
-      "std_confidence": 0.16293959798766502,
-      "min_confidence": 0.3632122848838467,
-      "max_confidence_val": 0.996375419972021,
-      "mean_entropy": 0.9817618865329205,
-      "mean_conf_correct": 0.7330893433418985,
-      "mean_conf_wrong": 0.6596718699673233,
-      "conf_gap": 0.07341747337457516,
+      "n_correct": 66,
+      "accuracy": 0.55,
+      "mean_confidence": 0.5964207201250158,
+      "median_confidence": 0.5657163922404722,
+      "std_confidence": 0.16454940404762908,
+      "min_confidence": 0.3160424181481998,
+      "max_confidence_val": 0.9997109596193183,
+      "mean_entropy": 1.2701975533447083,
+      "mean_conf_correct": 0.6441125995335021,
+      "mean_conf_wrong": 0.5381306452924214,
+      "conf_gap": 0.1059819542410807,
       "confidence_accuracy_corr": {
-        "r": 0.22500866888476664,
-        "p": 0.013480447244946089
+        "r": 0.3204226525164477,
+        "p": 0.00035990298410530815
       },
       "mann_whitney_correct_gt_wrong": {
-        "U": 2244.0,
-        "p": 0.009277941154424619
+        "U": 2387.0,
+        "p": 0.0007143576338586443
       },
       "per_tier": {
         "exceptional": {
           "n": 30,
-          "accuracy": 0.7,
-          "mean_max_prob": 0.7469358803677029,
-          "mean_entropy": 0.8191827895369262,
-          "mean_conf_correct": 0.7790735178498063,
-          "mean_conf_wrong": 0.671948059576128
+          "accuracy": 0.6333333333333333,
+          "mean_max_prob": 0.6411838746100056,
+          "mean_entropy": 1.1721896863933148,
+          "mean_conf_correct": 0.7297764491058567,
+          "mean_conf_wrong": 0.48816033684444465
         },
         "strong": {
           "n": 30,
-          "accuracy": 0.5333333333333333,
-          "mean_max_prob": 0.7029681738102442,
-          "mean_entropy": 0.9286413135947958,
-          "mean_conf_correct": 0.7325334059496735,
-          "mean_conf_wrong": 0.6691793370794679
+          "accuracy": 0.4666666666666667,
+          "mean_max_prob": 0.5767085622164333,
+          "mean_entropy": 1.3105607502139343,
+          "mean_conf_correct": 0.5410876095978496,
+          "mean_conf_wrong": 0.6078768957576941
         },
         "fair": {
           "n": 30,
-          "accuracy": 0.36666666666666664,
-          "mean_max_prob": 0.5947106775207129,
-          "mean_entropy": 1.2492024129841097,
-          "mean_conf_correct": 0.585778536484721,
-          "mean_conf_wrong": 0.599881917067866
+          "accuracy": 0.5,
+          "mean_max_prob": 0.48712501869884944,
+          "mean_entropy": 1.5452439181640965,
+          "mean_conf_correct": 0.4549833737523838,
+          "mean_conf_wrong": 0.5192666636453152
         },
         "limited": {
           "n": 30,
-          "accuracy": 0.3,
-          "mean_max_prob": 0.7335659475823266,
-          "mean_entropy": 0.93002103001585,
-          "mean_conf_correct": 0.8068278110128425,
-          "mean_conf_wrong": 0.7021680061121054
+          "accuracy": 0.6,
+          "mean_max_prob": 0.6806654249747746,
+          "mean_entropy": 1.0527958586074875,
+          "mean_conf_correct": 0.7914278830857894,
+          "mean_conf_wrong": 0.5145217378082522
         }
       }
     },
     "SFT-2 (GPT-4.1-nano)": {
       "n": 120,
-      "n_correct": 63,
-      "accuracy": 0.525,
-      "mean_confidence": 0.7292435566423284,
-      "median_confidence": 0.7226469952396624,
-      "std_confidence": 0.1833254668228142,
-      "min_confidence": 0.34031470637689565,
-      "max_confidence_val": 0.9999251537807445,
-      "mean_entropy": 0.910528911013401,
-      "mean_conf_correct": 0.7828362129721679,
-      "mean_conf_wrong": 0.670009568067243,
-      "conf_gap": 0.11282664490492489,
+      "n_correct": 69,
+      "accuracy": 0.575,
+      "mean_confidence": 0.5798925693509719,
+      "median_confidence": 0.5587414367381255,
+      "std_confidence": 0.15131333315105439,
+      "min_confidence": 0.33873945557829194,
+      "max_confidence_val": 0.9812065210849442,
+      "mean_entropy": 1.3916103819332624,
+      "mean_conf_correct": 0.6198274385370404,
+      "mean_conf_wrong": 0.5258630404521731,
+      "conf_gap": 0.09396439808486723,
       "confidence_accuracy_corr": {
-        "r": 0.30733734187496786,
-        "p": 0.0006389859020380771
+        "r": 0.30698314099905466,
+        "p": 0.0006487580129108297
       },
       "mann_whitney_correct_gt_wrong": {
-        "U": 2431.0,
-        "p": 0.000423348978259949
+        "U": 2346.0,
+        "p": 0.0009325934075750299
       },
       "per_tier": {
         "exceptional": {
           "n": 30,
-          "accuracy": 0.7333333333333333,
-          "mean_max_prob": 0.8016005951265209,
-          "mean_entropy": 0.7475736409904482,
-          "mean_conf_correct": 0.8362037046763452,
-          "mean_conf_wrong": 0.7064420438645038
+          "accuracy": 0.7,
+          "mean_max_prob": 0.6480134624157123,
+          "mean_entropy": 1.20865459860305,
+          "mean_conf_correct": 0.6993889680693889,
+          "mean_conf_wrong": 0.5281372825571337
         },
         "strong": {
           "n": 30,
-          "accuracy": 0.4666666666666667,
-          "mean_max_prob": 0.7117962951849033,
-          "mean_entropy": 0.9700579332786635,
-          "mean_conf_correct": 0.7797623789681305,
-          "mean_conf_wrong": 0.6523259718745795
+          "accuracy": 0.43333333333333335,
+          "mean_max_prob": 0.5486680299591123,
+          "mean_entropy": 1.4649440890566052,
+          "mean_conf_correct": 0.5512429947453903,
+          "mean_conf_wrong": 0.546698939240194
         },
         "fair": {
           "n": 30,
-          "accuracy": 0.26666666666666666,
-          "mean_max_prob": 0.6827754265553474,
-          "mean_entropy": 1.050111117619032,
-          "mean_conf_correct": 0.6682503284774772,
-          "mean_conf_wrong": 0.6880572804018456
+          "accuracy": 0.6333333333333333,
+          "mean_max_prob": 0.5295993450070753,
+          "mean_entropy": 1.5411653041512827,
+          "mean_conf_correct": 0.5234299345673632,
+          "mean_conf_wrong": 0.5402555994029419
         },
         "limited": {
           "n": 30,
-          "accuracy": 0.6333333333333333,
-          "mean_max_prob": 0.7208019097025423,
-          "mean_entropy": 0.8743729521654605,
-          "mean_conf_correct": 0.7715538937364909,
-          "mean_conf_wrong": 0.6331393918257219
+          "accuracy": 0.5333333333333333,
+          "mean_max_prob": 0.5932894400219871,
+          "mean_entropy": 1.3516775359221114,
+          "mean_conf_correct": 0.6855998275705402,
+          "mean_conf_wrong": 0.48779185425221216
         }
       }
     },
     "SFT-3 (Qwen3-30B)": {
       "n": 120,
-      "n_correct": 58,
-      "accuracy": 0.48333333333333334,
-      "mean_confidence": 0.8852232650932711,
-      "median_confidence": 0.9502637372730527,
-      "std_confidence": 0.1474121648376005,
-      "min_confidence": 0.4123693466494247,
-      "max_confidence_val": 0.9999999957896362,
-      "mean_entropy": 0.44804876545235134,
-      "mean_conf_correct": 0.9273622107354921,
-      "mean_conf_wrong": 0.8458029611053869,
-      "conf_gap": 0.08155924963010519,
+      "n_correct": 67,
+      "accuracy": 0.5583333333333333,
+      "mean_confidence": 0.7147046903287801,
+      "median_confidence": 0.7311361569696955,
+      "std_confidence": 0.1931525915645865,
+      "min_confidence": 0.3460049707543542,
+      "max_confidence_val": 1.0,
+      "mean_entropy": 0.96237835426134,
+      "mean_conf_correct": 0.7704077383656088,
+      "mean_conf_wrong": 0.644287629602978,
+      "conf_gap": 0.1261201087626308,
       "confidence_accuracy_corr": {
-        "r": 0.2764830379920359,
-        "p": 0.002236854684451705
+        "r": 0.32424843392027836,
+        "p": 0.0003027853932220901
       },
       "mann_whitney_correct_gt_wrong": {
-        "U": 2614.0,
-        "p": 9.2342409723952e-06
+        "U": 2461.0,
+        "p": 0.00014727966892580006
       },
       "per_tier": {
         "exceptional": {
           "n": 30,
-          "accuracy": 0.8333333333333334,
-          "mean_max_prob": 0.9257222492327095,
-          "mean_entropy": 0.26503575105179455,
-          "mean_conf_correct": 0.9635575287505505,
-          "mean_conf_wrong": 0.7365458516435044
+          "accuracy": 0.7333333333333333,
+          "mean_max_prob": 0.7601034920865817,
+          "mean_entropy": 0.8137652805115193,
+          "mean_conf_correct": 0.8497686316114138,
+          "mean_conf_wrong": 0.5135243583932929
         },
         "strong": {
           "n": 30,
-          "accuracy": 0.43333333333333335,
-          "mean_max_prob": 0.864423959842068,
-          "mean_entropy": 0.5319213477895561,
-          "mean_conf_correct": 0.9120092503501638,
-          "mean_conf_wrong": 0.8280352082770536
+          "accuracy": 0.4666666666666667,
+          "mean_max_prob": 0.7300105050227778,
+          "mean_entropy": 0.9726934856451093,
+          "mean_conf_correct": 0.7318808961416491,
+          "mean_conf_wrong": 0.7283739127937653
         },
         "fair": {
           "n": 30,
-          "accuracy": 0.3,
-          "mean_max_prob": 0.8774167777832828,
-          "mean_entropy": 0.49387497980469325,
-          "mean_conf_correct": 0.8770565388206559,
-          "mean_conf_wrong": 0.8775711659101229
+          "accuracy": 0.5,
+          "mean_max_prob": 0.6788740412701236,
+          "mean_entropy": 1.086751364480682,
+          "mean_conf_correct": 0.713231938718095,
+          "mean_conf_wrong": 0.6445161438221524
         },
         "limited": {
           "n": 30,
-          "accuracy": 0.36666666666666664,
-          "mean_max_prob": 0.873330073515024,
-          "mean_entropy": 0.5013629831633615,
-          "mean_conf_correct": 0.9044037181778862,
-          "mean_conf_wrong": 0.8553400687102091
+          "accuracy": 0.5333333333333333,
+          "mean_max_prob": 0.6898307229356375,
+          "mean_entropy": 0.97630328640805,
+          "mean_conf_correct": 0.7485998092681354,
+          "mean_conf_wrong": 0.6226660528413543
         }
       }
     },
     "SFT-4 (Qwen3-4B)": {
       "n": 120,
-      "n_correct": 62,
-      "accuracy": 0.5166666666666667,
-      "mean_confidence": 0.6307475235419443,
-      "median_confidence": 0.5915327895351712,
-      "std_confidence": 0.18247907814202016,
-      "min_confidence": 0.31456606260435044,
-      "max_confidence_val": 0.9970840257662977,
-      "mean_entropy": 1.1835779264906268,
-      "mean_conf_correct": 0.6542668198411458,
-      "mean_conf_wrong": 0.6056062068083151,
-      "conf_gap": 0.048660613032830646,
+      "n_correct": 71,
+      "accuracy": 0.5916666666666667,
+      "mean_confidence": 0.9050526908070097,
+      "median_confidence": 0.9795225432701478,
+      "std_confidence": 0.1379531184122444,
+      "min_confidence": 0.5,
+      "max_confidence_val": 1.0,
+      "mean_entropy": 0.35154803515560923,
+      "mean_conf_correct": 0.9091551039153879,
+      "mean_conf_wrong": 0.899108377935686,
+      "conf_gap": 0.01004672597970191,
       "confidence_accuracy_corr": {
-        "r": 0.1332579393226231,
-        "p": 0.14678879686402807
+        "r": 0.0357963712398299,
+        "p": 0.6979052905689264
       },
       "mann_whitney_correct_gt_wrong": {
-        "U": 2065.0,
-        "p": 0.08082555883577741
+        "U": 2157.0,
+        "p": 0.012992955924471713
       },
       "per_tier": {
         "exceptional": {
           "n": 30,
-          "accuracy": 0.7666666666666667,
-          "mean_max_prob": 0.6746469964951504,
-          "mean_entropy": 1.0551273562784909,
-          "mean_conf_correct": 0.6848598808954641,
-          "mean_conf_wrong": 0.6410903763226898
+          "accuracy": 0.8,
+          "mean_max_prob": 0.8957917581069449,
+          "mean_entropy": 0.3661969817539959,
+          "mean_conf_correct": 0.9102017955336312,
+          "mean_conf_wrong": 0.8381516084001998
         },
         "strong": {
           "n": 30,
-          "accuracy": 0.36666666666666664,
-          "mean_max_prob": 0.5472850975735845,
-          "mean_entropy": 1.3681254751261644,
-          "mean_conf_correct": 0.49732330779900785,
-          "mean_conf_wrong": 0.5762103442851814
+          "accuracy": 0.5666666666666667,
+          "mean_max_prob": 0.8633524768980401,
+          "mean_entropy": 0.46420456047751163,
+          "mean_conf_correct": 0.8261466861385177,
+          "mean_conf_wrong": 0.912006203275877
         },
         "fair": {
           "n": 30,
-          "accuracy": 0.43333333333333335,
-          "mean_max_prob": 0.5837384897253384,
-          "mean_entropy": 1.3422698175236998,
-          "mean_conf_correct": 0.5925036726654751,
-          "mean_conf_wrong": 0.5770357027711164
+          "accuracy": 0.5333333333333333,
+          "mean_max_prob": 0.9097916509040906,
+          "mean_entropy": 0.3472855730812107,
+          "mean_conf_correct": 0.9294224316093668,
+          "mean_conf_wrong": 0.8873564729552036
         },
         "limited": {
           "n": 30,
-          "accuracy": 0.5,
-          "mean_max_prob": 0.7173195103737042,
-          "mean_entropy": 0.9687890570341515,
-          "mean_conf_correct": 0.7759774292743403,
-          "mean_conf_wrong": 0.6586615914730681
+          "accuracy": 0.4666666666666667,
+          "mean_max_prob": 0.9512748773189629,
+          "mean_entropy": 0.22850502530971858,
+          "mean_conf_correct": 0.9849940510771951,
+          "mean_conf_wrong": 0.9217706002805097
         }
       }
     },
@@ -338,57 +338,57 @@
     },
     "SFT 2-Model Ensemble": {
       "n": 120,
-      "n_correct": 67,
-      "accuracy": 0.5583333333333333,
-      "mean_confidence": 0.6575108130522838,
-      "median_confidence": 0.6334349776415825,
-      "std_confidence": 0.18248211726364644,
-      "min_confidence": 0.2981078489555928,
-      "max_confidence_val": 0.9994517932417228,
-      "mean_entropy": 1.1308417076665913,
-      "mean_conf_correct": 0.6954382402277426,
-      "mean_conf_wrong": 0.609564820207836,
-      "conf_gap": 0.08587342001990661,
+      "n_correct": 73,
+      "accuracy": 0.6083333333333333,
+      "mean_confidence": 0.7109212807475302,
+      "median_confidence": 0.7279584488962176,
+      "std_confidence": 0.13599365771575936,
+      "min_confidence": 0.4199214404644795,
+      "max_confidence_val": 0.9906032605424722,
+      "mean_entropy": 1.097324501082906,
+      "mean_conf_correct": 0.7311459911009303,
+      "mean_conf_wrong": 0.679508432751824,
+      "conf_gap": 0.051637558349106216,
       "confidence_accuracy_corr": {
-        "r": 0.2336859158562359,
-        "p": 0.010205815920777747
+        "r": 0.18534298658592016,
+        "p": 0.04269572146587366
       },
       "mann_whitney_correct_gt_wrong": {
-        "U": 2233.0,
-        "p": 0.007865002698525775
+        "U": 2134.0,
+        "p": 0.012309966318995632
       },
       "per_tier": {
         "exceptional": {
           "n": 30,
-          "accuracy": 0.7666666666666667,
-          "mean_max_prob": 0.7419709307047194,
-          "mean_entropy": 0.9014475244666038,
-          "mean_conf_correct": 0.7766898653906956,
-          "mean_conf_wrong": 0.6278944310222256
+          "accuracy": 0.8,
+          "mean_max_prob": 0.7400688941833469,
+          "mean_entropy": 0.9724230293703485,
+          "mean_conf_correct": 0.7734235912890437,
+          "mean_conf_wrong": 0.6066501057605592
         },
         "strong": {
           "n": 30,
-          "accuracy": 0.5333333333333333,
-          "mean_max_prob": 0.6192910725632036,
-          "mean_entropy": 1.206852814421025,
-          "mean_conf_correct": 0.6085885573565377,
-          "mean_conf_wrong": 0.6315225185136787
+          "accuracy": 0.6,
+          "mean_max_prob": 0.6745361850916239,
+          "mean_entropy": 1.1779512182443785,
+          "mean_conf_correct": 0.6349149482566611,
+          "mean_conf_wrong": 0.7339680403440685
         },
         "fair": {
           "n": 30,
-          "accuracy": 0.3333333333333333,
-          "mean_max_prob": 0.5946864927008655,
-          "mean_entropy": 1.3328205815592569,
-          "mean_conf_correct": 0.585784211900472,
-          "mean_conf_wrong": 0.5991376331010619
+          "accuracy": 0.5666666666666667,
+          "mean_max_prob": 0.6870342378835894,
+          "mean_entropy": 1.2047662101954169,
+          "mean_conf_correct": 0.6944775892255146,
+          "mean_conf_wrong": 0.6773006245903027
         },
         "limited": {
           "n": 30,
-          "accuracy": 0.6,
-          "mean_max_prob": 0.674094756240347,
-          "mean_entropy": 1.0822459102194797,
-          "mean_conf_correct": 0.7297353419201902,
-          "mean_conf_wrong": 0.5906338777205818
+          "accuracy": 0.4666666666666667,
+          "mean_max_prob": 0.7420458058315604,
+          "mean_entropy": 1.0341575465214807,
+          "mean_conf_correct": 0.8269216481412288,
+          "mean_conf_wrong": 0.6677794438106011
         }
       }
     },
@@ -876,10 +876,10 @@
     },
     "Seed 2.0": {
       "n": 113,
-      "n_correct": 35,
+      "n_correct": 34,
       "accuracy": 0.290929203539823,
       "accuracy_primary": 0.290929203539823,
-      "accuracy_majority": 0.30973451327433627,
+      "accuracy_majority": 0.3008849557522124,
       "has_logp": false,
       "per_tier": {
         "exceptional": {
@@ -892,7 +892,7 @@
         },
         "fair": {
           "n": 28,
-          "accuracy": 0.03571428571428571
+          "accuracy": 0.0
         },
         "limited": {
           "n": 26,
@@ -900,9 +900,9 @@
         }
       },
       "prediction_distribution": {
-        "strong": 73,
+        "strong": 74,
         "exceptional": 32,
-        "fair": 8
+        "fair": 7
       }
     }
   },
@@ -1040,22 +1040,22 @@
     "per_model": {
       "SFT 2-Model Ensemble": {
         "vs_expert": {
-          "spearman_r": 0.07336560448236192,
-          "p_value": 0.4258333788625456
+          "spearman_r": 0.08588500235927304,
+          "p_value": 0.3509747060971049
         },
         "vs_student": {
-          "spearman_r": 0.008455653831155647,
-          "p_value": 0.9269688480476481
+          "spearman_r": 0.05382449050632958,
+          "p_value": 0.5593079453309986
         }
       },
       "SFT-1 (GPT-4.1)": {
         "vs_expert": {
-          "spearman_r": 0.0024458918655010458,
-          "p_value": 0.9788481681482263
+          "spearman_r": 0.08926390160811871,
+          "p_value": 0.33227621716076156
         },
         "vs_student": {
-          "spearman_r": 0.04135457144773413,
-          "p_value": 0.6538162870480548
+          "spearman_r": 0.028544342707227686,
+          "p_value": 0.7569580960045778
         }
       },
       "GPT-5.2 (baseline)": {

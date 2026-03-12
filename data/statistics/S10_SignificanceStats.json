@@ -6,7 +6,7 @@
   "frontier_average_accuracy": 0.31054743867243867,
   "n_articles": 120,
   "evaluator_accuracies": {
-    "SFT 2-Model": 0.5583333333333333,
+    "SFT 2-Model": 0.6083333333333333,
     "Frontier Average": 0.31054743867243867,
     "Best Flagship": 0.391304347826087,
     "Expert Majority": 0.4157303370786517,
@@ -18,49 +18,49 @@
       "evaluator_1": "SFT 2-Model",
       "evaluator_2": "Frontier Average",
       "n_paired": 120,
-      "acc_1": 0.5583333333333333,
+      "acc_1": 0.6083333333333333,
       "acc_2": 0.31054743867243867,
       "test": "Exact binomial (one-sided)",
       "statistic": null,
-      "p_value": 1.6970705868482348e-08,
+      "p_value": 1.7439134481520844e-11,
       "odds_ratio": null,
-      "acc_diff": 0.24778589466089468
+      "acc_diff": 0.2977858946608946
     },
     {
       "evaluator_1": "SFT 2-Model",
       "evaluator_2": "Best Flagship",
       "n_paired": 115,
-      "acc_1": 0.5478260869565217,
+      "acc_1": 0.6,
       "acc_2": 0.391304347826087,
       "test": "McNemar (continuity-corrected)",
-      "statistic": 5.160714285714286,
-      "p_value": 0.02310339380176413,
-      "odds_ratio": 1.9473684210526316,
-      "acc_diff": 0.1565217391304347
+      "statistic": 10.173076923076923,
+      "p_value": 0.001425062561992374,
+      "odds_ratio": 2.7142857142857144,
+      "acc_diff": 0.208695652173913
     },
     {
       "evaluator_1": "SFT 2-Model",
       "evaluator_2": "Expert Majority",
       "n_paired": 89,
-      "acc_1": 0.550561797752809,
+      "acc_1": 0.6179775280898876,
       "acc_2": 0.4157303370786517,
       "test": "McNemar (continuity-corrected)",
-      "statistic": 2.5208333333333335,
-      "p_value": 0.11235119769046403,
-      "odds_ratio": 1.6666666666666667,
-      "acc_diff": 0.1348314606741573
+      "statistic": 6.568181818181818,
+      "p_value": 0.010381795789701763,
+      "odds_ratio": 2.3846153846153846,
+      "acc_diff": 0.2022471910112359
     },
     {
       "evaluator_1": "SFT 2-Model",
       "evaluator_2": "Junior Majority (full)",
       "n_paired": 103,
-      "acc_1": 0.5631067961165048,
+      "acc_1": 0.6116504854368932,
       "acc_2": 0.4077669902912621,
       "test": "McNemar (continuity-corrected)",
-      "statistic": 4.326923076923077,
-      "p_value": 0.03751400161554009,
-      "odds_ratio": 1.8888888888888888,
-      "acc_diff": 0.1553398058252427
+      "statistic": 8.88888888888889,
+      "p_value": 0.0028691127920766136,
+      "odds_ratio": 2.75,
+      "acc_diff": 0.20388349514563103
     }
   ],
   "summary": {
