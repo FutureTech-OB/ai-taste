@@ -1,4 +1,0 @@
-Architecture,SFT accuracy (%),RL accuracy (%),Difference,Notes
-Qwen3-4B,59.2,Not separately reported,Not estimable,"Available RL outputs are pooled across the two Qwen architectures"
-Qwen3-30B-A3B,55.8,Not separately reported,Not estimable,"Available RL outputs are pooled across the two Qwen architectures"
-Aggregate (pooled),"SFT ensemble: 60.8","Run-pooled avg8: 40.34; Majority-vote: 41.67 (45/108 non-tied)","SFT > RL by ~19 pp","Aggregate across the two Qwen architectures; GPT models were not trained with RL"

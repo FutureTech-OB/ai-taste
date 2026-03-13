@@ -23,6 +23,3 @@ All checkpoints in this analysis were trained only on the fuller idea-summary fo
 
 ## Extended Data Table 1 | Base-model controls before supervised fine-tuning
 Architecture-matched base-model controls report benchmark accuracy, macro-F1, 95% confidence intervals, headroom skill, per-tier accuracy, and predicted-tier distributions before supervised fine-tuning, establishing that architecture alone does not explain the later SFT gains.
-
-## Extended Data Table 2 | Reinforcement learning versus supervised fine-tuning
-SFT accuracy is shown alongside RL summaries for the Qwen architectures and for the pooled aggregate comparison. Aggregate RL performance is reported as run-pooled avg8 accuracy and non-tied majority-vote accuracy; architecture-specific RL values are not separately reported where the available RL outputs are pooled across architectures, so the table should be read as a package-level comparison rather than a fully architecture-resolved leaderboard.
