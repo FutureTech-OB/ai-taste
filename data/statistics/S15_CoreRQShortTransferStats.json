@@ -1,0 +1,571 @@
+{
+  "figure": "ExtendedDataFigure7",
+  "evaluation": "core_rq_short transfer from rq_with_context supervision",
+  "scoring_rule": {
+    "prediction_rule": "argmax(logp)",
+    "missing_labels": "treated as -inf",
+    "tie_rule": "canonical label order exceptional > strong > fair > limited"
+  },
+  "models": {
+    "GPT-4.1 base": {
+      "family": "GPT-4.1",
+      "training": "Base",
+      "rq_with_context": {
+        "n": 120,
+        "correct": 39,
+        "accuracy": 0.325,
+        "accuracy_pct": 32.5,
+        "accuracy_ci_pct": [
+          24.119710625521336,
+          40.880289374478664
+        ],
+        "macro_f1": 0.2683127653664537,
+        "macro_f1_ci": [
+          0.19506952113849493,
+          0.33670419239132016
+        ],
+        "precision": {
+          "exceptional": 0.42857142857142855,
+          "strong": 0.3673469387755102,
+          "fair": 0.2631578947368421,
+          "limited": 0.0
+        },
+        "recall": {
+          "exceptional": 0.2,
+          "strong": 0.6,
+          "fair": 0.5,
+          "limited": 0.0
+        },
+        "predicted_counts": {
+          "exceptional": 14,
+          "strong": 49,
+          "fair": 57,
+          "limited": 0
+        },
+        "predicted_share": {
+          "exceptional": 0.11666666666666667,
+          "strong": 0.4083333333333333,
+          "fair": 0.475,
+          "limited": 0.0
+        },
+        "confusion_matrix": [
+          [
+            6,
+            17,
+            7,
+            0
+          ],
+          [
+            5,
+            18,
+            7,
+            0
+          ],
+          [
+            3,
+            12,
+            15,
+            0
+          ],
+          [
+            0,
+            2,
+            28,
+            0
+          ]
+        ],
+        "over_errors": 50,
+        "under_errors": 31
+      },
+      "core_rq_short": {
+        "n": 120,
+        "correct": 35,
+        "accuracy": 0.2916666666666667,
+        "accuracy_pct": 29.166666666666668,
+        "accuracy_ci_pct": [
+          21.034098965908967,
+          37.299234367424376
+        ],
+        "macro_f1": 0.2250239956122309,
+        "macro_f1_ci": [
+          0.15251919985632342,
+          0.2978240612682095
+        ],
+        "precision": {
+          "exceptional": 0.25,
+          "strong": 0.28,
+          "fair": 0.27586206896551724,
+          "limited": 0.75
+        },
+        "recall": {
+          "exceptional": 0.03333333333333333,
+          "strong": 0.23333333333333334,
+          "fair": 0.8,
+          "limited": 0.1
+        },
+        "predicted_counts": {
+          "exceptional": 4,
+          "strong": 25,
+          "fair": 87,
+          "limited": 4
+        },
+        "predicted_share": {
+          "exceptional": 0.03333333333333333,
+          "strong": 0.20833333333333334,
+          "fair": 0.725,
+          "limited": 0.03333333333333333
+        },
+        "confusion_matrix": [
+          [
+            1,
+            14,
+            15,
+            0
+          ],
+          [
+            1,
+            7,
+            22,
+            0
+          ],
+          [
+            2,
+            3,
+            24,
+            1
+          ],
+          [
+            0,
+            1,
+            26,
+            3
+          ]
+        ],
+        "over_errors": 33,
+        "under_errors": 52
+      },
+      "delta_accuracy_pp": -3.3333333333333326,
+      "delta_macro_f1": -0.0432887697542228
+    },
+    "GPT-4.1 SFT": {
+      "family": "GPT-4.1",
+      "training": "SFT",
+      "rq_with_context": {
+        "n": 120,
+        "correct": 66,
+        "accuracy": 0.55,
+        "accuracy_pct": 55.00000000000001,
+        "accuracy_ci_pct": [
+          46.098707958953376,
+          63.90129204104663
+        ],
+        "macro_f1": 0.5577306652823961,
+        "macro_f1_ci": [
+          0.4665126194623612,
+          0.6388298502121253
+        ],
+        "precision": {
+          "exceptional": 0.4418604651162791,
+          "strong": 0.6086956521739131,
+          "fair": 0.45454545454545453,
+          "limited": 0.8571428571428571
+        },
+        "recall": {
+          "exceptional": 0.6333333333333333,
+          "strong": 0.4666666666666667,
+          "fair": 0.5,
+          "limited": 0.6
+        },
+        "predicted_counts": {
+          "exceptional": 43,
+          "strong": 23,
+          "fair": 33,
+          "limited": 21
+        },
+        "predicted_share": {
+          "exceptional": 0.35833333333333334,
+          "strong": 0.19166666666666668,
+          "fair": 0.275,
+          "limited": 0.175
+        },
+        "confusion_matrix": [
+          [
+            19,
+            4,
+            6,
+            1
+          ],
+          [
+            15,
+            14,
+            1,
+            0
+          ],
+          [
+            9,
+            4,
+            15,
+            2
+          ],
+          [
+            0,
+            1,
+            11,
+            18
+          ]
+        ],
+        "over_errors": 40,
+        "under_errors": 14
+      },
+      "core_rq_short": {
+        "n": 120,
+        "correct": 59,
+        "accuracy": 0.49166666666666664,
+        "accuracy_pct": 49.166666666666664,
+        "accuracy_ci_pct": [
+          40.221774165811674,
+          58.111559167521655
+        ],
+        "macro_f1": 0.479594198819532,
+        "macro_f1_ci": [
+          0.38862249927650977,
+          0.56360000668848
+        ],
+        "precision": {
+          "exceptional": 0.6666666666666666,
+          "strong": 0.5714285714285714,
+          "fair": 0.3076923076923077,
+          "limited": 0.5434782608695652
+        },
+        "recall": {
+          "exceptional": 0.4666666666666667,
+          "strong": 0.26666666666666666,
+          "fair": 0.4,
+          "limited": 0.8333333333333334
+        },
+        "predicted_counts": {
+          "exceptional": 21,
+          "strong": 14,
+          "fair": 39,
+          "limited": 46
+        },
+        "predicted_share": {
+          "exceptional": 0.175,
+          "strong": 0.11666666666666667,
+          "fair": 0.325,
+          "limited": 0.38333333333333336
+        },
+        "confusion_matrix": [
+          [
+            14,
+            3,
+            11,
+            2
+          ],
+          [
+            5,
+            8,
+            12,
+            5
+          ],
+          [
+            2,
+            2,
+            12,
+            14
+          ],
+          [
+            0,
+            1,
+            4,
+            25
+          ]
+        ],
+        "over_errors": 14,
+        "under_errors": 47
+      },
+      "delta_accuracy_pp": -5.83333333333334,
+      "delta_macro_f1": -0.0781364664628641
+    },
+    "GPT-4.1-nano base": {
+      "family": "GPT-4.1-nano",
+      "training": "Base",
+      "rq_with_context": {
+        "n": 120,
+        "correct": 30,
+        "accuracy": 0.25,
+        "accuracy_pct": 25.0,
+        "accuracy_ci_pct": [
+          17.25241973258747,
+          32.74758026741253
+        ],
+        "macro_f1": 0.1861801242236025,
+        "macro_f1_ci": [
+          0.12613566390506048,
+          0.24967938630999212
+        ],
+        "precision": {
+          "exceptional": 0.3,
+          "strong": 0.2235294117647059,
+          "fair": 0.4,
+          "limited": 0.0
+        },
+        "recall": {
+          "exceptional": 0.3,
+          "strong": 0.6333333333333333,
+          "fair": 0.06666666666666667,
+          "limited": 0.0
+        },
+        "predicted_counts": {
+          "exceptional": 30,
+          "strong": 85,
+          "fair": 5,
+          "limited": 0
+        },
+        "predicted_share": {
+          "exceptional": 0.25,
+          "strong": 0.7083333333333334,
+          "fair": 0.041666666666666664,
+          "limited": 0.0
+        },
+        "confusion_matrix": [
+          [
+            9,
+            21,
+            0,
+            0
+          ],
+          [
+            11,
+            19,
+            0,
+            0
+          ],
+          [
+            8,
+            20,
+            2,
+            0
+          ],
+          [
+            2,
+            25,
+            3,
+            0
+          ]
+        ],
+        "over_errors": 69,
+        "under_errors": 21
+      },
+      "core_rq_short": {
+        "n": 120,
+        "correct": 37,
+        "accuracy": 0.30833333333333335,
+        "accuracy_pct": 30.833333333333336,
+        "accuracy_ci_pct": [
+          22.57059289025819,
+          39.09607377640848
+        ],
+        "macro_f1": 0.25878950984883187,
+        "macro_f1_ci": [
+          0.17765147618003777,
+          0.3387100626619791
+        ],
+        "precision": {
+          "exceptional": 0.42857142857142855,
+          "strong": 0.3333333333333333,
+          "fair": 0.2727272727272727,
+          "limited": 0.5714285714285714
+        },
+        "recall": {
+          "exceptional": 0.1,
+          "strong": 0.2,
+          "fair": 0.8,
+          "limited": 0.13333333333333333
+        },
+        "predicted_counts": {
+          "exceptional": 7,
+          "strong": 18,
+          "fair": 88,
+          "limited": 7
+        },
+        "predicted_share": {
+          "exceptional": 0.058333333333333334,
+          "strong": 0.15,
+          "fair": 0.7333333333333333,
+          "limited": 0.058333333333333334
+        },
+        "confusion_matrix": [
+          [
+            3,
+            8,
+            19,
+            0
+          ],
+          [
+            0,
+            6,
+            22,
+            2
+          ],
+          [
+            2,
+            3,
+            24,
+            1
+          ],
+          [
+            2,
+            1,
+            23,
+            4
+          ]
+        ],
+        "over_errors": 31,
+        "under_errors": 52
+      },
+      "delta_accuracy_pp": 5.833333333333335,
+      "delta_macro_f1": 0.07260938562522937
+    },
+    "GPT-4.1-nano SFT": {
+      "family": "GPT-4.1-nano",
+      "training": "SFT",
+      "rq_with_context": {
+        "n": 120,
+        "correct": 69,
+        "accuracy": 0.575,
+        "accuracy_pct": 57.49999999999999,
+        "accuracy_ci_pct": [
+          48.65508149651262,
+          66.34491850348738
+        ],
+        "macro_f1": 0.5730133156603745,
+        "macro_f1_ci": [
+          0.47898206992542214,
+          0.6535447723279549
+        ],
+        "precision": {
+          "exceptional": 0.5833333333333334,
+          "strong": 0.5416666666666666,
+          "fair": 0.5,
+          "limited": 0.7272727272727273
+        },
+        "recall": {
+          "exceptional": 0.7,
+          "strong": 0.43333333333333335,
+          "fair": 0.6333333333333333,
+          "limited": 0.5333333333333333
+        },
+        "predicted_counts": {
+          "exceptional": 36,
+          "strong": 24,
+          "fair": 38,
+          "limited": 22
+        },
+        "predicted_share": {
+          "exceptional": 0.3,
+          "strong": 0.2,
+          "fair": 0.31666666666666665,
+          "limited": 0.18333333333333332
+        },
+        "confusion_matrix": [
+          [
+            21,
+            2,
+            5,
+            2
+          ],
+          [
+            10,
+            13,
+            6,
+            1
+          ],
+          [
+            4,
+            4,
+            19,
+            3
+          ],
+          [
+            1,
+            5,
+            8,
+            16
+          ]
+        ],
+        "over_errors": 32,
+        "under_errors": 19
+      },
+      "core_rq_short": {
+        "n": 120,
+        "correct": 40,
+        "accuracy": 0.3333333333333333,
+        "accuracy_pct": 33.33333333333333,
+        "accuracy_ci_pct": [
+          24.8988362682594,
+          41.76783039840726
+        ],
+        "macro_f1": 0.28300335854594716,
+        "macro_f1_ci": [
+          0.20879648570523932,
+          0.34948941891226665
+        ],
+        "precision": {
+          "exceptional": 0.5384615384615384,
+          "strong": 0.0,
+          "fair": 0.2602739726027397,
+          "limited": 0.4117647058823529
+        },
+        "recall": {
+          "exceptional": 0.23333333333333334,
+          "strong": 0.0,
+          "fair": 0.6333333333333333,
+          "limited": 0.4666666666666667
+        },
+        "predicted_counts": {
+          "exceptional": 13,
+          "strong": 0,
+          "fair": 73,
+          "limited": 34
+        },
+        "predicted_share": {
+          "exceptional": 0.10833333333333334,
+          "strong": 0.0,
+          "fair": 0.6083333333333333,
+          "limited": 0.2833333333333333
+        },
+        "confusion_matrix": [
+          [
+            7,
+            0,
+            22,
+            1
+          ],
+          [
+            4,
+            0,
+            16,
+            10
+          ],
+          [
+            2,
+            0,
+            19,
+            9
+          ],
+          [
+            0,
+            0,
+            16,
+            14
+          ]
+        ],
+        "over_errors": 22,
+        "under_errors": 58
+      },
+      "delta_accuracy_pp": -24.166666666666664,
+      "delta_macro_f1": -0.29000995711442734
+    }
+  }
+}

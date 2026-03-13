@@ -303,6 +303,15 @@ Extraction output (RQ_WITH_CONTEXT):
 
 > Family motivation is widely seen as a positive driver of work performance, yet its effects on employees' family lives remain underexplored. While prior research highlights benefits in the work domain, little is known about potential downsides for family well-being. This study addresses this gap by investigating whether high family motivation, despite good intentions, can lead to work-family conflict (WFC) and negative spousal interactions due to excessive work effort depleting personal resources. Drawing on resource drain theory, the authors propose that FSSBs from supervisors serve as external resources that may mitigate this drain. Using a three-wave dyadic survey design with employee-partner data, the study tests a mediated moderation model. The key contribution lies in revealing the 'dark side' of family motivation and identifying organizational support as a boundary condition.
 
+#### Compression examples (one-sentence idea statement versus full idea summary)
+
+Extended Data Fig. 7 evaluates only the one-sentence idea statement at test time, even though all SFT checkpoints were trained on the full idea summary. The released transfer file stores both text versions side by side so that the compression can be inspected directly.
+
+| Article | `one_sentence_idea_statement` | `full_idea_summary` |
+|---------|-------------------------------|---------------------|
+| *Game Over or Game Changer? The Impact of Applicants' Gaming Skills on Their Hirability* | This study examines how applicants' gaming skills, presented as an extracurricular activity (ECA) on a resume, affect their perceived hirability and resume quality. It specifically compares gaming to team sports and tests whether proficiency level (neutral vs. high) influences these perceptions. | The increasing digitalization of work has raised interest in nontraditional skills such as those developed through video gaming, which may include strategic thinking, teamwork, and digital fluency. However, hiring managers may hold negative stereotypes about gamers, viewing them as lazy or socially isolated, potentially disadvantaging applicants who list gaming on their resumes. While research shows gaming can enhance job-relevant cognitive abilities, there is no empirical evidence on how such skills are perceived during resume screening. Using a 2 (ECA: gaming vs. volleyball) × 2 (proficiency: neutral vs. high) experimental design, this study investigates whether listing gaming as an ECA affects applicant evaluations compared to traditional team sports. The authors apply signaling theory to understand how ECAs serve as cues about unobservable applicant traits. The primary contribution is initial evidence on the perception of gaming skills in personnel selection, highlighting a disconnect between potential skill benefits and actual hiring biases. |
+| *Good intentions, bad outcomes: how and when family motivation leads to work-family conflict* | This study examines how family motivation leads to work-family conflict through increased work effort, resulting in negative spousal interactions. It also investigates whether family supportive supervisor behaviors (FSSBs) buffer this negative resource drain process. | Family motivation is widely seen as a positive driver of work performance, yet its effects on employees' family lives remain underexplored. While prior research highlights benefits in the work domain, little is known about potential downsides for family well-being. This study addresses this gap by investigating whether high family motivation, despite good intentions, can lead to work-family conflict (WFC) and negative spousal interactions due to excessive work effort depleting personal resources. Drawing on resource drain theory, the authors propose that FSSBs from supervisors serve as external resources that may mitigate this drain. Using a three-wave dyadic survey design with employee-partner data, the study tests a mediated moderation model. The key contribution lies in revealing the 'dark side' of family motivation and identifying organizational support as a boundary condition. |
+
 ---
 
 ### Supplementary Methods 5 (SM5): Journal-to-Tier Mapping
@@ -670,6 +679,26 @@ Fig. 5 now plots the headline SFT/Gemini 3.1 Pro/GPT-5.2 High/GPT-4.1 baseline p
 All six combinations exceed the frontier average benchmark. The public `best_2_model_combo` was selected by accuracy, then macro F1, then canonical model-key order to break ties, which retained GPT-4.1-nano (SFT) + Qwen3-4B (SFT) as the primary pair.
 
 As a supporting temporal-stability check, the matched older-source temporal package compares an older training slice (`2015-2020`) against the matched recent slice (`2021-2025`), with the benchmark itself drawn from post-June-30-2025 publications. On the same benchmark, the older-source GPT-4.1-nano SFT reached 43.3% accuracy and macro F1 0.423, the older-source Qwen3-30B SFT reached 46.7% and 0.460, and the older-trace matched 2-model ensemble reached 47.5% and 0.470, versus 57.5% and 0.573, 55.8% and 0.558, and 60.0% and 0.599 for the corresponding recent-training GPT-4.1-nano, Qwen3-30B, and matched 2-model ensemble. The older-trace ensemble also remained more inflationary than the matched recent ensemble, with lower exceptional-tier precision (46.7% versus 59.0%), lower fair-tier recall (26.7% versus 60.0%), and stronger strong->exceptional confusion (46.7% versus 36.7%), indicating that the institutional signal persists across time but yields weaker tier calibration under the older-source training set.
+
+### Compressed-input transfer from fuller supervision
+
+Extended Data Fig. 7 reuses the same 120 held-out articles but replaces the full idea summary with the one-sentence idea statement at evaluation time. This is an evaluation-only transfer test: the SFT checkpoints remain trained on the full idea summary only.
+
+| Model | Full idea summary accuracy | One-sentence idea statement accuracy | Delta (pp) | Full idea summary macro F1 | One-sentence idea statement macro F1 | Delta |
+|-------|----------------------------:|-------------------------------------:|-----------:|---------------------------:|-------------------------------------:|------:|
+| GPT-4.1 base | 32.5 | 29.2 | -3.3 | 0.268 | 0.225 | -0.043 |
+| GPT-4.1 SFT | 55.0 | 49.2 | -5.8 | 0.558 | 0.480 | -0.078 |
+| GPT-4.1-nano base | 25.0 | 30.8 | +5.8 | 0.186 | 0.259 | +0.073 |
+| GPT-4.1-nano SFT | 57.5 | 33.3 | -24.2 | 0.573 | 0.283 | -0.290 |
+
+| Model | One-sentence recall (exceptional / strong / fair / limited) | One-sentence precision (exceptional / strong / fair / limited) | One-sentence predicted counts (exceptional / strong / fair / limited) |
+|-------|---------------------------------------------------------------|------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| GPT-4.1 base | 3.3 / 23.3 / 80.0 / 10.0 | 25.0 / 28.0 / 27.6 / 75.0 | 4 / 25 / 87 / 4 |
+| GPT-4.1 SFT | 46.7 / 26.7 / 40.0 / 83.3 | 66.7 / 57.1 / 30.8 / 54.3 | 21 / 14 / 39 / 46 |
+| GPT-4.1-nano base | 10.0 / 20.0 / 80.0 / 13.3 | 42.9 / 33.3 / 27.3 / 57.1 | 7 / 18 / 88 / 7 |
+| GPT-4.1-nano SFT | 23.3 / 0.0 / 63.3 / 46.7 | 53.8 / 0.0 / 26.0 / 41.2 | 13 / 0 / 73 / 34 |
+
+The transfer pattern is asymmetric. GPT-4.1 SFT remains clearly above its base model on the one-sentence input and stays well above chance, but it becomes more conservative than on the fuller-input benchmark: under-estimation errors rise sharply, limited-tier recall increases from 60.0% to 83.3%, and predictions shift toward the limited tier. GPT-4.1-nano SFT, by contrast, loses most of its fuller-input advantage under compression, never predicts the strong tier on the one-sentence input, and falls to only modestly above chance. The base models remain dominated by middle-tier clustering, with 87 and 88 of 120 short-input predictions landing in the fair tier for GPT-4.1 base and GPT-4.1-nano base respectively.
 
 ---
 

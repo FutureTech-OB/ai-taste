@@ -10,6 +10,10 @@
 - `sft_temporal_old_predictions.jsonl`:
   - Minimal old-trace SFT release file used for Extended Data Fig. 6.
   - Contains only the two matched old-trace log-probability tracks needed for the public temporal-persistence comparison.
+- `core_rq_short_transfer_predictions.jsonl`:
+  - Public compressed-input transfer file used for Extended Data Fig. 7.
+  - Packages the same held-out 120 articles as one-sentence idea statements together with the matched full idea summaries for side-by-side traceability.
+  - Contains the four GPT-family base/SFT prediction tracks used for the harder format-transfer check; no model was trained on this one-sentence format.
 - `chat_predictions.jsonl`:
   - Chat/log-probability evaluator predictions.
 - `rl_predictions.jsonl`:

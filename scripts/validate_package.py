@@ -116,6 +116,13 @@ EXPECTED_OLD_SFT_KEYS = {
     "old_qwen30b_checkpoint_178",
 }
 
+EXPECTED_CORE_RQ_SHORT_TRANSFER_KEYS = {
+    "ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY",
+    "ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB",
+    "gpt-4.1-nano-2025-04-14",
+    "gpt-4.1-2025-04-14",
+}
+
 GEMINI_31_KEY = "google/gemini-3.1-pro-preview"
 
 EXPECTED_PAIRWISE_DIRS = {
@@ -138,6 +145,7 @@ EXPECTED_FIGURE_INDEX_ROWS = {
     "ExtendedDataFigure4",
     "ExtendedDataFigure5",
     "ExtendedDataFigure6",
+    "ExtendedDataFigure7",
     "SupplementaryFigure1",
     "SupplementaryFigure2",
     "SupplementaryFigure3",
@@ -311,20 +319,42 @@ def _check_human_jsonl_schema(path: Path, errors: List[str]) -> None:
                     return
 
 
-def _first_row_model_keys(path: Path) -> Set[str]:
+def _first_row_model_keys(path: Path, eval_key: str = "rq_with_context") -> Set[str]:
     with path.open("r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line:
                 continue
             obj = json.loads(line)
-            return set(obj.get("val_outcome", {}).get("rq_with_context", {}).keys())
+            return set(obj.get("val_outcome", {}).get(eval_key, {}).keys())
     return set()
 
 
 def _count_nonempty_lines(path: Path) -> int:
     with path.open("r", encoding="utf-8") as f:
         return sum(1 for line in f if line.strip())
+
+
+def _check_core_rq_short_transfer_schema(path: Path, errors: List[str]) -> None:
+    required_text_fields = {"one_sentence_idea_statement", "full_idea_summary"}
+    with path.open("r", encoding="utf-8") as f:
+        for i, line in enumerate(f, start=1):
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError as exc:
+                fail(f"Invalid JSON in {path} line {i}: {exc}", errors)
+                return
+            for field in sorted(required_text_fields):
+                if not str(obj.get(field, "")).strip():
+                    fail(f"Missing required transfer text field '{field}' in {path.name} line {i}", errors)
+                    return
+            transfer = obj.get("val_outcome", {}).get("core_rq_short")
+            if not isinstance(transfer, dict) or not transfer:
+                fail(f"Missing val_outcome.core_rq_short payload in {path.name} line {i}", errors)
+                return
 
 
 def _check_tables_no_forbidden_columns(tables_dir: Path, errors: List[str]) -> None:
@@ -621,7 +651,7 @@ def main() -> int:
     for i in range(1, 7):
         expected_figures.append(root / "figures" / "main" / f"Figure{i}.png")
         expected_figures.append(root / "figures" / "main" / f"Figure{i}.pdf")
-    for i in range(1, 7):
+    for i in range(1, 8):
         expected_figures.append(root / "figures" / "extended_data" / f"ExtendedDataFigure{i}.png")
         expected_figures.append(root / "figures" / "extended_data" / f"ExtendedDataFigure{i}.pdf")
     for i in range(1, 7):
@@ -637,8 +667,8 @@ def main() -> int:
         d = root / "figures" / sub
         if d.exists():
             actual_fig_files.extend([p for p in d.iterdir() if p.is_file() and p.suffix.lower() in {".png", ".pdf"}])
-    if len(actual_fig_files) != 36:
-        fail(f"Figure asset count mismatch. Expected 36, got {len(actual_fig_files)}", errors)
+    if len(actual_fig_files) != 38:
+        fail(f"Figure asset count mismatch. Expected 38, got {len(actual_fig_files)}", errors)
 
     # 4) Human ratings + reproducibility inputs are de-identified
     human_dir = root / "data" / "human_ratings"
@@ -782,6 +812,7 @@ def main() -> int:
     # 8) Prediction package contract
     predictions_dir = root / "data" / "predictions"
     required_prediction_files = {
+        "core_rq_short_transfer_predictions.jsonl",
         "frontier_10models_8runs.jsonl",
         "sft_predictions.jsonl",
         "sft_temporal_old_predictions.jsonl",
@@ -836,6 +867,17 @@ def main() -> int:
         if missing:
             fail(f"Old-trace SFT prediction file missing expected model keys: {missing}", errors)
 
+    short_transfer_file = predictions_dir / "core_rq_short_transfer_predictions.jsonl"
+    if short_transfer_file.exists():
+        short_transfer_keys = _first_row_model_keys(short_transfer_file, eval_key="core_rq_short")
+        if short_transfer_keys != EXPECTED_CORE_RQ_SHORT_TRANSFER_KEYS:
+            fail(
+                "Core short-input transfer file model set mismatch. "
+                f"Expected {sorted(EXPECTED_CORE_RQ_SHORT_TRANSFER_KEYS)}, got {sorted(short_transfer_keys)}",
+                errors,
+            )
+        _check_core_rq_short_transfer_schema(short_transfer_file, errors)
+
     gemini31_file = predictions_dir / "gemini_3_1_pro_standalone.jsonl"
     if gemini31_file.exists():
         gemini31_keys = _first_row_model_keys(gemini31_file)
@@ -881,6 +923,18 @@ def main() -> int:
         _check_ci_contract(tables_dir, errors)
     else:
         fail("Missing data/tables directory", errors)
+
+    transfer_stats = root / "data" / "statistics" / "S15_CoreRQShortTransferStats.json"
+    if not transfer_stats.exists():
+        fail("Missing ED7 statistics artifact: data/statistics/S15_CoreRQShortTransferStats.json", errors)
+    else:
+        try:
+            stats_obj = json.loads(transfer_stats.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            fail(f"Invalid JSON in data/statistics/S15_CoreRQShortTransferStats.json: {exc}", errors)
+        else:
+            if stats_obj.get("figure") != "ExtendedDataFigure7":
+                fail("S15_CoreRQShortTransferStats.json has unexpected figure identifier", errors)
 
     # 10) Figure trace index + pairwise contract (ED2)
     _check_figure_index_contract(root, errors)

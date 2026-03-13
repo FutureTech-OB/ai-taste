@@ -25,6 +25,7 @@ import matplotlib.patheffects as pe
 import matplotlib.transforms as mtransforms
 import numpy as np
 import pandas as pd
+from matplotlib.patches import Patch
 
 from figure_style_policy import apply_title_policy
 
@@ -56,6 +57,8 @@ TRAINED_PATH = PROJECT_ROOT / "data" / "predictions" / "sft_predictions.jsonl"
 CHAT_PATH = PROJECT_ROOT / "data" / "predictions" / "chat_predictions.jsonl"
 RL_PATH = PROJECT_ROOT / "data" / "predictions" / "rl_predictions.jsonl"
 TEMPORAL_OLD_PATH = PROJECT_ROOT / "data" / "predictions" / "sft_temporal_old_predictions.jsonl"
+CORE_RQ_SHORT_TRANSFER_PATH = PROJECT_ROOT / "data" / "predictions" / "core_rq_short_transfer_predictions.jsonl"
+CORE_RQ_SHORT_TRANSFER_STATS_PATH = STATS_DIR / "S15_CoreRQShortTransferStats.json"
 
 PAIRWISE_ROOT = PROJECT_ROOT / "data" / "pairwise"
 PAIRWISE_FRONTIER_GEMINI = PAIRWISE_ROOT / "frontier_gemini3_1_pro"
@@ -1183,7 +1186,11 @@ def _prediction_from_logp_label_order(logp: Dict[str, object]) -> str | None:
     return best_label
 
 
-def _load_prediction_records_label_order(path: Path, allowed_keys: set[str] | None = None) -> Dict[str, List[Tuple[str, str]]]:
+def _load_prediction_records_for_eval_key(
+    path: Path,
+    eval_key: str,
+    allowed_keys: set[str] | None = None,
+) -> Dict[str, List[Tuple[str, str]]]:
     """Load fixed-label predictions using the package's canonical label-order tie rule."""
     per_model: Dict[str, List[Tuple[str, str]]] = {}
     with path.open("r", encoding="utf-8") as f:
@@ -1192,7 +1199,7 @@ def _load_prediction_records_label_order(path: Path, allowed_keys: set[str] | No
             gt = _normalize_pred_label(row.get("rank", ""))
             if gt not in LABELS:
                 continue
-            rq = row.get("val_outcome", {}).get("rq_with_context", {})
+            rq = row.get("val_outcome", {}).get(eval_key, {})
             if not isinstance(rq, dict):
                 continue
             for model_key, model_out in rq.items():
@@ -1210,6 +1217,11 @@ def _load_prediction_records_label_order(path: Path, allowed_keys: set[str] | No
                 if pred in LABELS:
                     per_model.setdefault(model_key, []).append((gt, pred))
     return per_model
+
+
+def _load_prediction_records_label_order(path: Path, allowed_keys: set[str] | None = None) -> Dict[str, List[Tuple[str, str]]]:
+    """Load fixed-label predictions using the package's canonical label-order tie rule."""
+    return _load_prediction_records_for_eval_key(path, "rq_with_context", allowed_keys)
 
 
 def _logp_to_probability_vector(logp: Dict[str, object]) -> np.ndarray:
@@ -1377,6 +1389,163 @@ def load_temporal_trace_comparison_data() -> Dict[str, object]:
         "old_focus": old_focus,
         "references": references,
         "old_singleton_only": False,
+    }
+
+
+def _augment_transfer_metrics(metrics: Dict[str, object], macro_f1_ci: Tuple[float, float]) -> Dict[str, object]:
+    out = dict(metrics)
+    cm = np.asarray(metrics["cm"], dtype=int)
+    over_n = int(sum(cm[i, j] for i in range(4) for j in range(0, i)))
+    under_n = int(sum(cm[i, j] for i in range(4) for j in range(i + 1, 4)))
+    pred_counts = cm.sum(axis=0).astype(int)
+    out["macro_f1_ci"] = macro_f1_ci
+    out["pred_counts"] = pred_counts
+    out["over_n"] = over_n
+    out["under_n"] = under_n
+    out["middle_n"] = int(pred_counts[1] + pred_counts[2])
+    out["extreme_n"] = int(pred_counts[0] + pred_counts[3])
+    return out
+
+
+def _serialize_transfer_metrics(metrics: Dict[str, object]) -> Dict[str, object]:
+    cm = np.asarray(metrics["cm"], dtype=int)
+    recall = np.asarray(metrics["recall"], dtype=float)
+    precision = np.asarray(metrics["precision"], dtype=float)
+    pred_dist = np.asarray(metrics["pred_dist"], dtype=float)
+    pred_counts = np.asarray(metrics["pred_counts"], dtype=int)
+    acc = float(metrics["acc"])
+    acc_ci = float(metrics["acc_ci"])
+    return {
+        "n": int(metrics["n"]),
+        "correct": int(np.trace(cm)),
+        "accuracy": acc,
+        "accuracy_pct": acc * 100.0,
+        "accuracy_ci_pct": [max(0.0, (acc - acc_ci) * 100.0), min(100.0, (acc + acc_ci) * 100.0)],
+        "macro_f1": float(metrics["macro_f1"]),
+        "macro_f1_ci": [float(metrics["macro_f1_ci"][0]), float(metrics["macro_f1_ci"][1])],
+        "precision": {label: float(precision[i]) for i, label in enumerate(LABELS)},
+        "recall": {label: float(recall[i]) for i, label in enumerate(LABELS)},
+        "predicted_counts": {label: int(pred_counts[i]) for i, label in enumerate(LABELS)},
+        "predicted_share": {label: float(pred_dist[i]) for i, label in enumerate(LABELS)},
+        "confusion_matrix": cm.tolist(),
+        "over_errors": int(metrics["over_n"]),
+        "under_errors": int(metrics["under_n"]),
+    }
+
+
+def load_core_rq_short_transfer_data() -> Dict[str, object]:
+    if not CORE_RQ_SHORT_TRANSFER_PATH.exists():
+        raise FileNotFoundError(f"Missing package-local core_rq_short transfer file: {CORE_RQ_SHORT_TRANSFER_PATH}")
+
+    specs = [
+        {
+            "label": "GPT-4.1 base",
+            "family": "GPT-4.1",
+            "training": "Base",
+            "short_key": "gpt-4.1-2025-04-14",
+            "context_key": "gpt-4.1",
+            "color": COLORS["baseline"],
+        },
+        {
+            "label": "GPT-4.1 SFT",
+            "family": "GPT-4.1",
+            "training": "SFT",
+            "short_key": "ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY",
+            "context_key": "CYqJRxId",
+            "color": COLORS["sft"],
+        },
+        {
+            "label": "GPT-4.1-nano base",
+            "family": "GPT-4.1-nano",
+            "training": "Base",
+            "short_key": "gpt-4.1-nano-2025-04-14",
+            "context_key": "gpt-4.1-nano",
+            "color": "#E69F00",
+        },
+        {
+            "label": "GPT-4.1-nano SFT",
+            "family": "GPT-4.1-nano",
+            "training": "SFT",
+            "short_key": "ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB",
+            "context_key": "ckpt-step-304",
+            "color": "#56B4E9",
+        },
+    ]
+
+    short_records = _load_prediction_records_for_eval_key(
+        CORE_RQ_SHORT_TRANSFER_PATH,
+        "core_rq_short",
+        allowed_keys={str(spec["short_key"]) for spec in specs},
+    )
+    context_chat = _load_prediction_records_label_order(
+        CHAT_PATH,
+        allowed_keys={str(spec["context_key"]) for spec in specs if spec["training"] == "Base"},
+    )
+    context_sft = _load_prediction_records_label_order(
+        TRAINED_PATH,
+        allowed_keys={str(spec["context_key"]) for spec in specs if spec["training"] == "SFT"},
+    )
+
+    items: List[Dict[str, object]] = []
+    payload_models: Dict[str, Dict[str, object]] = {}
+    for spec in specs:
+        short = short_records.get(str(spec["short_key"]), [])
+        context_bundle = context_chat if spec["training"] == "Base" else context_sft
+        context = context_bundle.get(str(spec["context_key"]), [])
+        if not short or not context:
+            raise ValueError(f"Missing transfer records for {spec['label']}")
+
+        short_metrics = _augment_transfer_metrics(
+            _compute_classifier_metrics(short),
+            _bootstrap_classifier_metrics(short)["macro_f1"],
+        )
+        context_metrics = _augment_transfer_metrics(
+            _compute_classifier_metrics(context),
+            _bootstrap_classifier_metrics(context)["macro_f1"],
+        )
+        item = {
+            **spec,
+            "short": short_metrics,
+            "context": context_metrics,
+            "delta_acc_pp": (float(short_metrics["acc"]) - float(context_metrics["acc"])) * 100.0,
+            "delta_macro_f1": float(short_metrics["macro_f1"]) - float(context_metrics["macro_f1"]),
+            "recall_delta_pp": (
+                np.asarray(short_metrics["recall"], dtype=float) - np.asarray(context_metrics["recall"], dtype=float)
+            )
+            * 100.0,
+        }
+        items.append(item)
+        payload_models[str(spec["label"])] = {
+            "family": str(spec["family"]),
+            "training": str(spec["training"]),
+            "rq_with_context": _serialize_transfer_metrics(context_metrics),
+            "core_rq_short": _serialize_transfer_metrics(short_metrics),
+            "delta_accuracy_pp": float(item["delta_acc_pp"]),
+            "delta_macro_f1": float(item["delta_macro_f1"]),
+        }
+
+    CORE_RQ_SHORT_TRANSFER_STATS_PATH.write_text(
+        json.dumps(
+            {
+                "figure": "ExtendedDataFigure7",
+                "evaluation": "core_rq_short transfer from rq_with_context supervision",
+                "scoring_rule": {
+                    "prediction_rule": "argmax(logp)",
+                    "missing_labels": "treated as -inf",
+                    "tie_rule": "canonical label order exceptional > strong > fair > limited",
+                },
+                "models": payload_models,
+            },
+            indent=2,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    return {
+        "items": items,
+        "chance_acc_pct": 25.0,
+        "stats_path": CORE_RQ_SHORT_TRANSFER_STATS_PATH,
     }
 
 
@@ -2644,6 +2813,176 @@ def make_ed6_temporal_trace_persistence_v1(
     return _save(fig, out_base)
 
 
+def make_ed7_core_rq_short_transfer_v1(
+    out_base: Path | None = None,
+) -> Tuple[Path, Path]:
+    _set_style()
+    data = load_core_rq_short_transfer_data()
+    items: List[Dict[str, object]] = data["items"]  # type: ignore[assignment]
+    if not items:
+        raise ValueError("ED7 requires non-empty core_rq_short transfer items.")
+
+    display_names = [
+        "GPT-4.1\nBase",
+        "GPT-4.1\nFine-tuned",
+        "GPT-4.1 nano\nBase",
+        "GPT-4.1 nano\nFine-tuned",
+    ]
+    compact_names = [
+        "GPT-4.1\nbase",
+        "GPT-4.1\nfine-tuned",
+        "GPT-4.1 nano\nbase",
+        "GPT-4.1 nano\nfine-tuned",
+    ]
+    colors = [str(item["color"]) for item in items]
+    x = np.arange(len(items))
+    chance_acc = float(data["chance_acc_pct"])
+
+    fig = plt.figure(figsize=(12.4, 8.9))
+    gs = gridspec.GridSpec(2, 2, figure=fig, hspace=0.40, wspace=0.30)
+
+    gs_a = gs[0, :].subgridspec(1, 2, wspace=0.20)
+    ax = fig.add_subplot(gs_a[0, 0])
+    short_acc = np.array([float(item["short"]["acc"]) * 100.0 for item in items], dtype=float)
+    short_acc_ci = np.array([float(item["short"]["acc_ci"]) * 100.0 for item in items], dtype=float)
+    context_acc = np.array([float(item["context"]["acc"]) * 100.0 for item in items], dtype=float)
+    bars = ax.bar(x, short_acc, color=colors, edgecolor="white", linewidth=0.8)
+    ax.errorbar(x, short_acc, yerr=short_acc_ci, fmt="none", ecolor="#333333", elinewidth=0.85, capsize=2.0, zorder=3)
+    ax.scatter(x, context_acc, s=34, facecolors="white", edgecolors="#222222", linewidths=0.9, zorder=4)
+    ax.axhline(chance_acc, color=COLORS["chance"], linestyle="--", linewidth=0.8)
+    ax.set_xticks(x)
+    ax.set_xticklabels(display_names)
+    ax.set_ylim(20, 62)
+    ax.set_ylabel("Accuracy (%)")
+    ax.set_title("a  Performance on one-sentence idea statements", loc="left", pad=12)
+    for bar, val in zip(bars, short_acc):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2 + 0.13,
+            val + 0.7,
+            f"{val:.1f}",
+            ha="left",
+            fontsize=5.8,
+        )
+
+    ax = fig.add_subplot(gs_a[0, 1])
+    short_macro = np.array([float(item["short"]["macro_f1"]) for item in items], dtype=float)
+    context_macro = np.array([float(item["context"]["macro_f1"]) for item in items], dtype=float)
+    macro_yerr = np.array(
+        [
+            [
+                short_macro[i] - float(item["short"]["macro_f1_ci"][0]),
+                float(item["short"]["macro_f1_ci"][1]) - short_macro[i],
+            ]
+            for i, item in enumerate(items)
+        ],
+        dtype=float,
+    ).T
+    bars = ax.bar(x, short_macro, color=colors, edgecolor="white", linewidth=0.8)
+    ax.errorbar(x, short_macro, yerr=macro_yerr, fmt="none", ecolor="#333333", elinewidth=0.85, capsize=2.0, zorder=3)
+    ax.scatter(x, context_macro, s=34, facecolors="white", edgecolors="#222222", linewidths=0.9, zorder=4)
+    ax.set_xticks(x)
+    ax.set_xticklabels(display_names)
+    ax.set_ylim(0.15, 0.66)
+    ax.set_ylabel("Macro-F1")
+    for bar, val in zip(bars, short_macro):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2 + 0.13,
+            val + 0.012,
+            f"{val:.3f}",
+            ha="left",
+            fontsize=5.6,
+        )
+    panel_a_handles = [
+        Patch(facecolor=colors[1], edgecolor="white"),
+        plt.Line2D([0], [0], marker="o", color="#222222", markerfacecolor="white", linewidth=0),
+        plt.Line2D([0], [0], color=COLORS["chance"], linestyle="--", linewidth=0.8),
+    ]
+    ax.legend(
+        panel_a_handles,
+        ["One-sentence idea statement", "Full idea summary", "25% chance"],
+        fontsize=5.4,
+        loc="upper left",
+        bbox_to_anchor=(0.02, 0.98),
+        frameon=False,
+        borderpad=0.20,
+        handletextpad=0.45,
+        labelspacing=0.35,
+        handlelength=1.1,
+    )
+
+    ax = fig.add_subplot(gs[1, 0])
+    recall_delta = np.vstack([np.asarray(item["recall_delta_pp"], dtype=float) for item in items])
+    im = ax.imshow(recall_delta, cmap="RdBu_r", vmin=-50, vmax=50, aspect="auto")
+    ax.set_xticks(np.arange(len(LABELS_TITLE)))
+    ax.set_xticklabels(LABELS_TITLE)
+    ax.set_yticks(np.arange(len(items)))
+    ax.set_yticklabels(compact_names)
+    ax.set_title("b  Which tiers lose recall under one-sentence input", loc="left", pad=12)
+    ax.set_xlabel("True tier")
+    for i in range(recall_delta.shape[0]):
+        for j in range(recall_delta.shape[1]):
+            val = recall_delta[i, j]
+            ax.text(
+                j,
+                i,
+                f"{val:+.0f}",
+                ha="center",
+                va="center",
+                fontsize=5.5,
+                color="white" if abs(val) > 24 else "#111111",
+            )
+    cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.03)
+    cbar.set_label("Recall change (percentage points)", fontsize=6.0)
+
+    ax = fig.add_subplot(gs[1, 1])
+    tier_cols = ["#5B8FF9", "#61DDAA", "#F6BD16", "#E8684A"]
+    positions: List[float] = []
+    xticklabels: List[str] = []
+    model_centers: List[float] = []
+    for idx, item in enumerate(items):
+        base = idx * 2.6
+        positions.extend([base, base + 0.82])
+        xticklabels.extend(["Full\nsummary", "One-\nsentence"])
+        model_centers.append(base + 0.41)
+    dist = np.vstack([np.asarray(item["context"]["pred_dist"], dtype=float) * 100.0 for item in items])
+    dist_short = np.vstack([np.asarray(item["short"]["pred_dist"], dtype=float) * 100.0 for item in items])
+    combined = np.empty((len(positions), 4), dtype=float)
+    combined[0::2] = dist
+    combined[1::2] = dist_short
+    bottoms = np.zeros(len(positions), dtype=float)
+    for tier_idx, color in enumerate(tier_cols):
+        vals = combined[:, tier_idx]
+        ax.bar(positions, vals, bottom=bottoms, width=0.70, color=color, edgecolor="white", label=LABELS_TITLE[tier_idx])
+        bottoms += vals
+    ax.set_ylim(0, 112)
+    ax.set_ylabel("Predicted share (%)")
+    ax.set_xticks(positions)
+    ax.set_xticklabels(xticklabels)
+    ax.set_title("c  Predicted tier mix under the two input formats", loc="left", pad=12)
+    transform = mtransforms.blended_transform_factory(ax.transData, ax.transAxes)
+    for center, label in zip(model_centers, display_names):
+        ax.text(center, -0.23, label.replace("\n", " "), transform=transform, ha="center", va="top", fontsize=5.6)
+    for idx in range(1, len(items)):
+        ax.axvline(idx * 2.6 - 0.52, color="#DDDDDD", linewidth=0.8)
+    ax.legend(
+        fontsize=5.3,
+        loc="upper center",
+        bbox_to_anchor=(0.50, 0.99),
+        ncol=2,
+        columnspacing=0.9,
+        frameon=True,
+        facecolor="white",
+        edgecolor="#DDDDDD",
+        framealpha=0.95,
+        borderpad=0.35,
+    )
+    fig.subplots_adjust(top=0.88, bottom=0.13, left=0.08, right=0.98)
+
+    if out_base is None:
+        out_base = OUT_EXT / "ed_fig7"
+    return _save(fig, out_base)
+
+
 def make_supp_table_figures_v2() -> List[Tuple[Path, Path]]:
     _set_style()
     outputs: List[Tuple[Path, Path]] = []
@@ -3267,6 +3606,7 @@ def write_design_notes(generated_ext: List[Tuple[Path, Path]], generated_supp: L
         "- Push detail to dense multi-panel diagnostics (full confusion atlases, matched base-vs-SFT maps, ensemble landscape ranking, calibration/error/reliability internals).",
         "- Trace pairwise figure directly to `data/pairwise/*` trial files and `metrics.json` summaries.",
         "- Add ED6 as a temporal persistence diagnostic using the package-local recent SFT predictions, both verified older-trace checkpoints, and the old 2-model ensemble.",
+        "- Add ED7 as a compressed-input transfer diagnostic using the bundled one-sentence idea-statement prediction file and package-local fuller-input reference predictions.",
         "",
         "Generated Extended Data figures:",
     ]
@@ -3318,6 +3658,7 @@ def main() -> None:
         make_ed4_calibration_error_reliability_v2(),
         make_ed5_rl_checkpoint_diagnostics_v2(),
         make_ed6_temporal_trace_persistence_v1(),
+        make_ed7_core_rq_short_transfer_v1(),
     ]
     generated_supp = []
     generated_supp.extend(make_supp_table_figures_v2())
