@@ -2,7 +2,7 @@
 
 This repository releases the paper, figures, tables, de-identified evaluation data, and reproducibility code for the study:
 
-**"Machines acquire scientific taste from institutional traces."**
+**Paper title:** Fine-tuned language models learn tacit scientific judgment from institutional traces
 
 The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. The release includes a 120-article benchmark, model predictions, de-identified human ratings, released figures and tables, documentation describing the withheld training corpus, and the scripts used to regenerate the public results from repository-local files.
 

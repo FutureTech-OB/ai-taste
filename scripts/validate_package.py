@@ -315,6 +315,48 @@ def _count_nonempty_lines(path: Path) -> int:
         return sum(1 for line in f if line.strip())
 
 
+def _first_markdown_h1(path: Path, errors: List[str]) -> str | None:
+    if not path.exists():
+        fail(f"Missing markdown source for title check: {path}", errors)
+        return None
+
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.startswith("# "):
+            title = line[2:].strip()
+            if title:
+                return title
+            break
+
+    fail(f"Missing top-level markdown title in {path}", errors)
+    return None
+
+
+def _check_readme_title_contract(root: Path, errors: List[str]) -> None:
+    readme_path = root / "README.md"
+    manuscript_title = _first_markdown_h1(root / "manuscript" / "main_text_final.md", errors)
+    if manuscript_title is None or not readme_path.exists():
+        return
+
+    expected_line = f"**Paper title:** {manuscript_title}"
+    actual_line = None
+    for line in readme_path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if stripped.startswith("**Paper title:**"):
+            actual_line = stripped
+            break
+
+    if actual_line is None:
+        fail("README.md is missing the '**Paper title:**' line", errors)
+        return
+
+    if actual_line != expected_line:
+        fail(
+            "README paper title mismatch. "
+            f"Expected exactly: {expected_line!r}; got: {actual_line!r}",
+            errors,
+        )
+
+
 def _check_core_rq_short_transfer_schema(path: Path, errors: List[str]) -> None:
     required_text_fields = {"one_sentence_idea_statement", "full_idea_summary"}
     with path.open("r", encoding="utf-8") as f:
@@ -560,6 +602,7 @@ def main() -> int:
             f"actual: {sorted(actual_top)}",
             errors,
         )
+    _check_readme_title_contract(root, errors)
 
     # 2) Manuscript contract
     manuscript_dir = root / "manuscript"
@@ -980,6 +1023,7 @@ def main() -> int:
 
     print("VALIDATION PASSED")
     print("- Folder shape matches required structure")
+    print("- README paper title matches manuscript title")
     print("- Manuscript file contract satisfied")
     print("- Figure naming/count checks satisfied (38 assets)")
     print("- Human ratings and reproducibility inputs are de-identified")
