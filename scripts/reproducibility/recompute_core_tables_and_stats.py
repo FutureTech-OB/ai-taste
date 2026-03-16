@@ -379,9 +379,36 @@ def build_records(root: Path, best_flagship_key: str) -> List[Dict[str, Any]]:
         title_key(row["title"]): row
         for row in load_jsonl(root / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl")
     }
+    sft_rows = load_jsonl(root / "data" / "predictions" / "sft_predictions.jsonl")
+    sft_single_keys = ["CYqJRxId", "ckpt-step-304", "ckppt-380", "ckppt-228"]
+
+    best_sft_single_key = None
+    best_sft_single_score = None
+    for model_key in sft_single_keys:
+        y_true = []
+        y_pred = []
+        for row in sft_rows:
+            rq = row["val_outcome"]["rq_with_context"]
+            pred = pred_from_logp(rq.get(model_key, {}).get("logp"))
+            if pred is None:
+                continue
+            y_true.append(normalize_label(row.get("rank")))
+            y_pred.append(pred)
+        if not y_pred:
+            continue
+        score = (
+            sum(1 for gt, pred in zip(y_true, y_pred) if gt == pred) / len(y_pred),
+            model_key,
+        )
+        if best_sft_single_score is None or score > best_sft_single_score:
+            best_sft_single_key = model_key
+            best_sft_single_score = score
+
+    if best_sft_single_key is None:
+        raise ValueError("Could not identify a valid SFT single-model key from sft_predictions.jsonl")
 
     records: List[Dict[str, Any]] = []
-    for row in load_jsonl(root / "data" / "predictions" / "sft_predictions.jsonl"):
+    for row in sft_rows:
         key = title_key(row["title"])
         bench = benchmark[key]
         frontier_row = frontier[key]
@@ -398,7 +425,7 @@ def build_records(root: Path, best_flagship_key: str) -> List[Dict[str, Any]]:
                 "title": row["title"],
                 "title_key": key,
                 "ground_truth": normalize_label(row.get("rank") or bench.get("level")),
-                "sft_single": pred_from_logp(rq_sft.get("ckpt-step-304", {}).get("logp")),
+                "sft_single": pred_from_logp(rq_sft.get(best_sft_single_key, {}).get("logp")),
                 "sft2": pred_from_logp(rq_sft.get("best_2_model_combo", {}).get("logp")),
                 "gpt52": pred_from_logp(rq_sft.get("gpt-5.2", {}).get("logp")),
                 "best_flagship": model_majority_prediction(rq_frontier.get(best_flagship_key, {})),

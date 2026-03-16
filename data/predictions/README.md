@@ -2,7 +2,7 @@
 
 ## Files
 - `frontier_10models_8runs.jsonl`:
-  - Canonical conservative frontier cohort for submission analyses.
+  - Canonical conservative frontier cohort for the released analyses.
   - Contains 11 frontier models with 8-run protocol structure.
 - `sft_predictions.jsonl`:
   - Contains four SFT model tracks and comparator tracks used in analysis.

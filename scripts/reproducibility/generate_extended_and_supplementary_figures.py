@@ -2611,7 +2611,7 @@ def make_ed6_temporal_trace_persistence_v1(
         "Expert majority": ("-.", 1.2),
     }
 
-    recent_span = "2021-2025"
+    recent_span = "2020-2025"
     old_span = "2015-2020"
     recent_label = f"Recent training ({recent_span})"
     old_label = f"Older training ({old_span})"

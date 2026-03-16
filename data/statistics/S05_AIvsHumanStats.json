@@ -47,19 +47,19 @@
       }
     },
     {
-      "evaluator": "Best SFT Single",
+      "evaluator": "Best SFT Single (SFT Qwen3-4B)",
       "n": 120,
-      "accuracy": 0.575,
-      "ci_lower": 0.48333333333333334,
-      "ci_upper": 0.6583333333333333,
-      "macro_f1": 0.5730133156603745,
-      "macro_f1_ci_lower": 0.48580215728529247,
-      "macro_f1_ci_upper": 0.6583926275084008,
+      "accuracy": 0.5916666666666667,
+      "ci_lower": 0.5,
+      "ci_upper": 0.675,
+      "macro_f1": 0.5908305462653288,
+      "macro_f1_ci_lower": 0.5016693878261043,
+      "macro_f1_ci_upper": 0.6745600638740735,
       "per_tier_accuracy": {
-        "exceptional": 0.7,
-        "strong": 0.43333333333333335,
-        "fair": 0.6333333333333333,
-        "limited": 0.5333333333333333
+        "exceptional": 0.8,
+        "strong": 0.5666666666666667,
+        "fair": 0.5333333333333333,
+        "limited": 0.4666666666666667
       }
     },
     {
@@ -231,7 +231,7 @@
     "labels": [
       "Best Flagship (Gemini 3.1 Pro)",
       "GPT-5.2 (pre-SFT)",
-      "Best SFT Single",
+      "Best SFT Single (SFT Qwen3-4B)",
       "SFT 2-Model Ensemble",
       "Expert Majority (excl. ties)",
       "Student Majority (full, excl. ties)",
@@ -241,7 +241,7 @@
       [
         1.0,
         0.36010644732067254,
-        0.18439716312056745,
+        0.2623554153522608,
         0.26165666771918744,
         0.2568735271013354,
         0.1949984657870512,
@@ -250,25 +250,25 @@
       [
         0.36010644732067254,
         1.0,
-        0.032439527470466877,
+        0.06241067174845165,
         0.062231964166587224,
         0.12195633921074724,
         0.1508788303002022,
         0.12401574803149606
       ],
       [
-        0.18439716312056745,
-        0.032439527470466877,
+        0.2623554153522608,
+        0.06241067174845165,
         1.0,
-        0.6148763451010005,
-        0.1382707660947851,
-        0.09881626351003608,
-        0.055424528301886745
+        0.9657664511220996,
+        0.14657534246575343,
+        0.1805466444244835,
+        0.17174280879864637
       ],
       [
         0.26165666771918744,
         0.062231964166587224,
-        0.6148763451010005,
+        0.9657664511220996,
         1.0,
         0.14657534246575343,
         0.1922087940344561,
@@ -277,7 +277,7 @@
       [
         0.2568735271013354,
         0.12195633921074724,
-        0.1382707660947851,
+        0.14657534246575343,
         0.14657534246575343,
         1.0,
         0.2484984984984985,
@@ -286,7 +286,7 @@
       [
         0.1949984657870512,
         0.1508788303002022,
-        0.09881626351003608,
+        0.1805466444244835,
         0.1922087940344561,
         0.2484984984984985,
         1.0,
@@ -295,7 +295,7 @@
       [
         0.1795511221945137,
         0.12401574803149606,
-        0.055424528301886745,
+        0.17174280879864637,
         0.17005764665988468,
         0.08949287371561154,
         0.41538461538461535,
@@ -305,20 +305,20 @@
   },
   "kappa_pairwise": {
     "Best Flagship (Gemini 3.1 Pro) vs GPT-5.2 (pre-SFT)": 0.36010644732067254,
-    "Best Flagship (Gemini 3.1 Pro) vs Best SFT Single": 0.18439716312056745,
+    "Best Flagship (Gemini 3.1 Pro) vs Best SFT Single (SFT Qwen3-4B)": 0.2623554153522608,
     "Best Flagship (Gemini 3.1 Pro) vs SFT 2-Model Ensemble": 0.26165666771918744,
     "Best Flagship (Gemini 3.1 Pro) vs Expert Majority (excl. ties)": 0.2568735271013354,
     "Best Flagship (Gemini 3.1 Pro) vs Student Majority (full, excl. ties)": 0.1949984657870512,
     "Best Flagship (Gemini 3.1 Pro) vs Student Matched N (excl. ties)": 0.1795511221945137,
-    "GPT-5.2 (pre-SFT) vs Best SFT Single": 0.032439527470466877,
+    "GPT-5.2 (pre-SFT) vs Best SFT Single (SFT Qwen3-4B)": 0.06241067174845165,
     "GPT-5.2 (pre-SFT) vs SFT 2-Model Ensemble": 0.062231964166587224,
     "GPT-5.2 (pre-SFT) vs Expert Majority (excl. ties)": 0.12195633921074724,
     "GPT-5.2 (pre-SFT) vs Student Majority (full, excl. ties)": 0.1508788303002022,
     "GPT-5.2 (pre-SFT) vs Student Matched N (excl. ties)": 0.12401574803149606,
-    "Best SFT Single vs SFT 2-Model Ensemble": 0.6148763451010005,
-    "Best SFT Single vs Expert Majority (excl. ties)": 0.1382707660947851,
-    "Best SFT Single vs Student Majority (full, excl. ties)": 0.09881626351003608,
-    "Best SFT Single vs Student Matched N (excl. ties)": 0.055424528301886745,
+    "Best SFT Single (SFT Qwen3-4B) vs SFT 2-Model Ensemble": 0.9657664511220996,
+    "Best SFT Single (SFT Qwen3-4B) vs Expert Majority (excl. ties)": 0.14657534246575343,
+    "Best SFT Single (SFT Qwen3-4B) vs Student Majority (full, excl. ties)": 0.1805466444244835,
+    "Best SFT Single (SFT Qwen3-4B) vs Student Matched N (excl. ties)": 0.17174280879864637,
     "SFT 2-Model Ensemble vs Expert Majority (excl. ties)": 0.14657534246575343,
     "SFT 2-Model Ensemble vs Student Majority (full, excl. ties)": 0.1922087940344561,
     "SFT 2-Model Ensemble vs Student Matched N (excl. ties)": 0.17005764665988468,
@@ -374,20 +374,20 @@
       "c": 18.0
     },
     "SFT Single vs GPT-5.2": {
-      "statistic": 12.014285714285714,
-      "p_value": 0.0005279431738299811,
-      "p_corrected": 0.00475148856446983,
+      "statistic": 13.728571428571428,
+      "p_value": 0.0002112167580355928,
+      "p_corrected": 0.0019009508223203353,
       "significant": true,
-      "b": 50.0,
-      "c": 20.0
+      "b": 51.0,
+      "c": 19.0
     },
     "SFT 2-Ensemble vs SFT Single": {
-      "statistic": 0.34615384615384615,
-      "p_value": 0.5562984612747348,
+      "statistic": 0.5,
+      "p_value": 0.47950012218695337,
       "p_corrected": 1.0,
       "significant": false,
-      "b": 15.0,
-      "c": 11.0
+      "b": 2.0,
+      "c": 0.0
     },
     "SFT 2-Ensemble vs Flagship": {
       "statistic": 10.173076923076923,
@@ -444,16 +444,16 @@
       "std": 0.06467388236370915
     },
     "SFT Single vs GPT-5.2": {
-      "estimate": 0.25,
-      "ci_lower": 0.11666666666666667,
-      "ci_upper": 0.375,
-      "std": 0.06651452534670227
+      "estimate": 0.26666666666666666,
+      "ci_lower": 0.14166666666666666,
+      "ci_upper": 0.39166666666666666,
+      "std": 0.0653666750781821
     },
     "SFT 2-Ensemble vs SFT Single": {
-      "estimate": 0.03333333333333333,
-      "ci_lower": -0.05,
-      "ci_upper": 0.11666666666666667,
-      "std": 0.04265769760709942
+      "estimate": 0.016666666666666666,
+      "ci_lower": 0.0,
+      "ci_upper": 0.041666666666666664,
+      "std": 0.0116406134264329
     }
   },
   "student_matched_n_monte_carlo": {

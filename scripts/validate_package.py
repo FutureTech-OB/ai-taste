@@ -191,9 +191,12 @@ ALLOWED_HUMAN_ROOT = {
 REQUIRED_HUMAN_RECORD_KEYS = {
     "title",
     "journal",
-    "domain",
     "level",
     "ratings",
+}
+
+OPTIONAL_HUMAN_RECORD_KEYS = {
+    "domain",
 }
 
 ALLOWED_HUMAN_RATING_KEYS = {
@@ -205,30 +208,7 @@ ALLOWED_HUMAN_RATING_KEYS = {
     "q4_familiarity",
 }
 
-REQUIRED_TRAIN_DATA_JSON = {
-    "RIOB.Article.json",
-    "RIOB_old.Article.json",
-}
-
-TRAIN_DATA_RECORD_KEYS = {
-    "title",
-    "published_year",
-    "journal",
-    "type",
-    "rank",
-    "entries",
-}
-
-TRAIN_DATA_ENTRY_KEYS = {
-    "rq_with_context",
-}
-
-TRAIN_DATA_RANKS = {
-    "exceptional",
-    "strong",
-    "fair",
-    "limited",
-}
+TRAIN_DATA_PLACEHOLDER_README = "README.md"
 
 def fail(msg: str, errors: List[str]) -> None:
     errors.append(msg)
@@ -287,7 +267,7 @@ def _check_human_jsonl_schema(path: Path, errors: List[str]) -> None:
                 return
             keys = set(obj.keys())
             missing = sorted(REQUIRED_HUMAN_RECORD_KEYS - keys)
-            extra = sorted(keys - REQUIRED_HUMAN_RECORD_KEYS)
+            extra = sorted(keys - REQUIRED_HUMAN_RECORD_KEYS - OPTIONAL_HUMAN_RECORD_KEYS)
             if missing or extra:
                 fail(
                     f"Unexpected human record schema in {path} line {i}: "
@@ -380,8 +360,34 @@ def _read_csv_rows(path: Path, errors: List[str]) -> List[dict]:
         return []
     with path.open("r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
-        rows = list(reader)
+        rows = []
+        for idx, row in enumerate(reader, start=2):
+            if None in row:
+                fail(f"Malformed CSV row in {path.name} row {idx}: extra unnamed fields detected", errors)
+            rows.append(row)
     return rows
+
+
+def _check_csv_row_width(path: Path, errors: List[str]) -> None:
+    if not path.exists():
+        fail(f"Missing CSV file: {path}", errors)
+        return
+    with path.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.reader(f)
+        try:
+            header = next(reader)
+        except StopIteration:
+            fail(f"Empty CSV file: {path.name}", errors)
+            return
+        expected_width = len(header)
+        for idx, row in enumerate(reader, start=2):
+            if len(row) != expected_width:
+                fail(
+                    f"Inconsistent CSV row width in {path.name} row {idx}: "
+                    f"expected {expected_width}, got {len(row)}",
+                    errors,
+                )
+                break
 
 
 def _check_ci_contract(tables_dir: Path, errors: List[str]) -> None:
@@ -505,9 +511,8 @@ def _check_figure_index_contract(root: Path, errors: List[str]) -> None:
         fail("Missing figure index: data/tables/FIGURE_DATA_INDEX.csv", errors)
         return
 
-    with index_path.open("r", encoding="utf-8", newline="") as f:
-        reader = csv.DictReader(f)
-        rows = list(reader)
+    _check_csv_row_width(index_path, errors)
+    rows = _read_csv_rows(index_path, errors)
 
     figures = {str(r.get("figure", "")).strip() for r in rows}
     missing = sorted(EXPECTED_FIGURE_INDEX_ROWS - figures)
@@ -521,88 +526,9 @@ def _check_train_data_contract(root: Path, errors: List[str]) -> None:
         fail("Missing data/train_data directory", errors)
         return
 
-    allowed = {"README.md", *REQUIRED_TRAIN_DATA_JSON}
-    actual = {p.name for p in train_dir.iterdir() if not p.name.startswith(".")}
-    missing = sorted(allowed - actual)
-    extras = sorted(actual - allowed)
-    if missing:
-        fail(f"Missing train_data files: {missing}", errors)
-    if extras:
-        fail(f"Unexpected files in data/train_data: {extras}", errors)
-
-    for name in sorted(REQUIRED_TRAIN_DATA_JSON):
-        path = train_dir / name
-        if not path.exists():
-            continue
-        try:
-            records = json.loads(path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError as exc:
-            fail(f"Invalid JSON in data/train_data/{name}: {exc}", errors)
-            continue
-        if not isinstance(records, list) or not records:
-            fail(f"data/train_data/{name} must be a non-empty JSON list", errors)
-            continue
-
-        for i, rec in enumerate(records, start=1):
-            if not isinstance(rec, dict):
-                fail(f"Train-data record must be a JSON object in data/train_data/{name} row {i}", errors)
-                break
-            keys = set(rec.keys())
-            missing_keys = sorted(TRAIN_DATA_RECORD_KEYS - keys)
-            extra_keys = sorted(keys - TRAIN_DATA_RECORD_KEYS)
-            if missing_keys or extra_keys:
-                fail(
-                    f"Unexpected train-data schema in data/train_data/{name} row {i}: "
-                    f"missing={missing_keys or '[]'} extra={extra_keys or '[]'}",
-                    errors,
-                )
-                break
-            if _has_forbidden_keys(rec, FORBIDDEN_ID_KEYS):
-                fail(f"Forbidden identifier key found in data/train_data/{name} row {i}", errors)
-                break
-
-            entries = rec.get("entries")
-            if not isinstance(entries, dict):
-                fail(f"'entries' must be an object in data/train_data/{name} row {i}", errors)
-                break
-            entry_keys = set(entries.keys())
-            extra_entry = sorted(entry_keys - TRAIN_DATA_ENTRY_KEYS)
-            if extra_entry:
-                fail(
-                    f"Unexpected entries schema in data/train_data/{name} row {i}: "
-                    f"extra={extra_entry or '[]'}",
-                    errors,
-                )
-                break
-
-            for field in ["title", "journal", "type", "rank"]:
-                value = rec.get(field)
-                if not isinstance(value, str) or not value.strip():
-                    fail(f"Blank or invalid {field} in data/train_data/{name} row {i}", errors)
-                    break
-            else:
-                if not isinstance(rec.get("published_year"), int):
-                    fail(f"Invalid published_year in data/train_data/{name} row {i}", errors)
-                    break
-                if rec["rank"] not in TRAIN_DATA_RANKS:
-                    fail(f"Unexpected rank in data/train_data/{name} row {i}: {rec['rank']}", errors)
-                    break
-                if "rq_with_context" in entries:
-                    rq = entries.get("rq_with_context")
-                    if rq is None:
-                        pass
-                    elif not isinstance(rq, str) or not rq.strip():
-                        fail(f"Blank rq_with_context in data/train_data/{name} row {i}", errors)
-                        break
-
-                rec_text = json.dumps(rec, ensure_ascii=False)
-                for marker in [*FORBIDDEN_PATH_SUBSTRINGS, "/Users/", "Nutstore Files/reports"]:
-                    if marker in rec_text:
-                        fail(f"Host-specific path leak '{marker}' found in data/train_data/{name} row {i}", errors)
-                        break
-                else:
-                    continue
-                break
+    readme = train_dir / TRAIN_DATA_PLACEHOLDER_README
+    if not readme.exists():
+        fail("Missing data/train_data/README.md placeholder", errors)
 
 
 def main() -> int:
@@ -620,7 +546,7 @@ def main() -> int:
     errors: List[str] = []
 
     # 1) Folder shape and top-level contract
-    required_top = {"README.md", "manuscript", "figures", "data", "scripts", "requirements.txt"}
+    required_top = {"README.md", "LICENSE", "manuscript", "figures", "data", "scripts", "requirements.txt"}
     optional_top = {"reproduced", ".gitignore"}
     allowed_top = required_top | optional_top
     actual_top = {p.name for p in root.iterdir()}
@@ -641,12 +567,19 @@ def main() -> int:
         fail("Missing manuscript directory", errors)
     else:
         actual_manuscript = {p.name for p in manuscript_dir.iterdir() if p.is_file()}
-        required_files = {"paper.pdf"}
+        required_files = {
+            "abstract.md",
+            "main_text_final.md",
+            "methods_final.md",
+            "paper.pdf",
+            "reporting_summary.md",
+            "supplementary_information_final.md",
+        }
         missing_required = sorted(required_files - actual_manuscript)
         if missing_required:
             fail(f"Missing required manuscript files: {missing_required}", errors)
 
-    # 3) Figures: exactly 36 assets and sequential naming
+    # 3) Figures: exactly 38 assets and sequential naming
     expected_figures: List[Path] = []
     for i in range(1, 7):
         expected_figures.append(root / "figures" / "main" / f"Figure{i}.png")
@@ -909,6 +842,8 @@ def main() -> int:
         missing_indexes = sorted(required_table_indexes - table_files)
         if missing_indexes:
             fail(f"Missing table index files: {missing_indexes}", errors)
+        for index_name in sorted(required_table_indexes):
+            _check_csv_row_width(tables_dir / index_name, errors)
 
         # Only allow Txx_* plus index files in external package
         for name in sorted(table_files):
@@ -924,17 +859,23 @@ def main() -> int:
     else:
         fail("Missing data/tables directory", errors)
 
-    transfer_stats = root / "data" / "statistics" / "S15_CoreRQShortTransferStats.json"
-    if not transfer_stats.exists():
-        fail("Missing ED7 statistics artifact: data/statistics/S15_CoreRQShortTransferStats.json", errors)
-    else:
+    shipped_stats = {
+        "S13_Figure6NumbersAudit.json": None,
+        "S14_ED2PairwiseRawPValues.json": None,
+        "S15_CoreRQShortTransferStats.json": "ExtendedDataFigure7",
+    }
+    for filename, figure_name in shipped_stats.items():
+        path = root / "data" / "statistics" / filename
+        if not path.exists():
+            fail(f"Missing shipped statistics artifact: data/statistics/{filename}", errors)
+            continue
         try:
-            stats_obj = json.loads(transfer_stats.read_text(encoding="utf-8"))
+            stats_obj = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
-            fail(f"Invalid JSON in data/statistics/S15_CoreRQShortTransferStats.json: {exc}", errors)
-        else:
-            if stats_obj.get("figure") != "ExtendedDataFigure7":
-                fail("S15_CoreRQShortTransferStats.json has unexpected figure identifier", errors)
+            fail(f"Invalid JSON in data/statistics/{filename}: {exc}", errors)
+            continue
+        if figure_name is not None and stats_obj.get("figure") != figure_name:
+            fail(f"{filename} has unexpected figure identifier", errors)
 
     # 10) Figure trace index + pairwise contract (ED2)
     _check_figure_index_contract(root, errors)
@@ -1004,6 +945,9 @@ def main() -> int:
     pyc_files = sorted(p.relative_to(root) for p in root.rglob("*.pyc"))
     if pyc_files:
         fail(f"Python bytecode files should not be shipped: {pyc_files}", errors)
+    ds_store_files = sorted(p.relative_to(root) for p in root.rglob(".DS_Store"))
+    if ds_store_files:
+        fail(f"Finder metadata files should not be shipped: {ds_store_files}", errors)
 
     # 16) Headline numbers spot-check
     t04 = root / "data" / "tables" / "T04_AIvsHumanSummary.csv"
@@ -1037,24 +981,25 @@ def main() -> int:
     print("VALIDATION PASSED")
     print("- Folder shape matches required structure")
     print("- Manuscript file contract satisfied")
-    print("- Figure naming/count checks satisfied (36 assets)")
+    print("- Figure naming/count checks satisfied (38 assets)")
     print("- Human ratings and reproducibility inputs are de-identified")
     print("- Manuscript has no internal path markers")
     print("- Exclusion rules satisfied")
     print("- Required scripts and vendored analysis sources are present")
-    print("- Prediction package contract satisfied (frontier/SFT/chat/RL)")
+    print("- Prediction package contract satisfied (frontier/SFT/chat/RL/short-transfer)")
     print("- Public JSON schemas stripped of compatibility-only fields")
     print("- Table index and naming contract satisfied")
     print("- No forbidden identifier columns in packaged tables")
     print("- CI field contract satisfied for reported analyses")
     print("- Figure trace index contract satisfied (Main/ED/SI)")
     print("- Pairwise data contract satisfied (ED2)")
-    print("- Training-data release contract satisfied")
+    print("- Training-data placeholder present")
     print("- Benchmark integrity: 17 journals, 15 domains, no PII, no Chinese")
     print("- No stale compatibility directories")
     print("- Requirements metadata present")
     print("- No host-specific paths in any JSONL file")
     print("- No Python cache artifacts shipped")
+    print("- No Finder metadata files shipped")
     print("- Headline numbers spot-check passed")
     return 0
 

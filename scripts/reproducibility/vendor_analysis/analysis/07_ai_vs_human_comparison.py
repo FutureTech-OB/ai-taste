@@ -67,18 +67,21 @@ EVALUATOR_SHORT = []
 EVAL_COLORS = {}
 
 
-def _configure_evaluator_labels(best_flagship_display):
-    """Set evaluator labels/colors with dynamic best-flagship naming."""
+def _configure_evaluator_labels(best_flagship_display, best_sft_single_key):
+    """Set evaluator labels/colors with dynamic best-flagship/SFT naming."""
     global EVALUATOR_ORDER, EVALUATOR_SHORT, EVAL_COLORS
 
     flagship_multiline = f'Best Flagship\n({best_flagship_display})'
     flagship_short = f'Best Flagship ({best_flagship_display})'
+    best_sft_display = MODEL_DISPLAY_NAMES.get(best_sft_single_key, best_sft_single_key)
+    best_sft_multiline = f'Best SFT\nSingle ({best_sft_display})'
+    best_sft_short = f'Best SFT Single ({best_sft_single_key})'
 
     EVALUATOR_ORDER = [
         flagship_multiline,
         'Flagship\nAverage',
         'GPT-5.2\n(pre-SFT)',
-        'Best SFT\nSingle',
+        best_sft_multiline,
         'SFT 2-Model\nEnsemble',
         'Expert Indiv.\nAverage',
         'Expert Majority\n(excl. ties)',
@@ -91,7 +94,7 @@ def _configure_evaluator_labels(best_flagship_display):
         flagship_short,
         'Flagship Average (11 models)',
         'GPT-5.2 (pre-SFT baseline)',
-        'Best SFT Single (ckpt-step-304)',
+        best_sft_short,
         'SFT 2-Model Ensemble',
         'Expert Individual Average',
         'Expert Majority Vote (excl. ties)',
@@ -105,7 +108,7 @@ def _configure_evaluator_labels(best_flagship_display):
         flagship_multiline: '#B71C1C',
         'Flagship\nAverage': '#C62828',
         'GPT-5.2\n(pre-SFT)': '#E53935',
-        'Best SFT\nSingle': '#FF7043',
+        best_sft_multiline: '#FF7043',
         'SFT 2-Model\nEnsemble': '#FF8A65',
         'Expert Indiv.\nAverage': '#0D47A1',
         'Expert Majority\n(excl. ties)': '#1565C0',
@@ -177,6 +180,27 @@ def extract_val_model_predictions(val_data, model_key):
                 y_true.append(gt)
                 y_pred.append(pred)
     return y_true, y_pred
+
+
+def compute_best_sft_single_key(val_data):
+    """Return the best-performing canonical SFT checkpoint by accuracy."""
+    best_key = None
+    best_score = None
+    for model_key in SFT_MODELS:
+        y_true, y_pred = extract_val_model_predictions(val_data, model_key)
+        if not y_pred:
+            continue
+        score = (
+            compute_accuracy(y_true, y_pred),
+            compute_macro_f1(y_true, y_pred),
+            model_key,
+        )
+        if best_score is None or score > best_score:
+            best_key = model_key
+            best_score = score
+    if best_key is None:
+        raise ValueError('No valid SFT single-model predictions found in val data.')
+    return best_key
 
 
 def extract_human_voting_predictions(val_data):
@@ -989,7 +1013,8 @@ def main():
     global BEST_FLAGSHIP_KEY, BEST_FLAGSHIP_DISPLAY
     BEST_FLAGSHIP_KEY, best_flagship_primary = best_model_by_primary(frontier_data, FLAGSHIP_KEYS)
     BEST_FLAGSHIP_DISPLAY = FRONTIER_DISPLAY_NAMES.get(BEST_FLAGSHIP_KEY, BEST_FLAGSHIP_KEY)
-    _configure_evaluator_labels(BEST_FLAGSHIP_DISPLAY)
+    best_sft_single_key = compute_best_sft_single_key(val_data)
+    _configure_evaluator_labels(BEST_FLAGSHIP_DISPLAY, best_sft_single_key)
 
     gt_flagship, pred_flagship = extract_flagship_predictions(
         frontier_data, BEST_FLAGSHIP_KEY, policy='majority'
@@ -1038,9 +1063,9 @@ def main():
 
     # 2d. Best SFT single model (from val data)
     gt_sft1, pred_sft1 = extract_val_model_predictions(
-        val_data, 'ckpt-step-304'
+        val_data, best_sft_single_key
     )
-    print(f'  SFT single (ckpt-step-304): {len(pred_sft1)} predictions')
+    print(f'  SFT single ({best_sft_single_key}): {len(pred_sft1)} predictions')
 
     # 2e. SFT 2-model ensemble (from val data)
     gt_sft2, pred_sft2 = extract_val_model_predictions(

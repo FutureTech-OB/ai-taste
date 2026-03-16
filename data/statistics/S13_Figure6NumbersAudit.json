@@ -1,41 +1,36 @@
 {
   "sft_consensus": {
     "4_over_4": {
-      "n": 56,
-      "correct": 39,
-      "coverage_over_120": 0.4666666666666667,
-      "accuracy": 0.6964285714285714
+      "n": 50,
+      "correct": 36,
+      "coverage_over_120": 0.4166666666666667,
+      "accuracy": 0.72
     },
     "ge_3_over_4": {
-      "n": 94,
+      "n": 97,
       "correct": 63,
-      "coverage_over_120": 0.7833333333333333,
-      "accuracy": 0.6702127659574468
-    },
-    "eq_2_over_4": {
-      "n": 26,
-      "correct": 11,
-      "coverage_over_120": 0.21666666666666667,
-      "accuracy": 0.4230769230769231
-    },
-    "single_avg": {
-      "accuracy": 0.575,
-      "n_votes": 480,
-      "correct_votes": 276
+      "coverage_over_120": 0.8083333333333333,
+      "accuracy": 0.6494845360824743
     },
     "eq_3_over_4": {
-      "n": 38,
-      "correct": 24,
-      "coverage_over_120": 0.31666666666666665,
-      "accuracy": 0.631578947368421
+      "n": 47,
+      "correct": 27,
+      "coverage_over_120": 0.39166666666666666,
+      "accuracy": 0.574468085106383
+    },
+    "eq_2_over_4": {
+      "n": 23,
+      "correct": 8,
+      "coverage_over_120": 0.19166666666666668,
+      "accuracy": 0.34782608695652173
     }
   },
   "human_consensus": {
     "student_all": {
       "n": 120,
-      "correct": 42,
+      "correct": 48,
       "coverage_over_120": 1.0,
-      "accuracy": 0.35
+      "accuracy": 0.4
     },
     "student_ge_50": {
       "n": 25,
@@ -51,9 +46,9 @@
     },
     "expert_all": {
       "n": 120,
-      "correct": 37,
+      "correct": 47,
       "coverage_over_120": 1.0,
-      "accuracy": 0.30833333333333335
+      "accuracy": 0.39166666666666666
     },
     "expert_unanimous_ge2": {
       "n": 13,
@@ -147,6 +142,12 @@
       "coverage_over_top4_valid": 1.0,
       "accuracy": 0.3269230769230769
     },
+    "non_tie": {
+      "n": 77,
+      "correct": 26,
+      "coverage_over_top4_valid": 0.7403846153846154,
+      "accuracy": 0.33766233766233766
+    },
     "ge_3_over_4": {
       "n": 76,
       "correct": 25,
@@ -159,17 +160,17 @@
       "coverage_over_top4_valid": 0.2692307692307692,
       "accuracy": 0.39285714285714285
     },
-    "eq_2_over_4": {
-      "n": 28,
-      "correct": 9,
-      "coverage_over_top4_valid": 0.2692307692307692,
-      "accuracy": 0.32142857142857145
-    },
     "eq_3_over_4": {
       "n": 48,
       "correct": 14,
       "coverage_over_top4_valid": 0.46153846153846156,
       "accuracy": 0.2916666666666667
+    },
+    "eq_2_over_4": {
+      "n": 28,
+      "correct": 9,
+      "coverage_over_top4_valid": 0.2692307692307692,
+      "accuracy": 0.32142857142857145
     }
   }
 }

@@ -1,10 +1,10 @@
-# Train Data
+# Training Data (Placeholder)
 
-This directory contains the released article-level training-data pools used to prepare the supervised fine-tuning inputs described in the manuscript.
+The supervised fine-tuning training data described in the manuscript will be released upon publication.
 
-- `RIOB.Article.json`: released recent-trace article pool used for the main SFT preparation path
-- `RIOB_old.Article.json`: released older-trace article pool used for the temporal-persistence SFT preparation path
+The training corpus comprises two institutional-trace slices drawn from a 19-journal source universe, fully disjoint from the 120 benchmark pitches:
 
-Each record exposes only `title`, `published_year`, `journal`, `type`, `rank`, and an `entries` object. When a released pitch text is available, `entries` contains `rq_with_context`; otherwise `entries` is empty or carries a null `rq_with_context`.
+- **Recent/new slice**: 4,479 processed research-pitch/journal-outcome pairs (main SFT models)
+- **Older slice**: 3,368 pairs (temporal-persistence comparison)
 
-This repository does not include model checkpoints, raw scraping artifacts, or unreleased preprocessing intermediates beyond these shipped `train_data` files.
+Each record contains `title`, `published_year`, `journal`, `type`, `rank`, and a research-question-with-context pitch text. See the Methods section of the manuscript for full details on training corpus construction and leakage controls.

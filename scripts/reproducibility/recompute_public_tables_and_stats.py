@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recompute the public submission tables/statistics from package-local inputs."""
+"""Recompute the public release tables/statistics from package-local inputs."""
 
 from __future__ import annotations
 
@@ -138,7 +138,7 @@ def main() -> None:
         for src_name, dst_path in stats_map.items():
             copy_file(temp_dir / "statistics" / src_name, dst_path)
 
-        print("Recomputed public submission tables/statistics from package-local inputs.")
+        print("Recomputed public release tables/statistics from package-local inputs.")
     finally:
         if not keep_temp and temp_dir.exists():
             shutil.rmtree(temp_dir, ignore_errors=True)
