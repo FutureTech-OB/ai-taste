@@ -1,0 +1,11 @@
+model_family,evaluator,role,n,accuracy_pct,accuracy_ci_lower_pct,accuracy_ci_upper_pct,macro_f1_pct,macro_f1_ci_lower_pct,macro_f1_ci_upper_pct
+Qwen3-30B,qwen3_30b_base,base,200,25.5,20.0,32.0,16.9,13.7,20.4
+Qwen3-30B,qwen3_30b_sft_economics,sft_economics,200,69.5,63.0,75.5,70.4,64.0,75.8
+Qwen3-4B,qwen3_4b_base,base,200,25.0,19.5,31.0,10.0,8.2,11.8
+Qwen3-4B,qwen3_4b_sft_economics,sft_economics,200,64.0,57.5,70.5,64.8,58.1,71.2
+GPT-4.1-nano,gpt_4_1_nano_base,base,200,25.0,19.0,31.5,15.6,11.5,19.4
+GPT-4.1-nano,gpt_4_1_nano_sft_economics,sft_economics,200,68.5,62.0,75.0,69.4,63.1,75.1
+gpt_4_1_base,gpt_4_1_base,frontier_reference,200,29.5,,,17.4,,
+grok_4_1_fast,grok_4_1_fast,frontier_reference,200,29.5,,,17.6,,
+qwen_3_5_plus,qwen_3_5_plus,frontier_reference,200,31.0,,,18.8,,
+gemini_3_1_pro,gemini_3_1_pro,frontier_reference,200,44.5,,,37.2,,

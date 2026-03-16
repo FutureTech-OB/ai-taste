@@ -10,7 +10,7 @@ TABLE_DIR="$ROOT_DIR/data/tables"
 count=$(find "$TABLE_DIR" -maxdepth 1 -type f -name '*.csv' | wc -l | tr -d ' ')
 echo "Found $count table CSV files in data/tables"
 
-"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/recompute_public_tables_and_stats.py"
+"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/build_release_tables_and_stats.py"
 
 "$PYTHON_BIN" - <<'PY' "$TABLE_DIR"
 import csv

@@ -24,10 +24,11 @@ echo "Supplementary figure assets: $sup_count"
 echo "Total figure assets: $total"
 
 echo "Rebuilding figures from package-local scripts..."
-"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/generate_main_figure2.py"
-"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/generate_main_figures.py"
-"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/generate_main_figure6.py"
-"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/generate_extended_and_supplementary_figures.py"
+"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/build_frontier_diagnostics_figure.py"
+"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/build_core_result_figures.py"
+"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/build_consensus_figure.py"
+"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/build_extended_and_supplementary_figures.py"
+"$PYTHON_BIN" "$ROOT_DIR/scripts/reproducibility/build_economics_extension_figures.py"
 
 "$PYTHON_BIN" - <<'PY' "$ROOT_DIR"
 import sys
@@ -37,13 +38,13 @@ root = Path(sys.argv[1])
 repro = root / "reproduced" / "figures"
 
 expected = []
-for name in ["Figure2", "Figure3", "Figure4", "Figure5", "Figure6"]:
+for name in ["Figure2", "Figure3", "Figure4", "Figure5", "Figure6", "Figure7"]:
     expected.append(repro / "main" / f"{name}.png")
     expected.append(repro / "main" / f"{name}.pdf")
-for i in range(1, 8):
+for i in range(1, 9):
     expected.append(repro / "extended_data" / f"ed_fig{i}.png")
     expected.append(repro / "extended_data" / f"ed_fig{i}.pdf")
-for i in range(1, 7):
+for i in range(1, 8):
     expected.append(repro / "supplementary" / f"si_fig{i}.png")
     expected.append(repro / "supplementary" / f"si_fig{i}.pdf")
 

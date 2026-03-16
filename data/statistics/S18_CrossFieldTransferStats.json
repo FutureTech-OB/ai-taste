@@ -1,0 +1,65 @@
+{
+  "figure": "SupplementaryFigure7",
+  "benchmark_n": 200,
+  "gpt_4_1_base": {
+    "accuracy_pct": 29.5,
+    "macro_f1_pct": 17.4
+  },
+  "gpt_4_1_sft_management": {
+    "accuracy_pct": 43.5,
+    "macro_f1_pct": 38.9,
+    "exact_binomial_p_vs_chance": 9.232511307455156e-09,
+    "confusion_matrix_pct": [
+      [
+        0.88,
+        0.12,
+        0.0,
+        0.0
+      ],
+      [
+        0.62,
+        0.38,
+        0.0,
+        0.0
+      ],
+      [
+        0.22,
+        0.34,
+        0.38,
+        0.06
+      ],
+      [
+        0.18,
+        0.28,
+        0.44,
+        0.1
+      ]
+    ]
+  },
+  "best_economics_sft": {
+    "evaluator": "qwen3_30b_sft_economics",
+    "accuracy_pct": 69.5,
+    "macro_f1_pct": 70.4
+  },
+  "transfer_gain_over_base_pct_points": 14.0,
+  "per_tier_recall_pct": {
+    "gpt_4_1_base": {
+      "exceptional": 2.0,
+      "strong": 100.0,
+      "fair": 16.0,
+      "limited": 0.0
+    },
+    "gpt_4_1_sft_management": {
+      "exceptional": 88.0,
+      "strong": 38.0,
+      "fair": 38.0,
+      "limited": 10.0
+    },
+    "qwen3_30b_sft_economics": {
+      "exceptional": 46.0,
+      "strong": 78.0,
+      "fair": 74.0,
+      "limited": 80.0
+    }
+  }
+}

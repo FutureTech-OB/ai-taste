@@ -1,0 +1,80 @@
+{
+  "figure": "ExtendedDataFigure8",
+  "benchmark_n": 320,
+  "models": {
+    "qwen3_30b_sft_management_economics": {
+      "display": "Pooled Qwen3-30B",
+      "fields": {
+        "management": {
+          "model": "Pooled Qwen3-30B",
+          "evaluator": "qwen3_30b_sft_management_economics",
+          "field": "management",
+          "n": 120,
+          "accuracy_pct": 61.7,
+          "accuracy_ci_lower_pct": 53.3,
+          "accuracy_ci_upper_pct": 70.0,
+          "macro_f1_pct": 61.5,
+          "macro_f1_ci_lower_pct": 52.5,
+          "macro_f1_ci_upper_pct": 69.5,
+          "exceptional_share_pct": 40.8,
+          "strong_share_pct": 13.3,
+          "fair_share_pct": 26.7,
+          "limited_share_pct": 19.2
+        },
+        "economics": {
+          "model": "Pooled Qwen3-30B",
+          "evaluator": "qwen3_30b_sft_management_economics",
+          "field": "economics",
+          "n": 200,
+          "accuracy_pct": 69.5,
+          "accuracy_ci_lower_pct": 63.0,
+          "accuracy_ci_upper_pct": 76.0,
+          "macro_f1_pct": 70.5,
+          "macro_f1_ci_lower_pct": 64.5,
+          "macro_f1_ci_upper_pct": 75.9,
+          "exceptional_share_pct": 19.5,
+          "strong_share_pct": 39.5,
+          "fair_share_pct": 20.0,
+          "limited_share_pct": 21.0
+        }
+      }
+    },
+    "gpt_4_1_nano_sft_management_economics": {
+      "display": "Pooled GPT-4.1-nano",
+      "fields": {
+        "management": {
+          "model": "Pooled GPT-4.1-nano",
+          "evaluator": "gpt_4_1_nano_sft_management_economics",
+          "field": "management",
+          "n": 120,
+          "accuracy_pct": 52.5,
+          "accuracy_ci_lower_pct": 44.2,
+          "accuracy_ci_upper_pct": 60.8,
+          "macro_f1_pct": 48.9,
+          "macro_f1_ci_lower_pct": 40.4,
+          "macro_f1_ci_upper_pct": 57.3,
+          "exceptional_share_pct": 44.2,
+          "strong_share_pct": 2.5,
+          "fair_share_pct": 33.3,
+          "limited_share_pct": 20.0
+        },
+        "economics": {
+          "model": "Pooled GPT-4.1-nano",
+          "evaluator": "gpt_4_1_nano_sft_management_economics",
+          "field": "economics",
+          "n": 200,
+          "accuracy_pct": 67.0,
+          "accuracy_ci_lower_pct": 61.0,
+          "accuracy_ci_upper_pct": 73.0,
+          "macro_f1_pct": 67.4,
+          "macro_f1_ci_lower_pct": 61.5,
+          "macro_f1_ci_upper_pct": 73.0,
+          "exceptional_share_pct": 33.5,
+          "strong_share_pct": 21.0,
+          "fair_share_pct": 23.0,
+          "limited_share_pct": 22.5
+        }
+      }
+    }
+  }
+}

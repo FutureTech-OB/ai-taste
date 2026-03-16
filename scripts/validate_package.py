@@ -68,7 +68,6 @@ FORBIDDEN_PUBLIC_JSON_KEYS = {
     "metadata",
     "status",
     "split",
-    "subject",
     "trial_count",
     "doi",
     "doi_first",
@@ -111,6 +110,25 @@ EXPECTED_SFT_KEYS = {
     "ckppt-228",
 }
 
+EXPECTED_ECONOMICS_EXTENSION_KEYS = {
+    "qwen3_30b_base",
+    "qwen3_30b_sft_economics",
+    "qwen3_4b_base",
+    "qwen3_4b_sft_economics",
+    "gpt_4_1_nano_base",
+    "gpt_4_1_nano_sft_economics",
+    "gpt_4_1_base",
+    "gpt_4_1_sft_management",
+    "qwen_3_5_plus",
+    "gemini_3_1_pro",
+    "grok_4_1_fast",
+}
+
+EXPECTED_POOLED_FIELD_KEYS = {
+    "qwen3_30b_sft_management_economics",
+    "gpt_4_1_nano_sft_management_economics",
+}
+
 EXPECTED_OLD_SFT_KEYS = {
     "ft:gpt-4.1-nano-2025-04-14:personal:ob-rqcontext-old:DI3q8ijY",
     "old_qwen30b_checkpoint_178",
@@ -124,6 +142,7 @@ EXPECTED_CORE_RQ_SHORT_TRANSFER_KEYS = {
 }
 
 GEMINI_31_KEY = "google/gemini-3.1-pro-preview"
+EXPECTED_PAPER_TITLE = "Fine-tuned language models learn tacit scientific judgment from institutional traces"
 
 EXPECTED_PAIRWISE_DIRS = {
     "sft_gpt4_1",
@@ -139,6 +158,7 @@ EXPECTED_FIGURE_INDEX_ROWS = {
     "Figure4",
     "Figure5",
     "Figure6",
+    "Figure7",
     "ExtendedDataFigure1",
     "ExtendedDataFigure2",
     "ExtendedDataFigure3",
@@ -146,12 +166,14 @@ EXPECTED_FIGURE_INDEX_ROWS = {
     "ExtendedDataFigure5",
     "ExtendedDataFigure6",
     "ExtendedDataFigure7",
+    "ExtendedDataFigure8",
     "SupplementaryFigure1",
     "SupplementaryFigure2",
     "SupplementaryFigure3",
     "SupplementaryFigure4",
     "SupplementaryFigure5",
     "SupplementaryFigure6",
+    "SupplementaryFigure7",
 }
 
 REQUIRED_T04_EVALUATORS_FOR_CI = {
@@ -315,29 +337,12 @@ def _count_nonempty_lines(path: Path) -> int:
         return sum(1 for line in f if line.strip())
 
 
-def _first_markdown_h1(path: Path, errors: List[str]) -> str | None:
-    if not path.exists():
-        fail(f"Missing markdown source for title check: {path}", errors)
-        return None
-
-    for line in path.read_text(encoding="utf-8").splitlines():
-        if line.startswith("# "):
-            title = line[2:].strip()
-            if title:
-                return title
-            break
-
-    fail(f"Missing top-level markdown title in {path}", errors)
-    return None
-
-
 def _check_readme_title_contract(root: Path, errors: List[str]) -> None:
     readme_path = root / "README.md"
-    manuscript_title = _first_markdown_h1(root / "manuscript" / "main_text_final.md", errors)
-    if manuscript_title is None or not readme_path.exists():
+    if not readme_path.exists():
         return
 
-    expected_line = f"**Paper title:** {manuscript_title}"
+    expected_line = f"**Paper title:** {EXPECTED_PAPER_TITLE}"
     actual_line = None
     for line in readme_path.read_text(encoding="utf-8").splitlines():
         stripped = line.strip()
@@ -573,6 +578,41 @@ def _check_train_data_contract(root: Path, errors: List[str]) -> None:
         fail("Missing data/train_data/README.md placeholder", errors)
 
 
+def _check_benchmark_contract(path: Path, *, expected_rows: int, expected_subject: str | None, errors: List[str]) -> None:
+    if not path.exists():
+        fail(f"Missing benchmark file: {path}", errors)
+        return
+
+    rows_seen = 0
+    with path.open("r", encoding="utf-8") as f:
+        for i, line in enumerate(f, start=1):
+            line = line.strip()
+            if not line:
+                continue
+            rows_seen += 1
+            rec = json.loads(line)
+            if "entries" in rec:
+                fail(f"Legacy benchmark prompt wrapper found in {path.name} line {i}; use top-level rq_with_context only", errors)
+            if "rq_with_context" not in rec:
+                fail(f"Missing rq_with_context field in {path.name} line {i}", errors)
+            if "file_path" in rec:
+                fail(f"PII leak: 'file_path' field present in {path.name} line {i}", errors)
+            if _has_forbidden_keys(rec, FORBIDDEN_PUBLIC_JSON_KEYS):
+                fail(f"Forbidden public-schema key found in {path.name} line {i}", errors)
+            rec_text = json.dumps(rec)
+            for marker in FORBIDDEN_PATH_SUBSTRINGS:
+                if marker in rec_text:
+                    fail(f"Host-specific path leak '{marker}' found in {path.name} line {i}", errors)
+            if expected_subject is not None and rec.get("subject") != expected_subject:
+                fail(
+                    f"Unexpected subject in {path.name} line {i}: "
+                    f"expected {expected_subject!r}, got {rec.get('subject')!r}",
+                    errors,
+                )
+    if rows_seen != expected_rows:
+        fail(f"Unexpected row count in {path.name}: expected {expected_rows}, got {rows_seen}", errors)
+
+
 def main() -> int:
     here = Path(__file__).resolve()
     root = None
@@ -610,27 +650,26 @@ def main() -> int:
         fail("Missing manuscript directory", errors)
     else:
         actual_manuscript = {p.name for p in manuscript_dir.iterdir() if p.is_file()}
-        required_files = {
-            "abstract.md",
-            "main_text_final.md",
-            "methods_final.md",
-            "paper.pdf",
-            "reporting_summary.md",
-            "supplementary_information_final.md",
-        }
+        required_files = {"README.md"}
         missing_required = sorted(required_files - actual_manuscript)
-        if missing_required:
-            fail(f"Missing required manuscript files: {missing_required}", errors)
+        extra_files = sorted(actual_manuscript - required_files)
+        if missing_required or extra_files:
+            fail(
+                "Manuscript placeholder mismatch. "
+                f"Missing required: {missing_required or '[]'}; "
+                f"unexpected extras: {extra_files or '[]'}",
+                errors,
+            )
 
-    # 3) Figures: exactly 38 assets and sequential naming
+    # 3) Figures: exactly 44 assets and sequential naming
     expected_figures: List[Path] = []
-    for i in range(1, 7):
+    for i in range(1, 8):
         expected_figures.append(root / "figures" / "main" / f"Figure{i}.png")
         expected_figures.append(root / "figures" / "main" / f"Figure{i}.pdf")
-    for i in range(1, 8):
+    for i in range(1, 9):
         expected_figures.append(root / "figures" / "extended_data" / f"ExtendedDataFigure{i}.png")
         expected_figures.append(root / "figures" / "extended_data" / f"ExtendedDataFigure{i}.pdf")
-    for i in range(1, 7):
+    for i in range(1, 8):
         expected_figures.append(root / "figures" / "supplementary" / f"SupplementaryFigure{i}.png")
         expected_figures.append(root / "figures" / "supplementary" / f"SupplementaryFigure{i}.pdf")
 
@@ -643,8 +682,8 @@ def main() -> int:
         d = root / "figures" / sub
         if d.exists():
             actual_fig_files.extend([p for p in d.iterdir() if p.is_file() and p.suffix.lower() in {".png", ".pdf"}])
-    if len(actual_fig_files) != 38:
-        fail(f"Figure asset count mismatch. Expected 38, got {len(actual_fig_files)}", errors)
+    if len(actual_fig_files) != 44:
+        fail(f"Figure asset count mismatch. Expected 44, got {len(actual_fig_files)}", errors)
 
     # 4) Human ratings + reproducibility inputs are de-identified
     human_dir = root / "data" / "human_ratings"
@@ -721,6 +760,12 @@ def main() -> int:
         repro_dir = scripts_dir / "reproducibility"
         if repro_dir.exists():
             required_repro_scripts = {
+                "build_consensus_figure.py",
+                "build_core_result_figures.py",
+                "build_economics_extension_figures.py",
+                "build_extended_and_supplementary_figures.py",
+                "build_frontier_diagnostics_figure.py",
+                "build_release_tables_and_stats.py",
                 "figure_style_policy.py",
                 "generate_main_figure2.py",
                 "generate_main_figures.py",
@@ -789,12 +834,25 @@ def main() -> int:
     predictions_dir = root / "data" / "predictions"
     required_prediction_files = {
         "core_rq_short_transfer_predictions.jsonl",
+        "economics_predictions.jsonl",
         "frontier_10models_8runs.jsonl",
+        "pooled_management_economics_predictions.jsonl",
         "sft_predictions.jsonl",
         "sft_temporal_old_predictions.jsonl",
         "chat_predictions.jsonl",
         "rl_predictions.jsonl",
         "gemini_3_1_pro_standalone.jsonl",
+    }
+    expected_prediction_rows = {
+        "core_rq_short_transfer_predictions.jsonl": 120,
+        "economics_predictions.jsonl": 200,
+        "frontier_10models_8runs.jsonl": 120,
+        "pooled_management_economics_predictions.jsonl": 320,
+        "sft_predictions.jsonl": 120,
+        "sft_temporal_old_predictions.jsonl": 120,
+        "chat_predictions.jsonl": 120,
+        "rl_predictions.jsonl": 120,
+        "gemini_3_1_pro_standalone.jsonl": 120,
     }
     for req in required_prediction_files:
         p_req = predictions_dir / req
@@ -802,8 +860,13 @@ def main() -> int:
             fail(f"Missing prediction file: data/predictions/{req}", errors)
             continue
         n_rows = _count_nonempty_lines(p_req)
-        if n_rows != 120:
-            fail(f"Unexpected row count in data/predictions/{req}: expected 120, got {n_rows}", errors)
+        expected_rows = expected_prediction_rows[req]
+        if n_rows != expected_rows:
+            fail(
+                f"Unexpected row count in data/predictions/{req}: "
+                f"expected {expected_rows}, got {n_rows}",
+                errors,
+            )
 
     prompt_variant_files = {
         "expert_prompt_predictions.jsonl",
@@ -864,6 +927,26 @@ def main() -> int:
                 errors,
             )
 
+    economics_file = predictions_dir / "economics_predictions.jsonl"
+    if economics_file.exists():
+        economics_keys = _first_row_model_keys(economics_file)
+        if economics_keys != EXPECTED_ECONOMICS_EXTENSION_KEYS:
+            fail(
+                "Economics extension model set mismatch. "
+                f"Expected {sorted(EXPECTED_ECONOMICS_EXTENSION_KEYS)}, got {sorted(economics_keys)}",
+                errors,
+            )
+
+    pooled_file = predictions_dir / "pooled_management_economics_predictions.jsonl"
+    if pooled_file.exists():
+        pooled_keys = _first_row_model_keys(pooled_file)
+        if pooled_keys != EXPECTED_POOLED_FIELD_KEYS:
+            fail(
+                "Pooled management+economics model set mismatch. "
+                f"Expected {sorted(EXPECTED_POOLED_FIELD_KEYS)}, got {sorted(pooled_keys)}",
+                errors,
+            )
+
     # Ensure prediction files are free of direct identifier keys
     for pred_file in sorted(predictions_dir.rglob("*.jsonl")):
         _check_jsonl_no_forbidden_keys(pred_file, errors)
@@ -906,6 +989,9 @@ def main() -> int:
         "S13_Figure6NumbersAudit.json": None,
         "S14_ED2PairwiseRawPValues.json": None,
         "S15_CoreRQShortTransferStats.json": "ExtendedDataFigure7",
+        "S16_EconomicsExtensionStats.json": "Figure7",
+        "S17_PooledFieldExtensionStats.json": "ExtendedDataFigure8",
+        "S18_CrossFieldTransferStats.json": "SupplementaryFigure7",
     }
     for filename, figure_name in shipped_stats.items():
         path = root / "data" / "statistics" / filename
@@ -930,6 +1016,12 @@ def main() -> int:
     # 12) Benchmark data integrity
     benchmark_file = root / "data" / "benchmark" / "benchmark_articles_120.jsonl"
     if benchmark_file.exists():
+        _check_benchmark_contract(
+            benchmark_file,
+            expected_rows=120,
+            expected_subject=None,
+            errors=errors,
+        )
         journals: set[str] = set()
         domains: set[str] = set()
         with benchmark_file.open("r", encoding="utf-8") as f:
@@ -959,6 +1051,13 @@ def main() -> int:
             fail(f"Expected 17 unique journals in benchmark, found {len(journals)}", errors)
         if len(domains) != 15:
             fail(f"Expected 15 unique domains in benchmark, found {len(domains)}", errors)
+    economics_benchmark_file = root / "data" / "benchmark" / "economics_benchmark_articles_200.jsonl"
+    _check_benchmark_contract(
+        economics_benchmark_file,
+        expected_rows=200,
+        expected_subject="economics",
+        errors=errors,
+    )
 
     # 13) No stale compatibility directories
     stale_dirs = ["data/model_predictions", "data/repro_compat", "data/pair_wise_outcome", "data/articles"]
@@ -1023,14 +1122,14 @@ def main() -> int:
 
     print("VALIDATION PASSED")
     print("- Folder shape matches required structure")
-    print("- README paper title matches manuscript title")
-    print("- Manuscript file contract satisfied")
-    print("- Figure naming/count checks satisfied (38 assets)")
+    print("- README paper title matches the release title contract")
+    print("- Manuscript placeholder contract satisfied")
+    print("- Figure naming/count checks satisfied (44 assets)")
     print("- Human ratings and reproducibility inputs are de-identified")
     print("- Manuscript has no internal path markers")
     print("- Exclusion rules satisfied")
     print("- Required scripts and vendored analysis sources are present")
-    print("- Prediction package contract satisfied (frontier/SFT/chat/RL/short-transfer)")
+    print("- Prediction package contract satisfied (frontier/SFT/chat/RL/short-transfer/economics)")
     print("- Public JSON schemas stripped of compatibility-only fields")
     print("- Table index and naming contract satisfied")
     print("- No forbidden identifier columns in packaged tables")
@@ -1038,7 +1137,7 @@ def main() -> int:
     print("- Figure trace index contract satisfied (Main/ED/SI)")
     print("- Pairwise data contract satisfied (ED2)")
     print("- Training-data placeholder present")
-    print("- Benchmark integrity: 17 journals, 15 domains, no PII, no Chinese")
+    print("- Benchmark integrity: management + economics files validated, no PII, no host paths")
     print("- No stale compatibility directories")
     print("- Requirements metadata present")
     print("- No host-specific paths in any JSONL file")

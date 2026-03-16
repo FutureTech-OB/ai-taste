@@ -14,6 +14,12 @@
   - Public compressed-input transfer file used for Extended Data Fig. 7.
   - Packages the same held-out 120 articles as one-sentence idea statements together with the matched full idea summaries for side-by-side traceability.
   - Contains the four GPT-family base/SFT prediction tracks used for the harder format-transfer check; no model was trained on this one-sentence format.
+- `economics_predictions.jsonl`:
+  - Public economics extension prediction file used for Figure 7 and Supplementary Figure 7.
+  - Contains the released 200-item economics benchmark predictions for the architecture-matched base/SFT comparisons, the management-trained GPT-4.1 transfer checkpoint, and the released frontier-reference comparators.
+- `pooled_management_economics_predictions.jsonl`:
+  - Public pooled-field prediction file used for Extended Data Fig. 8.
+  - Contains the released management+economics pooled-checkpoint outputs on the combined 320-item held-out surface.
 - `chat_predictions.jsonl`:
   - Chat/log-probability evaluator predictions.
 - `rl_predictions.jsonl`:
@@ -27,6 +33,7 @@
 - Vote-based prediction files in this release keep only the public analysis fields:
   - `mode`, `prediction`, `prediction_majority`, `avg_accuracy`, `vote_valid_n`, `vote_counts`, `vote_is_tie`, `vote_predictions`
 - SFT files keep only the released log-probability surfaces and ensemble metadata needed by the shipped rebuild scripts.
+- Economics extension files use stable public model keys rather than provider-local checkpoint paths.
 
 ## Gemini Coverage Note
 - The conservative 11-model frontier cohort includes **Gemini 2.5 Pro** and **Gemini 3.1 Pro**.

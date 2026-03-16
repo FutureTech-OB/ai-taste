@@ -5,17 +5,17 @@ This folder contains the released inputs and numerical outputs needed for the pu
 | Directory | Contents |
 |-----------|----------|
 | `benchmark/` | Benchmark article records |
-| `predictions/` | Model prediction files used in the paper |
+| `predictions/` | Model prediction files used in the paper and the economics extension figures |
 | `pairwise/` | Pairwise comparison outputs and summary metrics |
 | `human_ratings/` | De-identified human ratings and reproducibility inputs |
 | `tables/` | Released tables and figure-data files |
 | `statistics/` | Released summary statistics |
-| `train_data/` | Released training-data article pools for recent-trace and old-trace SFT preparation |
+| `train_data/` | Placeholder documentation for the withheld supervised fine-tuning corpus |
 
 For the public rebuild:
 
-- `scripts/reproduce_tables.sh` rebuilds `T01` through `T21` and `S01` through `S14`
-- `scripts/reproduce_figures.sh` regenerates the released figures from repository-local inputs
+- `scripts/reproduce_tables.sh` rebuilds `T01` through `T21` and `S01` through `S12`
+- `scripts/reproduce_figures.sh` regenerates the released figures plus `S15` through `S18` from repository-local inputs
 
 Two index files are the main entry points for readers:
 
