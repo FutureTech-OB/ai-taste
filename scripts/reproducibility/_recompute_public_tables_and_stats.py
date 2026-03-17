@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recompute the public release tables/statistics from package-local inputs."""
+"""Internal helper for rebuilding public release tables/statistics."""
 
 from __future__ import annotations
 
@@ -79,8 +79,8 @@ def main() -> None:
         env["RESULTS_ROOT"] = str(temp_dir)
 
         run_python(VENDOR_ANALYSIS_DIR / "00_frontier_protocol_builder.py", env=env)
-        run_python(REPRO_DIR / "recompute_core_tables_and_stats.py")
-        run_python(REPRO_DIR / "recompute_public_support_tables.py")
+        run_python(REPRO_DIR / "_recompute_core_tables_and_stats.py")
+        run_python(REPRO_DIR / "_recompute_public_support_tables.py")
 
         for name in [
             "02_flagship_model_performance.py",

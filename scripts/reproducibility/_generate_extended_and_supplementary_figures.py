@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate Extended Data and Supplementary figures/tables.
+"""Internal helper for rebuilding Extended Data and Supplementary figures/tables.
 
 Design goals:
 - High information density with paneled layouts.

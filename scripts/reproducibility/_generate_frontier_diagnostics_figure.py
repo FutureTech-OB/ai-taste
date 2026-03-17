@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate main Figure 2 as PNG/PDF.
+"""Internal helper for rebuilding Figure 2 as PNG/PDF.
 
 Design goals (user-requested):
 - Panel a is primary and spans full width horizontally.

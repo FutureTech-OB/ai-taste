@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate main Figure 6 voting-consistency summary with panel-a/b CIs."""
+"""Internal helper for rebuilding Figure 6 voting-consistency summary."""
 
 from __future__ import annotations
 

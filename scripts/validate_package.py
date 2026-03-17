@@ -767,19 +767,22 @@ def main() -> int:
                 "build_frontier_diagnostics_figure.py",
                 "build_release_tables_and_stats.py",
                 "figure_style_policy.py",
-                "generate_main_figure2.py",
-                "generate_main_figures.py",
-                "generate_main_figure6.py",
-                "generate_extended_and_supplementary_figures.py",
-                "recompute_core_tables_and_stats.py",
-                "recompute_public_support_tables.py",
-                "recompute_public_tables_and_stats.py",
+                "_generate_frontier_diagnostics_figure.py",
+                "_generate_core_result_figures.py",
+                "_generate_consensus_figure.py",
+                "_generate_extended_and_supplementary_figures.py",
+                "_recompute_core_tables_and_stats.py",
+                "_recompute_public_support_tables.py",
+                "_recompute_public_tables_and_stats.py",
                 "README.md",
             }
             actual_repro_files = {p.name for p in repro_dir.iterdir() if p.is_file()}
             missing_repro = sorted(required_repro_scripts - actual_repro_files)
             if missing_repro:
                 fail(f"Missing reproducibility sources: {missing_repro}", errors)
+            unexpected_repro = sorted(actual_repro_files - required_repro_scripts)
+            if unexpected_repro:
+                fail(f"Unexpected reproducibility files present: {unexpected_repro}", errors)
             vendor_analysis_dir = repro_dir / "vendor_analysis" / "analysis"
             if not vendor_analysis_dir.exists():
                 fail("Missing vendored analysis directory: scripts/reproducibility/vendor_analysis/analysis", errors)

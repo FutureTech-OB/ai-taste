@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate clean final main figures (Figure 2-5) for the Nature draft.
+"""Internal helper for rebuilding main Figures 3-5.
 
 This script rebuilds figures from numeric data only and does not reuse any prior
 image assets.
@@ -7,8 +7,7 @@ image assets.
 Outputs:
 - PNG/PDF saved to: ../reproduced/figures/main
 
-Usage:
-    python3 scripts/reproducibility/generate_main_figures.py
+This module is invoked by `build_core_result_figures.py`.
 """
 
 from __future__ import annotations
@@ -801,7 +800,7 @@ def make_figure2() -> plt.Figure:
     # Delegate to the dedicated Figure2 generator to keep panel-a metric pairing
     # (Accuracy CI + Macro-F1 CI) synchronized with the canonical Figure 2.
     try:
-        from generate_main_figure2 import make_figure2
+        from _generate_frontier_diagnostics_figure import make_figure2
 
         return make_figure2()
     except Exception:
@@ -2178,7 +2177,6 @@ def main() -> None:
     set_style()
 
     figures = [
-        ("Figure2", make_figure2),
         ("Figure3", make_figure3),
         ("Figure4", make_figure4),
         ("Figure5", make_figure5),

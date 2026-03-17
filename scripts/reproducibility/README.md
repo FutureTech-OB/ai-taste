@@ -2,7 +2,7 @@
 
 This folder contains the Python sources used by the public reproduction scripts.
 
-Main components:
+Public entry points:
 
 - `build_frontier_diagnostics_figure.py` (Figure 2)
 - `build_core_result_figures.py` (Figures 3-5)
@@ -10,10 +10,20 @@ Main components:
 - `build_extended_and_supplementary_figures.py` (ED1-ED7, Supplementary Figures 1-6)
 - `build_economics_extension_figures.py` (Figure 7, ED8, Supplementary Figure 7)
 - `build_release_tables_and_stats.py`
-- `recompute_core_tables_and_stats.py`
-- `recompute_public_support_tables.py`
+
+Internal helper modules:
+
+- `_generate_frontier_diagnostics_figure.py`
+- `_generate_core_result_figures.py`
+- `_generate_consensus_figure.py`
+- `_generate_extended_and_supplementary_figures.py`
+- `_recompute_core_tables_and_stats.py`
+- `_recompute_public_support_tables.py`
+- `_recompute_public_tables_and_stats.py`
 - `vendor_analysis/analysis/`
 - `figure_style_policy.py`
+
+External readers should use the repository-root shell scripts or the `build_*` wrappers above rather than calling the `_`-prefixed helpers directly.
 
 From the repository root, the public entry points are:
 

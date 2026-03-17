@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild core derived tables/statistics from package-local inputs only.
+"""Internal helper for rebuilding core derived tables/statistics.
 
 This script refreshes the package tables/statistics that are directly derived
 from the public prediction and rating files:

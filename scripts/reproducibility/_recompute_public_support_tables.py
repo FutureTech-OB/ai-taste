@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recompute package-local support tables not covered by vendored scripts."""
+"""Internal helper for rebuilding package-local support tables."""
 
 from __future__ import annotations
 
