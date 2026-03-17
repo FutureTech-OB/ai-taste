@@ -2987,7 +2987,7 @@ def make_supp_table_figures_v2() -> List[Tuple[Path, Path]]:
     _set_style()
     outputs: List[Tuple[Path, Path]] = []
 
-    # ST4-like pairwise detailed table figure
+    # ST1 table figure
     pairwise = load_pairwise_metrics()
     frontier_label = "Gemini 3.1 Pro"
     rows = []
@@ -3033,13 +3033,13 @@ def make_supp_table_figures_v2() -> List[Tuple[Path, Path]]:
             cell.set_text_props(weight="bold")
         elif r % 2 == 0:
             cell.set_facecolor("#FAFAFA")
-    ax.set_title("Supplementary Table Figure ST4 | Pairwise discrimination by tier distance", fontsize=10, pad=6)
+    ax.set_title("Supplementary Table Figure ST1 | Pairwise discrimination by tier distance", fontsize=10, pad=6)
     fig.subplots_adjust(top=0.86, bottom=0.02, left=0.02, right=0.98)
-    st4_png, st4_pdf = _save(fig, OUT_SUPP / "SupplementaryTableFigure_ST4_pairwise")
-    st4_png.unlink(missing_ok=True)
-    outputs.append((st4_png, st4_pdf))
+    st1_png, st1_pdf = _save(fig, OUT_SUPP / "SupplementaryTableFigure_ST1_pairwise")
+    st1_png.unlink(missing_ok=True)
+    outputs.append((st1_png, st1_pdf))
 
-    # ST7 table figure
+    # ST4 table figure
     st7 = _load_st7_ensemble_table().sort_values("accuracy_pct", ascending=False).reset_index(drop=True)
     st7_rows = []
     table8 = pd.read_csv(TABLES_DIR / "T04_AIvsHumanSummary.csv")
@@ -3076,11 +3076,11 @@ def make_supp_table_figures_v2() -> List[Tuple[Path, Path]]:
             cell.set_text_props(weight="bold")
         elif r % 2 == 0:
             cell.set_facecolor("#FAFAFA")
-    ax.set_title("Supplementary Table Figure ST7 | All pairwise SFT ensemble combinations", fontsize=10, pad=6)
+    ax.set_title("Supplementary Table Figure ST4 | All pairwise SFT ensemble combinations", fontsize=10, pad=6)
     fig.subplots_adjust(top=0.86, bottom=0.02, left=0.02, right=0.98)
-    st7_png, st7_pdf = _save(fig, OUT_SUPP / "SupplementaryTableFigure_ST7_ensembles")
-    st7_png.unlink(missing_ok=True)
-    outputs.append((st7_png, st7_pdf))
+    st4_png, st4_pdf = _save(fig, OUT_SUPP / "SupplementaryTableFigure_ST4_ensembles")
+    st4_png.unlink(missing_ok=True)
+    outputs.append((st4_png, st4_pdf))
 
     return outputs
 
@@ -3630,7 +3630,7 @@ def write_design_notes(generated_ext: List[Tuple[Path, Path]], generated_supp: L
         "Pairwise design rationale:",
         "- Uses intrinsic pairwise task with a six-pair-type heatmap and paired discordance decomposition in ED2, while Main Fig. 5 now carries the headline overall-accuracy and hard-boundary panels.",
         "- Matches manuscript method/results claims: overall weighted accuracy, concentration of gains at the fair-strong and strong-exceptional boundaries, and raw exact paired significance against the plotted comparator set.",
-        "- Supersedes earlier ad-hoc ED11/ST11 pairwise artifacts generated from evaluator-vs-evaluator significance tables.",
+        "- Supersedes earlier ad-hoc pairwise artifacts generated from evaluator-vs-evaluator significance tables.",
         "",
         "RL update (new data ingested):",
         "- Added ED5 from `data/predictions/rl_predictions.jsonl` (run-pooled avg8, majority-vote robustness, confusion structure, and distribution profile).",

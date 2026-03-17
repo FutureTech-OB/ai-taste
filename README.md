@@ -1,16 +1,16 @@
 # ai-taste
 
-This repository releases the paper, figures, tables, de-identified evaluation data, and reproducibility code for the study:
+This repository releases the public reproducibility package for the study:
 
 **Paper title:** Fine-tuned language models learn tacit scientific judgment from institutional traces
 
-The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. The release includes the 120-article management benchmark, the 200-article economics extension benchmark, model predictions, de-identified human ratings, released figures and tables, documentation describing the withheld training corpus, and the scripts used to regenerate the public results from repository-local files.
+The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. This snapshot includes the 120-article management benchmark, the 200-article economics extension benchmark, model predictions, de-identified human ratings, released figures and tables, documentation describing the withheld training corpus, and the scripts used to regenerate the public results from repository-local files. The final approved paper PDF and synced manuscript sources are not yet included in `manuscript/`.
 
 ## Contents
 
 | Path | Contents |
 |------|----------|
-| `manuscript/` | Placeholder directory for the final public paper assets to be synced later |
+| `manuscript/` | Placeholder directory for the final public paper assets; not required for the current rerun path |
 | `figures/` | Main, extended data, and supplementary figures plus figure notes |
 | `data/benchmark/` | Management benchmark records plus the released economics extension benchmark |
 | `data/predictions/` | Model prediction files, including the released economics extension and pooled management+economics prediction sets |
@@ -34,7 +34,7 @@ python3 -m venv .venv
 ./.venv/bin/python -m pip install -r requirements.txt
 ```
 
-The validated public rerun path below does not require `pandoc` or any external document-conversion toolchain.
+The validated public rerun path below does not require `pandoc` or any external document-conversion toolchain. A repo-local `.venv/` is supported and ignored by git.
 
 ## Reproducing the release
 
@@ -56,7 +56,7 @@ Regenerated outputs are written under `reproduced/` as ignored local build outpu
 
 ## Scope
 
-This release is intended to let outside readers inspect the benchmark and evaluation outputs, trace released figures and tables to repository-local inputs, and rerun the public analysis pipeline.
+This release is intended to let outside readers inspect the benchmark and evaluation outputs, trace released figures and tables to repository-local inputs, and rerun the public analysis pipeline. In this snapshot, `manuscript/` remains placeholder-only; the public code/data rerun path does not depend on any manuscript asset.
 
 Key release indices:
 

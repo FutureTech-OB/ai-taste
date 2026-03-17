@@ -629,7 +629,7 @@ def main() -> int:
 
     # 1) Folder shape and top-level contract
     required_top = {"README.md", "LICENSE", "manuscript", "figures", "data", "scripts", "requirements.txt"}
-    optional_top = {"reproduced", ".gitignore"}
+    optional_top = {"reproduced", ".gitignore", ".venv"}
     allowed_top = required_top | optional_top
     actual_top = {p.name for p in root.iterdir()}
     missing_top = sorted(required_top - actual_top)
@@ -1081,13 +1081,25 @@ def main() -> int:
                 break
 
     # 15) No Python cache artifacts in the public package
-    cache_dirs = sorted(p.relative_to(root) for p in root.rglob("__pycache__"))
+    cache_dirs = sorted(
+        p.relative_to(root)
+        for p in root.rglob("__pycache__")
+        if ".venv" not in p.relative_to(root).parts
+    )
     if cache_dirs:
         fail(f"Python cache directories should not be shipped: {cache_dirs}", errors)
-    pyc_files = sorted(p.relative_to(root) for p in root.rglob("*.pyc"))
+    pyc_files = sorted(
+        p.relative_to(root)
+        for p in root.rglob("*.pyc")
+        if ".venv" not in p.relative_to(root).parts
+    )
     if pyc_files:
         fail(f"Python bytecode files should not be shipped: {pyc_files}", errors)
-    ds_store_files = sorted(p.relative_to(root) for p in root.rglob(".DS_Store"))
+    ds_store_files = sorted(
+        p.relative_to(root)
+        for p in root.rglob(".DS_Store")
+        if ".venv" not in p.relative_to(root).parts
+    )
     if ds_store_files:
         fail(f"Finder metadata files should not be shipped: {ds_store_files}", errors)
 
