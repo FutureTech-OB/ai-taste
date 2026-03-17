@@ -218,8 +218,8 @@
     "SFT (Qwen3-30B)": {
       "display_name": "SFT (Qwen3-30B)",
       "n_valid": 120,
-      "accuracy": 0.5583,
-      "macro_f1": 0.5576,
+      "accuracy": 0.5833,
+      "macro_f1": 0.5836,
       "per_class_metrics": {
         "exceptional": {
           "precision": 0.5366,
@@ -228,35 +228,35 @@
           "support": 30.0
         },
         "strong": {
-          "precision": 0.5185,
-          "recall": 0.4667,
-          "f1": 0.4912,
+          "precision": 0.5556,
+          "recall": 0.5,
+          "f1": 0.5263,
           "support": 30.0
         },
         "fair": {
-          "precision": 0.4839,
-          "recall": 0.5,
-          "f1": 0.4918,
+          "precision": 0.5312,
+          "recall": 0.5667,
+          "f1": 0.5484,
           "support": 30.0
         },
         "limited": {
-          "precision": 0.7619,
+          "precision": 0.8,
           "recall": 0.5333,
-          "f1": 0.6275,
+          "f1": 0.64,
           "support": 30.0
         }
       },
       "per_tier_accuracy": {
         "exceptional": 0.7333,
-        "strong": 0.4667,
-        "fair": 0.5,
+        "strong": 0.5,
+        "fair": 0.5667,
         "limited": 0.5333
       },
       "prediction_distribution": {
-        "limited": 21,
-        "fair": 31,
-        "exceptional": 41,
-        "strong": 27
+        "limited": 20,
+        "strong": 27,
+        "fair": 32,
+        "exceptional": 41
       },
       "confusion_matrix": [
         [
@@ -267,20 +267,20 @@
         ],
         [
           13,
-          14,
+          15,
           2,
-          1
+          0
         ],
         [
           6,
-          7,
-          15,
+          5,
+          17,
           2
         ],
         [
           0,
-          1,
-          13,
+          2,
+          12,
           16
         ]
       ]
@@ -359,69 +359,69 @@
       "display_name": "2-Model Ensemble",
       "n_valid": 120,
       "accuracy": 0.6083,
-      "macro_f1": 0.6067,
+      "macro_f1": 0.6069,
       "per_class_metrics": {
         "exceptional": {
-          "precision": 0.6316,
-          "recall": 0.8,
-          "f1": 0.7059,
+          "precision": 0.6053,
+          "recall": 0.7667,
+          "f1": 0.6765,
           "support": 30.0
         },
         "strong": {
-          "precision": 0.6207,
-          "recall": 0.6,
-          "f1": 0.6102,
+          "precision": 0.64,
+          "recall": 0.5333,
+          "f1": 0.5818,
           "support": 30.0
         },
         "fair": {
-          "precision": 0.4722,
-          "recall": 0.5667,
-          "f1": 0.5152,
+          "precision": 0.5143,
+          "recall": 0.6,
+          "f1": 0.5538,
           "support": 30.0
         },
         "limited": {
-          "precision": 0.8235,
-          "recall": 0.4667,
-          "f1": 0.5957,
+          "precision": 0.7273,
+          "recall": 0.5333,
+          "f1": 0.6154,
           "support": 30.0
         }
       },
       "per_tier_accuracy": {
-        "exceptional": 0.8,
-        "strong": 0.6,
-        "fair": 0.5667,
-        "limited": 0.4667
+        "exceptional": 0.7667,
+        "strong": 0.5333,
+        "fair": 0.6,
+        "limited": 0.5333
       },
       "prediction_distribution": {
-        "strong": 29,
-        "limited": 17,
-        "fair": 36,
+        "limited": 22,
+        "strong": 25,
+        "fair": 35,
         "exceptional": 38
       },
       "confusion_matrix": [
         [
-          24,
-          2,
+          23,
           3,
-          1
+          1,
+          3
         ],
         [
-          8,
-          18,
+          10,
+          16,
           4,
           0
         ],
         [
-          6,
           5,
-          17,
-          2
+          4,
+          18,
+          3
         ],
         [
           0,
-          4,
+          2,
           12,
-          14
+          16
         ]
       ]
     }
@@ -430,7 +430,7 @@
     "2-Model Ensemble": {
       "component_models": [
         "ckpt-step-304",
-        "ckppt-228"
+        "ckppt-380"
       ],
       "method": "prob_avg"
     }
@@ -448,19 +448,19 @@
     "Baseline vs 2-Model Ensemble": {
       "model_1": "GPT-5.2 (Baseline)",
       "model_2": "2-Model Ensemble",
-      "statistic": 20.13235294117647,
-      "p_value": 7.2263899881797045e-06,
-      "b": 15.0,
-      "c": 53.0,
+      "statistic": 19.557142857142857,
+      "p_value": 9.76350028747408e-06,
+      "b": 16.0,
+      "c": 54.0,
       "significant": true
     },
     "Best SFT Single vs 2-Model Ensemble": {
       "model_1": "SFT (Qwen3-4B)",
       "model_2": "2-Model Ensemble",
-      "statistic": 0.5,
-      "p_value": 0.47950012218695337,
-      "b": 0.0,
-      "c": 2.0,
+      "statistic": 0.03571428571428571,
+      "p_value": 0.8501067391385259,
+      "b": 13.0,
+      "c": 15.0,
       "significant": false
     }
   },
@@ -476,8 +476,8 @@
       "comparison": "GPT-5.2 vs 2-Model Ensemble",
       "accuracy_diff": 0.31666666666666665,
       "ci_lower": 0.19166666666666668,
-      "ci_upper": 0.43333333333333335,
-      "std": 0.06231508356077315
+      "ci_upper": 0.44166666666666665,
+      "std": 0.0635600518033202
     }
   },
   "mediocrity_bias_analysis": {
@@ -501,11 +501,11 @@
     },
     "2_model_ensemble": {
       "model": "2-Model Ensemble",
-      "middle_tier_pct": 0.5417,
+      "middle_tier_pct": 0.5,
       "distribution": {
-        "strong": 29,
-        "limited": 17,
-        "fair": 36,
+        "limited": 22,
+        "strong": 25,
+        "fair": 35,
         "exceptional": 38
       }
     }

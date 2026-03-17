@@ -69,8 +69,8 @@
   ],
   "kruskal_wallis": {
     "SFT 2-Model": {
-      "statistic": 5.325766654487955,
-      "p_value": 0.8683816516496241,
+      "statistic": 11.014150815452425,
+      "p_value": 0.3564165850955448,
       "n_groups": 11,
       "group_names": [
         "Leadership",
@@ -142,15 +142,15 @@
     }
   },
   "chi_square_domain_accuracy": {
-    "statistic": 5.372897332846183,
-    "p_value": 0.8649179151612696,
-    "cramers_v": 0.21709601184337737
+    "statistic": 11.111621176651015,
+    "p_value": 0.3488880997759057,
+    "cramers_v": 0.31220243624720984
   },
   "domain_performance": {
     "Leadership": {
       "domain": "Leadership",
       "n_articles": 27,
-      "SFT 2-Model": 0.5555555555555556,
+      "SFT 2-Model": 0.5185185185185185,
       "Best Flagship": 0.4,
       "Expert Majority": 0.47619047619047616,
       "Student Majority": 0.5
@@ -158,7 +158,7 @@
     "Teams & Organizations": {
       "domain": "Teams & Organizations",
       "n_articles": 17,
-      "SFT 2-Model": 0.5294117647058824,
+      "SFT 2-Model": 0.7058823529411765,
       "Best Flagship": 0.5294117647058824,
       "Expert Majority": 0.5333333333333333,
       "Student Majority": 0.47058823529411764
@@ -166,7 +166,7 @@
     "Employee Behavior": {
       "domain": "Employee Behavior",
       "n_articles": 16,
-      "SFT 2-Model": 0.5625,
+      "SFT 2-Model": 0.5,
       "Best Flagship": 0.2,
       "Expert Majority": 0.3333333333333333,
       "Student Majority": 0.46153846153846156
@@ -174,7 +174,7 @@
     "Other Management": {
       "domain": "Other Management",
       "n_articles": 16,
-      "SFT 2-Model": 0.6875,
+      "SFT 2-Model": 0.75,
       "Best Flagship": 0.4,
       "Expert Majority": 0.36363636363636365,
       "Student Majority": 0.3076923076923077
@@ -190,7 +190,7 @@
     "Social Psychology": {
       "domain": "Social Psychology",
       "n_articles": 7,
-      "SFT 2-Model": 0.7142857142857143,
+      "SFT 2-Model": 0.5714285714285714,
       "Best Flagship": 0.3333333333333333,
       "Expert Majority": 0.42857142857142855,
       "Student Majority": 0.3333333333333333
@@ -198,7 +198,7 @@
     "AI & Technology": {
       "domain": "AI & Technology",
       "n_articles": 6,
-      "SFT 2-Model": 0.5,
+      "SFT 2-Model": 0.16666666666666666,
       "Best Flagship": 0.6666666666666666,
       "Expert Majority": 0.4,
       "Student Majority": 0.2
@@ -214,7 +214,7 @@
     "Knowledge & Learning": {
       "domain": "Knowledge & Learning",
       "n_articles": 5,
-      "SFT 2-Model": 0.6,
+      "SFT 2-Model": 0.8,
       "Best Flagship": 0.4,
       "Expert Majority": 0.3333333333333333,
       "Student Majority": 0.4
@@ -222,7 +222,7 @@
     "Diversity & Equity": {
       "domain": "Diversity & Equity",
       "n_articles": 4,
-      "SFT 2-Model": 0.5,
+      "SFT 2-Model": 0.75,
       "Best Flagship": 0.25,
       "Expert Majority": 0.0,
       "Student Majority": 0.0
@@ -230,7 +230,7 @@
     "Human Resource Management": {
       "domain": "Human Resource Management",
       "n_articles": 3,
-      "SFT 2-Model": 1.0,
+      "SFT 2-Model": 0.6666666666666666,
       "Best Flagship": 0.0,
       "Expert Majority": 0.5,
       "Student Majority": 0.6666666666666666

@@ -6,18 +6,18 @@
   "n_complete_records": 74,
   "difficulty_distribution": {
     "0": 23,
-    "1": 36,
-    "2": 32,
-    "3": 19,
-    "4": 10
+    "1": 35,
+    "2": 35,
+    "3": 16,
+    "4": 11
   },
-  "n_easy_articles": 11,
+  "n_easy_articles": 12,
   "n_hard_articles": 23,
   "error_magnitude": {
     "SFT 2-Model": {
       "exact": 73,
-      "off_by_one": 33,
-      "off_by_two_plus": 14,
+      "off_by_one": 36,
+      "off_by_two_plus": 11,
       "total": 120
     },
     "Best Flagship": {
@@ -41,12 +41,12 @@
   },
   "error_direction": {
     "SFT 2-Model": {
-      "overestimation": 35,
-      "underestimation": 12,
+      "overestimation": 33,
+      "underestimation": 14,
       "exact": 73,
       "total": 120,
-      "over_pct": 29.166666666666668,
-      "under_pct": 10.0
+      "over_pct": 27.5,
+      "under_pct": 11.666666666666666
     },
     "Best Flagship": {
       "overestimation": 42,
@@ -74,12 +74,12 @@
     }
   },
   "ai_right_expert_wrong": {
-    "count": 31,
+    "count": 32,
     "tier_distribution": {
       "exceptional": 14,
       "strong": 6,
-      "fair": 7,
-      "limited": 4
+      "fair": 6,
+      "limited": 6
     },
     "articles": [
       {
@@ -87,12 +87,6 @@
         "tier": "fair",
         "domain": "领导力/管理者, 多元化与公平, AI与技术",
         "journal": "HUMAN RESOURCE MANAGEMENT"
-      },
-      {
-        "title": "From Friction to Fulfillment: Examining When and How Spousal Active-Destructive Responsiveness to Employees' Sharing of Positive Events Benefits the Work Domain",
-        "tier": "fair",
-        "domain": "员工行为与态度, AI与技术",
-        "journal": "JOURNAL OF ORGANIZATIONAL BEHAVIOR"
       },
       {
         "title": "Adaptive Secrecy in the Making of the Atomic Bomb: Toward a Process View of Secretive Innovation",
@@ -125,16 +119,16 @@
         "journal": "PERSONNEL PSYCHOLOGY"
       },
       {
+        "title": "Beyond the Sweet Spot: Testing Nonlinear Relationships Between Two Autonomy Facets and Work Intensification",
+        "tier": "limited",
+        "domain": "社会心理/人际",
+        "journal": "JOURNAL OF PERSONNEL PSYCHOLOGY"
+      },
+      {
         "title": "Signaling with babble? Exploring the effects of gender and speaking time on leader emergence",
         "tier": "fair",
         "domain": "领导力/管理者, 多元化与公平",
         "journal": "LEADERSHIP QUARTERLY"
-      },
-      {
-        "title": "The Dark Side of Managing Human-AI Collaborations: Implications for Leaders' Moral Relativism and Unethical Behaviour",
-        "tier": "fair",
-        "domain": "领导力/管理者, 伦理与道德, AI与技术",
-        "journal": "JOURNAL OF MANAGEMENT STUDIES"
       },
       {
         "title": "Good Lessons Despite Bad Feelings: How Boundary-Spanning Teams Learn from Collaboration Failure",
@@ -153,6 +147,12 @@
         "tier": "exceptional",
         "domain": "战略与决策",
         "journal": "ADMINISTRATIVE SCIENCE QUARTERLY"
+      },
+      {
+        "title": "SUBORDINATING HUMANISM: HOW COLLIDING BELIEFS ABOUT A LIVING WAGE SHAPE PERSONAL FULFILLMENT AND \"PROFESSIONAL-CLASS\" IDENTITIES IN WORKING-CLASS JOBS",
+        "tier": "exceptional",
+        "domain": "其他管理学研究",
+        "journal": "ACADEMY OF MANAGEMENT JOURNAL"
       },
       {
         "title": "When Founders Falter: A Second-in-Command Attenuates the Effect of Founder Identification on Unethical Pro-Organizational Behavior",
@@ -185,6 +185,12 @@
         "journal": "LEADERSHIP QUARTERLY"
       },
       {
+        "title": "Human Capital Robotic Integration and Value Creation for Organizations",
+        "tier": "fair",
+        "domain": "团队与组织, AI与技术",
+        "journal": "JOURNAL OF ORGANIZATIONAL BEHAVIOR"
+      },
+      {
         "title": "The Dynamics and Complexities of Return-to-Office Policies",
         "tier": "fair",
         "domain": "其他管理学研究",
@@ -195,12 +201,6 @@
         "tier": "exceptional",
         "domain": "员工行为与态度",
         "journal": "ACADEMY OF MANAGEMENT JOURNAL"
-      },
-      {
-        "title": "No Rest for the Weary: Pay Uncertainty Reduces Engagement in Recovery",
-        "tier": "exceptional",
-        "domain": "员工行为与态度, 工作压力与健康, AI与技术",
-        "journal": "JOURNAL OF APPLIED PSYCHOLOGY"
       },
       {
         "title": "Founders' pre-entry knowledge and the heterogeneous returns to accelerator participation",
@@ -251,6 +251,12 @@
         "journal": "ADMINISTRATIVE SCIENCE QUARTERLY"
       },
       {
+        "title": "Gender Differences on Dual-Earners' Money as Achievement Congruence and Needs-Supplies Fit",
+        "tier": "limited",
+        "domain": "多元化与公平",
+        "journal": "JOURNAL OF BUSINESS AND PSYCHOLOGY"
+      },
+      {
         "title": "Gender differences in dishonesty when leaders make decisions on behalf of their team☆",
         "tier": "fair",
         "domain": "领导力/管理者, 团队与组织, 多元化与公平",
@@ -274,16 +280,22 @@
     "count": 13,
     "tier_distribution": {
       "exceptional": 0,
-      "strong": 6,
-      "fair": 5,
+      "strong": 7,
+      "fair": 4,
       "limited": 2
     },
     "articles": [
       {
-        "title": "Scarcity undermines directed attention and pleasurable thinking",
+        "title": "Gaining Career Purpose Through Lightning Bolts: Examining the Strength and Psychological Foundations of Work-Related Epiphanies",
         "tier": "strong",
-        "domain": "其他管理学研究",
-        "journal": "ORGANIZATIONAL BEHAVIOR AND HUMAN DECISION PROCESSES"
+        "domain": "人力资源管理, AI与技术, 职业发展",
+        "journal": "JOURNAL OF MANAGEMENT"
+      },
+      {
+        "title": "Imagined and Overlooked Ties: Why the Ties in Our Mind Influence Who We Trust",
+        "tier": "strong",
+        "domain": "社会心理/人际",
+        "journal": "PERSONNEL PSYCHOLOGY"
       },
       {
         "title": "The Mirror's Eye: Daily Work Events, Self-Conscious Emotions, and Job (Dis)Engagement",
@@ -292,40 +304,46 @@
         "journal": "JOURNAL OF BUSINESS AND PSYCHOLOGY"
       },
       {
-        "title": "Political promotion of CEOs of state-controlled firms in China: A state capitalism view",
-        "tier": "fair",
-        "domain": "领导力/管理者",
-        "journal": "LEADERSHIP QUARTERLY"
-      },
-      {
-        "title": "A Social Hierarchy Perspective on the Detrimental Effects of Leader-Member Exchange Differentiation on Team Functioning: Leader-Conferred Status Versus Member-Conferred Status",
-        "tier": "strong",
-        "domain": "领导力/管理者, 团队与组织, 社会心理/人际",
-        "journal": "PERSONNEL PSYCHOLOGY"
-      },
-      {
-        "title": "Recalibrating Entrepreneurship Research: Decolonizing and Embracing the Pluralism of Entrepreneurial Activity",
-        "tier": "fair",
-        "domain": "创新与创业",
-        "journal": "JOURNAL OF MANAGEMENT STUDIES"
-      },
-      {
         "title": "Compromise Leadership: Competing Board Subgroups and the Appointment of a Newcomer Chair",
         "tier": "strong",
         "domain": "领导力/管理者, 团队与组织, 多元化与公平",
         "journal": "JOURNAL OF MANAGEMENT"
       },
       {
-        "title": "Striving to Self-Verify in Teamwork: Linking Team Self-Verification Striving to Team Interaction Process and Team Creativity",
+        "title": "I Am Not Who You Think I Am: The Role of Appraisal in Responses to Non-Verifying Feedback",
         "tier": "fair",
-        "domain": "团队与组织, 创新与创业, 社会心理/人际",
+        "domain": "AI与技术",
         "journal": "JOURNAL OF ORGANIZATIONAL BEHAVIOR"
+      },
+      {
+        "title": "The Cost of Surveillance: How Perceived Invasiveness of Electronic Performance Monitoring Triggers Workplace Cheating",
+        "tier": "fair",
+        "domain": "绩效与成果",
+        "journal": "HUMAN RESOURCE MANAGEMENT"
+      },
+      {
+        "title": "Expanding Our Understanding of Quiet Quitting: Antecedents, Correlates, and Consequences",
+        "tier": "fair",
+        "domain": "其他管理学研究",
+        "journal": "HUMAN RESOURCE MANAGEMENT"
       },
       {
         "title": "Connected to a Sinking Ship? Firm Performance in a Besieged Autocracy",
         "tier": "strong",
         "domain": "绩效与成果",
         "journal": "JOURNAL OF MANAGEMENT"
+      },
+      {
+        "title": "Multiple Identity Construction at Work: An Intrapersonal Identity Network Approach to Intersectionality",
+        "tier": "strong",
+        "domain": "社会心理/人际",
+        "journal": "PERSONNEL PSYCHOLOGY"
+      },
+      {
+        "title": "Authentic leadership and employee voice: a self-verification perspective",
+        "tier": "limited",
+        "domain": "领导力/管理者, 员工行为与态度",
+        "journal": "JOURNAL OF MANAGERIAL PSYCHOLOGY"
       },
       {
         "title": "Opportunity Search in the Era of GenAI: Navigating Uncertainty in an Expanding Universe of Imaginable but Unknowable Futures",
@@ -340,18 +358,6 @@
         "journal": "JOURNAL OF MANAGEMENT"
       },
       {
-        "title": "It's getting HOT in here: Do hazardous organizations encourage workplace deviance?",
-        "tier": "limited",
-        "domain": "团队与组织, 伦理与道德",
-        "journal": "JOURNAL OF MANAGERIAL PSYCHOLOGY"
-      },
-      {
-        "title": "Do Women Executives Make Workplaces Safer? Evidence from Workplace Safety Violations",
-        "tier": "fair",
-        "domain": "领导力/管理者, 多元化与公平",
-        "journal": "JOURNAL OF MANAGEMENT STUDIES"
-      },
-      {
         "title": "Leadership Influence in Times of Change: A Social Network Perspective",
         "tier": "strong",
         "domain": "领导力/管理者, 社会心理/人际",
@@ -360,18 +366,18 @@
     ]
   },
   "chi_square_error_patterns": {
-    "statistic": 15.765620983751335,
-    "p_value": 0.015068817665770192,
-    "cramers_v": 0.13587094796489713
+    "statistic": 15.823514140021382,
+    "p_value": 0.01473324704966295,
+    "cramers_v": 0.1361201861664619
   },
   "chi_square_error_direction": {
-    "statistic": 22.22087810109503,
-    "p_value": 0.001104176597783442,
-    "cramers_v": 0.16130642759797395
+    "statistic": 20.2310271975223,
+    "p_value": 0.0025189421090247494,
+    "cramers_v": 0.153914675705623
   },
   "chi_square_tier_difficulty": {
-    "statistic": 28.652923976608186,
-    "p_value": 0.004435044235777714,
-    "cramers_v": 0.2821195765815947
+    "statistic": 18.416996047430832,
+    "p_value": 0.10360324021183925,
+    "cramers_v": 0.22618205577360584
   }
 }

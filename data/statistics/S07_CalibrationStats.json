@@ -1,31 +1,31 @@
 {
   "metrics": {
     "SFT 2-Model Ensemble": {
-      "ece": 0.17752894796408525,
-      "brier_score": 0.5699038382316102,
+      "ece": 0.0764476099432727,
+      "brier_score": 0.5443942876813639,
       "brier_decomposition": {
-        "brier_score": 0.5699038382316102,
-        "reliability": 0.040621615101204926,
-        "resolution": 0.03512585589791472,
+        "brier_score": 0.5443942876813639,
+        "reliability": 0.009734472196407313,
+        "resolution": 0.01734424587205917,
         "uncertainty": 0.75
       },
       "accuracy": 0.6083333333333333,
       "n": 120,
       "per_tier_ece": {
         "exceptional": {
-          "ece": 0.07589418438084189,
+          "ece": 0.15424691311325364,
           "n": 30
         },
         "strong": {
-          "ece": 0.30174673952315856,
+          "ece": 0.24384752358433598,
           "n": 30
         },
         "fair": {
-          "ece": 0.2276982927803589,
+          "ece": 0.1544248304579806,
           "n": 30
         },
         "limited": {
-          "ece": 0.31407359655282,
+          "ece": 0.09569884041443122,
           "n": 30
         }
       }
@@ -184,34 +184,39 @@
   "calibration_bins": {
     "SFT 2-Model Ensemble": [
       {
-        "mean_conf": 0.4684682469577672,
-        "frac_correct": 0.8888888888888888,
-        "count": 9
+        "mean_conf": 0.38341638858218746,
+        "frac_correct": 0.6,
+        "count": 5
       },
       {
-        "mean_conf": 0.550148457374641,
-        "frac_correct": 0.4117647058823529,
-        "count": 17
+        "mean_conf": 0.4560355900765277,
+        "frac_correct": 0.47058823529411764,
+        "count": 34
       },
       {
-        "mean_conf": 0.6500400136912814,
-        "frac_correct": 0.43333333333333335,
-        "count": 30
+        "mean_conf": 0.5332185840267554,
+        "frac_correct": 0.6153846153846154,
+        "count": 13
       },
       {
-        "mean_conf": 0.7579869789432297,
-        "frac_correct": 0.6571428571428571,
-        "count": 35
+        "mean_conf": 0.6550020825069903,
+        "frac_correct": 0.6,
+        "count": 25
       },
       {
-        "mean_conf": 0.8484556043280327,
-        "frac_correct": 0.5882352941176471,
-        "count": 17
+        "mean_conf": 0.7524331041851127,
+        "frac_correct": 0.6521739130434783,
+        "count": 23
       },
       {
-        "mean_conf": 0.9406104786988995,
+        "mean_conf": 0.8506655101044427,
+        "frac_correct": 0.6363636363636364,
+        "count": 11
+      },
+      {
+        "mean_conf": 0.9456096976697547,
         "frac_correct": 1.0,
-        "count": 12
+        "count": 9
       }
     ],
     "Expert voting": [

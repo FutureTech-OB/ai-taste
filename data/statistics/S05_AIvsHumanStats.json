@@ -68,14 +68,14 @@
       "accuracy": 0.6083333333333333,
       "ci_lower": 0.5166666666666667,
       "ci_upper": 0.6916666666666667,
-      "macro_f1": 0.6067370101172949,
-      "macro_f1_ci_lower": 0.517139051254309,
-      "macro_f1_ci_upper": 0.6906767083525834,
+      "macro_f1": 0.6068798848210613,
+      "macro_f1_ci_lower": 0.5148822943249216,
+      "macro_f1_ci_upper": 0.6908361254562457,
       "per_tier_accuracy": {
-        "exceptional": 0.8,
-        "strong": 0.6,
-        "fair": 0.5666666666666667,
-        "limited": 0.4666666666666667
+        "exceptional": 0.7666666666666667,
+        "strong": 0.5333333333333333,
+        "fair": 0.6,
+        "limited": 0.5333333333333333
       }
     },
     {
@@ -242,7 +242,7 @@
         1.0,
         0.36010644732067254,
         0.2623554153522608,
-        0.26165666771918744,
+        0.2609101275007774,
         0.2568735271013354,
         0.1949984657870512,
         0.1795511221945137
@@ -251,7 +251,7 @@
         0.36010644732067254,
         1.0,
         0.06241067174845165,
-        0.062231964166587224,
+        0.09916589434661725,
         0.12195633921074724,
         0.1508788303002022,
         0.12401574803149606
@@ -260,25 +260,25 @@
         0.2623554153522608,
         0.06241067174845165,
         1.0,
-        0.9657664511220996,
+        0.5921065055235577,
         0.14657534246575343,
         0.1805466444244835,
         0.17174280879864637
       ],
       [
-        0.26165666771918744,
-        0.062231964166587224,
-        0.9657664511220996,
+        0.2609101275007774,
+        0.09916589434661725,
+        0.5921065055235577,
         1.0,
-        0.14657534246575343,
-        0.1922087940344561,
-        0.17005764665988468
+        0.22453083109919572,
+        0.1580022991442074,
+        0.05843828715365237
       ],
       [
         0.2568735271013354,
         0.12195633921074724,
         0.14657534246575343,
-        0.14657534246575343,
+        0.22453083109919572,
         1.0,
         0.2484984984984985,
         0.08949287371561154
@@ -287,7 +287,7 @@
         0.1949984657870512,
         0.1508788303002022,
         0.1805466444244835,
-        0.1922087940344561,
+        0.1580022991442074,
         0.2484984984984985,
         1.0,
         0.41538461538461535
@@ -296,7 +296,7 @@
         0.1795511221945137,
         0.12401574803149606,
         0.17174280879864637,
-        0.17005764665988468,
+        0.05843828715365237,
         0.08949287371561154,
         0.41538461538461535,
         1.0
@@ -306,55 +306,55 @@
   "kappa_pairwise": {
     "Best Flagship (Gemini 3.1 Pro) vs GPT-5.2 (pre-SFT)": 0.36010644732067254,
     "Best Flagship (Gemini 3.1 Pro) vs Best SFT Single (SFT Qwen3-4B)": 0.2623554153522608,
-    "Best Flagship (Gemini 3.1 Pro) vs SFT 2-Model Ensemble": 0.26165666771918744,
+    "Best Flagship (Gemini 3.1 Pro) vs SFT 2-Model Ensemble": 0.2609101275007774,
     "Best Flagship (Gemini 3.1 Pro) vs Expert Majority (excl. ties)": 0.2568735271013354,
     "Best Flagship (Gemini 3.1 Pro) vs Student Majority (full, excl. ties)": 0.1949984657870512,
     "Best Flagship (Gemini 3.1 Pro) vs Student Matched N (excl. ties)": 0.1795511221945137,
     "GPT-5.2 (pre-SFT) vs Best SFT Single (SFT Qwen3-4B)": 0.06241067174845165,
-    "GPT-5.2 (pre-SFT) vs SFT 2-Model Ensemble": 0.062231964166587224,
+    "GPT-5.2 (pre-SFT) vs SFT 2-Model Ensemble": 0.09916589434661725,
     "GPT-5.2 (pre-SFT) vs Expert Majority (excl. ties)": 0.12195633921074724,
     "GPT-5.2 (pre-SFT) vs Student Majority (full, excl. ties)": 0.1508788303002022,
     "GPT-5.2 (pre-SFT) vs Student Matched N (excl. ties)": 0.12401574803149606,
-    "Best SFT Single (SFT Qwen3-4B) vs SFT 2-Model Ensemble": 0.9657664511220996,
+    "Best SFT Single (SFT Qwen3-4B) vs SFT 2-Model Ensemble": 0.5921065055235577,
     "Best SFT Single (SFT Qwen3-4B) vs Expert Majority (excl. ties)": 0.14657534246575343,
     "Best SFT Single (SFT Qwen3-4B) vs Student Majority (full, excl. ties)": 0.1805466444244835,
     "Best SFT Single (SFT Qwen3-4B) vs Student Matched N (excl. ties)": 0.17174280879864637,
-    "SFT 2-Model Ensemble vs Expert Majority (excl. ties)": 0.14657534246575343,
-    "SFT 2-Model Ensemble vs Student Majority (full, excl. ties)": 0.1922087940344561,
-    "SFT 2-Model Ensemble vs Student Matched N (excl. ties)": 0.17005764665988468,
+    "SFT 2-Model Ensemble vs Expert Majority (excl. ties)": 0.22453083109919572,
+    "SFT 2-Model Ensemble vs Student Majority (full, excl. ties)": 0.1580022991442074,
+    "SFT 2-Model Ensemble vs Student Matched N (excl. ties)": 0.05843828715365237,
     "Expert Majority (excl. ties) vs Student Majority (full, excl. ties)": 0.2484984984984985,
     "Expert Majority (excl. ties) vs Student Matched N (excl. ties)": 0.08949287371561154,
     "Student Majority (full, excl. ties) vs Student Matched N (excl. ties)": 0.41538461538461535
   },
   "complementarity": {
     "both_correct": 24,
-    "ai_only_correct": 31,
+    "ai_only_correct": 32,
     "human_only_correct": 13,
-    "neither_correct": 21,
+    "neither_correct": 20,
     "total": 89,
     "both_correct_pct": 26.96629213483146,
-    "ai_only_pct": 34.831460674157306,
+    "ai_only_pct": 35.95505617977528,
     "human_only_pct": 14.606741573033707,
-    "neither_pct": 23.595505617977526,
-    "shared_error_pct": 32.30769230769231,
-    "complementary_error_pct": 67.6923076923077,
-    "combined_accuracy": 0.550561797752809
+    "neither_pct": 22.47191011235955,
+    "shared_error_pct": 30.76923076923077,
+    "complementary_error_pct": 69.23076923076923,
+    "combined_accuracy": 0.5842696629213483
   },
   "mcnemar_tests": {
     "SFT 2-Ensemble vs Expert": {
-      "statistic": 6.568181818181818,
-      "p_value": 0.010381795789701775,
-      "p_corrected": 0.09343616210731598,
+      "statistic": 7.2,
+      "p_value": 0.007290358091535665,
+      "p_corrected": 0.06561322282382098,
       "significant": false,
-      "b": 31.0,
+      "b": 32.0,
       "c": 13.0
     },
     "SFT 2-Ensemble vs Student (Full)": {
-      "statistic": 8.88888888888889,
-      "p_value": 0.002869112792076578,
-      "p_corrected": 0.025822015128689202,
+      "statistic": 9.58695652173913,
+      "p_value": 0.0019596450541655708,
+      "p_corrected": 0.017636805487490137,
       "significant": true,
-      "b": 33.0,
+      "b": 34.0,
       "c": 12.0
     },
     "Expert vs Student (Full)": {
@@ -382,12 +382,12 @@
       "c": 19.0
     },
     "SFT 2-Ensemble vs SFT Single": {
-      "statistic": 0.5,
-      "p_value": 0.47950012218695337,
+      "statistic": 0.03571428571428571,
+      "p_value": 0.8501067391385259,
       "p_corrected": 1.0,
       "significant": false,
-      "b": 2.0,
-      "c": 0.0
+      "b": 15.0,
+      "c": 13.0
     },
     "SFT 2-Ensemble vs Flagship": {
       "statistic": 10.173076923076923,
@@ -420,16 +420,16 @@
   },
   "bootstrap_accuracy_differences": {
     "SFT 2-Ensemble vs Expert": {
-      "estimate": 0.20224719101123595,
+      "estimate": 0.21348314606741572,
       "ci_lower": 0.06741573033707865,
-      "ci_upper": 0.34831460674157305,
-      "std": 0.0714448733250392
+      "ci_upper": 0.3595505617977528,
+      "std": 0.0724929987447335
     },
     "SFT 2-Ensemble vs Student (Full)": {
-      "estimate": 0.20388349514563106,
-      "ci_lower": 0.07766990291262135,
-      "ci_upper": 0.32038834951456313,
-      "std": 0.062277032174426615
+      "estimate": 0.21359223300970873,
+      "ci_lower": 0.08737864077669903,
+      "ci_upper": 0.3300970873786408,
+      "std": 0.062428723571802604
     },
     "Expert vs Student (Full)": {
       "estimate": 0.0,
@@ -439,9 +439,9 @@
     },
     "SFT 2-Ensemble vs GPT-5.2": {
       "estimate": 0.2833333333333333,
-      "ci_lower": 0.15833333333333333,
+      "ci_lower": 0.15,
       "ci_upper": 0.4083333333333333,
-      "std": 0.06467388236370915
+      "std": 0.06515285632027878
     },
     "SFT Single vs GPT-5.2": {
       "estimate": 0.26666666666666666,
@@ -451,9 +451,9 @@
     },
     "SFT 2-Ensemble vs SFT Single": {
       "estimate": 0.016666666666666666,
-      "ci_lower": 0.0,
-      "ci_upper": 0.041666666666666664,
-      "std": 0.0116406134264329
+      "ci_lower": -0.075,
+      "ci_upper": 0.1,
+      "std": 0.04377880045693413
     }
   },
   "student_matched_n_monte_carlo": {

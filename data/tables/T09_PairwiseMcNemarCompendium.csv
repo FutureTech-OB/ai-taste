@@ -1,5 +1,5 @@
 Evaluator 1,Evaluator 2,N Paired,Acc 1,Acc 2,Test,Statistic,p-value (raw),Odds Ratio,Acc Diff
 SFT 2-Model,Frontier Average,120,0.6083,0.3105,Exact binomial (one-sided),,1.74e-11,,0.2978
 SFT 2-Model,Best Flagship,115,0.6000,0.3913,McNemar (continuity-corrected),10.1731,0.001425,2.714,0.2087
-SFT 2-Model,Expert Majority,89,0.6180,0.4157,McNemar (continuity-corrected),6.5682,0.010382,2.385,0.2022
-SFT 2-Model,Junior Majority (full),103,0.6117,0.4078,McNemar (continuity-corrected),8.8889,0.002869,2.750,0.2039
+SFT 2-Model,Expert Majority,89,0.6292,0.4157,McNemar (continuity-corrected),7.2000,0.007290,2.462,0.2135
+SFT 2-Model,Junior Majority (full),103,0.6214,0.4078,McNemar (continuity-corrected),9.5870,0.001960,2.833,0.2136

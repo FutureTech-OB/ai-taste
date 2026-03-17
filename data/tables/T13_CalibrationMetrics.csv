@@ -1,5 +1,5 @@
 evaluator,n,accuracy,ece,brier_score,brier_reliability,brier_resolution,brier_uncertainty,ece_exceptional,ece_strong,ece_fair,ece_limited
-SFT 2-Model Ensemble,120,0.6083,0.1775,0.5699,0.0406,0.0351,0.75,0.0759,0.3017,0.2277,0.3141
+SFT 2-Model Ensemble,120,0.6083,0.0764,0.5444,0.0097,0.0173,0.75,0.1542,0.2438,0.1544,0.0957
 Expert voting,120,0.3833,0.2306,0.811,0.0733,0.0152,0.75,0.4944,0.2472,0.275,0.3667
 Student voting,120,0.4083,0.0691,0.69,0.009,0.011,0.75,0.1795,0.0877,0.1921,0.2131
 GPT-5.2 (chat),120,0.325,0.6572,1.3126,0.4327,0.0056,0.75,0.9653,0.2854,0.3864,0.9916

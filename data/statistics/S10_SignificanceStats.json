@@ -42,25 +42,25 @@
       "evaluator_1": "SFT 2-Model",
       "evaluator_2": "Expert Majority",
       "n_paired": 89,
-      "acc_1": 0.6179775280898876,
+      "acc_1": 0.6292134831460674,
       "acc_2": 0.4157303370786517,
       "test": "McNemar (continuity-corrected)",
-      "statistic": 6.568181818181818,
-      "p_value": 0.010381795789701763,
-      "odds_ratio": 2.3846153846153846,
-      "acc_diff": 0.2022471910112359
+      "statistic": 7.2,
+      "p_value": 0.007290358091535637,
+      "odds_ratio": 2.4615384615384617,
+      "acc_diff": 0.2134831460674157
     },
     {
       "evaluator_1": "SFT 2-Model",
       "evaluator_2": "Junior Majority (full)",
       "n_paired": 103,
-      "acc_1": 0.6116504854368932,
+      "acc_1": 0.6213592233009708,
       "acc_2": 0.4077669902912621,
       "test": "McNemar (continuity-corrected)",
-      "statistic": 8.88888888888889,
-      "p_value": 0.0028691127920766136,
-      "odds_ratio": 2.75,
-      "acc_diff": 0.20388349514563103
+      "statistic": 9.58695652173913,
+      "p_value": 0.001959645054165618,
+      "odds_ratio": 2.8333333333333335,
+      "acc_diff": 0.2135922330097087
     }
   ],
   "summary": {

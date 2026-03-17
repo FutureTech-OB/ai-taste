@@ -1,5 +1,5 @@
 Comparison,N,SFT 2-Model Acc,Comparator Acc,Acc Diff (pp),Test,Statistic,p (raw)
 Frontier average (11 models),120,0.6083,0.3105,29.78,Exact binomial (one-sided),,1.74e-11
 Best-performing frontier model (Gemini 3.1 Pro),115,0.6000,0.3913,20.87,McNemar (continuity-corrected),10.1731,0.001425
-Expert majority (excl. ties),89,0.6180,0.4157,20.22,McNemar (continuity-corrected),6.5682,0.010382
-"Junior majority (full, excl. ties)",103,0.6117,0.4078,20.39,McNemar (continuity-corrected),8.8889,0.002869
+Expert majority (excl. ties),89,0.6292,0.4157,21.35,McNemar (continuity-corrected),7.2000,0.007290
+"Junior majority (full, excl. ties)",103,0.6214,0.4078,21.36,McNemar (continuity-corrected),9.5870,0.001960
