@@ -477,7 +477,7 @@ def main():
 
     # Panel B: Per-tier ECE as grouped bars
     ax_eb = axes_ece[1]
-    tier_labels = [AI_TO_HUMAN.get(t, t) for t in LABEL_ORDER]
+    tier_labels = [t.capitalize() for t in LABEL_ORDER]
     n_evals = len(eval_names)
     w = 0.8 / n_evals
     x_tier = np.arange(len(LABEL_ORDER))

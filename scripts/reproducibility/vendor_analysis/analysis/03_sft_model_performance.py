@@ -356,7 +356,7 @@ def main():
     print("\n[6/8] Creating figures...")
     set_nature_style()
 
-    cm_labels = [AI_TO_HUMAN.get(l, l) for l in LABEL_ORDER]
+    cm_labels = [l.capitalize() for l in LABEL_ORDER]
 
     # Determine which models to compare
     left_key = 'gpt-5.2'
@@ -408,7 +408,7 @@ def main():
         data_dict[display] = tier_accs
 
     if data_dict:
-        group_labels = [AI_TO_HUMAN.get(l, l) for l in LABEL_ORDER]
+        group_labels = [l.capitalize() for l in LABEL_ORDER]
 
         fig, ax = plt.subplots(figsize=(7.0, 4.0))
         model_names = list(data_dict.keys())
@@ -486,7 +486,7 @@ def main():
 
         ax.barh(
             y_pos, values, bar_height, left=bottoms,
-            label=f'{AI_TO_HUMAN.get(label, label)} ({label})',
+            label=label.capitalize(),
             color=tier_colors[tier_idx], edgecolor='white', linewidth=0.3,
         )
         bottoms = bottoms + np.array(values)

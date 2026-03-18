@@ -442,7 +442,7 @@ def main():
 
     # Panel B: Kappa by tier
     ax_b = axes[1]
-    tier_labels = [AI_TO_HUMAN.get(t, t) for t in LABEL_ORDER]
+    tier_labels = [t.capitalize() for t in LABEL_ORDER]
     exp_tier_kappas = [tier_reliability[t]['expert_kappa'] for t in LABEL_ORDER]
     stu_tier_kappas = [tier_reliability[t]['student_kappa'] for t in LABEL_ORDER]
     x_tier = np.arange(len(tier_labels))

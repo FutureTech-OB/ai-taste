@@ -404,10 +404,10 @@ def make_figure2() -> plt.Figure:
             ax.set_xticklabels([])
             ax.tick_params(axis="x", length=0)
         else:
-            ax.set_xticklabels(["Top", "Top-", "Good", "Fair"], rotation=35, ha="right", fontsize=4.6)
+            ax.set_xticklabels(["Exc", "Str", "Fair", "Ltd"], rotation=35, ha="right", fontsize=4.6)
             ax.set_xlabel("Predicted", fontsize=5)
 
-        ax.set_yticklabels(["Top", "Top-", "Good", "Fair"], fontsize=4.6)
+        ax.set_yticklabels(["Exc", "Str", "Fair", "Ltd"], fontsize=4.6)
         if i == 1:
             ax.set_ylabel("True", fontsize=5)
 

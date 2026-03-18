@@ -332,7 +332,7 @@ def main():
     fig, _ = plot_heatmap(
         heatmap_data,
         row_labels=heatmap_models,
-        col_labels=[AI_TO_HUMAN.get(l, l) for l in LABEL_ORDER],
+        col_labels=[l.capitalize() for l in LABEL_ORDER],
         title="Per-tier accuracy: frontier models (majority labels)",
         cmap="RdYlGn",
     )
@@ -341,7 +341,7 @@ def main():
     print(f"  Saved: {pdf_path}")
 
     top4 = sorted_by_acc[:4]
-    cm_labels = [AI_TO_HUMAN.get(l, l) for l in LABEL_ORDER]
+    cm_labels = [l.capitalize() for l in LABEL_ORDER]
     fig, axes = plt.subplots(2, 2, figsize=(7.0, 6.0))
     axes_flat = axes.flatten()
     for idx, (model_key, stats_entry) in enumerate(top4):

@@ -952,7 +952,7 @@ def make_figure2() -> plt.Figure:
         ("Claude Opus 4.6", "Strong-tier ceiling"),
         ("Qwen 3.5 Plus", "Best open-weight"),
     ]
-    axis_labels = ["Top", "Top-", "Good", "Fair"]
+    axis_labels = ["Exc", "Str", "Fair", "Ltd"]
     cm_axes = []
     im = None
 
