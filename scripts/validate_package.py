@@ -142,7 +142,7 @@ EXPECTED_CORE_RQ_SHORT_TRANSFER_KEYS = {
 }
 
 GEMINI_31_KEY = "google/gemini-3.1-pro-preview"
-EXPECTED_PAPER_TITLE = "Fine-tuned language models learn tacit scientific judgment from institutional traces"
+EXPECTED_PAPER_TITLE = "Machines acquire scientific taste from institutional traces"
 
 EXPECTED_PAIRWISE_DIRS = {
     "sft_gpt4_1",
@@ -229,8 +229,6 @@ ALLOWED_HUMAN_RATING_KEYS = {
     "q3_confidence",
     "q4_familiarity",
 }
-
-TRAIN_DATA_PLACEHOLDER_README = "README.md"
 
 def fail(msg: str, errors: List[str]) -> None:
     errors.append(msg)
@@ -567,15 +565,17 @@ def _check_figure_index_contract(root: Path, errors: List[str]) -> None:
         fail(f"FIGURE_DATA_INDEX.csv is missing figure rows: {missing}", errors)
 
 
-def _check_train_data_contract(root: Path, errors: List[str]) -> None:
+def _check_training_resources_contract(root: Path, errors: List[str]) -> None:
     train_dir = root / "data" / "train_data"
-    if not train_dir.exists():
-        fail("Missing data/train_data directory", errors)
-        return
+    if train_dir.exists():
+        fail(
+            "data/train_data should not be shipped; training resources belong in the separate training repository",
+            errors,
+        )
 
-    readme = train_dir / TRAIN_DATA_PLACEHOLDER_README
-    if not readme.exists():
-        fail("Missing data/train_data/README.md placeholder", errors)
+    readme_text = (root / "README.md").read_text(encoding="utf-8")
+    if "AI-Taste-Training" not in readme_text:
+        fail("README.md is missing the training-repository reference to AI-Taste-Training", errors)
 
 
 def _check_benchmark_contract(path: Path, *, expected_rows: int, expected_subject: str | None, errors: List[str]) -> None:
@@ -1013,8 +1013,8 @@ def main() -> int:
     _check_figure_index_contract(root, errors)
     _check_pairwise_contract(root, errors)
 
-    # 11) Training-data release contract
-    _check_train_data_contract(root, errors)
+    # 11) Training-resource release contract
+    _check_training_resources_contract(root, errors)
 
     # 12) Benchmark data integrity
     benchmark_file = root / "data" / "benchmark" / "benchmark_articles_120.jsonl"
@@ -1151,7 +1151,7 @@ def main() -> int:
     print("- CI field contract satisfied for reported analyses")
     print("- Figure trace index contract satisfied (Main/ED/SI)")
     print("- Pairwise data contract satisfied (ED2)")
-    print("- Training-data placeholder present")
+    print("- Training resources are referenced through the separate training repository")
     print("- Benchmark integrity: management + economics files validated, no PII, no host paths")
     print("- No stale compatibility directories")
     print("- Requirements metadata present")

@@ -2,9 +2,9 @@
 
 This repository releases the public reproducibility package for the study:
 
-**Paper title:** Fine-tuned language models learn tacit scientific judgment from institutional traces
+**Paper title:** Machines acquire scientific taste from institutional traces
 
-The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. This snapshot includes the 120-article management benchmark, the 200-article economics extension benchmark, model predictions, de-identified human ratings, released figures and tables, documentation describing the withheld training corpus, and the scripts used to regenerate the public results from repository-local files. The final approved paper PDF and synced manuscript sources are not yet included in `manuscript/`.
+The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. This snapshot includes the 120-article management benchmark, the 200-article economics extension benchmark, model predictions, de-identified human ratings, released figures and tables, and the scripts used to regenerate the public results from repository-local files. The final approved paper PDF and synced manuscript sources are not yet included in `manuscript/`.
 
 ## Contents
 
@@ -18,7 +18,6 @@ The study tests whether supervised fine-tuning can teach language models to eval
 | `data/human_ratings/` | De-identified human ratings and stable anonymous reproducibility inputs |
 | `data/tables/` | Released tables and figure-data files |
 | `data/statistics/` | Released statistics used by the analysis pipeline |
-| `data/train_data/` | Training-data placeholder (full data released upon publication) |
 | `scripts/` | Validation and reproduction scripts |
 
 ## Setup
@@ -76,21 +75,29 @@ The package rebuilds:
 
 ## Training resources
 
-The training-code repository for this project is maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).
+Training code, training-data preparation/release notes, and open-weight checkpoints for this project are maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).
+
+This reproducibility repo does not ship the supervised training corpus or model checkpoints. Use the separate training repo for:
+
+- training-code setup and reruns
+- training-data construction / access notes
+- open-weight checkpoint downloads
 
 OpenAI API fine-tuned models referenced in this release:
 
-- OB
-  - `ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB`
-  - `ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY`
-- ECON
-  - `ft:gpt-4.1-nano-2025-04-14:personal:social-science-rqc:DJWAxfSb`
-- pooled
-  - `ft:gpt-4.1-nano-2025-04-14:personal:eco-ob-social-scie:DJuAjWUp`
+These identifiers record the OpenAI fine-tuned models used in the released evaluations. They can be called through the OpenAI API only from an account or project with permission to access them; for other readers, they serve as provenance for the exact closed-model runs used in this package.
+
+- Management
+  - `GPT-4.1-nano`: `ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB`
+  - `GPT-4.1`: `ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY`
+- Economics
+  - `GPT-4.1-nano`: `ft:gpt-4.1-nano-2025-04-14:personal:social-science-rqc:DJWAxfSb`
+- Pooled management + economics
+  - `GPT-4.1-nano`: `ft:gpt-4.1-nano-2025-04-14:personal:eco-ob-social-scie:DJuAjWUp`
 
 ## Data note
 
-Human-rating files are de-identified. The public release excludes direct participant identifiers, raw survey exports, and model checkpoints. Training data will be released upon publication.
+Human-rating files are de-identified. The public release excludes direct participant identifiers, raw survey exports, the supervised training corpus, and model checkpoints. Training-related assets are documented through the separate training repository linked above.
 
 The `manuscript/` directory is intentionally placeholder-only in this release snapshot. The final approved paper PDF and any synced manuscript sources can be added later without affecting the repo-local table/figure reproduction path documented above.
 

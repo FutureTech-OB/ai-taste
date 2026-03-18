@@ -10,7 +10,6 @@ This folder contains the released inputs and numerical outputs needed for the pu
 | `human_ratings/` | De-identified human ratings and reproducibility inputs |
 | `tables/` | Released tables and figure-data files |
 | `statistics/` | Released summary statistics |
-| `train_data/` | Placeholder documentation for the withheld supervised fine-tuning corpus |
 
 For the public rebuild:
 
@@ -23,3 +22,5 @@ Two index files are the main entry points for readers:
 - `tables/FIGURE_DATA_INDEX.csv`
 
 Human data in this release are de-identified. Raw survey exports, model checkpoints, and unreleased preprocessing intermediates are not included.
+
+Training code, training-data preparation notes, and open-weight checkpoint downloads are maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).
