@@ -74,6 +74,20 @@ The package rebuilds:
 
 `data/statistics/S13_Figure6NumbersAudit.json` and `data/statistics/S14_ED2PairwiseRawPValues.json` are included as shipped audit artifacts and are validated as packaged. Figure 6 is rebuilt directly from the released prediction and human-rating files; the pairwise panels in Figure 5 / Extended Data Figure 2 use `S14_ED2PairwiseRawPValues.json` together with the released pairwise outputs. The bundled short-input transfer source file is `data/predictions/core_rq_short_transfer_predictions.jsonl`, which stores the one-sentence idea statement, the matched full idea summary, and the released short-input model outputs used for Extended Data Fig. 7. The economics extension figures use `data/benchmark/economics_benchmark_articles_200.jsonl`, `data/predictions/economics_predictions.jsonl`, and `data/predictions/pooled_management_economics_predictions.jsonl`.
 
+## Training resources
+
+The training-code repository for this project is maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).
+
+OpenAI API fine-tuned models referenced in this release:
+
+- OB
+  - `ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB`
+  - `ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY`
+- ECON
+  - `ft:gpt-4.1-nano-2025-04-14:personal:social-science-rqc:DJWAxfSb`
+- pooled
+  - `ft:gpt-4.1-nano-2025-04-14:personal:eco-ob-social-scie:DJuAjWUp`
+
 ## Data note
 
 Human-rating files are de-identified. The public release excludes direct participant identifiers, raw survey exports, and model checkpoints. Training data will be released upon publication.
