@@ -2,7 +2,7 @@ Evaluator,N,Accuracy (%),Macro F1,Macro F1 95% CI Lower,Macro F1 95% CI Upper,95
 Best Flagship (Gemini 3.1 Pro),120,38.8,0.374,0.285,0.461,31.2,46.5,37.9,44.8,60.7,13.8
 Flagship Average (11 models),120,31.1,0.234,0.212,0.252,26.3,36.0,N/A,N/A,N/A,N/A
 GPT-5.2 (pre-SFT baseline),120,32.5,0.217,0.175,0.256,24.2,40.8,0.0,70.0,60.0,0.0
-Best SFT Single (ckppt-228),120,59.2,0.591,0.502,0.675,50.0,67.5,80.0,56.7,53.3,46.7
+Best SFT Single (Qwen3-4B),120,59.2,0.591,0.502,0.675,50.0,67.5,80.0,56.7,53.3,46.7
 SFT 2-Model Ensemble,120,60.8,0.607,0.515,0.691,51.7,69.2,76.7,53.3,60.0,53.3
 Expert Individual Average,48,36.2,0.353,0.305,0.4,30.7,42.2,N/A,N/A,N/A,N/A
 Expert Majority Vote (excl. ties),89,41.6,0.404,0.296,0.505,31.5,51.7,22.7,59.1,52.0,30.0

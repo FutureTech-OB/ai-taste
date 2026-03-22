@@ -6,7 +6,12 @@
   - Contains 11 frontier models with 8-run protocol structure.
 - `sft_predictions.jsonl`:
   - Contains four SFT model tracks and comparator tracks used in analysis.
-  - Four SFT base-model IDs: `CYqJRxId`, `ckpt-step-304`, `ckppt-380`, `ckppt-228`.
+  - Four released SFT base-model names and stable raw keys:
+    - `GPT-4.1` -> `CYqJRxId`
+    - `GPT-4.1-nano` -> `ckpt-step-304`
+    - `Qwen3-30B` -> `ckppt-380`
+    - `Qwen3-4B` -> `ckppt-228`
+  - The raw JSONL keeps these stable keys because the public rebuild scripts, validator, and shipped tables treat them as canonical model identifiers.
   - Discrete SFT predictions are derived from `logp` with the canonical label order `exceptional > strong > fair > limited`; exact `logp` ties are therefore broken by that fixed order, not by raw JSON key order.
   - This is important for public reproducibility: naive `argmax(logp)` counting can disagree with the released tables for tied rows, especially for `ckpt-step-304`, while the released tables/figures/manuscript follow the canonical tie rule.
 - `sft_temporal_old_predictions.jsonl`:

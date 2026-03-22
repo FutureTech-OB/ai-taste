@@ -75,7 +75,7 @@ def _configure_evaluator_labels(best_flagship_display, best_sft_single_key):
     flagship_short = f'Best Flagship ({best_flagship_display})'
     best_sft_display = MODEL_DISPLAY_NAMES.get(best_sft_single_key, best_sft_single_key)
     best_sft_multiline = f'Best SFT\nSingle ({best_sft_display})'
-    best_sft_short = f'Best SFT Single ({best_sft_single_key})'
+    best_sft_short = f'Best SFT Single ({best_sft_display})'
 
     EVALUATOR_ORDER = [
         flagship_multiline,
