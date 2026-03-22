@@ -11,6 +11,7 @@
     - `GPT-4.1-nano` -> `ckpt-step-304`
     - `Qwen3-30B` -> `ckppt-380`
     - `Qwen3-4B` -> `ckppt-228`
+  - A dedicated public mapping file is provided in `sft_checkpoint_key_mapping.csv`.
   - The raw JSONL keeps these stable keys because the public rebuild scripts, validator, and shipped tables treat them as canonical model identifiers.
   - Discrete SFT predictions are derived from `logp` with the canonical label order `exceptional > strong > fair > limited`; exact `logp` ties are therefore broken by that fixed order, not by raw JSON key order.
   - This is important for public reproducibility: naive `argmax(logp)` counting can disagree with the released tables for tied rows, especially for `ckpt-step-304`, while the released tables/figures/manuscript follow the canonical tie rule.
@@ -40,6 +41,7 @@
 - Vote-based prediction files in this release keep only the public analysis fields:
   - `mode`, `prediction`, `prediction_majority`, `avg_accuracy`, `vote_valid_n`, `vote_counts`, `vote_is_tie`, `vote_predictions`
 - SFT files keep only the released log-probability surfaces and ensemble metadata needed by the shipped rebuild scripts.
+- `sft_checkpoint_key_mapping.csv` is the reader-facing lookup table for the four released recent-trace SFT checkpoints.
 - Economics extension files use stable public model keys rather than provider-local checkpoint paths.
 
 ## Gemini Coverage Note
