@@ -380,7 +380,7 @@ def build_records(root: Path, best_flagship_key: str) -> List[Dict[str, Any]]:
         for row in load_jsonl(root / "data" / "human_ratings" / "reproducibility" / "student_reproducibility_filtered.jsonl")
     }
     sft_rows = load_jsonl(root / "data" / "predictions" / "sft_predictions.jsonl")
-    sft_single_keys = ["CYqJRxId", "ckpt-step-304", "ckppt-380", "ckppt-228"]
+    sft_single_keys = ["gpt-4.1-ob", "gpt-4.1-nano-ob", "qwen3-30b-ob", "qwen3-4b-ob"]
 
     best_sft_single_key = None
     best_sft_single_score = None

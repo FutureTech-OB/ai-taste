@@ -5,7 +5,7 @@ Comprehensive comparison of AI token prediction probabilities (softmax
 from logp) with human self-reported confidence (1-5 scale).
 
 Covers ALL models:
-  - SFT individual models: CYqJRxId, ckpt-step-304, ckppt-380, ckppt-228
+  - SFT individual models: gpt-4.1-ob, gpt-4.1-nano-ob, qwen3-30b-ob, qwen3-4b-ob
   - SFT ensembles: best_2_model_combo
   - Baseline: gpt-5.2
   - Voting: human_voting
@@ -93,10 +93,10 @@ for d in [FIGS, TABS, STTS]:
 
 # Display names for SFT/trained + chat models
 SFT_DISPLAY = {
-    'CYqJRxId': 'SFT-1 (GPT-4.1)',
-    'ckpt-step-304': 'SFT-2 (GPT-4.1-nano)',
-    'ckppt-380': 'SFT-3 (Qwen3-30B)',
-    'ckppt-228': 'SFT-4 (Qwen3-4B)',
+    'gpt-4.1-ob': 'SFT-1 (GPT-4.1-ob)',
+    'gpt-4.1-nano-ob': 'SFT-2 (GPT-4.1-nano-ob)',
+    'qwen3-30b-ob': 'SFT-3 (Qwen3-30B-ob)',
+    'qwen3-4b-ob': 'SFT-4 (Qwen3-4B-ob)',
     'gpt-5.2': 'GPT-5.2 (baseline)',
     'best_2_model_combo': 'SFT 2-Model Ensemble',
     'human_voting': 'Human Voting (old students)',
@@ -114,10 +114,10 @@ FLAGSHIP_DISPLAY = {
 
 # Color palette for all models
 MODEL_COLORS = {
-    'SFT-1 (GPT-4.1)': '#E64B35',
-    'SFT-2 (GPT-4.1-nano)': '#DC7B5B',
-    'SFT-3 (Qwen3-30B)': '#D49A7E',
-    'SFT-4 (Qwen3-4B)': '#F39B7F',
+    'SFT-1 (GPT-4.1-ob)': '#E64B35',
+    'SFT-2 (GPT-4.1-nano-ob)': '#DC7B5B',
+    'SFT-3 (Qwen3-30B-ob)': '#D49A7E',
+    'SFT-4 (Qwen3-4B-ob)': '#F39B7F',
     'GPT-5.2 (baseline)': '#8491B4',
     'SFT 2-Model Ensemble': '#B21F00',
     'Human Voting (old students)': '#7E6148',
@@ -175,7 +175,7 @@ def load_all_val_predictions():
     """
     val_data = load_jsonl(VAL_PATH)
     trained_models = [
-        'CYqJRxId', 'ckpt-step-304', 'ckppt-380', 'ckppt-228',
+        'gpt-4.1-ob', 'gpt-4.1-nano-ob', 'qwen3-30b-ob', 'qwen3-4b-ob',
         'gpt-5.2', 'human_voting',
         'best_2_model_combo',
     ]
@@ -633,7 +633,7 @@ def analyze_human_confidence(records, group_name):
 def analyze_article_difficulty(val_data, voting_data):
     """Compare AI entropy with human entropy per article across models."""
     # Use multiple AI models
-    ai_models_for_entropy = ['best_2_model_combo', 'CYqJRxId', 'gpt-5.2']
+    ai_models_for_entropy = ['best_2_model_combo', 'gpt-4.1-ob', 'gpt-5.2']
     expert_voting = voting_data.get('expert_voting', [])
     student_voting = voting_data.get('student_voting', [])
 
@@ -830,8 +830,8 @@ def plot_all_models_confidence(all_model_stats, human_stats, output_path):
     fig, axes = plt.subplots(2, 2, figsize=(12, 10))
 
     # Model ordering
-    sft_individual = ['SFT-1 (CYqJRxId)', 'SFT-2 (ckpt-304)',
-                      'SFT-3 (ckpt-380)', 'SFT-4 (ckpt-228)']
+    sft_individual = ['SFT-1 (GPT-4.1-ob)', 'SFT-2 (GPT-4.1-nano-ob)',
+                      'SFT-3 (Qwen3-30B-ob)', 'SFT-4 (Qwen3-4B-ob)']
     sft_ensembles = ['SFT 2-Model Ensemble']
     baseline = ['GPT-5.2 (baseline)']
     voting = ['Human Voting (old students)']
@@ -959,8 +959,8 @@ def plot_flagship_vs_sft(all_model_stats, flagship_stats, output_path):
             all_entries.append((display, stats['accuracy'], 'Flagship', '#8491B4'))
 
     # SFT models
-    sft_names = ['SFT-1 (CYqJRxId)', 'SFT-2 (ckpt-304)',
-                 'SFT-3 (ckpt-380)', 'SFT-4 (ckpt-228)',
+    sft_names = ['SFT-1 (GPT-4.1-ob)', 'SFT-2 (GPT-4.1-nano-ob)',
+                 'SFT-3 (Qwen3-30B-ob)', 'SFT-4 (Qwen3-4B-ob)',
                  'SFT 2-Model Ensemble',
                  'GPT-5.2 (baseline)']
     for name in sft_names:
@@ -1058,10 +1058,10 @@ def plot_confidence_correct_vs_wrong_all(all_model_stats, human_stats, output_pa
     entries = []
 
     sft_keys = {
-        'SFT-1 (CYqJRxId)': 'CYqJRxId',
-        'SFT-2 (ckpt-304)': 'ckpt-step-304',
-        'SFT-3 (ckpt-380)': 'ckppt-380',
-        'SFT-4 (ckpt-228)': 'ckppt-228',
+        'SFT-1 (GPT-4.1-ob)': 'gpt-4.1-ob',
+        'SFT-2 (GPT-4.1-nano-ob)': 'gpt-4.1-nano-ob',
+        'SFT-3 (Qwen3-30B-ob)': 'qwen3-30b-ob',
+        'SFT-4 (Qwen3-4B-ob)': 'qwen3-4b-ob',
         'SFT 2-Model Ens.': 'best_2_model_combo',
         'GPT-5.2': 'gpt-5.2',
     }
@@ -1214,7 +1214,7 @@ def plot_entropy_vs_disagreement(difficulty_data, val_data, voting_data, output_
 
     ai_models = [
         ('best_2_model_combo', 'SFT 2-Model Ensemble', '#B21F00'),
-        ('CYqJRxId', 'SFT-1 (CYqJRxId)', '#E64B35'),
+        ('gpt-4.1-ob', 'SFT-1 (GPT-4.1-ob)', '#E64B35'),
         ('gpt-5.2', 'GPT-5.2', '#8491B4'),
     ]
     expert_voting = voting_data.get('expert_voting', [])
@@ -1530,8 +1530,8 @@ def main():
     print(f"{'Model':<30} {'Acc':>6} {'Conf':>6} {'Ent':>6} {'Gap':>7} {'MW p':>8} {'Discrimin.':>10}")
     print("-" * 80)
     for name in ['GPT-5.2 (baseline)',
-                 'SFT-1 (CYqJRxId)', 'SFT-2 (ckpt-304)',
-                 'SFT-3 (ckpt-380)', 'SFT-4 (ckpt-228)',
+                 'SFT-1 (GPT-4.1-ob)', 'SFT-2 (GPT-4.1-nano-ob)',
+                 'SFT-3 (Qwen3-30B-ob)', 'SFT-4 (Qwen3-4B-ob)',
                  'SFT 2-Model Ensemble',
                  'Human Voting (old students)']:
         stats = all_model_stats.get(name)

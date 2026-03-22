@@ -31,7 +31,7 @@ REPORTS_ROOT = ROOT
 
 # SFT voting data (4 SFT checkpoints on 120 held-out samples)
 AI_FILE = REPORTS_ROOT / "data" / "predictions" / "sft_predictions.jsonl"
-AI_MODELS = ["CYqJRxId", "ckpt-step-304", "ckppt-380", "ckppt-228"]
+AI_MODELS = ["gpt-4.1-ob", "gpt-4.1-nano-ob", "qwen3-30b-ob", "qwen3-4b-ob"]
 AI_LABEL_ORDER = ["exceptional", "strong", "fair", "limited"]
 AI_TO_HUMAN = {"exceptional": "top", "strong": "top-", "fair": "good", "limited": "fair"}
 

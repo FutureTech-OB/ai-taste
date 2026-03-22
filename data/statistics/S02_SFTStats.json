@@ -75,8 +75,8 @@
         ]
       ]
     },
-    "SFT (GPT-4.1)": {
-      "display_name": "SFT (GPT-4.1)",
+    "SFT (GPT-4.1-ob)": {
+      "display_name": "SFT (GPT-4.1-ob)",
       "n_valid": 120,
       "accuracy": 0.55,
       "macro_f1": 0.5577,
@@ -145,8 +145,8 @@
         ]
       ]
     },
-    "SFT (GPT-4.1-nano)": {
-      "display_name": "SFT (GPT-4.1-nano)",
+    "SFT (GPT-4.1-nano-ob)": {
+      "display_name": "SFT (GPT-4.1-nano-ob)",
       "n_valid": 120,
       "accuracy": 0.575,
       "macro_f1": 0.573,
@@ -215,8 +215,8 @@
         ]
       ]
     },
-    "SFT (Qwen3-30B)": {
-      "display_name": "SFT (Qwen3-30B)",
+    "SFT (Qwen3-30B-ob)": {
+      "display_name": "SFT (Qwen3-30B-ob)",
       "n_valid": 120,
       "accuracy": 0.5833,
       "macro_f1": 0.5836,
@@ -285,8 +285,8 @@
         ]
       ]
     },
-    "SFT (Qwen3-4B)": {
-      "display_name": "SFT (Qwen3-4B)",
+    "SFT (Qwen3-4B-ob)": {
+      "display_name": "SFT (Qwen3-4B-ob)",
       "n_valid": 120,
       "accuracy": 0.5917,
       "macro_f1": 0.5908,
@@ -429,8 +429,8 @@
   "ensemble_info": {
     "2-Model Ensemble": {
       "component_models": [
-        "ckpt-step-304",
-        "ckppt-380"
+        "gpt-4.1-nano-ob",
+        "qwen3-30b-ob"
       ],
       "method": "prob_avg"
     }
@@ -438,7 +438,7 @@
   "mcnemar_comparisons": {
     "Baseline vs Best SFT Single": {
       "model_1": "GPT-5.2 (Baseline)",
-      "model_2": "SFT (Qwen3-4B)",
+      "model_2": "SFT (Qwen3-4B-ob)",
       "statistic": 18.014705882352942,
       "p_value": 2.1920504286510045e-05,
       "b": 16.0,
@@ -455,7 +455,7 @@
       "significant": true
     },
     "Best SFT Single vs 2-Model Ensemble": {
-      "model_1": "SFT (Qwen3-4B)",
+      "model_1": "SFT (Qwen3-4B-ob)",
       "model_2": "2-Model Ensemble",
       "statistic": 0.03571428571428571,
       "p_value": 0.8501067391385259,
@@ -466,7 +466,7 @@
   },
   "bootstrap_accuracy_differences": {
     "baseline_vs_best_sft": {
-      "comparison": "GPT-5.2 vs SFT (Qwen3-4B)",
+      "comparison": "GPT-5.2 vs SFT (Qwen3-4B-ob)",
       "accuracy_diff": 0.3,
       "ci_lower": 0.175,
       "ci_upper": 0.4166666666666667,
@@ -490,7 +490,7 @@
       }
     },
     "best_sft": {
-      "model": "SFT (Qwen3-4B)",
+      "model": "SFT (Qwen3-4B-ob)",
       "middle_tier_pct": 0.5417,
       "distribution": {
         "strong": 30,

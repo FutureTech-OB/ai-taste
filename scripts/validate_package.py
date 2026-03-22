@@ -104,10 +104,10 @@ EXPECTED_FRONTIER_MODELS = {
 }
 
 EXPECTED_SFT_KEYS = {
-    "CYqJRxId",
-    "ckpt-step-304",
-    "ckppt-380",
-    "ckppt-228",
+    "gpt-4.1-ob",
+    "gpt-4.1-nano-ob",
+    "qwen3-30b-ob",
+    "qwen3-4b-ob",
 }
 
 EXPECTED_ECONOMICS_EXTENSION_KEYS = {

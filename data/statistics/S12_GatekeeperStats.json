@@ -13,10 +13,10 @@
       "Flagship: Qwen 3.5 Plus",
       "Flagship: Seed 2.0",
       "Chat Baseline: GPT-5.2",
-      "SFT: GPT-4.1",
-      "SFT: GPT-4.1-nano",
-      "SFT: Qwen3-30B",
-      "SFT: Qwen3-4B",
+      "SFT: GPT-4.1-ob",
+      "SFT: GPT-4.1-nano-ob",
+      "SFT: Qwen3-30B-ob",
+      "SFT: Qwen3-4B-ob",
       "SFT: 2-Model Ensemble",
       "Expert Majority (Unfiltered)",
       "Student Majority (Filtered)",
@@ -38,10 +38,10 @@
       "doubao-seed-2-0-pro-260215"
     ],
     "sft_keys": [
-      "CYqJRxId",
-      "ckpt-step-304",
-      "ckppt-380",
-      "ckppt-228",
+      "gpt-4.1-ob",
+      "gpt-4.1-nano-ob",
+      "qwen3-30b-ob",
+      "qwen3-4b-ob",
       "best_2_model_combo"
     ],
     "chat_baseline_key": "gpt-5.2",
@@ -1074,8 +1074,8 @@
       },
       "extras": {}
     },
-    "SFT: GPT-4.1": {
-      "name": "SFT: GPT-4.1",
+    "SFT: GPT-4.1-ob": {
+      "name": "SFT: GPT-4.1-ob",
       "group": "sft",
       "n_articles": 120,
       "n_ties_excluded": 0,
@@ -1159,8 +1159,8 @@
       },
       "extras": {}
     },
-    "SFT: GPT-4.1-nano": {
-      "name": "SFT: GPT-4.1-nano",
+    "SFT: GPT-4.1-nano-ob": {
+      "name": "SFT: GPT-4.1-nano-ob",
       "group": "sft",
       "n_articles": 120,
       "n_ties_excluded": 0,
@@ -1244,8 +1244,8 @@
       },
       "extras": {}
     },
-    "SFT: Qwen3-30B": {
-      "name": "SFT: Qwen3-30B",
+    "SFT: Qwen3-30B-ob": {
+      "name": "SFT: Qwen3-30B-ob",
       "group": "sft",
       "n_articles": 120,
       "n_ties_excluded": 0,
@@ -1329,8 +1329,8 @@
       },
       "extras": {}
     },
-    "SFT: Qwen3-4B": {
-      "name": "SFT: Qwen3-4B",
+    "SFT: Qwen3-4B-ob": {
+      "name": "SFT: Qwen3-4B-ob",
       "group": "sft",
       "n_articles": 120,
       "n_ties_excluded": 0,

@@ -5,16 +5,10 @@
   - Canonical conservative frontier cohort for the released analyses.
   - Contains 11 frontier models with 8-run protocol structure.
 - `sft_predictions.jsonl`:
-  - Contains four SFT model tracks and comparator tracks used in analysis.
-  - Four released SFT base-model names and stable raw keys:
-    - `GPT-4.1` -> `CYqJRxId`
-    - `GPT-4.1-nano` -> `ckpt-step-304`
-    - `Qwen3-30B` -> `ckppt-380`
-    - `Qwen3-4B` -> `ckppt-228`
-  - A dedicated public mapping file is provided in `sft_checkpoint_key_mapping.csv`.
-  - The raw JSONL keeps these stable keys because the public rebuild scripts, validator, and shipped tables treat them as canonical model identifiers.
+  - Contains the four released recent-trace SFT model tracks and comparator tracks used in analysis.
+  - Reader-facing names for these four models are `GPT-4.1-ob`, `GPT-4.1-nano-ob`, `Qwen3-30B-ob`, and `Qwen3-4B-ob`.
+  - The raw JSONL uses the same released public model keys consumed by the shipped rebuild scripts.
   - Discrete SFT predictions are derived from `logp` with the canonical label order `exceptional > strong > fair > limited`; exact `logp` ties are therefore broken by that fixed order, not by raw JSON key order.
-  - This is important for public reproducibility: naive `argmax(logp)` counting can disagree with the released tables for tied rows, especially for `ckpt-step-304`, while the released tables/figures/manuscript follow the canonical tie rule.
 - `sft_temporal_old_predictions.jsonl`:
   - Minimal old-trace SFT release file used for Extended Data Fig. 6.
   - Contains only the two matched old-trace log-probability tracks needed for the public temporal-persistence comparison.
@@ -24,7 +18,7 @@
   - Contains the four GPT-family base/SFT prediction tracks used for the harder format-transfer check; no model was trained on this one-sentence format.
 - `economics_predictions.jsonl`:
   - Public economics extension prediction file used for Figure 7 and Supplementary Figure 7.
-  - Contains the released 200-item economics benchmark predictions for the architecture-matched base/SFT comparisons, the management-trained GPT-4.1 transfer checkpoint, and the released frontier-reference comparators.
+  - Contains the released 200-item economics benchmark predictions for the architecture-matched base/SFT comparisons, the management-trained `GPT-4.1-ob` transfer checkpoint, and the released frontier-reference comparators.
 - `pooled_management_economics_predictions.jsonl`:
   - Public pooled-field prediction file used for Extended Data Fig. 8.
   - Contains the released management+economics pooled-checkpoint outputs on the combined 320-item held-out surface.
@@ -41,7 +35,6 @@
 - Vote-based prediction files in this release keep only the public analysis fields:
   - `mode`, `prediction`, `prediction_majority`, `avg_accuracy`, `vote_valid_n`, `vote_counts`, `vote_is_tie`, `vote_predictions`
 - SFT files keep only the released log-probability surfaces and ensemble metadata needed by the shipped rebuild scripts.
-- `sft_checkpoint_key_mapping.csv` is the reader-facing lookup table for the four released recent-trace SFT checkpoints.
 - Economics extension files use stable public model keys rather than provider-local checkpoint paths.
 
 ## Gemini Coverage Note

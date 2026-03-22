@@ -379,8 +379,8 @@ def load_prompt_sensitivity_all_models() -> Dict[str, object]:
         "qwen/qwen3.5-plus-02-15": "Qwen 3.5 Plus",
         "x-ai/grok-4.1-fast": "Grok 4.1 Fast",
         "z-ai/glm-5": "GLM-5",
-        "ft:gpt-4.1-2025-04-14:personal:rq1106-2:CYqJRxId": "SFT GPT-4.1",
-        "ft:gpt-4.1-nano-2025-04-14:personal::CdeuJ22y": "SFT GPT-4.1-nano",
+        "gpt-4.1-ob": "SFT GPT-4.1-ob",
+        "gpt-4.1-nano-ob": "SFT GPT-4.1-nano-ob",
     }
 
     model_alias = {
@@ -1282,8 +1282,8 @@ def _build_probability_averaged_ensemble(
 
 def load_temporal_trace_comparison_data() -> Dict[str, object]:
     recent_specs = [
-        ("ckpt-step-304", "Recent GPT-4.1-nano", COLORS["sft"], "o"),
-        ("ckppt-380", "Recent Qwen3-30B", COLORS["sft"], "o"),
+        ("gpt-4.1-nano-ob", "Recent GPT-4.1-nano", COLORS["sft"], "o"),
+        ("qwen3-30b-ob", "Recent Qwen3-30B", COLORS["sft"], "o"),
     ]
     recent_keys = {key for key, _, _, _ in recent_specs}
     recent_records = _load_prediction_records_label_order(TRAINED_PATH, allowed_keys=recent_keys)
@@ -1310,7 +1310,7 @@ def load_temporal_trace_comparison_data() -> Dict[str, object]:
 
     ensemble = _build_probability_averaged_ensemble(
         TRAINED_PATH,
-        ("ckpt-step-304", "ckppt-380"),
+        ("gpt-4.1-nano-ob", "qwen3-30b-ob"),
         "matched_2_model_combo",
         "Recent matched 2-model ensemble",
         "#003B73",
@@ -1451,7 +1451,7 @@ def load_core_rq_short_transfer_data() -> Dict[str, object]:
             "family": "GPT-4.1",
             "training": "SFT",
             "short_key": "ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY",
-            "context_key": "CYqJRxId",
+            "context_key": "gpt-4.1-ob",
             "color": COLORS["sft"],
         },
         {
@@ -1467,7 +1467,7 @@ def load_core_rq_short_transfer_data() -> Dict[str, object]:
             "family": "GPT-4.1-nano",
             "training": "SFT",
             "short_key": "ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB",
-            "context_key": "ckpt-step-304",
+            "context_key": "gpt-4.1-nano-ob",
             "color": "#56B4E9",
         },
     ]
@@ -1551,7 +1551,7 @@ def load_core_rq_short_transfer_data() -> Dict[str, object]:
 
 def load_pairwise_metrics() -> Dict[str, Dict[str, object]]:
     pairwise_files = {
-        "SFT GPT-4.1": PAIRWISE_ROOT / "sft_gpt4_1",
+        "SFT GPT-4.1-ob": PAIRWISE_ROOT / "sft_gpt4_1",
         "GPT-5.2 High": PAIRWISE_ROOT / "frontier_gpt5_2_high",
         "GPT-4.1 Baseline": PAIRWISE_ROOT / "baseline_gpt4_1",
     }
@@ -1591,13 +1591,13 @@ def _exact_mcnemar_p_raw(left_only: int, right_only: int) -> float:
 
 
 def _write_ed2_pairwise_raw_stats(pairwise: Dict[str, Dict[str, object]], frontier_label: str) -> Dict[str, object]:
-    plotted_models = ["SFT GPT-4.1", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]
+    plotted_models = ["SFT GPT-4.1-ob", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]
     correctness = {}
     for model in plotted_models:
         rows = pairwise[model]["rows"]  # type: ignore[index]
         correctness[model] = {_pairwise_item_key(row): bool(row.get("is_correct", False)) for row in rows}
 
-    reference_keys = set(correctness["SFT GPT-4.1"])
+    reference_keys = set(correctness["SFT GPT-4.1-ob"])
     for model, vector in correctness.items():
         if set(vector) != reference_keys:
             raise ValueError(f"ED2 pairwise item mismatch for {model}: expected {len(reference_keys)} shared items")
@@ -1612,7 +1612,7 @@ def _write_ed2_pairwise_raw_stats(pairwise: Dict[str, Dict[str, object]], fronti
         both_wrong = 0
         pair_type_breakdown: Dict[str, Dict[str, int]] = {}
         for item_key in reference_keys:
-            sft_ok = correctness["SFT GPT-4.1"][item_key]
+            sft_ok = correctness["SFT GPT-4.1-ob"][item_key]
             comparator_ok = correctness[comparator][item_key]
             pair_type = str(item_key[0])
             bucket = pair_type_breakdown.setdefault(
@@ -1641,11 +1641,11 @@ def _write_ed2_pairwise_raw_stats(pairwise: Dict[str, Dict[str, object]], fronti
                 bucket["both_wrong"] += 1
 
         n_items = len(reference_keys)
-        sft_acc = sum(correctness["SFT GPT-4.1"].values()) / n_items
+        sft_acc = sum(correctness["SFT GPT-4.1-ob"].values()) / n_items
         comparator_acc = sum(correctness[comparator].values()) / n_items
         p_raw = _exact_mcnemar_p_raw(sft_only, comparator_only)
         record = {
-            "evaluator_1": "SFT GPT-4.1",
+            "evaluator_1": "SFT GPT-4.1-ob",
             "evaluator_2": comparator,
             "n_paired_items": n_items,
             "accuracy_1": sft_acc,
@@ -1811,10 +1811,10 @@ def make_ed2_pairwise_intrinsic_v2() -> Tuple[Path, Path]:
     frontier_label = "Gemini 3.1 Pro"
     frontier_color = COLORS["gemini"]
     stats = _write_ed2_pairwise_raw_stats(d, frontier_label)
-    order = ["SFT GPT-4.1", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]
+    order = ["SFT GPT-4.1-ob", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]
     colors = [COLORS["sft"], frontier_color, COLORS["gpt52"], COLORS["baseline"]]
     short_names = {
-        "SFT GPT-4.1": "SFT GPT-4.1",
+        "SFT GPT-4.1-ob": "SFT GPT-4.1-ob",
         "Gemini 3.1 Pro": "Gemini 3.1",
         "GPT-5.2 High": "GPT-5.2 High",
         "GPT-4.1 Baseline": "GPT-4.1 base",
@@ -1947,10 +1947,10 @@ def _load_chat_baseline_confusions() -> Dict[str, Dict[str, object]]:
 
 def _load_st7_ensemble_table() -> pd.DataFrame:
     model_names = {
-        "CYqJRxId": "GPT-4.1",
-        "ckpt-step-304": "GPT-4.1-nano",
-        "ckppt-380": "Qwen3-30B",
-        "ckppt-228": "Qwen3-4B",
+        "gpt-4.1-ob": "GPT-4.1",
+        "gpt-4.1-nano-ob": "GPT-4.1-nano",
+        "qwen3-30b-ob": "Qwen3-30B",
+        "qwen3-4b-ob": "Qwen3-4B",
     }
     sft_keys = list(model_names.keys())
 
@@ -2053,10 +2053,10 @@ def make_ed3_confusion_ensemble_v2() -> Tuple[Path, Path]:
     perf_base = _load_chat_baseline_confusions()
     perf_sft = stats03.get("model_performance", {})
     architecture_pairs = [
-        ("Base GPT-4.1", "SFT (GPT-4.1)"),
-        ("Base GPT-4.1-nano", "SFT (GPT-4.1-nano)"),
-        ("Base Qwen3-30B", "SFT (Qwen3-30B)"),
-        ("Base Qwen3-4B", "SFT (Qwen3-4B)"),
+        ("Base GPT-4.1", "SFT (GPT-4.1-ob)"),
+        ("Base GPT-4.1-nano", "SFT (GPT-4.1-nano-ob)"),
+        ("Base Qwen3-30B", "SFT (Qwen3-30B-ob)"),
+        ("Base Qwen3-4B", "SFT (Qwen3-4B-ob)"),
     ]
     panel_b_entries: List[Tuple[str, np.ndarray, float, str]] = []
     for base_name, sft_name in architecture_pairs:
@@ -2087,7 +2087,7 @@ def make_ed3_confusion_ensemble_v2() -> Tuple[Path, Path]:
         model = str(r["Model"])
         if not (model.startswith("SFT (") and model.endswith(")")):
             continue
-        name = model[len("SFT (") : -1]
+        name = model[len("SFT (") : -1].removesuffix("-ob")
         single_acc[name] = float(r["Accuracy"]) * 100.0
 
     expected_single = {"GPT-4.1", "GPT-4.1-nano", "Qwen3-30B", "Qwen3-4B"}
@@ -2590,8 +2590,8 @@ def make_ed6_temporal_trace_persistence_v1(
     recent_by_key = {str(item["key"]): item for item in recent_items}
     old_by_key = {str(item["key"]): item for item in old_items}
     matched_specs = [
-        ("ckpt-step-304", "ft:gpt-4.1-nano-2025-04-14:personal:ob-rqcontext-old:DI3q8ijY", "GPT-4.1-nano"),
-        ("ckppt-380", "old_qwen30b_checkpoint_178", "Qwen3-30B"),
+        ("gpt-4.1-nano-ob", "ft:gpt-4.1-nano-2025-04-14:personal:ob-rqcontext-old:DI3q8ijY", "GPT-4.1-nano"),
+        ("qwen3-30b-ob", "old_qwen30b_checkpoint_178", "Qwen3-30B"),
         ("matched_2_model_combo", "matched_2_model_combo", "Matched\n2-model ensemble"),
     ]
     matched_groups: List[Dict[str, object]] = []
@@ -2991,7 +2991,7 @@ def make_supp_table_figures_v2() -> List[Tuple[Path, Path]]:
     pairwise = load_pairwise_metrics()
     frontier_label = "Gemini 3.1 Pro"
     rows = []
-    for model in ["SFT GPT-4.1", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]:
+    for model in ["SFT GPT-4.1-ob", frontier_label, "GPT-5.2 High", "GPT-4.1 Baseline"]:
         m = pairwise[model]["metrics"]  # type: ignore[index]
         d1 = m["per_distance"]["distance_1"]  # type: ignore[index]
         d2 = m["per_distance"]["distance_2"]  # type: ignore[index]

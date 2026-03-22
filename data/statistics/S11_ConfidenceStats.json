@@ -1,6 +1,6 @@
 {
   "val_models_with_logp": {
-    "SFT-1 (GPT-4.1)": {
+    "SFT-1 (GPT-4.1-ob)": {
       "n": 120,
       "n_correct": 66,
       "accuracy": 0.55,
@@ -56,7 +56,7 @@
         }
       }
     },
-    "SFT-2 (GPT-4.1-nano)": {
+    "SFT-2 (GPT-4.1-nano-ob)": {
       "n": 120,
       "n_correct": 69,
       "accuracy": 0.575,
@@ -112,7 +112,7 @@
         }
       }
     },
-    "SFT-3 (Qwen3-30B)": {
+    "SFT-3 (Qwen3-30B-ob)": {
       "n": 120,
       "n_correct": 70,
       "accuracy": 0.5833333333333334,
@@ -168,7 +168,7 @@
         }
       }
     },
-    "SFT-4 (Qwen3-4B)": {
+    "SFT-4 (Qwen3-4B-ob)": {
       "n": 120,
       "n_correct": 71,
       "accuracy": 0.5916666666666667,
@@ -1048,7 +1048,7 @@
           "p_value": 0.5366903641770051
         }
       },
-      "SFT-1 (GPT-4.1)": {
+      "SFT-1 (GPT-4.1-ob)": {
         "vs_expert": {
           "spearman_r": 0.08926390160811871,
           "p_value": 0.33227621716076156

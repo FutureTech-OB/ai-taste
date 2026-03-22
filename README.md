@@ -91,8 +91,8 @@ OpenAI API fine-tuned models referenced in this release:
 These identifiers record the OpenAI fine-tuned models used in the released evaluations. They can be called through the OpenAI API only from an account or project with permission to access them; for other readers, they serve as provenance for the exact closed-model runs used in this package.
 
 - Management
-  - `GPT-4.1-nano`: `ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB`
-  - `GPT-4.1`: `ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY`
+  - `GPT-4.1-nano-ob`: `ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB`
+  - `GPT-4.1-ob`: `ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY`
 - Economics
   - `GPT-4.1-nano`: `ft:gpt-4.1-nano-2025-04-14:personal:social-science-rqc:DJWAxfSb`
 - Pooled management + economics

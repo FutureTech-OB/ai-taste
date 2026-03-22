@@ -14,7 +14,7 @@ Each folder contains:
 
 ## Scope
 - The shared release ships the 4-model subset used by Fig. 5 / Extended Data Fig. 2:
-  - SFT GPT-4.1
+  - SFT GPT-4.1-ob
   - Gemini 3.1 Pro
   - GPT-5.2 High
   - GPT-4.1 baseline

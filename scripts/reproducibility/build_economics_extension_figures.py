@@ -922,7 +922,7 @@ GPT41_BASE_KEY = "gpt_4_1_base"
 
 
 def build_supplementary_figure7() -> Tuple[Path, Path]:
-    """Cross-field transfer: management-trained SFT GPT-4.1 on economics benchmark."""
+    """Cross-field transfer: management-trained SFT GPT-4.1-ob-ob on economics benchmark."""
     set_style()
     rows = load_jsonl(ECON_PATH)
 
@@ -979,7 +979,7 @@ def build_supplementary_figure7() -> Tuple[Path, Path]:
     ax_b = fig.add_subplot(gs[0, 1])
     panel_title(ax_b, "b", "Mgmt SFT on economics: confusion", family="edsi")
     cm = compute_confusion_from_records(mgmt_sft_records)
-    im = plot_confusion(ax_b, cm, "Mgmt SFT GPT-4.1", mgmt_sft_metrics["accuracy"] * 100)
+    im = plot_confusion(ax_b, cm, "Mgmt SFT GPT-4.1-ob-ob", mgmt_sft_metrics["accuracy"] * 100)
 
     # --- Panel c: per-tier recall comparison ---
     ax_c = fig.add_subplot(gs[0, 2])
@@ -999,8 +999,8 @@ def build_supplementary_figure7() -> Tuple[Path, Path]:
     x = np.arange(len(LABELS))
     w = 0.25
     ax_c.bar(x - w, [per_tier_base[t] for t in LABELS], w, label="GPT-4.1 base", color=PALETTE["base"], edgecolor="white", linewidth=0.5)
-    ax_c.bar(x, [per_tier_mgmt[t] for t in LABELS], w, label="Mgmt SFT GPT-4.1", color="#E69F00", edgecolor="white", linewidth=0.5)
-    ax_c.bar(x + w, [per_tier_econ[t] for t in LABELS], w, label="Econ SFT Qwen3-30B", color=PALETTE["sft"], edgecolor="white", linewidth=0.5)
+    ax_c.bar(x, [per_tier_mgmt[t] for t in LABELS], w, label="Mgmt SFT GPT-4.1-ob-ob", color="#E69F00", edgecolor="white", linewidth=0.5)
+    ax_c.bar(x + w, [per_tier_econ[t] for t in LABELS], w, label="Econ SFT Qwen3-30B-ob", color=PALETTE["sft"], edgecolor="white", linewidth=0.5)
     ax_c.set_xticks(x)
     ax_c.set_xticklabels(LABELS_SHORT, fontsize=6)
     ax_c.set_ylabel("Recall (%)", fontsize=7)

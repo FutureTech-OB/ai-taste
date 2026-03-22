@@ -126,7 +126,7 @@ def _extract_val_models(article):
     """Extract model prediction data from a val-data article.
 
     val_outcome.rq_with_context is a dict whose keys are model names
-    (e.g. 'gpt-5.2', 'ckpt-step-304', 'best_2_model_combo', etc.).
+    (e.g. 'gpt-5.2', 'gpt-4.1-nano-ob', 'best_2_model_combo', etc.).
     """
     return article.get('val_outcome', {}).get('rq_with_context', {})
 

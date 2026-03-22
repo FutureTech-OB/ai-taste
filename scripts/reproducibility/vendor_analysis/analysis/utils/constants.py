@@ -89,10 +89,10 @@ MODEL_DISPLAY_NAMES: Dict[str, str] = {
     'kimi-k2-0905-preview': 'Kimi K2 Chat',
     'deepseek-chat': 'DeepSeek Chat',
     # SFT models
-    'CYqJRxId': 'SFT GPT-4.1',
-    'ckpt-step-304': 'SFT GPT-4.1-nano',
-    'ckppt-380': 'SFT Qwen3-30B',
-    'ckppt-228': 'SFT Qwen3-4B',
+    'gpt-4.1-ob': 'SFT GPT-4.1-ob',
+    'gpt-4.1-nano-ob': 'SFT GPT-4.1-nano-ob',
+    'qwen3-30b-ob': 'SFT Qwen3-30B-ob',
+    'qwen3-4b-ob': 'SFT Qwen3-4B-ob',
     # Ensembles and special
     'best_2_model_combo': 'SFT 2-Model Ensemble',
     'human_voting': 'Human Voting',
@@ -147,15 +147,15 @@ CHAT_MODELS_SUPPLEMENTAL: List[str] = [
 # Backward-compatible alias used by existing scripts.
 CHAT_MODELS: List[str] = CHAT_MODELS_PRIMARY
 
-# SFT model IDs (from 120_trained.jsonl, excluding ensembles and human_voting)
-SFT_MODELS: List[str] = ['CYqJRxId', 'ckpt-step-304', 'ckppt-380', 'ckppt-228']
+# Public SFT model keys (from sft_predictions.jsonl, excluding ensembles and human_voting)
+SFT_MODELS: List[str] = ['gpt-4.1-ob', 'gpt-4.1-nano-ob', 'qwen3-30b-ob', 'qwen3-4b-ob']
 
 # SFT base model mapping
 SFT_BASE_MODELS: Dict[str, str] = {
-    'CYqJRxId': 'GPT-4.1',
-    'ckpt-step-304': 'GPT-4.1-nano',
-    'ckppt-380': 'Qwen3-30B',
-    'ckppt-228': 'Qwen3-4B',
+    'gpt-4.1-ob': 'GPT-4.1-ob',
+    'gpt-4.1-nano-ob': 'GPT-4.1-nano-ob',
+    'qwen3-30b-ob': 'Qwen3-30B-ob',
+    'qwen3-4b-ob': 'Qwen3-4B-ob',
 }
 
 # ---------------------------------------------------------------------------

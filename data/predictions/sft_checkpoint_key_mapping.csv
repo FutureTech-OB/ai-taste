@@ -1,5 +1,0 @@
-public_model_name,stable_raw_key,human_readable_checkpoint_label,release_role
-GPT-4.1,CYqJRxId,OpenAI fine-tuned checkpoint DHnLrzmY,Recent-trace SFT single model
-GPT-4.1-nano,ckpt-step-304,OpenAI fine-tuned checkpoint DHKeHMNB,Recent-trace SFT single model
-Qwen3-30B,ckppt-380,Qwen3-30B SFT checkpoint 380,Recent-trace SFT single model
-Qwen3-4B,ckppt-228,Qwen3-4B SFT checkpoint 228,Recent-trace SFT single model

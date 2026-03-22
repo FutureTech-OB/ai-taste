@@ -37,21 +37,28 @@ from analysis.utils.visualization import *
 # ---------------------------------------------------------------------------
 VAL_DISPLAY = {
     'gpt-5.2': 'GPT-5.2 (Baseline)',
-    'CYqJRxId': 'SFT (GPT-4.1)',
-    'ckpt-step-304': 'SFT (GPT-4.1-nano)',
-    'ckppt-380': 'SFT (Qwen3-30B)',
-    'ckppt-228': 'SFT (Qwen3-4B)',
+    'gpt-4.1-ob': 'SFT (GPT-4.1-ob)',
+    'gpt-4.1-nano-ob': 'SFT (GPT-4.1-nano-ob)',
+    'qwen3-30b-ob': 'SFT (Qwen3-30B-ob)',
+    'qwen3-4b-ob': 'SFT (Qwen3-4B-ob)',
     'human_voting': 'Human Voting',
     'best_2_model_combo': '2-Model Ensemble',
+}
+
+PUBLIC_MODEL_KEY = {
+    'gpt-4.1-ob': 'gpt-4.1-ob',
+    'gpt-4.1-nano-ob': 'gpt-4.1-nano-ob',
+    'qwen3-30b-ob': 'qwen3-30b-ob',
+    'qwen3-4b-ob': 'qwen3-4b-ob',
 }
 
 # Ordered list: baseline first, then SFT checkpoints, then ensembles
 MODEL_ORDER = [
     'gpt-5.2',
-    'CYqJRxId',
-    'ckpt-step-304',
-    'ckppt-380',
-    'ckppt-228',
+    'gpt-4.1-ob',
+    'gpt-4.1-nano-ob',
+    'qwen3-30b-ob',
+    'qwen3-4b-ob',
     'best_2_model_combo',
 ]
 
@@ -199,7 +206,7 @@ def main():
 
         row = {
             'Model': display,
-            'Model Key': model_key,
+            'Model Key': PUBLIC_MODEL_KEY.get(model_key, model_key),
             'N Valid': metrics['n_valid'],
             'Accuracy': round(metrics['accuracy'], 4),
             'Macro F1': round(metrics['macro_f1'], 4),

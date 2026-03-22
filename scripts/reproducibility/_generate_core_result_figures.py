@@ -69,19 +69,19 @@ TIER_ORDER = ["exceptional", "strong", "fair", "limited"]
 TIER_LABELS = ["Exceptional", "Strong", "Fair", "Limited"]
 PAIRWISE_ROOT = DATA_DIR / "pairwise"
 PAIRWISE_METRIC_DIRS = {
-    "SFT GPT-4.1": PAIRWISE_ROOT / "sft_gpt4_1",
+    "SFT GPT-4.1-ob": PAIRWISE_ROOT / "sft_gpt4_1",
     "Gemini 3.1 Pro": PAIRWISE_ROOT / "frontier_gemini3_1_pro",
     "GPT-5.2 High": PAIRWISE_ROOT / "frontier_gpt5_2_high",
     "GPT-4.1 Baseline": PAIRWISE_ROOT / "baseline_gpt4_1",
 }
 PAIRWISE_SHORT_LABELS = {
-    "SFT GPT-4.1": "SFT GPT-4.1",
+    "SFT GPT-4.1-ob": "SFT GPT-4.1-ob",
     "Gemini 3.1 Pro": "Gemini 3.1",
     "GPT-5.2 High": "GPT-5.2 High",
     "GPT-4.1 Baseline": "GPT-4.1 base",
 }
 PAIRWISE_COLORS = {
-    "SFT GPT-4.1": PALETTE["sft"],
+    "SFT GPT-4.1-ob": PALETTE["sft"],
     "Gemini 3.1 Pro": "#009E73",
     "GPT-5.2 High": "#56B4E9",
     "GPT-4.1 Baseline": PALETTE["frontier"],
@@ -562,7 +562,23 @@ def _human_selective_curve(records: List[Tuple[float, int, int]]) -> pd.DataFram
 
 def _load_figure5_pairwise_bundle() -> Dict[str, object]:
     stats = load_json("S14_ED2PairwiseRawPValues")
-    order = [str(model) for model in stats.get("summary", {}).get("plotted_models", [])]
+    def _normalize_pairwise_label(label: str) -> str:
+        return {
+            "SFT GPT-4.1": "SFT GPT-4.1-ob",
+        }.get(label, label)
+
+    pair_type_accuracy = {
+        _normalize_pairwise_label(str(model)): payload
+        for model, payload in stats.get("pair_type_accuracy_pct", {}).items()
+    }
+    stats["pair_type_accuracy_pct"] = pair_type_accuracy
+    if isinstance(stats.get("summary"), dict):
+        stats["summary"]["plotted_models"] = [
+            _normalize_pairwise_label(str(model))
+            for model in stats["summary"].get("plotted_models", [])
+        ]
+
+    order = [_normalize_pairwise_label(str(model)) for model in stats.get("summary", {}).get("plotted_models", [])]
     if not order:
         raise ValueError("S14_ED2PairwiseRawPValues.json is missing plotted_models for Figure 5.")
 
@@ -581,9 +597,9 @@ def _load_figure5_pairwise_bundle() -> Dict[str, object]:
         }
 
     comparisons = {
-        str(item["evaluator_2"]): item
+        _normalize_pairwise_label(str(item["evaluator_2"])): item
         for item in stats.get("comparisons", [])
-        if str(item.get("evaluator_1", "")) == "SFT GPT-4.1"
+        if _normalize_pairwise_label(str(item.get("evaluator_1", ""))) == "SFT GPT-4.1-ob"
     }
     return {"stats": stats, "order": order, "metrics": metrics, "comparisons": comparisons}
 
@@ -1462,10 +1478,10 @@ def make_figure4() -> plt.Figure:
     ax_a.set_title("a  Base-to-SFT gains by architecture", loc="left")
 
     panel_a_specs = [
-        ("GPT-4.1-nano", "gpt-4.1-nano", "ckpt-step-304"),
-        ("Qwen3-4B", "qwen3-4b", "ckppt-228"),
-        ("Qwen3-30B", "qwen3-30b-a3b", "ckppt-380"),
-        ("GPT-4.1", "gpt-4.1", "CYqJRxId"),
+        ("GPT-4.1-nano", "gpt-4.1-nano", "gpt-4.1-nano-ob"),
+        ("Qwen3-4B", "qwen3-4b", "qwen3-4b-ob"),
+        ("Qwen3-30B", "qwen3-30b-a3b", "qwen3-30b-ob"),
+        ("GPT-4.1", "gpt-4.1", "gpt-4.1-ob"),
     ]
     arch = [item[0] for item in panel_a_specs]
     base_map: Dict[str, float] = {}
@@ -1481,8 +1497,10 @@ def make_figure4() -> plt.Figure:
     for _, r in table4.iterrows():
         model = str(r["Model"])
         if model.startswith("SFT (") and model.endswith(")"):
-            sft_map[model[len("SFT (") : -1]] = float(r["Accuracy"]) * 100.0
-            sft_f1_map[model[len("SFT (") : -1]] = float(r["Macro F1"]) * 100.0
+            public_name = model[len("SFT (") : -1]
+            arch_name = public_name.removesuffix("-ob")
+            sft_map[arch_name] = float(r["Accuracy"]) * 100.0
+            sft_f1_map[arch_name] = float(r["Macro F1"]) * 100.0
 
     missing_base = [name for name in arch if name not in base_map]
     missing_sft = [name for name in arch if name not in sft_map]
@@ -1663,10 +1681,10 @@ def make_figure4() -> plt.Figure:
         "Student Majority Vote (full, excl. ties)": ("Junior majority vote", "junior"),
     }
     sft_single_map = {
-        "SFT (GPT-4.1-nano)": "SFT GPT-4.1-nano",
-        "SFT (Qwen3-4B)": "SFT Qwen3-4B",
-        "SFT (Qwen3-30B)": "SFT Qwen3-30B",
-        "SFT (GPT-4.1)": "SFT GPT-4.1",
+        "SFT (GPT-4.1-nano-ob)": "SFT GPT-4.1-nano-ob",
+        "SFT (Qwen3-4B-ob)": "SFT Qwen3-4B-ob",
+        "SFT (Qwen3-30B-ob)": "SFT Qwen3-30B-ob",
+        "SFT (GPT-4.1-ob)": "SFT GPT-4.1-ob",
     }
 
     rows = []
@@ -2139,7 +2157,7 @@ def make_figure5() -> plt.Figure:
     x_pair_type = "strong_exceptional"
     y_pair_type = "fair_strong"
     label_offsets = {
-        "SFT GPT-4.1": (0.8, 0.2),
+        "SFT GPT-4.1-ob": (0.8, 0.2),
         "Gemini 3.1 Pro": (0.6, 0.3),
         "GPT-5.2 High": (0.6, 0.1),
         "GPT-4.1 Baseline": (0.6, -0.4),

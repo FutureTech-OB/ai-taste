@@ -2,7 +2,7 @@
   "figure": "ExtendedDataFigure2",
   "summary": {
     "plotted_models": [
-      "SFT GPT-4.1",
+      "SFT GPT-4.1-ob",
       "Gemini 3.1 Pro",
       "GPT-5.2 High",
       "GPT-4.1 Baseline"
@@ -46,7 +46,7 @@
     }
   ],
   "pair_type_accuracy_pct": {
-    "SFT GPT-4.1": {
+    "SFT GPT-4.1-ob": {
       "strong_exceptional": {
         "n": 50.0,
         "correct": 32.0,
@@ -311,7 +311,7 @@
   },
   "comparisons": [
     {
-      "evaluator_1": "SFT GPT-4.1",
+      "evaluator_1": "SFT GPT-4.1-ob",
       "evaluator_2": "Gemini 3.1 Pro",
       "n_paired_items": 300,
       "accuracy_1": 0.8433333333333334,
@@ -327,7 +327,7 @@
       "significant_at_0_05_raw": true
     },
     {
-      "evaluator_1": "SFT GPT-4.1",
+      "evaluator_1": "SFT GPT-4.1-ob",
       "evaluator_2": "GPT-5.2 High",
       "n_paired_items": 300,
       "accuracy_1": 0.8433333333333334,
@@ -343,7 +343,7 @@
       "significant_at_0_05_raw": true
     },
     {
-      "evaluator_1": "SFT GPT-4.1",
+      "evaluator_1": "SFT GPT-4.1-ob",
       "evaluator_2": "GPT-4.1 Baseline",
       "n_paired_items": 300,
       "accuracy_1": 0.8433333333333334,
