@@ -7,6 +7,8 @@
 - `sft_predictions.jsonl`:
   - Contains four SFT model tracks and comparator tracks used in analysis.
   - Four SFT base-model IDs: `CYqJRxId`, `ckpt-step-304`, `ckppt-380`, `ckppt-228`.
+  - Discrete SFT predictions are derived from `logp` with the canonical label order `exceptional > strong > fair > limited`; exact `logp` ties are therefore broken by that fixed order, not by raw JSON key order.
+  - This is important for public reproducibility: naive `argmax(logp)` counting can disagree with the released tables for tied rows, especially for `ckpt-step-304`, while the released tables/figures/manuscript follow the canonical tie rule.
 - `sft_temporal_old_predictions.jsonl`:
   - Minimal old-trace SFT release file used for Extended Data Fig. 6.
   - Contains only the two matched old-trace log-probability tracks needed for the public temporal-persistence comparison.
