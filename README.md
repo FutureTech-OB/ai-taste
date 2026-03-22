@@ -4,13 +4,13 @@ This repository releases the public reproducibility package for the study:
 
 **Paper title:** Machines acquire scientific taste from institutional traces
 
-The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. This snapshot includes the 120-article management benchmark, the 200-article economics extension benchmark, model predictions, de-identified human ratings, released figures and tables, and the scripts used to regenerate the public results from repository-local files. The final approved paper PDF and synced manuscript sources are not yet included in `manuscript/`.
+The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. This snapshot includes the 120-article management benchmark, the 200-article economics extension benchmark, model predictions, de-identified human ratings, released figures and tables, the final approved paper PDF, and the scripts used to regenerate the public results from repository-local files.
 
 ## Contents
 
 | Path | Contents |
 |------|----------|
-| `manuscript/` | Placeholder directory for the final public paper assets; not required for the current rerun path |
+| `manuscript/` | Final approved paper PDF plus notes on manuscript-source scope; not required for the current rerun path |
 | `figures/` | Main, extended data, and supplementary figures plus figure notes |
 | `data/benchmark/` | Management benchmark records plus the released economics extension benchmark |
 | `data/predictions/` | Model prediction files, including the released economics extension and pooled management+economics prediction sets |
@@ -55,7 +55,7 @@ Regenerated outputs are written under `reproduced/` as ignored local build outpu
 
 ## Scope
 
-This release is intended to let outside readers inspect the benchmark and evaluation outputs, trace released figures and tables to repository-local inputs, and rerun the public analysis pipeline. In this snapshot, `manuscript/` remains placeholder-only; the public code/data rerun path does not depend on any manuscript asset.
+This release is intended to let outside readers inspect the benchmark and evaluation outputs, trace released figures and tables to repository-local inputs, and rerun the public analysis pipeline. The public code/data rerun path does not depend on the manuscript assets, but the final approved paper PDF is now included under `manuscript/`.
 
 Key release indices:
 
@@ -99,7 +99,7 @@ These identifiers record the OpenAI fine-tuned models used in the released evalu
 
 Human-rating files are de-identified. The public release excludes direct participant identifiers, raw survey exports, the supervised training corpus, and model checkpoints. Training-related assets are documented through the separate training repository linked above.
 
-The `manuscript/` directory is intentionally placeholder-only in this release snapshot. The final approved paper PDF and any synced manuscript sources can be added later without affecting the repo-local table/figure reproduction path documented above.
+The `manuscript/` directory now includes the final approved paper PDF. Synced manuscript source files can still be added later without affecting the repo-local table/figure reproduction path documented above.
 
 ## License
 

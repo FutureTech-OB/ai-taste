@@ -1,3 +1,5 @@
-The public release keeps `manuscript/` as a placeholder until the final approved paper assets are synced.
+The public release now includes the final approved paper PDF:
 
-The reproducibility path for released tables, figures, and statistics does not depend on any file in this directory.
+- `gong-li-zhou-ai-judgement.pdf`
+
+The reproducibility path for released tables, figures, and statistics does not depend on any file in this directory. Synced manuscript source files can be added later if needed.
