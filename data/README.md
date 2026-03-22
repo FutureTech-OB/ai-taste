@@ -23,6 +23,8 @@ Two index files are the main entry points for readers:
 - `tables/TABLE_INDEX.csv`
 - `tables/FIGURE_DATA_INDEX.csv`
 
+Raw prediction JSONL files and some table `Model Key` columns intentionally retain stable canonical keys such as `CYqJRxId`, `ckpt-step-304`, `ckppt-380`, and `ckppt-228`. The public human-readable model-name mapping for those keys is documented in `data/predictions/README.md`.
+
 Human data in this release are de-identified. Raw survey exports, model checkpoints, and unreleased preprocessing intermediates are not included.
 
 Training code, training-data preparation notes, and open-weight checkpoint downloads are maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).

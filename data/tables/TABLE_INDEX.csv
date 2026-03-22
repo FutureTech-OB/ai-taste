@@ -1,7 +1,7 @@
 table_id,filename,source_file,referenced_in,used_for
 T01,T01_FrontierProtocolAudit.csv,table_frontier_protocol_audit.csv,"Methods, SI",Frontier protocol completeness (11-model/8-run)
 T02,T02_FlagshipPerformance.csv,table3_flagship_performance.csv,"Main, ED, SI",Flagship model performance summary
-T03,T03_SFTPerformance.csv,table4_sft_performance.csv,"Main, ED, SI",SFT checkpoint and ensemble performance
+T03,T03_SFTPerformance.csv,table4_sft_performance.csv,"Main, ED, SI",SFT checkpoint and ensemble performance (Model column = public name; Model Key = stable raw key)
 T04,T04_AIvsHumanSummary.csv,table8_ai_vs_human.csv,"Main, ED, SI",Primary AI vs human performance table
 T05,T05_SignificanceMain.csv,scripts/reproducibility/_recompute_core_tables_and_stats.py,"Methods, SI",Simplified core significance comparisons (raw p-values only)
 T06,T06_GatekeeperProfileMain.csv,table23_gatekeeper_profile_main.csv,"Main, SI",Gatekeeper profile summary metrics
