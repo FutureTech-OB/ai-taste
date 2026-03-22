@@ -14,7 +14,9 @@ This folder contains the released inputs and numerical outputs needed for the pu
 For the public rebuild:
 
 - `scripts/reproduce_tables.sh` rebuilds `T01` through `T21` and `S01` through `S12`
-- `scripts/reproduce_figures.sh` regenerates the released figures plus `S15` through `S18` from repository-local inputs
+- `scripts/reproduce_figures.sh` regenerates released `Figure2` through `Figure7`, `ExtendedDataFigure1` through `ExtendedDataFigure8`, `SupplementaryFigure1` through `SupplementaryFigure7`, plus `S15` through `S18` from repository-local inputs
+
+`Figure1` is retained as a shipped frozen canonical asset rather than regenerated in the public figure pipeline.
 
 Two index files are the main entry points for readers:
 

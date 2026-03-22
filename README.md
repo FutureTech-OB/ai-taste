@@ -49,7 +49,10 @@ These commands:
 
 - validate the package structure
 - rebuild the released public tables and core statistics
-- regenerate the released figures and the ED7 / economics-extension statistics artifacts
+- regenerate released `Figure2`-`Figure7`, `ExtendedDataFigure1`-`ExtendedDataFigure8`, and `SupplementaryFigure1`-`SupplementaryFigure7`
+- refresh the ED7 / economics-extension statistics artifacts used by those rebuilt figures
+
+`Figure1` is a shipped frozen canonical asset and is intentionally not rebuilt by the public figure pipeline.
 
 Regenerated outputs are written under `reproduced/` as ignored local build output; `reproduced/` is not part of the shipped release surface.
 

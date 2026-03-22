@@ -4,6 +4,7 @@ This folder contains the Python sources used by the public reproduction scripts.
 
 Public entry points:
 
+- `Figure1` is shipped as a frozen canonical asset and is not rebuilt by the public figure pipeline
 - `build_frontier_diagnostics_figure.py` (Figure 2)
 - `build_core_result_figures.py` (Figures 3-5)
 - `build_consensus_figure.py` (Figure 6)

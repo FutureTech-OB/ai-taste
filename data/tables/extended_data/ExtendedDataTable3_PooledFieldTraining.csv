@@ -1,5 +1,0 @@
-model,evaluator,field,n,accuracy_pct,accuracy_ci_lower_pct,accuracy_ci_upper_pct,macro_f1_pct,macro_f1_ci_lower_pct,macro_f1_ci_upper_pct,exceptional_share_pct,strong_share_pct,fair_share_pct,limited_share_pct
-Pooled Qwen3-30B,qwen3_30b_sft_management_economics,management,120,61.7,53.3,70.0,61.5,52.5,69.5,40.8,13.3,26.7,19.2
-Pooled Qwen3-30B,qwen3_30b_sft_management_economics,economics,200,69.5,63.0,76.0,70.5,64.5,75.9,19.5,39.5,20.0,21.0
-Pooled GPT-4.1-nano,gpt_4_1_nano_sft_management_economics,management,120,52.5,44.2,60.8,48.9,40.4,57.3,44.2,2.5,33.3,20.0
-Pooled GPT-4.1-nano,gpt_4_1_nano_sft_management_economics,economics,200,67.0,61.0,73.0,67.4,61.5,73.0,33.5,21.0,23.0,22.5

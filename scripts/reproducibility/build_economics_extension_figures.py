@@ -5,8 +5,6 @@ Outputs:
 - reproduced/figures/main/Figure7.(png|pdf)
 - reproduced/figures/extended_data/ed_fig8.(png|pdf)
 - reproduced/figures/supplementary/si_fig7.(png|pdf)
-- data/tables/extended_data/ExtendedDataTable2_EconomicsValidation.csv
-- data/tables/extended_data/ExtendedDataTable3_PooledFieldTraining.csv
 - data/statistics/S16_EconomicsExtensionStats.json
 - data/statistics/S17_PooledFieldExtensionStats.json
 - data/statistics/S18_CrossFieldTransferStats.json
@@ -46,7 +44,6 @@ ROOT = find_project_root()
 FIG7_OUT_DIR = ROOT / "reproduced" / "figures" / "main"
 ED8_OUT_DIR = ROOT / "reproduced" / "figures" / "extended_data"
 SF7_OUT_DIR = ROOT / "reproduced" / "figures" / "supplementary"
-TABLES_DIR = ROOT / "data" / "tables" / "extended_data"
 STATS_DIR = ROOT / "data" / "statistics"
 
 ECON_PATH = ROOT / "data" / "predictions" / "economics_predictions.jsonl"
@@ -1103,23 +1100,6 @@ def write_economics_extension_release_artifacts() -> None:
             )
         per_tier_recall[label] = label_map
 
-    write_csv(
-        TABLES_DIR / "ExtendedDataTable2_EconomicsValidation.csv",
-        [
-            "model_family",
-            "evaluator",
-            "role",
-            "n",
-            "accuracy_pct",
-            "accuracy_ci_lower_pct",
-            "accuracy_ci_upper_pct",
-            "macro_f1_pct",
-            "macro_f1_ci_lower_pct",
-            "macro_f1_ci_upper_pct",
-        ],
-        econ_table_rows + frontier_model_rows,
-    )
-
     write_json(
         STATS_DIR / "S16_EconomicsExtensionStats.json",
         {
@@ -1169,7 +1149,7 @@ def write_economics_extension_release_artifacts() -> None:
         },
     )
 
-    # ED8 pooled summary table + stats
+    # ED8 pooled summary stats
     pooled_table_rows: List[dict] = []
     pooled_stats_models: Dict[str, dict] = {}
     for display, model_key in POOLED_2FIELD_MODELS.items():
@@ -1201,27 +1181,6 @@ def write_economics_extension_release_artifacts() -> None:
             }
             pooled_table_rows.append(row)
             pooled_stats_models[model_key]["fields"][field] = row
-
-    write_csv(
-        TABLES_DIR / "ExtendedDataTable3_PooledFieldTraining.csv",
-        [
-            "model",
-            "evaluator",
-            "field",
-            "n",
-            "accuracy_pct",
-            "accuracy_ci_lower_pct",
-            "accuracy_ci_upper_pct",
-            "macro_f1_pct",
-            "macro_f1_ci_lower_pct",
-            "macro_f1_ci_upper_pct",
-            "exceptional_share_pct",
-            "strong_share_pct",
-            "fair_share_pct",
-            "limited_share_pct",
-        ],
-        pooled_table_rows,
-    )
 
     write_json(
         STATS_DIR / "S17_PooledFieldExtensionStats.json",

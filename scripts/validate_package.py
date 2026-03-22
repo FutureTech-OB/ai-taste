@@ -650,12 +650,12 @@ def main() -> int:
         fail("Missing manuscript directory", errors)
     else:
         actual_manuscript = {p.name for p in manuscript_dir.iterdir() if p.is_file()}
-        required_files = {"README.md"}
+        required_files = {"README.md", "gong-li-zhou-ai-judgement.pdf"}
         missing_required = sorted(required_files - actual_manuscript)
         extra_files = sorted(actual_manuscript - required_files)
         if missing_required or extra_files:
             fail(
-                "Manuscript placeholder mismatch. "
+                "Manuscript contents mismatch. "
                 f"Missing required: {missing_required or '[]'}; "
                 f"unexpected extras: {extra_files or '[]'}",
                 errors,
