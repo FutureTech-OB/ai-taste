@@ -1,0 +1,249 @@
+[
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "management",
+    "n": 120,
+    "chat_acc": 0.3416666666666667,
+    "high_pitch": 0.2708333333333333,
+    "diff": -0.07083333333333333,
+    "paired_t_p": 0.024338894853633823,
+    "sign_p": 0.050102459732443094,
+    "high_maj_fixed": 0.24166666666666667,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 4,
+      "a_win": 16,
+      "p": 0.01181793212890625
+    },
+    "high_run1": 0.2833333333333333,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 7,
+      "a_win": 14,
+      "p": 0.18924713134765625
+    },
+    "ties": 5
+  },
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "economics",
+    "n": 200,
+    "chat_acc": 0.38,
+    "high_pitch": 0.363125,
+    "diff": -0.016875,
+    "paired_t_p": 0.2023565140013962,
+    "sign_p": 0.42435622215270996,
+    "high_maj_fixed": 0.35,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 2,
+      "a_win": 8,
+      "p": 0.109375
+    },
+    "high_run1": 0.335,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 2,
+      "a_win": 11,
+      "p": 0.0224609375
+    },
+    "ties": 3
+  },
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "business_finance",
+    "n": 200,
+    "chat_acc": 0.33,
+    "high_pitch": 0.333125,
+    "diff": 0.003125,
+    "paired_t_p": 0.8442581240288771,
+    "sign_p": 0.711071103811264,
+    "high_maj_fixed": 0.34,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 9,
+      "a_win": 7,
+      "p": 0.803619384765625
+    },
+    "high_run1": 0.325,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 8,
+      "a_win": 9,
+      "p": 1.0
+    },
+    "ties": 2
+  },
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "communication",
+    "n": 200,
+    "chat_acc": 0.3,
+    "high_pitch": 0.2925,
+    "diff": -0.0075,
+    "paired_t_p": 0.5329564598889817,
+    "sign_p": 0.557197093963623,
+    "high_maj_fixed": 0.29,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 3,
+      "a_win": 5,
+      "p": 0.7265625
+    },
+    "high_run1": 0.305,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 6,
+      "a_win": 5,
+      "p": 1.0
+    },
+    "ties": 3
+  },
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "political_science",
+    "n": 200,
+    "chat_acc": 0.32,
+    "high_pitch": 0.32375,
+    "diff": 0.00375,
+    "paired_t_p": 0.8151763096783827,
+    "sign_p": 0.5966148958541453,
+    "high_maj_fixed": 0.315,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 7,
+      "a_win": 8,
+      "p": 1.0
+    },
+    "high_run1": 0.315,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 10,
+      "a_win": 11,
+      "p": 1.0
+    },
+    "ties": 10
+  },
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "psychology_multidisciplinary",
+    "n": 200,
+    "chat_acc": 0.315,
+    "high_pitch": 0.295,
+    "diff": -0.02,
+    "paired_t_p": 0.18385528095069092,
+    "sign_p": 0.043285250663757324,
+    "high_maj_fixed": 0.3,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 4,
+      "a_win": 7,
+      "p": 0.548828125
+    },
+    "high_run1": 0.29,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 4,
+      "a_win": 9,
+      "p": 0.266845703125
+    },
+    "ties": 1
+  },
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "public_administration",
+    "n": 200,
+    "chat_acc": 0.285,
+    "high_pitch": 0.278125,
+    "diff": -0.006875,
+    "paired_t_p": 0.6569132374535745,
+    "sign_p": 0.4995598332025112,
+    "high_maj_fixed": 0.27,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 4,
+      "a_win": 7,
+      "p": 0.548828125
+    },
+    "high_run1": 0.295,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 9,
+      "a_win": 7,
+      "p": 0.803619384765625
+    },
+    "ties": 7
+  },
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "sociology",
+    "n": 200,
+    "chat_acc": 0.32,
+    "high_pitch": 0.319375,
+    "diff": -0.000625,
+    "paired_t_p": 0.9708055232675761,
+    "sign_p": 1.0,
+    "high_maj_fixed": 0.31,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 7,
+      "a_win": 9,
+      "p": 0.803619384765625
+    },
+    "high_run1": 0.305,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 9,
+      "a_win": 12,
+      "p": 0.6636238098144531
+    },
+    "ties": 4
+  },
+  {
+    "comparison": "gpt55_high_pitch_minus_gpt55_chat",
+    "field": "overall",
+    "n": 1520,
+    "chat_acc": 0.32302631578947366,
+    "high_pitch": 0.3115131578947368,
+    "diff": -0.011513157894736841,
+    "paired_t_p": 0.046791938870850605,
+    "sign_p": 0.0038503684758028575,
+    "high_maj_fixed": 0.30526315789473685,
+    "mcnemar_highmaj_vs_chat": {
+      "b_win": 40,
+      "a_win": 67,
+      "p": 0.011598202043786152
+    },
+    "high_run1": 0.3078947368421053,
+    "mcnemar_run1_vs_chat": {
+      "b_win": 55,
+      "a_win": 78,
+      "p": 0.05602788183890041
+    },
+    "ties": 35
+  },
+  {
+    "comparison": "gpt55_high_minus_gpt52_high_8run",
+    "field": "management",
+    "n": 120,
+    "gpt52_pitch": 0.3104166666666667,
+    "gpt55_pitch": 0.2708333333333333,
+    "diff": -0.03958333333333333,
+    "paired_t_p": 0.17578036256883867,
+    "sign_p": 0.21102359760880063,
+    "gpt52_maj_fixed": 0.30833333333333335,
+    "gpt55_maj_fixed": 0.24166666666666667,
+    "mcnemar_gpt55maj_vs_gpt52maj": {
+      "b_win": 6,
+      "a_win": 14,
+      "p": 0.11531829833984375
+    },
+    "gpt52_run1": 0.3416666666666667,
+    "gpt55_run1": 0.2833333333333333,
+    "mcnemar_run1": {
+      "b_win": 7,
+      "a_win": 14,
+      "p": 0.18924713134765625
+    }
+  },
+  {
+    "comparison": "gpt55_high_vs_gpt52_high_singlepass_caveated",
+    "field": "economics",
+    "n": 200,
+    "gpt52_single_acc": 0.38,
+    "gpt55_run1_acc": 0.335,
+    "mcnemar_gpt55run1_vs_gpt52single": {
+      "b_win": 11,
+      "a_win": 20,
+      "p": 0.14961278438568115
+    },
+    "gpt55_pitch": 0.363125,
+    "pitch_minus_gpt52single": -0.016875,
+    "paired_t_p": 0.49210568959320344,
+    "sign_p": 0.7492586247608418
+  }
+]

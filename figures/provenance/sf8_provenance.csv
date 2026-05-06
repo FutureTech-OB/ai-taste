@@ -1,0 +1,129 @@
+field,model,true,pred,count,row_norm_rate,n_field_total,source
+Psychology,Qwen3-30B SFT,exceptional,exceptional,44,0.8800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,exceptional,strong,4,0.0800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,exceptional,fair,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,exceptional,limited,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,strong,exceptional,3,0.0600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,strong,strong,45,0.9000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,strong,fair,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,strong,limited,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,fair,exceptional,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,fair,strong,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,fair,fair,43,0.8600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,fair,limited,4,0.0800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,limited,exceptional,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,limited,strong,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,limited,fair,8,0.1600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Psychology,Qwen3-30B SFT,limited,limited,39,0.7800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,exceptional,exceptional,23,0.4600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,exceptional,strong,26,0.5200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,exceptional,fair,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,exceptional,limited,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,strong,exceptional,11,0.2200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,strong,strong,39,0.7800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,strong,fair,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,strong,limited,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,fair,exceptional,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,fair,strong,9,0.1800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,fair,fair,37,0.7400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,fair,limited,4,0.0800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,limited,exceptional,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,limited,strong,8,0.1600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,limited,fair,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Economics,Qwen3-30B SFT,limited,limited,40,0.8000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,exceptional,exceptional,29,0.5800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,exceptional,strong,5,0.1000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,exceptional,fair,16,0.3200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,exceptional,limited,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,strong,exceptional,15,0.3000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,strong,strong,27,0.5400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,strong,fair,6,0.1200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,strong,limited,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,fair,exceptional,6,0.1200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,fair,strong,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,fair,fair,41,0.8200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,fair,limited,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,limited,exceptional,5,0.1000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,limited,strong,3,0.0600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,limited,fair,4,0.0800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Communication,Qwen3-30B SFT,limited,limited,38,0.7600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,exceptional,exceptional,25,0.5000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,exceptional,strong,16,0.3200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,exceptional,fair,8,0.1600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,exceptional,limited,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,strong,exceptional,7,0.1400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,strong,strong,29,0.5800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,strong,fair,9,0.1800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,strong,limited,5,0.1000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,fair,exceptional,3,0.0600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,fair,strong,6,0.1200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,fair,fair,36,0.7200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,fair,limited,5,0.1000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,limited,exceptional,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,limited,strong,3,0.0600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,limited,fair,4,0.0800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Sociology,Qwen3-30B SFT,limited,limited,41,0.8200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Management,Qwen3-4B SFT,exceptional,exceptional,24,0.8000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,exceptional,strong,3,0.1000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,exceptional,fair,3,0.1000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,exceptional,limited,0,0.0000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,strong,exceptional,9,0.3000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,strong,strong,17,0.5667,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,strong,fair,4,0.1333,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,strong,limited,0,0.0000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,fair,exceptional,6,0.2000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,fair,strong,6,0.2000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,fair,fair,16,0.5333,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,fair,limited,2,0.0667,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,limited,exceptional,0,0.0000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,limited,strong,4,0.1333,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,limited,fair,12,0.4000,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Management,Qwen3-4B SFT,limited,limited,14,0.4667,120,data/management_deep_probe/predictions/sft_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,exceptional,exceptional,23,0.4600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,exceptional,strong,24,0.4800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,exceptional,fair,3,0.0600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,exceptional,limited,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,strong,exceptional,7,0.1400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,strong,strong,38,0.7600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,strong,fair,5,0.1000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,strong,limited,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,fair,exceptional,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,fair,strong,8,0.1600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,fair,fair,33,0.6600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,fair,limited,7,0.1400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,limited,exceptional,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,limited,strong,9,0.1800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,limited,fair,17,0.3400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Pol. Science,Qwen3-30B SFT,limited,limited,23,0.4600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,exceptional,exceptional,45,0.9000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,exceptional,strong,4,0.0800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,exceptional,fair,1,0.0200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,exceptional,limited,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,strong,exceptional,21,0.4200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,strong,strong,20,0.4000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,strong,fair,7,0.1400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,strong,limited,2,0.0400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,fair,exceptional,10,0.2000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,fair,strong,15,0.3000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,fair,fair,13,0.2600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,fair,limited,12,0.2400,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,limited,exceptional,3,0.0600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,limited,strong,4,0.0800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,limited,fair,10,0.2000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Bus. & Finance,GPT-4.1-nano SFT,limited,limited,33,0.6600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,exceptional,exceptional,25,0.5000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,exceptional,strong,18,0.3600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,exceptional,fair,4,0.0800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,exceptional,limited,3,0.0600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,strong,exceptional,8,0.1600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,strong,strong,34,0.6800,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,strong,fair,3,0.0600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,strong,limited,5,0.1000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,fair,exceptional,11,0.2200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,fair,strong,18,0.3600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,fair,fair,15,0.3000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,fair,limited,6,0.1200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,limited,exceptional,0,0.0000,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,limited,strong,6,0.1200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,limited,fair,8,0.1600,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl
+Public Admin.,Qwen3-30B SFT,limited,limited,36,0.7200,200,data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl

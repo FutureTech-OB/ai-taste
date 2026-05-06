@@ -1,0 +1,5 @@
+panel,filter,n_raters,individual_mean_accuracy,majority_vote_accuracy,non_tied_n_majority_vote,role
+Experts,Unfiltered,48,36.2%,41.6%,89,Primary expert benchmark
+Experts,Filtered (>= 1 min/pitch),38,,39.7%,68,Filtering sensitivity
+Juniors,Unfiltered,175,25.3%,,,Filtering sensitivity
+Juniors,Filtered (>= 1 min/pitch),174,31.7%,40.8%,103,Primary junior benchmark

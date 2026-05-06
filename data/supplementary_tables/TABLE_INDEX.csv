@@ -1,0 +1,26 @@
+table_id,filename,description
+ST1,ST1_cross_field_accuracy.csv,Cross-field best SFT accuracy and best control accuracy by field
+ST2,ST2_confidence_calibration_by_field.csv,Confidence calibration by field
+ST2b,ST2b_current_gpt55_all_field_audit.csv,May 2026 GPT-5.5 all-field audit and GPT-5.2 chat historical comparator
+ST3,ST3_journal_tier_mapping_management.csv,Management journal-to-tier mapping
+ST4,ST4_journal_tier_mapping_economics.csv,Economics journal-to-tier mapping
+ST5,ST5_journal_tier_mapping_business_finance.csv,Business and finance journal-to-tier mapping
+ST6,ST6_journal_tier_mapping_communication.csv,Communication journal-to-tier mapping
+ST7,ST7_journal_tier_mapping_political_science.csv,Political science journal-to-tier mapping
+ST8,ST8_journal_tier_mapping_psychology.csv,Psychology journal-to-tier mapping
+ST9,ST9_journal_tier_mapping_public_administration.csv,Public administration journal-to-tier mapping
+ST10,ST10_journal_tier_mapping_sociology.csv,Sociology journal-to-tier mapping
+ST11,ST11_training_validation_sizes.csv,Per-field training corpus and validation set sizes
+ST12,ST12_per_tier_best_sft.csv,"Per-tier precision, recall, and F1 for best single SFT per field"
+ST13,ST13_sft_vs_base_lift.csv,Eight-field SFT-vs-base lift detail
+ST14,ST14_cross_field_ensemble_sensitivity.csv,"Pairwise SFT ensemble combinations, cross-field"
+ST15,ST15_top1_top2_accuracy_six_fields.csv,Top-1+2 accuracy for six-field sensitivity subset
+ST16,ST16_selective_prediction.csv,Selective-prediction coverage curves
+ST17,ST17_management_sft_cross_field_transfer.csv,Cross-field transfer of management-SFT models
+ST18,ST18_label_normalization.csv,Source-to-unified label normalization
+ST19,ST19_model_inventory.csv,Evaluator model inventory and access window
+ST20,ST20_human_panel_filtering_sensitivity.csv,Human-panel filtering sensitivity
+ST21,ST21_cross_architecture_agreement_management.csv,Cross-architecture agreement on the management benchmark
+ST22,ST22_sft_consensus_per_class_management.csv,"Per-class accuracy under SFT 4/4 consensus, management benchmark"
+ST23,ST23_ai_human_error_complementarity_management.csv,AI-human error complementarity on the expert-comparable management subset
+ST24,ST24_management_mcnemar_compendium.csv,Pairwise McNemar tests on the management benchmark

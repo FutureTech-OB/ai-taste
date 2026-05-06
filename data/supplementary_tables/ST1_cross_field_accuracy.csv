@@ -1,0 +1,9 @@
+field,best_sft_model,sft_accuracy_pct,best_base_or_frontier_control,control_accuracy_pct
+"Psychology, multidisciplinary",Qwen3-30B-A3B SFT,85.5,Gemini 3.1 Pro,33.5
+Economics,Qwen3-30B-A3B SFT,69.5,Gemini 3.1 Pro,44.5
+Communication,Qwen3-30B-A3B SFT,67.5,Qwen3-30B-A3B base,31.5
+Sociology,Qwen3-30B-A3B SFT,65.5,Gemini 3.1 Pro,31.0
+Management,Qwen3-4B SFT,59.2,Gemini 3.1 Pro,38.8
+Political science,Qwen3-30B-A3B SFT,58.5,Gemini 3.1 Pro,35.0
+Business and finance,GPT-4.1-nano SFT,55.5,Gemini 3.1 Pro,33.5
+Public administration,Qwen3-30B-A3B SFT,55.0,Gemini 3.1 Pro,30.0

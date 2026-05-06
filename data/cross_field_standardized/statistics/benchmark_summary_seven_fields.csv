@@ -1,0 +1,8 @@
+field,field_display,benchmark_file,n_items,exceptional,strong,fair,limited,rq_with_context_missing,published_year_missing,core_rq_short_missing
+business_finance,Business and finance,data/cross_field_standardized/benchmarks/business_finance_benchmark_200.jsonl,200,50,50,50,50,0,200,200
+communication,Communication,data/cross_field_standardized/benchmarks/communication_benchmark_200.jsonl,200,50,50,50,50,0,200,200
+economics,Economics,data/cross_field_standardized/benchmarks/economics_benchmark_200.jsonl,200,50,50,50,50,0,0,0
+political_science,Political science,data/cross_field_standardized/benchmarks/political_science_benchmark_200.jsonl,200,50,50,50,50,0,200,200
+psychology_multidisciplinary,"Psychology, multidisciplinary",data/cross_field_standardized/benchmarks/psychology_multidisciplinary_benchmark_200.jsonl,200,50,50,50,50,0,200,200
+public_administration,Public administration,data/cross_field_standardized/benchmarks/public_administration_benchmark_200.jsonl,200,50,50,50,50,0,200,200
+sociology,Sociology,data/cross_field_standardized/benchmarks/sociology_benchmark_200.jsonl,200,50,50,50,50,0,200,200

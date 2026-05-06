@@ -1,0 +1,88 @@
+{
+  "metadata": {
+    "argmax_tie_break": "alphabetical (exceptional<fair<limited<strong)",
+    "data_source": "data/management_deep_probe/predictions/sft_predictions.jsonl",
+    "label_space": [
+      "exceptional",
+      "strong",
+      "fair",
+      "limited"
+    ],
+    "n_total_articles": 120,
+    "primary_ensemble_key": "best_2_model_combo",
+    "sft_model_keys": [
+      "gpt-4.1-ob",
+      "gpt-4.1-nano-ob",
+      "qwen3-30b-ob",
+      "qwen3-4b-ob"
+    ],
+    "supplementary_table": "ST22"
+  },
+  "per_tier": [
+    {
+      "consensus_accuracy": 1.0,
+      "consensus_prediction_distribution": {
+        "exceptional": 14,
+        "fair": 0,
+        "limited": 0,
+        "strong": 0
+      },
+      "coverage": 0.46666667,
+      "n_consensus_articles": 14,
+      "n_consensus_correct": 14,
+      "n_total": 30,
+      "tier": "exceptional"
+    },
+    {
+      "consensus_accuracy": 0.5,
+      "consensus_prediction_distribution": {
+        "exceptional": 6,
+        "fair": 0,
+        "limited": 0,
+        "strong": 6
+      },
+      "coverage": 0.4,
+      "n_consensus_articles": 12,
+      "n_consensus_correct": 6,
+      "n_total": 30,
+      "tier": "strong"
+    },
+    {
+      "consensus_accuracy": 0.66666667,
+      "consensus_prediction_distribution": {
+        "exceptional": 2,
+        "fair": 6,
+        "limited": 0,
+        "strong": 1
+      },
+      "coverage": 0.3,
+      "n_consensus_articles": 9,
+      "n_consensus_correct": 6,
+      "n_total": 30,
+      "tier": "fair"
+    },
+    {
+      "consensus_accuracy": 0.625,
+      "consensus_prediction_distribution": {
+        "exceptional": 0,
+        "fair": 6,
+        "limited": 10,
+        "strong": 0
+      },
+      "coverage": 0.53333333,
+      "n_consensus_articles": 16,
+      "n_consensus_correct": 10,
+      "n_total": 30,
+      "tier": "limited"
+    }
+  ],
+  "summary": {
+    "consensus_accuracy_overall": 0.70588235,
+    "consensus_coverage_overall": 0.425,
+    "n_consensus_articles": 51,
+    "n_consensus_correct": 36,
+    "n_non_consensus_articles": 69,
+    "n_non_consensus_ensemble_correct": 37,
+    "non_consensus_ensemble_accuracy": 0.53623188
+  }
+}

@@ -1,0 +1,8 @@
+cell,definition,n,pct_of_89
+Both correct,SFT ensemble correct and expert majority correct,24,26.97
+AI only correct,SFT ensemble correct and expert majority wrong,32,35.96
+Expert only correct,SFT ensemble wrong and expert majority correct,13,14.61
+Both wrong,Neither evaluator correct,20,22.47
+Oracle ceiling,Either correct (= both-correct + AI-only + expert-only),69,77.53
+SFT ensemble alone,(both-correct + AI-only) / 89,56,62.92
+Expert majority alone,(both-correct + expert-only) / 89,37,41.57

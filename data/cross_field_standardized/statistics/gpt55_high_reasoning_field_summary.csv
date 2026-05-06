@@ -1,0 +1,9 @@
+model,field,field_display,n_items,expected_items,run_attempts,expected_run_attempts,valid_runs,invalid_runs,pitch_mean_accuracy,majority_vote_accuracy,majority_vote_n,tie_n,tie_rate,error_runs,pred_exceptional,pred_strong,pred_fair,pred_limited
+gpt-5.5-2026-04-23,management,Management,120,120,960,960,960,0,0.2708333333333333,0.25217391304347825,115,5,0.041666666666666664,0,0,44,71,0
+gpt-5.5-2026-04-23,economics,Economics,200,200,1600,1600,1600,0,0.363125,0.3553299492385787,197,3,0.015,0,1,126,68,2
+gpt-5.5-2026-04-23,business_finance,Business and finance,200,200,1600,1600,1600,0,0.333125,0.3434343434343434,198,2,0.01,0,0,114,82,2
+gpt-5.5-2026-04-23,communication,Communication,200,200,1600,1600,1600,0,0.2925,0.29441624365482233,197,3,0.015,0,0,59,136,2
+gpt-5.5-2026-04-23,political_science,Political science,200,200,1600,1600,1600,0,0.32375,0.33157894736842103,190,10,0.05,0,0,124,65,1
+gpt-5.5-2026-04-23,psychology_multidisciplinary,Psychology,200,200,1600,1600,1600,0,0.295,0.3015075376884422,199,1,0.005,0,0,86,111,2
+gpt-5.5-2026-04-23,public_administration,Public administration,200,200,1600,1600,1600,0,0.278125,0.27979274611398963,193,7,0.035,0,0,103,90,0
+gpt-5.5-2026-04-23,sociology,Sociology,200,200,1600,1600,1600,0,0.319375,0.3163265306122449,196,4,0.02,0,0,109,86,1

@@ -1,0 +1,35 @@
+panel,field,measure,evaluator,source_path,source_key,n_total,n_correct,recall_or_acc
+A,all_fields,top1_accuracy_base_sft,three_arch_x_eight_fields,figure 2 panel A: PANEL_B_CELLS (forest plot of 24 architecture-field cells),PANEL_B_CELLS,,,see panel A bootstrap stats
+B,all_fields,top1_accuracy,heatmap_8x8,figure 2 panel B: heatmap_array,HEATMAP_ROWS,,,see panel B grid
+C,Psychology,exceptional_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,44,0.880
+C,Psychology,limited_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,39,0.780
+C,Psychology,exceptional_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,6,0.120
+C,Psychology,limited_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,0,0.000
+C,Economics,exceptional_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/economics_predictions.jsonl,qwen3_30b_sft_economics.logp -> _pred_from_logp (TIER_ORDER tie-break),50,23,0.460
+C,Economics,limited_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/economics_predictions.jsonl,qwen3_30b_sft_economics.logp -> _pred_from_logp (TIER_ORDER tie-break),50,40,0.800
+C,Economics,exceptional_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/economics_predictions.jsonl,gemini_3_1_pro.vote_counts -> _majority_from_votes (TIER_ORDER tie-break),50,15,0.300
+C,Economics,limited_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/economics_predictions.jsonl,gemini_3_1_pro.vote_counts -> _majority_from_votes (TIER_ORDER tie-break),50,0,0.000
+C,Communication,exceptional_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,29,0.580
+C,Communication,limited_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,38,0.760
+C,Communication,exceptional_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,0,0.000
+C,Communication,limited_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,3,0.060
+C,Sociology,exceptional_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,25,0.500
+C,Sociology,limited_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,41,0.820
+C,Sociology,exceptional_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,2,0.040
+C,Sociology,limited_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,1,0.020
+C,Management,exceptional_recall,SFT (Qwen3-30B-A3B),data/management_deep_probe/predictions/sft_predictions.jsonl,ckppt-380.logp -> _pred_from_logp (TIER_ORDER tie-break),30,22,0.733
+C,Management,limited_recall,SFT (Qwen3-30B-A3B),data/management_deep_probe/predictions/sft_predictions.jsonl,ckppt-380.logp -> _pred_from_logp (TIER_ORDER tie-break),30,16,0.533
+C,Management,exceptional_recall,Frontier (Gemini 3.1 Pro),data/management_deep_probe/predictions/frontier_10models_8runs.jsonl,google/gemini-3.1-pro-preview.prediction,30,11,0.367
+C,Management,limited_recall,Frontier (Gemini 3.1 Pro),data/management_deep_probe/predictions/frontier_10models_8runs.jsonl,google/gemini-3.1-pro-preview.prediction,30,3,0.100
+C,Pol. Science,exceptional_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,23,0.460
+C,Pol. Science,limited_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,23,0.460
+C,Pol. Science,exceptional_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,6,0.120
+C,Pol. Science,limited_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,2,0.040
+C,Bus. & Finance,exceptional_recall,SFT (GPT-4.1-nano),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,45,0.900
+C,Bus. & Finance,limited_recall,SFT (GPT-4.1-nano),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,33,0.660
+C,Bus. & Finance,exceptional_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,2,0.040
+C,Bus. & Finance,limited_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,1,0.020
+C,Public Admin.,exceptional_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,25,0.500
+C,Public Admin.,limited_recall,SFT (Qwen3-30B-A3B),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1_prediction,50,36,0.720
+C,Public Admin.,exceptional_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,1,0.020
+C,Public Admin.,limited_recall,Frontier (Gemini 3.1 Pro),data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,top1,50,0,0.000

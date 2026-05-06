@@ -1,0 +1,57 @@
+model,field,field_display,coverage,n,n_expected,n_selected,accuracy,full_accuracy,ece
+gpt-5.2,management,Management,10,120,120,12,0.4166666666666667,0.275,0.7141697076384079
+gpt-5.2,management,Management,15,120,120,18,0.5,0.275,0.7141697076384079
+gpt-5.2,management,Management,20,120,120,24,0.375,0.275,0.7141697076384079
+gpt-5.2,management,Management,25,120,120,30,0.3,0.275,0.7141697076384079
+gpt-5.2,management,Management,33,120,120,39,0.28205128205128205,0.275,0.7141697076384079
+gpt-5.2,management,Management,50,120,120,60,0.3,0.275,0.7141697076384079
+gpt-5.2,management,Management,100,120,120,120,0.275,0.275,0.7141697076384079
+gpt-5.2,economics,Economics,10,200,200,20,0.25,0.335,0.6574341086536463
+gpt-5.2,economics,Economics,15,200,200,30,0.2,0.335,0.6574341086536463
+gpt-5.2,economics,Economics,20,200,200,40,0.275,0.335,0.6574341086536463
+gpt-5.2,economics,Economics,25,200,200,50,0.34,0.335,0.6574341086536463
+gpt-5.2,economics,Economics,33,200,200,66,0.30303030303030304,0.335,0.6574341086536463
+gpt-5.2,economics,Economics,50,200,200,100,0.31,0.335,0.6574341086536463
+gpt-5.2,economics,Economics,100,200,200,200,0.335,0.335,0.6574341086536463
+gpt-5.2,business_finance,Business and finance,10,200,200,20,0.3,0.27,0.7103454501621251
+gpt-5.2,business_finance,Business and finance,15,200,200,30,0.36666666666666664,0.27,0.7103454501621251
+gpt-5.2,business_finance,Business and finance,20,200,200,40,0.325,0.27,0.7103454501621251
+gpt-5.2,business_finance,Business and finance,25,200,200,50,0.32,0.27,0.7103454501621251
+gpt-5.2,business_finance,Business and finance,33,200,200,66,0.3181818181818182,0.27,0.7103454501621251
+gpt-5.2,business_finance,Business and finance,50,200,200,100,0.3,0.27,0.7103454501621251
+gpt-5.2,business_finance,Business and finance,100,200,200,200,0.27,0.27,0.7103454501621251
+gpt-5.2,communication,Communication,10,200,200,20,0.3,0.27,0.6965541239312668
+gpt-5.2,communication,Communication,15,200,200,30,0.26666666666666666,0.27,0.6965541239312668
+gpt-5.2,communication,Communication,20,200,200,40,0.25,0.27,0.6965541239312668
+gpt-5.2,communication,Communication,25,200,200,50,0.24,0.27,0.6965541239312668
+gpt-5.2,communication,Communication,33,200,200,66,0.25757575757575757,0.27,0.6965541239312668
+gpt-5.2,communication,Communication,50,200,200,100,0.24,0.27,0.6965541239312668
+gpt-5.2,communication,Communication,100,200,200,200,0.27,0.27,0.6965541239312668
+gpt-5.2,political_science,Political science,10,200,200,20,0.3,0.27,0.7204059832483481
+gpt-5.2,political_science,Political science,15,200,200,30,0.3333333333333333,0.27,0.7204059832483481
+gpt-5.2,political_science,Political science,20,200,200,40,0.35,0.27,0.7204059832483481
+gpt-5.2,political_science,Political science,25,200,200,50,0.36,0.27,0.7204059832483481
+gpt-5.2,political_science,Political science,33,200,200,66,0.3181818181818182,0.27,0.7204059832483481
+gpt-5.2,political_science,Political science,50,200,200,100,0.32,0.27,0.7204059832483481
+gpt-5.2,political_science,Political science,100,200,200,200,0.27,0.27,0.7204059832483481
+gpt-5.2,psychology_multidisciplinary,Psychology,10,200,200,20,0.35,0.28,0.7060696658726824
+gpt-5.2,psychology_multidisciplinary,Psychology,15,200,200,30,0.3,0.28,0.7060696658726824
+gpt-5.2,psychology_multidisciplinary,Psychology,20,200,200,40,0.3,0.28,0.7060696658726824
+gpt-5.2,psychology_multidisciplinary,Psychology,25,200,200,50,0.28,0.28,0.7060696658726824
+gpt-5.2,psychology_multidisciplinary,Psychology,33,200,200,66,0.25757575757575757,0.28,0.7060696658726824
+gpt-5.2,psychology_multidisciplinary,Psychology,50,200,200,100,0.3,0.28,0.7060696658726824
+gpt-5.2,psychology_multidisciplinary,Psychology,100,200,200,200,0.28,0.28,0.7060696658726824
+gpt-5.2,public_administration,Public administration,10,200,200,20,0.5,0.29,0.6975781560403607
+gpt-5.2,public_administration,Public administration,15,200,200,30,0.4,0.29,0.6975781560403607
+gpt-5.2,public_administration,Public administration,20,200,200,40,0.325,0.29,0.6975781560403607
+gpt-5.2,public_administration,Public administration,25,200,200,50,0.36,0.29,0.6975781560403607
+gpt-5.2,public_administration,Public administration,33,200,200,66,0.30303030303030304,0.29,0.6975781560403607
+gpt-5.2,public_administration,Public administration,50,200,200,100,0.3,0.29,0.6975781560403607
+gpt-5.2,public_administration,Public administration,100,200,200,200,0.29,0.29,0.6975781560403607
+gpt-5.2,sociology,Sociology,10,200,200,20,0.2,0.275,0.7032077950065335
+gpt-5.2,sociology,Sociology,15,200,200,30,0.2,0.275,0.7032077950065335
+gpt-5.2,sociology,Sociology,20,200,200,40,0.175,0.275,0.7032077950065335
+gpt-5.2,sociology,Sociology,25,200,200,50,0.22,0.275,0.7032077950065335
+gpt-5.2,sociology,Sociology,33,200,200,66,0.21212121212121213,0.275,0.7032077950065335
+gpt-5.2,sociology,Sociology,50,200,200,100,0.3,0.275,0.7032077950065335
+gpt-5.2,sociology,Sociology,100,200,200,200,0.275,0.275,0.7032077950065335

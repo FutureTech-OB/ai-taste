@@ -1,0 +1,1464 @@
+{
+  "metadata": {
+    "fields": [
+      "management",
+      "economics",
+      "business_finance",
+      "communication",
+      "political_science",
+      "psychology_multidisciplinary",
+      "public_administration",
+      "sociology"
+    ],
+    "models": [
+      "qwen30b_sft",
+      "qwen4b_sft",
+      "gpt41nano_sft"
+    ],
+    "model_display_names": {
+      "qwen30b_sft": "Qwen3-30B SFT",
+      "qwen4b_sft": "Qwen3-4B SFT",
+      "gpt41nano_sft": "GPT-4.1-nano SFT"
+    },
+    "field_short_names": {
+      "management": "Mgmt",
+      "economics": "Econ",
+      "business_finance": "BusFin",
+      "communication": "Comm",
+      "political_science": "PolSci",
+      "psychology_multidisciplinary": "Psych",
+      "public_administration": "PubAdmin",
+      "sociology": "Sociol"
+    }
+  },
+  "calibration": {
+    "qwen30b_sft__business_finance": {
+      "n_total": 200,
+      "n_correct": 107,
+      "accuracy": 0.535,
+      "mean_conf_correct": 0.8021387541721027,
+      "mean_conf_incorrect": 0.6941110710214523,
+      "conf_gap": 0.10802768315065037,
+      "u_stat": 6868.0,
+      "p_value": 1.7910857417373199e-06,
+      "ece": 0.21907361131153874
+    },
+    "qwen30b_sft__communication": {
+      "n_total": 200,
+      "n_correct": 135,
+      "accuracy": 0.675,
+      "mean_conf_correct": 0.785519119258419,
+      "mean_conf_incorrect": 0.664437462810966,
+      "conf_gap": 0.12108165644745295,
+      "u_stat": 6171.0,
+      "p_value": 1.6538752615498056e-06,
+      "ece": 0.09947301279234971
+    },
+    "qwen30b_sft__political_science": {
+      "n_total": 200,
+      "n_correct": 117,
+      "accuracy": 0.585,
+      "mean_conf_correct": 0.7654633715608713,
+      "mean_conf_incorrect": 0.6733285932156121,
+      "conf_gap": 0.09213477834525918,
+      "u_stat": 6343.0,
+      "p_value": 0.00011346255014436917,
+      "ece": 0.14724704806229305
+    },
+    "qwen30b_sft__psychology_multidisciplinary": {
+      "n_total": 200,
+      "n_correct": 171,
+      "accuracy": 0.855,
+      "mean_conf_correct": 0.9287094851761271,
+      "mean_conf_incorrect": 0.6980514405994435,
+      "conf_gap": 0.2306580445766836,
+      "u_stat": 4260.0,
+      "p_value": 3.284857242040625e-10,
+      "ece": 0.04508828663751219
+    },
+    "qwen30b_sft__public_administration": {
+      "n_total": 200,
+      "n_correct": 110,
+      "accuracy": 0.55,
+      "mean_conf_correct": 0.6998737143901451,
+      "mean_conf_incorrect": 0.5654219032154306,
+      "conf_gap": 0.1344518111747145,
+      "u_stat": 6756.0,
+      "p_value": 4.630117740743105e-06,
+      "ece": 0.14106516660694754
+    },
+    "qwen30b_sft__sociology": {
+      "n_total": 200,
+      "n_correct": 131,
+      "accuracy": 0.655,
+      "mean_conf_correct": 0.7815337400246872,
+      "mean_conf_incorrect": 0.6204496419211045,
+      "conf_gap": 0.1610840981035827,
+      "u_stat": 6567.0,
+      "p_value": 7.17223030403106e-08,
+      "ece": 0.08614771393298476
+    },
+    "qwen30b_sft__management": {
+      "n_total": 120,
+      "n_correct": 70,
+      "accuracy": 0.5833333333333334,
+      "mean_conf_correct": 0.755144749823404,
+      "mean_conf_incorrect": 0.6569693006503133,
+      "conf_gap": 0.09817544917309062,
+      "u_stat": 2283.0,
+      "p_value": 0.002294541663341786,
+      "ece": 0.14620639710229075
+    },
+    "qwen30b_sft__economics": {
+      "n_total": 200,
+      "n_correct": 139,
+      "accuracy": 0.695,
+      "mean_conf_correct": 0.9001595354790712,
+      "mean_conf_incorrect": 0.7655752578588405,
+      "conf_gap": 0.13458427762023073,
+      "u_stat": 6704.0,
+      "p_value": 3.112310855590274e-11,
+      "ece": 0.17761629430971743
+    },
+    "qwen4b_sft__business_finance": {
+      "n_total": 200,
+      "n_correct": 107,
+      "accuracy": 0.535,
+      "mean_conf_correct": 0.7030392823380381,
+      "mean_conf_incorrect": 0.5772499909346754,
+      "conf_gap": 0.1257892914033627,
+      "u_stat": 7133.0,
+      "p_value": 6.34213864175651e-08,
+      "ece": 0.10954726183547446
+    },
+    "qwen4b_sft__communication": {
+      "n_total": 200,
+      "n_correct": 122,
+      "accuracy": 0.61,
+      "mean_conf_correct": 0.6903951289256294,
+      "mean_conf_incorrect": 0.5633722975456477,
+      "conf_gap": 0.12702283137998172,
+      "u_stat": 6554.0,
+      "p_value": 3.4412719839809125e-06,
+      "ece": 0.05082628643744609
+    },
+    "qwen4b_sft__political_science": {
+      "n_total": 200,
+      "n_correct": 101,
+      "accuracy": 0.505,
+      "mean_conf_correct": 0.6387177689780691,
+      "mean_conf_incorrect": 0.5767302750228924,
+      "conf_gap": 0.061987493955176665,
+      "u_stat": 6144.0,
+      "p_value": 0.0025919639274833537,
+      "ece": 0.1266786256353376
+    },
+    "qwen4b_sft__psychology_multidisciplinary": {
+      "n_total": 200,
+      "n_correct": 152,
+      "accuracy": 0.76,
+      "mean_conf_correct": 0.8763024469726602,
+      "mean_conf_incorrect": 0.6234016266398995,
+      "conf_gap": 0.25290082033276073,
+      "u_stat": 6253.0,
+      "p_value": 4.655937091134891e-14,
+      "ece": 0.065288144513064
+    },
+    "qwen4b_sft__public_administration": {
+      "n_total": 200,
+      "n_correct": 102,
+      "accuracy": 0.51,
+      "mean_conf_correct": 0.6776017890086627,
+      "mean_conf_incorrect": 0.5471533598930034,
+      "conf_gap": 0.13044842911565935,
+      "u_stat": 6902.0,
+      "p_value": 1.6442835683874096e-06,
+      "ece": 0.11529372714258108
+    },
+    "qwen4b_sft__sociology": {
+      "n_total": 200,
+      "n_correct": 102,
+      "accuracy": 0.51,
+      "mean_conf_correct": 0.7693689456108272,
+      "mean_conf_incorrect": 0.6048011675638585,
+      "conf_gap": 0.16456777804696876,
+      "u_stat": 7387.0,
+      "p_value": 2.654237502573731e-09,
+      "ece": 0.17957869393838802
+    },
+    "qwen4b_sft__management": {
+      "n_total": 120,
+      "n_correct": 71,
+      "accuracy": 0.5916666666666667,
+      "mean_conf_correct": 0.9089184762167593,
+      "mean_conf_incorrect": 0.8989582327422517,
+      "conf_gap": 0.009960243474507524,
+      "u_stat": 2153.0,
+      "p_value": 0.013724340180138822,
+      "ece": 0.35780659016095906
+    },
+    "qwen4b_sft__economics": {
+      "n_total": 200,
+      "n_correct": 128,
+      "accuracy": 0.64,
+      "mean_conf_correct": 0.7771683911455285,
+      "mean_conf_incorrect": 0.5941417010920348,
+      "conf_gap": 0.1830266900534937,
+      "u_stat": 7019.0,
+      "p_value": 4.2526922575263316e-10,
+      "ece": 0.10557718023454196
+    },
+    "gpt41nano_sft__business_finance": {
+      "n_total": 200,
+      "n_correct": 111,
+      "accuracy": 0.555,
+      "mean_conf_correct": 0.7003342194715795,
+      "mean_conf_incorrect": 0.5863571705445711,
+      "conf_gap": 0.11397704892700833,
+      "u_stat": 6781.0,
+      "p_value": 3.0091838676563463e-06,
+      "ece": 0.10260028381482796
+    },
+    "gpt41nano_sft__communication": {
+      "n_total": 200,
+      "n_correct": 121,
+      "accuracy": 0.605,
+      "mean_conf_correct": 0.6826611031453663,
+      "mean_conf_incorrect": 0.5859716173912947,
+      "conf_gap": 0.09668948575407166,
+      "u_stat": 6094.0,
+      "p_value": 0.0005120187755867166,
+      "ece": 0.14179933975564626
+    },
+    "gpt41nano_sft__political_science": {
+      "n_total": 200,
+      "n_correct": 108,
+      "accuracy": 0.54,
+      "mean_conf_correct": 0.6147600885073545,
+      "mean_conf_incorrect": 0.5211377870224966,
+      "conf_gap": 0.09362230148485795,
+      "u_stat": 6562.0,
+      "p_value": 4.6906682330719745e-05,
+      "ece": 0.07847270378079041
+    },
+    "gpt41nano_sft__psychology_multidisciplinary": {
+      "n_total": 200,
+      "n_correct": 163,
+      "accuracy": 0.815,
+      "mean_conf_correct": 0.8680974406284236,
+      "mean_conf_incorrect": 0.640408645519622,
+      "conf_gap": 0.2276887951088017,
+      "u_stat": 5083.0,
+      "p_value": 3.927036994775238e-11,
+      "ece": 0.045058751928411335
+    },
+    "gpt41nano_sft__public_administration": {
+      "n_total": 200,
+      "n_correct": 107,
+      "accuracy": 0.535,
+      "mean_conf_correct": 0.6166454727080798,
+      "mean_conf_incorrect": 0.4900932228328192,
+      "conf_gap": 0.1265522498752606,
+      "u_stat": 6489.0,
+      "p_value": 0.00010530487468097777,
+      "ece": 0.09236158925346556
+    },
+    "gpt41nano_sft__sociology": {
+      "n_total": 200,
+      "n_correct": 108,
+      "accuracy": 0.54,
+      "mean_conf_correct": 0.703447264545363,
+      "mean_conf_incorrect": 0.49966581985800834,
+      "conf_gap": 0.20378144468735465,
+      "u_stat": 7697.0,
+      "p_value": 1.1294817664680546e-11,
+      "ece": 0.098317228054177
+    },
+    "gpt41nano_sft__management": {
+      "n_total": 120,
+      "n_correct": 69,
+      "accuracy": 0.575,
+      "mean_conf_correct": 0.5784290658110223,
+      "mean_conf_incorrect": 0.4843949665146364,
+      "conf_gap": 0.09403409929638584,
+      "u_stat": 2316.0,
+      "p_value": 0.001580466215836715,
+      "ece": 0.09600437200477352
+    },
+    "gpt41nano_sft__economics": {
+      "n_total": 200,
+      "n_correct": 137,
+      "accuracy": 0.685,
+      "mean_conf_correct": 0.803804798707662,
+      "mean_conf_incorrect": 0.6285654887396988,
+      "conf_gap": 0.17523930996796322,
+      "u_stat": 6626.0,
+      "p_value": 6.184415906143135e-10,
+      "ece": 0.08386118709594906
+    }
+  },
+  "selective_prediction": {
+    "qwen30b_sft__business_finance": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.95,
+        "n_correct": 19
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.9,
+        "n_correct": 27
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.925,
+        "n_correct": 37
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.8,
+        "n_correct": 40
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.7424242424242424,
+        "n_correct": 49
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.67,
+        "n_correct": 67
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.535,
+        "n_correct": 107
+      },
+      "coverage_for_80pct": 25,
+      "perfect_coverage": 2.5
+    },
+    "qwen30b_sft__communication": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.9666666666666667,
+        "n_correct": 29
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.925,
+        "n_correct": 37
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.92,
+        "n_correct": 46
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.8333333333333334,
+        "n_correct": 55
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.79,
+        "n_correct": 79
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.675,
+        "n_correct": 135
+      },
+      "coverage_for_80pct": 55,
+      "perfect_coverage": 10
+    },
+    "qwen30b_sft__political_science": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.8,
+        "n_correct": 16
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.7333333333333333,
+        "n_correct": 22
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.675,
+        "n_correct": 27
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.72,
+        "n_correct": 36
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.7424242424242424,
+        "n_correct": 49
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.69,
+        "n_correct": 69
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.585,
+        "n_correct": 117
+      },
+      "coverage_for_80pct": 10,
+      "perfect_coverage": 5
+    },
+    "qwen30b_sft__psychology_multidisciplinary": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 1.0,
+        "n_correct": 30
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.975,
+        "n_correct": 39
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.98,
+        "n_correct": 49
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.9696969696969697,
+        "n_correct": 64
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.98,
+        "n_correct": 98
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.855,
+        "n_correct": 171
+      },
+      "coverage_for_80pct": 100,
+      "perfect_coverage": 15
+    },
+    "qwen30b_sft__public_administration": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.95,
+        "n_correct": 19
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.9333333333333333,
+        "n_correct": 28
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.9,
+        "n_correct": 36
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.86,
+        "n_correct": 43
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.8181818181818182,
+        "n_correct": 54
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.69,
+        "n_correct": 69
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.55,
+        "n_correct": 110
+      },
+      "coverage_for_80pct": 35,
+      "perfect_coverage": 5
+    },
+    "qwen30b_sft__sociology": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.95,
+        "n_correct": 19
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.9666666666666667,
+        "n_correct": 29
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.95,
+        "n_correct": 38
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.94,
+        "n_correct": 47
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.8787878787878788,
+        "n_correct": 58
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.83,
+        "n_correct": 83
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.655,
+        "n_correct": 131
+      },
+      "coverage_for_80pct": 50,
+      "perfect_coverage": 5
+    },
+    "qwen30b_sft__management": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 12,
+        "accuracy": 1.0,
+        "n_correct": 12
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 18,
+        "accuracy": 0.8888888888888888,
+        "n_correct": 16
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 24,
+        "accuracy": 0.75,
+        "n_correct": 18
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 30,
+        "accuracy": 0.7333333333333333,
+        "n_correct": 22
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 39,
+        "accuracy": 0.717948717948718,
+        "n_correct": 28
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 60,
+        "accuracy": 0.7,
+        "n_correct": 42
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 120,
+        "accuracy": 0.5833333333333334,
+        "n_correct": 70
+      },
+      "coverage_for_80pct": 15,
+      "perfect_coverage": 10
+    },
+    "qwen30b_sft__economics": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 1.0,
+        "n_correct": 30
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.975,
+        "n_correct": 39
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.98,
+        "n_correct": 49
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.9848484848484849,
+        "n_correct": 65
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.89,
+        "n_correct": 89
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.695,
+        "n_correct": 139
+      },
+      "coverage_for_80pct": 70,
+      "perfect_coverage": 15
+    },
+    "qwen4b_sft__business_finance": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.85,
+        "n_correct": 17
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.8333333333333334,
+        "n_correct": 25
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.85,
+        "n_correct": 34
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.82,
+        "n_correct": 41
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.7424242424242424,
+        "n_correct": 49
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.68,
+        "n_correct": 68
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.535,
+        "n_correct": 107
+      },
+      "coverage_for_80pct": 25,
+      "perfect_coverage": 3.0
+    },
+    "qwen4b_sft__communication": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.95,
+        "n_correct": 19
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.9333333333333333,
+        "n_correct": 28
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.95,
+        "n_correct": 38
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.88,
+        "n_correct": 44
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.8181818181818182,
+        "n_correct": 54
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.72,
+        "n_correct": 72
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.61,
+        "n_correct": 122
+      },
+      "coverage_for_80pct": 35,
+      "perfect_coverage": 5
+    },
+    "qwen4b_sft__political_science": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.75,
+        "n_correct": 15
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.7,
+        "n_correct": 21
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.65,
+        "n_correct": 26
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.58,
+        "n_correct": 29
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.5909090909090909,
+        "n_correct": 39
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.58,
+        "n_correct": 58
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.505,
+        "n_correct": 101
+      },
+      "coverage_for_80pct": null,
+      "perfect_coverage": 1.5
+    },
+    "qwen4b_sft__psychology_multidisciplinary": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 1.0,
+        "n_correct": 30
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.95,
+        "n_correct": 38
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.96,
+        "n_correct": 48
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.9696969696969697,
+        "n_correct": 64
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.96,
+        "n_correct": 96
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.76,
+        "n_correct": 152
+      },
+      "coverage_for_80pct": 90,
+      "perfect_coverage": 15
+    },
+    "qwen4b_sft__public_administration": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.9,
+        "n_correct": 18
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.8333333333333334,
+        "n_correct": 25
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.775,
+        "n_correct": 31
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.72,
+        "n_correct": 36
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.6818181818181818,
+        "n_correct": 45
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.63,
+        "n_correct": 63
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.51,
+        "n_correct": 102
+      },
+      "coverage_for_80pct": 15,
+      "perfect_coverage": 1.0
+    },
+    "qwen4b_sft__sociology": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 1.0,
+        "n_correct": 30
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.925,
+        "n_correct": 37
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.88,
+        "n_correct": 44
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.8181818181818182,
+        "n_correct": 54
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.67,
+        "n_correct": 67
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.51,
+        "n_correct": 102
+      },
+      "coverage_for_80pct": 35,
+      "perfect_coverage": 15
+    },
+    "qwen4b_sft__management": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 12,
+        "accuracy": 0.9166666666666666,
+        "n_correct": 11
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 18,
+        "accuracy": 0.8333333333333334,
+        "n_correct": 15
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 24,
+        "accuracy": 0.75,
+        "n_correct": 18
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 30,
+        "accuracy": 0.8,
+        "n_correct": 24
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 39,
+        "accuracy": 0.8461538461538461,
+        "n_correct": 33
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 60,
+        "accuracy": 0.6833333333333333,
+        "n_correct": 41
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 120,
+        "accuracy": 0.5916666666666667,
+        "n_correct": 71
+      },
+      "coverage_for_80pct": 35,
+      "perfect_coverage": 5
+    },
+    "qwen4b_sft__economics": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.95,
+        "n_correct": 19
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.9666666666666667,
+        "n_correct": 29
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.975,
+        "n_correct": 39
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.96,
+        "n_correct": 48
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.9242424242424242,
+        "n_correct": 61
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.84,
+        "n_correct": 84
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.64,
+        "n_correct": 128
+      },
+      "coverage_for_80pct": 55,
+      "perfect_coverage": 5
+    },
+    "gpt41nano_sft__business_finance": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.9,
+        "n_correct": 18
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.8333333333333334,
+        "n_correct": 25
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.875,
+        "n_correct": 35
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.82,
+        "n_correct": 41
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.7424242424242424,
+        "n_correct": 49
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.66,
+        "n_correct": 66
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.555,
+        "n_correct": 111
+      },
+      "coverage_for_80pct": 30,
+      "perfect_coverage": 5
+    },
+    "gpt41nano_sft__communication": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.9,
+        "n_correct": 27
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.825,
+        "n_correct": 33
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.84,
+        "n_correct": 42
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.7878787878787878,
+        "n_correct": 52
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.67,
+        "n_correct": 67
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.605,
+        "n_correct": 121
+      },
+      "coverage_for_80pct": 30,
+      "perfect_coverage": 10
+    },
+    "gpt41nano_sft__political_science": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.9,
+        "n_correct": 18
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.8666666666666667,
+        "n_correct": 26
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.775,
+        "n_correct": 31
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.72,
+        "n_correct": 36
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.7121212121212122,
+        "n_correct": 47
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.65,
+        "n_correct": 65
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.54,
+        "n_correct": 108
+      },
+      "coverage_for_80pct": 15,
+      "perfect_coverage": 3.0
+    },
+    "gpt41nano_sft__psychology_multidisciplinary": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 1.0,
+        "n_correct": 30
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 1.0,
+        "n_correct": 40
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 1.0,
+        "n_correct": 50
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.9848484848484849,
+        "n_correct": 65
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.96,
+        "n_correct": 96
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.815,
+        "n_correct": 163
+      },
+      "coverage_for_80pct": 100,
+      "perfect_coverage": 30
+    },
+    "gpt41nano_sft__public_administration": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 0.95,
+        "n_correct": 19
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.8,
+        "n_correct": 24
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.775,
+        "n_correct": 31
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.74,
+        "n_correct": 37
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.7121212121212122,
+        "n_correct": 47
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.63,
+        "n_correct": 63
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.535,
+        "n_correct": 107
+      },
+      "coverage_for_80pct": 15,
+      "perfect_coverage": 5
+    },
+    "gpt41nano_sft__sociology": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 0.9666666666666667,
+        "n_correct": 29
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 0.975,
+        "n_correct": 39
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.94,
+        "n_correct": 47
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.8484848484848485,
+        "n_correct": 56
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.74,
+        "n_correct": 74
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.54,
+        "n_correct": 108
+      },
+      "coverage_for_80pct": 40,
+      "perfect_coverage": 10
+    },
+    "gpt41nano_sft__management": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 12,
+        "accuracy": 1.0,
+        "n_correct": 12
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 18,
+        "accuracy": 0.9444444444444444,
+        "n_correct": 17
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 24,
+        "accuracy": 0.7916666666666666,
+        "n_correct": 19
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 30,
+        "accuracy": 0.7666666666666667,
+        "n_correct": 23
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 39,
+        "accuracy": 0.6923076923076923,
+        "n_correct": 27
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 60,
+        "accuracy": 0.6666666666666666,
+        "n_correct": 40
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 120,
+        "accuracy": 0.575,
+        "n_correct": 69
+      },
+      "coverage_for_80pct": 15,
+      "perfect_coverage": 10
+    },
+    "gpt41nano_sft__economics": {
+      "10": {
+        "k_pct": 10,
+        "n_selected": 20,
+        "accuracy": 1.0,
+        "n_correct": 20
+      },
+      "15": {
+        "k_pct": 15,
+        "n_selected": 30,
+        "accuracy": 1.0,
+        "n_correct": 30
+      },
+      "20": {
+        "k_pct": 20,
+        "n_selected": 40,
+        "accuracy": 1.0,
+        "n_correct": 40
+      },
+      "25": {
+        "k_pct": 25,
+        "n_selected": 50,
+        "accuracy": 0.96,
+        "n_correct": 48
+      },
+      "33": {
+        "k_pct": 33,
+        "n_selected": 66,
+        "accuracy": 0.9393939393939394,
+        "n_correct": 62
+      },
+      "50": {
+        "k_pct": 50,
+        "n_selected": 100,
+        "accuracy": 0.85,
+        "n_correct": 85
+      },
+      "100": {
+        "k_pct": 100,
+        "n_selected": 200,
+        "accuracy": 0.685,
+        "n_correct": 137
+      },
+      "coverage_for_80pct": 65,
+      "perfect_coverage": 20
+    }
+  },
+  "cross_field_summary": {
+    "management": {
+      "mean_accuracy": 0.5833333333333334,
+      "mean_conf_gap": 0.06738993064799466,
+      "mean_ece": 0.20000578642267444,
+      "mean_conf_correct": 0.7474974306170618,
+      "mean_conf_incorrect": 0.6801074999690672
+    },
+    "economics": {
+      "mean_accuracy": 0.6733333333333333,
+      "mean_conf_gap": 0.16428342588056255,
+      "mean_ece": 0.12235155388006948,
+      "mean_conf_correct": 0.8270442417774205,
+      "mean_conf_incorrect": 0.662760815896858
+    },
+    "business_finance": {
+      "mean_accuracy": 0.5416666666666666,
+      "mean_conf_gap": 0.11593134116034047,
+      "mean_ece": 0.14374038565394706,
+      "mean_conf_correct": 0.7351707519939068,
+      "mean_conf_incorrect": 0.6192394108335663
+    },
+    "communication": {
+      "mean_accuracy": 0.63,
+      "mean_conf_gap": 0.11493132452716877,
+      "mean_ece": 0.09736621299514736,
+      "mean_conf_correct": 0.7195251171098049,
+      "mean_conf_incorrect": 0.6045937925826361
+    },
+    "political_science": {
+      "mean_accuracy": 0.5433333333333333,
+      "mean_conf_gap": 0.08258152459509793,
+      "mean_ece": 0.11746612582614036,
+      "mean_conf_correct": 0.6729804096820983,
+      "mean_conf_incorrect": 0.5903988850870004
+    },
+    "psychology_multidisciplinary": {
+      "mean_accuracy": 0.8099999999999999,
+      "mean_conf_gap": 0.23708255333941533,
+      "mean_ece": 0.051811727692995836,
+      "mean_conf_correct": 0.8910364575924037,
+      "mean_conf_incorrect": 0.6539539042529884
+    },
+    "public_administration": {
+      "mean_accuracy": 0.5316666666666667,
+      "mean_conf_gap": 0.13048416338854482,
+      "mean_ece": 0.11624016100099806,
+      "mean_conf_correct": 0.6647069920356292,
+      "mean_conf_incorrect": 0.5342228286470844
+    },
+    "sociology": {
+      "mean_accuracy": 0.5683333333333334,
+      "mean_conf_gap": 0.17647777361263536,
+      "mean_ece": 0.12134787864184993,
+      "mean_conf_correct": 0.7514499833936258,
+      "mean_conf_incorrect": 0.5749722097809905
+    }
+  }
+}

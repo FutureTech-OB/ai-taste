@@ -1,0 +1,52 @@
+{
+  "panel_d_recall": [
+    {
+      "class": "exceptional",
+      "evaluator": "SFT ensemble",
+      "correct": 23,
+      "total": 30,
+      "recall": 0.766667
+    },
+    {
+      "class": "exceptional",
+      "evaluator": "Frontier (Gemini 3.1 Pro)",
+      "correct": 11,
+      "total": 30,
+      "recall": 0.366667
+    },
+    {
+      "class": "exceptional",
+      "evaluator": "Expert majority",
+      "correct": 5,
+      "total": 22,
+      "recall": 0.227273
+    },
+    {
+      "class": "limited",
+      "evaluator": "SFT ensemble",
+      "correct": 16,
+      "total": 30,
+      "recall": 0.533333
+    },
+    {
+      "class": "limited",
+      "evaluator": "Frontier (Gemini 3.1 Pro)",
+      "correct": 3,
+      "total": 30,
+      "recall": 0.1
+    },
+    {
+      "class": "limited",
+      "evaluator": "Expert majority",
+      "correct": 6,
+      "total": 20,
+      "recall": 0.3
+    }
+  ],
+  "data_sources": {
+    "ground_truth": "data/articles/selected_120_articles.jsonl",
+    "sft_ensemble": "data/management_deep_probe/predictions/sft_predictions.jsonl (best_2_model_combo: GPT-4.1-nano ckpt-step-304 + Qwen3-30B ckppt-380)",
+    "frontier": "data/management_deep_probe/predictions/frontier_10models_8runs.jsonl (google/gemini-3.1-pro-preview)",
+    "expert_majority": "data/management_deep_probe/human_ratings/archive/survey_all_expert.jsonl (unfiltered; ties excluded)"
+  }
+}

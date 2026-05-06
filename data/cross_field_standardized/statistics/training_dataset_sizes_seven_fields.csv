@@ -1,0 +1,8 @@
+field,training_rows_post_split,heldout_validation_n,tier_balance_validation
+Economics,5593,200,50 per tier
+Business and finance,4550,200,50 per tier
+Communication,2587,200,50 per tier
+Political science,2931,200,50 per tier
+"Psychology, multidisciplinary",2476,200,50 per tier
+Public administration,2251,200,50 per tier
+Sociology,2094,200,50 per tier

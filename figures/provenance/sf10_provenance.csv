@@ -1,0 +1,12 @@
+model,model_key,n_primary,n_discrete,accuracy,acc_ci_lo,acc_ci_hi,macro_f1,f1_ci_lo,f1_ci_hi,pred_exceptional,pred_strong,pred_fair,pred_limited,source_file,source_section
+Gemini 3.1 Pro,google/gemini-3.1-pro-preview,120,115,0.3876,0.3052,0.4770,0.3743,0.2772,0.4697,23,30,56,6,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['Gemini 3.1 Pro']
+GLM-5,z-ai/glm-5,120,112,0.3350,0.2568,0.4234,0.3029,0.2253,0.3882,22,33,56,1,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['GLM-5']
+Grok 4.1 Fast,x-ai/grok-4.1-fast,120,113,0.3323,0.2544,0.4206,0.2806,0.2095,0.3435,32,64,17,0,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['Grok 4.1 Fast']
+Qwen 3.5 Plus,qwen/qwen3.5-plus-02-15,120,113,0.3289,0.2513,0.4171,0.2498,0.1693,0.3337,7,30,73,3,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['Qwen 3.5 Plus']
+Kimi K2.5,moonshotai/kimi-k2.5,120,109,0.3146,0.2384,0.4023,0.2391,0.1714,0.3113,2,63,43,1,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['Kimi K2.5']
+GPT-5.2 High,openai/gpt-5.2-high,120,117,0.3104,0.2346,0.3980,0.2070,0.1590,0.2540,0,67,50,0,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['GPT-5.2 High']
+Gemini 2.5 Pro,google/gemini-2.5-pro,120,112,0.2948,0.2206,0.3817,0.2499,0.1752,0.3209,52,38,21,1,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['Gemini 2.5 Pro']
+MiniMax M2.5,minimax/minimax-m2.5,120,113,0.2833,0.2104,0.3697,0.1701,0.1178,0.2202,0,96,17,0,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['MiniMax M2.5']
+Seed 2.0 Pro,doubao-seed-2-0-pro-260215,120,113,0.2823,0.2095,0.3686,0.2257,0.1615,0.2781,32,73,8,0,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['Seed 2.0']
+Claude Opus 4.6,anthropic/claude-opus-4.6,120,120,0.2802,0.2076,0.3664,0.1445,0.1049,0.1896,0,104,16,0,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['Claude Opus 4.6']
+DeepSeek V3.2,deepseek/deepseek-v3.2-speciale,120,112,0.2667,0.1957,0.3522,0.1484,0.0960,0.2061,4,100,8,0,data/management_deep_probe/statistics/S01_FlagshipStats.json,model_performance['DeepSeek V3.2']

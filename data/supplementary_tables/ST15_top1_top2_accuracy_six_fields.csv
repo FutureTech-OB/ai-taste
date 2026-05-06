@@ -1,0 +1,19 @@
+field,model,n,top1_or_top2_accuracy_pct
+Business and finance,GPT-4.1-nano SFT,200,85.0
+Business and finance,Qwen3-30B SFT,200,85.5
+Business and finance,Qwen3-4B SFT,200,82.5
+Communication,GPT-4.1-nano SFT,200,90.0
+Communication,Qwen3-30B SFT,200,89.0
+Communication,Qwen3-4B SFT,200,88.5
+Political science,GPT-4.1-nano SFT,200,82.0
+Political science,Qwen3-30B SFT,200,84.5
+Political science,Qwen3-4B SFT,200,79.5
+"Psychology, multidisciplinary",GPT-4.1-nano SFT,200,94.5
+"Psychology, multidisciplinary",Qwen3-30B SFT,200,96.5
+"Psychology, multidisciplinary",Qwen3-4B SFT,200,92.0
+Public administration,GPT-4.1-nano SFT,200,74.5
+Public administration,Qwen3-30B SFT,200,74.5
+Public administration,Qwen3-4B SFT,200,74.5
+Sociology,GPT-4.1-nano SFT,200,75.0
+Sociology,Qwen3-30B SFT,200,84.5
+Sociology,Qwen3-4B SFT,200,77.0

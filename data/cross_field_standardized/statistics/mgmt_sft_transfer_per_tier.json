@@ -1,0 +1,738 @@
+{
+  "GPT-4.1 (mgmt SFT)": {
+    "business_finance": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 51,
+        "recall": 0.66,
+        "precision": 0.6471
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 100,
+        "recall": 0.62,
+        "precision": 0.31
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 45,
+        "recall": 0.2,
+        "precision": 0.2222
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 4,
+        "recall": 0.08,
+        "precision": 1.0
+      }
+    },
+    "communication": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 0,
+        "recall": 0.0,
+        "precision": 0.0
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 72,
+        "recall": 0.38,
+        "precision": 0.2639
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 116,
+        "recall": 0.68,
+        "precision": 0.2931
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 12,
+        "recall": 0.2,
+        "precision": 0.8333
+      }
+    },
+    "political_science": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 17,
+        "recall": 0.3,
+        "precision": 0.8824
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 133,
+        "recall": 0.92,
+        "precision": 0.3459
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 48,
+        "recall": 0.36,
+        "precision": 0.375
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 2,
+        "recall": 0.02,
+        "precision": 0.5
+      }
+    },
+    "psychology_multidisciplinary": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 3,
+        "recall": 0.06,
+        "precision": 1.0
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 83,
+        "recall": 0.56,
+        "precision": 0.3373
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 75,
+        "recall": 0.64,
+        "precision": 0.4267
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 39,
+        "recall": 0.48,
+        "precision": 0.6154
+      }
+    },
+    "public_administration": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 0,
+        "recall": 0.0,
+        "precision": 0.0
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 107,
+        "recall": 0.72,
+        "precision": 0.3364
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 91,
+        "recall": 0.58,
+        "precision": 0.3187
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 2,
+        "recall": 0.02,
+        "precision": 0.5
+      }
+    },
+    "sociology": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 6,
+        "recall": 0.12,
+        "precision": 1.0
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 116,
+        "recall": 0.74,
+        "precision": 0.319
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 76,
+        "recall": 0.52,
+        "precision": 0.3421
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 2,
+        "recall": 0.02,
+        "precision": 0.5
+      }
+    },
+    "economics": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 95,
+        "recall": 0.88,
+        "precision": 0.4632
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 56,
+        "recall": 0.38,
+        "precision": 0.3393
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 41,
+        "recall": 0.38,
+        "precision": 0.4634
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 8,
+        "recall": 0.1,
+        "precision": 0.625
+      }
+    }
+  },
+  "GPT-4.1-nano (mgmt SFT)": {
+    "business_finance": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 151,
+        "recall": 0.98,
+        "precision": 0.3245
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 4,
+        "recall": 0.0,
+        "precision": 0.0
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 43,
+        "recall": 0.2,
+        "precision": 0.2326
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 2,
+        "recall": 0.02,
+        "precision": 0.5
+      }
+    },
+    "communication": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 11,
+        "recall": 0.1,
+        "precision": 0.4545
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 14,
+        "recall": 0.12,
+        "precision": 0.4286
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 141,
+        "recall": 0.8,
+        "precision": 0.2837
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 34,
+        "recall": 0.3,
+        "precision": 0.4412
+      }
+    },
+    "political_science": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 77,
+        "recall": 0.74,
+        "precision": 0.4805
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 7,
+        "recall": 0.04,
+        "precision": 0.2857
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 111,
+        "recall": 0.82,
+        "precision": 0.3694
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 5,
+        "recall": 0.04,
+        "precision": 0.4
+      }
+    },
+    "psychology_multidisciplinary": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 6,
+        "recall": 0.08,
+        "precision": 0.6667
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 40,
+        "recall": 0.18,
+        "precision": 0.225
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 42,
+        "recall": 0.28,
+        "precision": 0.3333
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 112,
+        "recall": 0.74,
+        "precision": 0.3304
+      }
+    },
+    "public_administration": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 33,
+        "recall": 0.22,
+        "precision": 0.3333
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 7,
+        "recall": 0.02,
+        "precision": 0.1429
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 149,
+        "recall": 0.74,
+        "precision": 0.2483
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 11,
+        "recall": 0.02,
+        "precision": 0.0909
+      }
+    },
+    "sociology": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 46,
+        "recall": 0.42,
+        "precision": 0.4565
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 10,
+        "recall": 0.04,
+        "precision": 0.2
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 130,
+        "recall": 0.78,
+        "precision": 0.3
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 14,
+        "recall": 0.12,
+        "precision": 0.4286
+      }
+    },
+    "economics": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 133,
+        "recall": 0.94,
+        "precision": 0.3534
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 5,
+        "recall": 0.02,
+        "precision": 0.2
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 54,
+        "recall": 0.44,
+        "precision": 0.4074
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 8,
+        "recall": 0.08,
+        "precision": 0.5
+      }
+    }
+  },
+  "Qwen3-30B-A3B (mgmt SFT)": {
+    "business_finance": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 134,
+        "recall": 0.98,
+        "precision": 0.3657
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 13,
+        "recall": 0.06,
+        "precision": 0.2308
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 52,
+        "recall": 0.22,
+        "precision": 0.2115
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 1,
+        "recall": 0.0,
+        "precision": 0.0
+      }
+    },
+    "communication": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 7,
+        "recall": 0.06,
+        "precision": 0.4286
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 8,
+        "recall": 0.06,
+        "precision": 0.375
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 153,
+        "recall": 0.82,
+        "precision": 0.268
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 32,
+        "recall": 0.22,
+        "precision": 0.3438
+      }
+    },
+    "political_science": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 90,
+        "recall": 0.86,
+        "precision": 0.4778
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 4,
+        "recall": 0.02,
+        "precision": 0.25
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 102,
+        "recall": 0.74,
+        "precision": 0.3627
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 4,
+        "recall": 0.02,
+        "precision": 0.25
+      }
+    },
+    "psychology_multidisciplinary": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 4,
+        "recall": 0.06,
+        "precision": 0.75
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 43,
+        "recall": 0.12,
+        "precision": 0.1395
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 29,
+        "recall": 0.16,
+        "precision": 0.2759
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 124,
+        "recall": 0.86,
+        "precision": 0.3468
+      }
+    },
+    "public_administration": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 35,
+        "recall": 0.22,
+        "precision": 0.3143
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 11,
+        "recall": 0.04,
+        "precision": 0.1818
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 141,
+        "recall": 0.72,
+        "precision": 0.2553
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 13,
+        "recall": 0.02,
+        "precision": 0.0769
+      }
+    },
+    "sociology": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 59,
+        "recall": 0.6,
+        "precision": 0.5085
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 7,
+        "recall": 0.04,
+        "precision": 0.2857
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 118,
+        "recall": 0.74,
+        "precision": 0.3136
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 16,
+        "recall": 0.16,
+        "precision": 0.5
+      }
+    },
+    "economics": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 122,
+        "recall": 0.88,
+        "precision": 0.3607
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 20,
+        "recall": 0.12,
+        "precision": 0.3
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 46,
+        "recall": 0.4,
+        "precision": 0.4348
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 12,
+        "recall": 0.12,
+        "precision": 0.5
+      }
+    }
+  },
+  "Qwen3-4B (mgmt SFT)": {
+    "business_finance": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 130,
+        "recall": 0.94,
+        "precision": 0.3615
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 19,
+        "recall": 0.04,
+        "precision": 0.1053
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 48,
+        "recall": 0.24,
+        "precision": 0.25
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 3,
+        "recall": 0.04,
+        "precision": 0.6667
+      }
+    },
+    "communication": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 10,
+        "recall": 0.1,
+        "precision": 0.5
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 32,
+        "recall": 0.16,
+        "precision": 0.25
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 133,
+        "recall": 0.74,
+        "precision": 0.2782
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 25,
+        "recall": 0.24,
+        "precision": 0.48
+      }
+    },
+    "political_science": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 65,
+        "recall": 0.64,
+        "precision": 0.4923
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 15,
+        "recall": 0.1,
+        "precision": 0.3333
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 115,
+        "recall": 0.72,
+        "precision": 0.313
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 5,
+        "recall": 0.02,
+        "precision": 0.2
+      }
+    },
+    "psychology_multidisciplinary": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 7,
+        "recall": 0.1,
+        "precision": 0.7143
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 55,
+        "recall": 0.28,
+        "precision": 0.2545
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 35,
+        "recall": 0.2,
+        "precision": 0.2857
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 103,
+        "recall": 0.72,
+        "precision": 0.3495
+      }
+    },
+    "public_administration": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 28,
+        "recall": 0.22,
+        "precision": 0.3929
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 16,
+        "recall": 0.04,
+        "precision": 0.125
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 134,
+        "recall": 0.7,
+        "precision": 0.2612
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 22,
+        "recall": 0.06,
+        "precision": 0.1364
+      }
+    },
+    "sociology": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 39,
+        "recall": 0.38,
+        "precision": 0.4872
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 16,
+        "recall": 0.1,
+        "precision": 0.3125
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 134,
+        "recall": 0.8,
+        "precision": 0.2985
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 11,
+        "recall": 0.06,
+        "precision": 0.2727
+      }
+    },
+    "economics": {
+      "exceptional": {
+        "true_n": 50,
+        "pred_n": 119,
+        "recall": 0.82,
+        "precision": 0.3445
+      },
+      "strong": {
+        "true_n": 50,
+        "pred_n": 13,
+        "recall": 0.06,
+        "precision": 0.2308
+      },
+      "fair": {
+        "true_n": 50,
+        "pred_n": 59,
+        "recall": 0.46,
+        "precision": 0.3898
+      },
+      "limited": {
+        "true_n": 50,
+        "pred_n": 9,
+        "recall": 0.1,
+        "precision": 0.5556
+      }
+    }
+  }
+}

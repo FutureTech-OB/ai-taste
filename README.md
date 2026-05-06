@@ -1,109 +1,94 @@
-# ai-taste
+# Reproducibility Package
 
-This repository releases the public reproducibility package for the study:
+This repository contains the external-use reproducibility package for:
 
-**Paper title:** Machines acquire scientific taste from institutional traces
+**LLMs learn scientific taste from institutional traces across the social sciences**
 
-The study tests whether supervised fine-tuning can teach language models to evaluate research idea quality. This snapshot includes the 120-article management benchmark, the 200-article economics extension benchmark, model predictions, de-identified human ratings, released figures and tables, the final approved paper PDF, and the scripts used to regenerate the public results from repository-local files.
+The package is organized so a researcher can inspect the manuscript source, validate the released data files, reproduce the machine-readable supplementary tables, and reproduce the released figure asset bundle from a clean clone.
 
 ## Contents
 
 | Path | Contents |
-|------|----------|
-| `manuscript/` | Final approved paper PDF plus notes on manuscript-source scope; not required for the current rerun path |
-| `figures/` | Main, extended data, and supplementary figures plus figure notes |
-| `data/benchmark/` | Management benchmark records plus the released economics extension benchmark |
-| `data/predictions/` | Model prediction files, including the released economics extension and pooled management+economics prediction sets |
-| `data/pairwise/` | Pairwise comparison outputs |
-| `data/human_ratings/` | De-identified human ratings and stable anonymous reproducibility inputs |
-| `data/tables/` | Released tables and figure-data files |
-| `data/statistics/` | Released statistics used by the analysis pipeline |
-| `scripts/` | Validation and reproduction scripts |
+|---|---|
+| `manuscript/` | Main manuscript, Supplementary Information, and references |
+| `figures/main/` | Final main figure assets |
+| `figures/supplementary/` | Final supplementary figure assets |
+| `figures/provenance/` | Figure captions, panel-level provenance files, and support statistics |
+| `data/management_deep_probe/` | Management 120-item benchmark, prediction records, human ratings, pairwise comparisons, statistics, and support tables |
+| `data/cross_field_standardized/` | Seven-field benchmark and prediction records plus GPT-5.2 historical chat/log-probability comparator records and the May 2026 GPT-5.5 all-field audit records |
+| `data/supplementary_tables/` | Machine-readable Supplementary Tables ST1-ST24 and ST2b |
+| `data/figure_support/` | Figure-to-data support index |
+| `scripts/` | Validation, table reproduction, figure asset reproduction, manifest generation, and the v6.3 statistics-reproduction subdirectory |
+| `docs/` | Data dictionary, reproducibility instructions, checklist, manifest, and release report |
 
-## Setup
+## Environment
 
 Requirements:
 
-- Python 3.10+
+- Python 3.10 or newer
 
-Install dependencies from the repository root:
+Recommended setup:
 
 ```bash
 python3 -m venv .venv
 ./.venv/bin/python -m pip install -r requirements.txt
 ```
 
-The validated public rerun path below does not require `pandoc` or any external document-conversion toolchain. A repo-local `.venv/` is supported and ignored by git.
+The validation and manifest scripts use only the Python standard library. The requirements file includes the scientific Python stack needed for downstream analysis and figure regeneration extensions.
 
-## Reproducing the release
+## Validate The Package
 
 From the repository root:
 
 ```bash
-./.venv/bin/python scripts/validate_package.py
-PYTHON_BIN=./.venv/bin/python bash scripts/reproduce_tables.sh
-PYTHON_BIN=./.venv/bin/python bash scripts/reproduce_figures.sh
+python3 scripts/validate_package.py
 ```
 
-These commands:
+The validator checks required files, row counts, JSON syntax, figure/provenance coverage, supplementary table coverage, pairwise data coverage, seven-field benchmark schema, and path hygiene.
 
-- validate the package structure
-- rebuild the released public tables and core statistics
-- regenerate released `Figure2`-`Figure7`, `ExtendedDataFigure1`-`ExtendedDataFigure8`, and `SupplementaryFigure1`-`SupplementaryFigure7`
-- refresh the ED7 / economics-extension statistics artifacts used by those rebuilt figures
+## Reproduce Released Outputs
 
-`Figure1` is a shipped frozen canonical asset and is intentionally not rebuilt by the public figure pipeline.
+Reproduce machine-readable supplementary tables:
 
-Regenerated outputs are written under `reproduced/` as ignored local build output; `reproduced/` is not part of the shipped release surface.
+```bash
+python3 scripts/reproduce_tables.py
+```
 
-## Scope
+Reproduce the released figure asset bundle and checksums:
 
-This release is intended to let outside readers inspect the benchmark and evaluation outputs, trace released figures and tables to repository-local inputs, and rerun the public analysis pipeline. The public code/data rerun path does not depend on the manuscript assets, but the final approved paper PDF is now included under `manuscript/`.
+```bash
+python3 scripts/reproduce_figures.py
+```
 
-Key release indices:
+Refresh the file manifest:
 
-- `data/tables/TABLE_INDEX.csv`
-- `data/tables/FIGURE_DATA_INDEX.csv`
+```bash
+python3 scripts/build_release_manifest.py
+```
 
-The package rebuilds:
+Generated outputs are written under `reproduced/`, which is ignored by version control.
 
-- `data/tables/T01` through `data/tables/T21`
-- `data/statistics/S01` through `data/statistics/S12`
-- `data/statistics/S15_CoreRQShortTransferStats.json` during the figure rebuild
-- `data/statistics/S16_EconomicsExtensionStats.json` during the figure rebuild
-- `data/statistics/S17_PooledFieldExtensionStats.json` during the figure rebuild
-- `data/statistics/S18_CrossFieldTransferStats.json` during the figure rebuild
+Reproduce the five v6.3 statistics that back Supplementary Tables ST21-ST24
+and the Supplementary Methods SM4 headroom note:
 
-`data/statistics/S13_Figure6NumbersAudit.json` and `data/statistics/S14_ED2PairwiseRawPValues.json` are included as shipped audit artifacts and are validated as packaged. Figure 6 is rebuilt directly from the released prediction and human-rating files; the pairwise panels in Figure 5 / Extended Data Figure 2 use `S14_ED2PairwiseRawPValues.json` together with the released pairwise outputs. The bundled short-input transfer source file is `data/predictions/core_rq_short_transfer_predictions.jsonl`, which stores the one-sentence idea statement, the matched full idea summary, and the released short-input model outputs used for Extended Data Fig. 7. The economics extension figures use `data/benchmark/economics_benchmark_articles_200.jsonl`, `data/predictions/economics_predictions.jsonl`, and `data/predictions/pooled_management_economics_predictions.jsonl`.
+```bash
+python3 scripts/reproducibility/compute_s19_pairwise_sft_kappa.py
+python3 scripts/reproducibility/compute_s20_sft_consensus_per_class.py
+python3 scripts/reproducibility/compute_s21_ai_human_complementarity.py
+python3 scripts/reproducibility/compute_s22_mcnemar_compendium.py
+python3 scripts/reproducibility/compute_s23_headroom_captured.py
+python3 scripts/reproducibility/smoke_test_v6_3.py
+```
 
-## Training resources
+Each script writes a JSON file under
+`data/management_deep_probe/statistics/` (S19-S23) with byte-stable
+formatting (sorted keys, fixed precision). The smoke test verifies all
+five outputs against the v6.3 reference numbers.
 
-Training code, training-data preparation/release notes, and open-weight checkpoints for this project are maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).
+## Scope Notes
 
-This reproducibility repo does not ship the supervised training corpus or model checkpoints. Use the separate training repo for:
-
-- training-code setup and reruns
-- training-data construction / access notes
-- open-weight checkpoint downloads
-
-OpenAI API fine-tuned models referenced in this release:
-
-These identifiers record the OpenAI fine-tuned models used in the released evaluations. They can be called through the OpenAI API only from an account or project with permission to access them; for other readers, they serve as provenance for the exact closed-model runs used in this package.
-
-- Management
-  - `GPT-4.1-nano-ob`: `ft:gpt-4.1-nano-2025-04-14:personal:ob-ob-rqcontext:DHKeHMNB`
-  - `GPT-4.1-ob`: `ft:gpt-4.1-2025-04-14:personal:ob-ob-rqcontext:DHnLrzmY`
-- Economics
-  - `GPT-4.1-nano`: `ft:gpt-4.1-nano-2025-04-14:personal:social-science-rqc:DJWAxfSb`
-- Pooled management + economics
-  - `GPT-4.1-nano`: `ft:gpt-4.1-nano-2025-04-14:personal:eco-ob-social-scie:DJuAjWUp`
-
-## Data note
-
-Human-rating files are de-identified. The public release excludes direct participant identifiers, raw survey exports, the supervised training corpus, and model checkpoints. Training-related assets are documented through the separate training repository linked above.
-
-The `manuscript/` directory now includes the final approved paper PDF. Synced manuscript source files can still be added later without affecting the repo-local table/figure reproduction path documented above.
+The package includes the minimized data files needed to verify the reported tables, figure data, and final figure assets, including the May 2026 GPT-5.5 all-field audit used by Figure 4b, SI Table ST2b, and Supplementary Figure 11. Live model inference, model training runs, provider-hosted model weights, and unreleased model checkpoints are not redistributed. Provider model names, access windows, and prediction records used in the paper are documented in the manuscript, Supplementary Information, and `data/supplementary_tables/ST19_model_inventory.csv`.
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+Data are released under CC BY 4.0. Code is released under the MIT License.

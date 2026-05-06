@@ -1,0 +1,41 @@
+panel,series,item,value,n,source
+A,best_single_acc,Psychology,85.5,200,ensemble_cross_field_results.csv
+A,best_pair_acc,Psychology,85.5,200,ensemble_cross_field_results.csv
+A,three_model_acc,Psychology,85.5,200,ensemble_cross_field_results.csv
+A,pair_lift_pp,Psychology,0.0,200,ensemble_cross_field_results.csv
+A,best_single_acc,Economics,69.5,200,ensemble_cross_field_results.csv
+A,best_pair_acc,Economics,73.0,200,ensemble_cross_field_results.csv
+A,three_model_acc,Economics,70.0,200,ensemble_cross_field_results.csv
+A,pair_lift_pp,Economics,3.5,200,ensemble_cross_field_results.csv
+A,best_single_acc,Communication,67.5,200,ensemble_cross_field_results.csv
+A,best_pair_acc,Communication,69.0,200,ensemble_cross_field_results.csv
+A,three_model_acc,Communication,66.0,200,ensemble_cross_field_results.csv
+A,pair_lift_pp,Communication,1.5,200,ensemble_cross_field_results.csv
+A,best_single_acc,Sociology,65.5,200,ensemble_cross_field_results.csv
+A,best_pair_acc,Sociology,63.5,200,ensemble_cross_field_results.csv
+A,three_model_acc,Sociology,58.5,200,ensemble_cross_field_results.csv
+A,pair_lift_pp,Sociology,-2.0,200,ensemble_cross_field_results.csv
+A,best_single_acc,Management,59.17,120,ensemble_cross_field_results.csv
+A,best_pair_acc,Management,60.83,120,ensemble_cross_field_results.csv
+A,three_model_acc,Management,60.0,120,ensemble_cross_field_results.csv
+A,pair_lift_pp,Management,1.6,120,ensemble_cross_field_results.csv
+A,best_single_acc,Pol. Science,58.5,200,ensemble_cross_field_results.csv
+A,best_pair_acc,Pol. Science,57.0,200,ensemble_cross_field_results.csv
+A,three_model_acc,Pol. Science,57.0,200,ensemble_cross_field_results.csv
+A,pair_lift_pp,Pol. Science,-1.5,200,ensemble_cross_field_results.csv
+A,best_single_acc,Bus. & Finance,55.5,200,ensemble_cross_field_results.csv
+A,best_pair_acc,Bus. & Finance,54.5,200,ensemble_cross_field_results.csv
+A,three_model_acc,Bus. & Finance,55.0,200,ensemble_cross_field_results.csv
+A,pair_lift_pp,Bus. & Finance,-1.0,200,ensemble_cross_field_results.csv
+A,best_single_acc,Public Admin.,55.0,200,ensemble_cross_field_results.csv
+A,best_pair_acc,Public Admin.,54.5,200,ensemble_cross_field_results.csv
+A,three_model_acc,Public Admin.,54.0,200,ensemble_cross_field_results.csv
+A,pair_lift_pp,Public Admin.,-0.5,200,ensemble_cross_field_results.csv
+B,pair_lift_pp,Economics,3.5,200,ensemble_cross_field_results.csv
+B,pair_lift_pp,Management,1.6,120,ensemble_cross_field_results.csv
+B,pair_lift_pp,Communication,1.5,200,ensemble_cross_field_results.csv
+B,pair_lift_pp,Psychology,0.0,200,ensemble_cross_field_results.csv
+B,pair_lift_pp,Public Admin.,-0.5,200,ensemble_cross_field_results.csv
+B,pair_lift_pp,Bus. & Finance,-1.0,200,ensemble_cross_field_results.csv
+B,pair_lift_pp,Pol. Science,-1.5,200,ensemble_cross_field_results.csv
+B,pair_lift_pp,Sociology,-2.0,200,ensemble_cross_field_results.csv

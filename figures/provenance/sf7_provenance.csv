@@ -1,0 +1,12 @@
+model,accuracy_pct,middle_tier_share_pct,entropy_norm_pct,recall_exc_pct,recall_str_pct,recall_fair_pct,recall_ltd_pct,n_discrete,source
+GLM-5,33.50,79.46,77.07,29.63,50.00,55.56,3.33,112,data/management_deep_probe/statistics/S01_FlagshipStats.json
+Kimi K2.5,31.46,97.25,57.72,3.57,80.00,46.43,3.57,109,data/management_deep_probe/statistics/S01_FlagshipStats.json
+Gemini 2.5 Pro,29.48,52.68,77.83,72.41,29.63,15.38,3.33,112,data/management_deep_probe/statistics/S01_FlagshipStats.json
+Gemini 3.1 Pro,38.76,74.78,84.90,37.93,44.83,60.71,13.79,115,data/management_deep_probe/statistics/S01_FlagshipStats.json
+Claude Opus 4.6,28.02,100.00,28.33,0.00,100.00,10.00,0.00,120,data/management_deep_probe/statistics/S01_FlagshipStats.json
+GPT-5.2 High,31.04,100.00,49.24,0.00,80.00,46.43,0.00,117,data/management_deep_probe/statistics/S01_FlagshipStats.json
+Grok 4.1 Fast,33.23,71.68,69.55,58.62,64.29,13.79,0.00,113,data/management_deep_probe/statistics/S01_FlagshipStats.json
+MiniMax M2.5,28.33,100.00,30.55,0.00,96.55,19.23,0.00,113,data/management_deep_probe/statistics/S01_FlagshipStats.json
+DeepSeek V3.2,26.67,96.43,29.48,3.45,93.10,7.41,0.00,112,data/management_deep_probe/statistics/S01_FlagshipStats.json
+Qwen 3.5 Plus,32.89,91.15,65.14,10.71,36.67,68.97,3.85,113,data/management_deep_probe/statistics/S01_FlagshipStats.json
+Seed 2.0 Pro,28.23,71.68,59.66,48.28,66.67,3.57,0.00,113,data/management_deep_probe/statistics/S01_FlagshipStats.json

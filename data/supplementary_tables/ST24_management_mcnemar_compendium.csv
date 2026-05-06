@@ -1,0 +1,5 @@
+comparator,paired_n,sft_ensemble_accuracy_pct,comparator_accuracy_pct,delta_pp,mcnemar_chi2,raw_p
+Frontier mean (per-article plurality of 11 reasoning models),114,61.40,38.60,22.81,10.78,0.00103
+Best frontier (Gemini 3.1 Pro single-shot per pitch),120,60.83,43.33,17.50,6.78,0.00922
+Expert majority vote (unfiltered ties excluded),89,62.92,41.57,21.35,7.20,0.00729
+Junior majority vote (filtered ties excluded),103,62.14,40.78,21.36,9.59,0.00196

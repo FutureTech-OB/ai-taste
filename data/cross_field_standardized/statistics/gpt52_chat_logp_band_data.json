@@ -1,0 +1,414 @@
+{
+  "model": "gpt-5.2",
+  "coverage": [
+    10,
+    15,
+    20,
+    25,
+    33,
+    50,
+    100
+  ],
+  "fields": [
+    "management",
+    "economics",
+    "business_finance",
+    "communication",
+    "political_science",
+    "psychology_multidisciplinary",
+    "public_administration",
+    "sociology"
+  ],
+  "field_metrics": {
+    "management": {
+      "n": 120,
+      "expected_n": 120,
+      "accuracy": 0.275,
+      "ece": 0.7141697076384079
+    },
+    "economics": {
+      "n": 200,
+      "expected_n": 200,
+      "accuracy": 0.335,
+      "ece": 0.6574341086536463
+    },
+    "business_finance": {
+      "n": 200,
+      "expected_n": 200,
+      "accuracy": 0.27,
+      "ece": 0.7103454501621251
+    },
+    "communication": {
+      "n": 200,
+      "expected_n": 200,
+      "accuracy": 0.27,
+      "ece": 0.6965541239312668
+    },
+    "political_science": {
+      "n": 200,
+      "expected_n": 200,
+      "accuracy": 0.27,
+      "ece": 0.7204059832483481
+    },
+    "psychology_multidisciplinary": {
+      "n": 200,
+      "expected_n": 200,
+      "accuracy": 0.28,
+      "ece": 0.7060696658726824
+    },
+    "public_administration": {
+      "n": 200,
+      "expected_n": 200,
+      "accuracy": 0.29,
+      "ece": 0.6975781560403607
+    },
+    "sociology": {
+      "n": 200,
+      "expected_n": 200,
+      "accuracy": 0.275,
+      "ece": 0.7032077950065335
+    }
+  },
+  "field_curves": {
+    "management": {
+      "10": {
+        "coverage": 10,
+        "n_selected": 12,
+        "accuracy": 0.4166666666666667
+      },
+      "15": {
+        "coverage": 15,
+        "n_selected": 18,
+        "accuracy": 0.5
+      },
+      "20": {
+        "coverage": 20,
+        "n_selected": 24,
+        "accuracy": 0.375
+      },
+      "25": {
+        "coverage": 25,
+        "n_selected": 30,
+        "accuracy": 0.3
+      },
+      "33": {
+        "coverage": 33,
+        "n_selected": 39,
+        "accuracy": 0.28205128205128205
+      },
+      "50": {
+        "coverage": 50,
+        "n_selected": 60,
+        "accuracy": 0.3
+      },
+      "100": {
+        "coverage": 100,
+        "n_selected": 120,
+        "accuracy": 0.275
+      }
+    },
+    "economics": {
+      "10": {
+        "coverage": 10,
+        "n_selected": 20,
+        "accuracy": 0.25
+      },
+      "15": {
+        "coverage": 15,
+        "n_selected": 30,
+        "accuracy": 0.2
+      },
+      "20": {
+        "coverage": 20,
+        "n_selected": 40,
+        "accuracy": 0.275
+      },
+      "25": {
+        "coverage": 25,
+        "n_selected": 50,
+        "accuracy": 0.34
+      },
+      "33": {
+        "coverage": 33,
+        "n_selected": 66,
+        "accuracy": 0.30303030303030304
+      },
+      "50": {
+        "coverage": 50,
+        "n_selected": 100,
+        "accuracy": 0.31
+      },
+      "100": {
+        "coverage": 100,
+        "n_selected": 200,
+        "accuracy": 0.335
+      }
+    },
+    "business_finance": {
+      "10": {
+        "coverage": 10,
+        "n_selected": 20,
+        "accuracy": 0.3
+      },
+      "15": {
+        "coverage": 15,
+        "n_selected": 30,
+        "accuracy": 0.36666666666666664
+      },
+      "20": {
+        "coverage": 20,
+        "n_selected": 40,
+        "accuracy": 0.325
+      },
+      "25": {
+        "coverage": 25,
+        "n_selected": 50,
+        "accuracy": 0.32
+      },
+      "33": {
+        "coverage": 33,
+        "n_selected": 66,
+        "accuracy": 0.3181818181818182
+      },
+      "50": {
+        "coverage": 50,
+        "n_selected": 100,
+        "accuracy": 0.3
+      },
+      "100": {
+        "coverage": 100,
+        "n_selected": 200,
+        "accuracy": 0.27
+      }
+    },
+    "communication": {
+      "10": {
+        "coverage": 10,
+        "n_selected": 20,
+        "accuracy": 0.3
+      },
+      "15": {
+        "coverage": 15,
+        "n_selected": 30,
+        "accuracy": 0.26666666666666666
+      },
+      "20": {
+        "coverage": 20,
+        "n_selected": 40,
+        "accuracy": 0.25
+      },
+      "25": {
+        "coverage": 25,
+        "n_selected": 50,
+        "accuracy": 0.24
+      },
+      "33": {
+        "coverage": 33,
+        "n_selected": 66,
+        "accuracy": 0.25757575757575757
+      },
+      "50": {
+        "coverage": 50,
+        "n_selected": 100,
+        "accuracy": 0.24
+      },
+      "100": {
+        "coverage": 100,
+        "n_selected": 200,
+        "accuracy": 0.27
+      }
+    },
+    "political_science": {
+      "10": {
+        "coverage": 10,
+        "n_selected": 20,
+        "accuracy": 0.3
+      },
+      "15": {
+        "coverage": 15,
+        "n_selected": 30,
+        "accuracy": 0.3333333333333333
+      },
+      "20": {
+        "coverage": 20,
+        "n_selected": 40,
+        "accuracy": 0.35
+      },
+      "25": {
+        "coverage": 25,
+        "n_selected": 50,
+        "accuracy": 0.36
+      },
+      "33": {
+        "coverage": 33,
+        "n_selected": 66,
+        "accuracy": 0.3181818181818182
+      },
+      "50": {
+        "coverage": 50,
+        "n_selected": 100,
+        "accuracy": 0.32
+      },
+      "100": {
+        "coverage": 100,
+        "n_selected": 200,
+        "accuracy": 0.27
+      }
+    },
+    "psychology_multidisciplinary": {
+      "10": {
+        "coverage": 10,
+        "n_selected": 20,
+        "accuracy": 0.35
+      },
+      "15": {
+        "coverage": 15,
+        "n_selected": 30,
+        "accuracy": 0.3
+      },
+      "20": {
+        "coverage": 20,
+        "n_selected": 40,
+        "accuracy": 0.3
+      },
+      "25": {
+        "coverage": 25,
+        "n_selected": 50,
+        "accuracy": 0.28
+      },
+      "33": {
+        "coverage": 33,
+        "n_selected": 66,
+        "accuracy": 0.25757575757575757
+      },
+      "50": {
+        "coverage": 50,
+        "n_selected": 100,
+        "accuracy": 0.3
+      },
+      "100": {
+        "coverage": 100,
+        "n_selected": 200,
+        "accuracy": 0.28
+      }
+    },
+    "public_administration": {
+      "10": {
+        "coverage": 10,
+        "n_selected": 20,
+        "accuracy": 0.5
+      },
+      "15": {
+        "coverage": 15,
+        "n_selected": 30,
+        "accuracy": 0.4
+      },
+      "20": {
+        "coverage": 20,
+        "n_selected": 40,
+        "accuracy": 0.325
+      },
+      "25": {
+        "coverage": 25,
+        "n_selected": 50,
+        "accuracy": 0.36
+      },
+      "33": {
+        "coverage": 33,
+        "n_selected": 66,
+        "accuracy": 0.30303030303030304
+      },
+      "50": {
+        "coverage": 50,
+        "n_selected": 100,
+        "accuracy": 0.3
+      },
+      "100": {
+        "coverage": 100,
+        "n_selected": 200,
+        "accuracy": 0.29
+      }
+    },
+    "sociology": {
+      "10": {
+        "coverage": 10,
+        "n_selected": 20,
+        "accuracy": 0.2
+      },
+      "15": {
+        "coverage": 15,
+        "n_selected": 30,
+        "accuracy": 0.2
+      },
+      "20": {
+        "coverage": 20,
+        "n_selected": 40,
+        "accuracy": 0.175
+      },
+      "25": {
+        "coverage": 25,
+        "n_selected": 50,
+        "accuracy": 0.22
+      },
+      "33": {
+        "coverage": 33,
+        "n_selected": 66,
+        "accuracy": 0.21212121212121213
+      },
+      "50": {
+        "coverage": 50,
+        "n_selected": 100,
+        "accuracy": 0.3
+      },
+      "100": {
+        "coverage": 100,
+        "n_selected": 200,
+        "accuracy": 0.275
+      }
+    }
+  },
+  "band": {
+    "10": {
+      "min_accuracy_pct": 20.0,
+      "mean_accuracy_pct": 32.708333333333336,
+      "max_accuracy_pct": 50.0,
+      "n_fields": 8
+    },
+    "15": {
+      "min_accuracy_pct": 20.0,
+      "mean_accuracy_pct": 32.083333333333336,
+      "max_accuracy_pct": 50.0,
+      "n_fields": 8
+    },
+    "20": {
+      "min_accuracy_pct": 17.5,
+      "mean_accuracy_pct": 29.6875,
+      "max_accuracy_pct": 37.5,
+      "n_fields": 8
+    },
+    "25": {
+      "min_accuracy_pct": 22.0,
+      "mean_accuracy_pct": 30.25,
+      "max_accuracy_pct": 36.0,
+      "n_fields": 8
+    },
+    "33": {
+      "min_accuracy_pct": 21.21212121212121,
+      "mean_accuracy_pct": 28.146853146853147,
+      "max_accuracy_pct": 31.818181818181817,
+      "n_fields": 8
+    },
+    "50": {
+      "min_accuracy_pct": 24.0,
+      "mean_accuracy_pct": 29.625,
+      "max_accuracy_pct": 32.0,
+      "n_fields": 8
+    },
+    "100": {
+      "min_accuracy_pct": 27.0,
+      "mean_accuracy_pct": 28.3125,
+      "max_accuracy_pct": 33.5,
+      "n_fields": 8
+    }
+  }
+}

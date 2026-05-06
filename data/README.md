@@ -1,30 +1,32 @@
 # Data
 
-This folder contains the released inputs and numerical outputs needed for the public reproduction path.
+This directory contains the released data surface for reproducing the paper tables, figure data, and final figures.
 
-| Directory | Contents |
-|-----------|----------|
-| `benchmark/` | Benchmark article records |
-| `predictions/` | Model prediction files used in the paper and the economics extension figures |
-| `pairwise/` | Pairwise comparison outputs and summary metrics |
-| `human_ratings/` | De-identified human ratings and reproducibility inputs |
-| `tables/` | Released tables and figure-data files |
-| `statistics/` | Released summary statistics |
+## Directory Guide
 
-For the public rebuild:
+| Path | Purpose |
+|---|---|
+| `management_deep_probe/` | Management-specific 120-item benchmark, model predictions, human ratings, pairwise comparisons, statistics, and support tables |
+| `cross_field_standardized/` | Standardized seven-field benchmark records plus GPT-5.2 historical chat/log-probability comparator records and the May 2026 GPT-5.5 all-field audit records |
+| `supplementary_tables/` | Machine-readable Supplementary Tables ST1-ST24 and ST2b |
+| `figure_support/` | Figure-to-data support index |
 
-- `scripts/reproduce_tables.sh` rebuilds `T01` through `T21` and `S01` through `S12`
-- `scripts/reproduce_figures.sh` regenerates released `Figure2` through `Figure7`, `ExtendedDataFigure1` through `ExtendedDataFigure8`, `SupplementaryFigure1` through `SupplementaryFigure7`, plus `S15` through `S18` from repository-local inputs
+## Field Blocks
 
-`Figure1` is retained as a shipped frozen canonical asset rather than regenerated in the public figure pipeline.
+The management block is intentionally separate because it contains the deep-probe analyses: human comparators, pairwise ranking tasks, mechanism tests, transfer checks, and management-only support statistics.
 
-Two index files are the main entry points for readers:
+The cross-field block standardizes the seven non-management fields used in the paper: economics, business and finance, communication, political science, psychology multidisciplinary, public administration, and sociology. Each field has a 200-item benchmark with 50 items per tier. The same block also holds GPT-5.2 historical chat/log-probability comparator files and the May 2026 GPT-5.5 all-field audit files used for Figure 4b, SI Table ST2b, and Supplementary Figure 11.
 
-- `tables/TABLE_INDEX.csv`
-- `tables/FIGURE_DATA_INDEX.csv`
+Schema coverage differs by source block. All released benchmark records include the evaluation text used by the paper (`rq_with_context`) and the unified tier label. Economics also includes populated `published_year` and `core_rq_short`; the six additional non-management fields retain those optional columns as intentional null placeholders because the available source files did not include those values. The management benchmark predates the standardized seven-field schema and does not include those two optional fields.
 
-Raw prediction JSONL files may retain internal identifiers required by the rebuild scripts. Reader-facing names for the released SFT systems are documented in `data/predictions/README.md` and the released tables/figure notes.
+## Minimization
 
-Human data in this release are de-identified. Raw survey exports, model checkpoints, and unreleased preprocessing intermediates are not included.
+The release uses derived and minimized files where those files are sufficient to reproduce the reported tables and figures. It excludes raw survey exports, model training logs, provider request logs, model checkpoints, cache directories, and exploratory data not used by the paper.
 
-Training code, training-data preparation notes, and open-weight checkpoint downloads are maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).
+## Label Space
+
+All released prediction analyses use the unified four-tier label space:
+
+`exceptional`, `strong`, `fair`, `limited`
+
+Source curation labels and human-facing survey labels are mapped to this unified label space in `supplementary_tables/ST18_label_normalization.csv`.

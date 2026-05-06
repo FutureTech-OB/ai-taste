@@ -1,0 +1,13 @@
+source_label_space,source_label,unified_label
+Article ground truth (curation files),top,exceptional
+Article ground truth (curation files),top-,strong
+Article ground truth (curation files),good,fair
+Article ground truth (curation files),fair,limited
+Human survey instrument,Top,exceptional
+Human survey instrument,Top-,strong
+Human survey instrument,Good,fair
+Human survey instrument,Fair,limited
+AI evaluator output,exceptional,exceptional
+AI evaluator output,strong,strong
+AI evaluator output,fair,fair
+AI evaluator output,limited,limited

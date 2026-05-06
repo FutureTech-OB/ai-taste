@@ -1,0 +1,9 @@
+comparison,kappa_type,kappa,agreement_pct,n_subjects,n_raters,notes
+GPT-4.1 SFT vs GPT-4.1-nano SFT,Cohen,0.500,63.33,120,2,AI-AI
+GPT-4.1 SFT vs Qwen3-30B-A3B SFT,Cohen,0.556,67.50,120,2,AI-AI
+GPT-4.1 SFT vs Qwen3-4B SFT,Cohen,0.510,64.17,120,2,AI-AI
+GPT-4.1-nano SFT vs Qwen3-30B-A3B SFT,Cohen,0.604,70.83,120,2,AI-AI; primary ensemble pair
+GPT-4.1-nano SFT vs Qwen3-4B SFT,Cohen,0.603,70.83,120,2,AI-AI
+Qwen3-30B-A3B SFT vs Qwen3-4B SFT,Cohen,0.511,64.17,120,2,AI-AI
+Expert panel,Fleiss,0.049,,118,3,"Human multi-rater modal-truncation variant"
+Junior panel,Fleiss,0.030,,71,21,"Human multi-rater modal-truncation variant"

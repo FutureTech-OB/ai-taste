@@ -1,0 +1,235 @@
+{
+  "panel_c_recall_pooled_eight_fields": [
+    {
+      "class": "exceptional",
+      "evaluator": "SFT (best per field)",
+      "correct": 238,
+      "total": 380,
+      "recall": 0.626316
+    },
+    {
+      "class": "exceptional",
+      "evaluator": "Frontier (Gemini 3.1 Pro)",
+      "correct": 43,
+      "total": 380,
+      "recall": 0.113158
+    },
+    {
+      "class": "limited",
+      "evaluator": "SFT (best per field)",
+      "correct": 264,
+      "total": 380,
+      "recall": 0.694737
+    },
+    {
+      "class": "limited",
+      "evaluator": "Frontier (Gemini 3.1 Pro)",
+      "correct": 10,
+      "total": 380,
+      "recall": 0.026316
+    }
+  ],
+  "per_field_recall": {
+    "Psychology": {
+      "best_sft_label": "Qwen3-30B",
+      "SFT": {
+        "exceptional": {
+          "correct": 44,
+          "total": 50
+        },
+        "limited": {
+          "correct": 39,
+          "total": 50
+        }
+      },
+      "Frontier (Gemini 3.1 Pro)": {
+        "exceptional": {
+          "correct": 6,
+          "total": 50
+        },
+        "limited": {
+          "correct": 0,
+          "total": 50
+        }
+      }
+    },
+    "Economics": {
+      "best_sft_label": "Qwen3-30B",
+      "SFT": {
+        "exceptional": {
+          "correct": 23,
+          "total": 50
+        },
+        "limited": {
+          "correct": 40,
+          "total": 50
+        }
+      },
+      "Frontier (Gemini 3.1 Pro)": {
+        "exceptional": {
+          "correct": 15,
+          "total": 50
+        },
+        "limited": {
+          "correct": 0,
+          "total": 50
+        }
+      }
+    },
+    "Communication": {
+      "best_sft_label": "Qwen3-30B",
+      "SFT": {
+        "exceptional": {
+          "correct": 29,
+          "total": 50
+        },
+        "limited": {
+          "correct": 38,
+          "total": 50
+        }
+      },
+      "Frontier (Gemini 3.1 Pro)": {
+        "exceptional": {
+          "correct": 0,
+          "total": 50
+        },
+        "limited": {
+          "correct": 3,
+          "total": 50
+        }
+      }
+    },
+    "Sociology": {
+      "best_sft_label": "Qwen3-30B",
+      "SFT": {
+        "exceptional": {
+          "correct": 25,
+          "total": 50
+        },
+        "limited": {
+          "correct": 41,
+          "total": 50
+        }
+      },
+      "Frontier (Gemini 3.1 Pro)": {
+        "exceptional": {
+          "correct": 2,
+          "total": 50
+        },
+        "limited": {
+          "correct": 1,
+          "total": 50
+        }
+      }
+    },
+    "Management": {
+      "best_sft_label": "Qwen3-4B",
+      "SFT": {
+        "exceptional": {
+          "correct": 24,
+          "total": 30
+        },
+        "limited": {
+          "correct": 14,
+          "total": 30
+        }
+      },
+      "Frontier (Gemini 3.1 Pro)": {
+        "exceptional": {
+          "correct": 11,
+          "total": 30
+        },
+        "limited": {
+          "correct": 3,
+          "total": 30
+        }
+      }
+    },
+    "Pol. Science": {
+      "best_sft_label": "Qwen3-30B",
+      "SFT": {
+        "exceptional": {
+          "correct": 23,
+          "total": 50
+        },
+        "limited": {
+          "correct": 23,
+          "total": 50
+        }
+      },
+      "Frontier (Gemini 3.1 Pro)": {
+        "exceptional": {
+          "correct": 6,
+          "total": 50
+        },
+        "limited": {
+          "correct": 2,
+          "total": 50
+        }
+      }
+    },
+    "Bus. & Finance": {
+      "best_sft_label": "GPT-4.1-nano",
+      "SFT": {
+        "exceptional": {
+          "correct": 45,
+          "total": 50
+        },
+        "limited": {
+          "correct": 33,
+          "total": 50
+        }
+      },
+      "Frontier (Gemini 3.1 Pro)": {
+        "exceptional": {
+          "correct": 2,
+          "total": 50
+        },
+        "limited": {
+          "correct": 1,
+          "total": 50
+        }
+      }
+    },
+    "Public Admin.": {
+      "best_sft_label": "Qwen3-30B",
+      "SFT": {
+        "exceptional": {
+          "correct": 25,
+          "total": 50
+        },
+        "limited": {
+          "correct": 36,
+          "total": 50
+        }
+      },
+      "Frontier (Gemini 3.1 Pro)": {
+        "exceptional": {
+          "correct": 1,
+          "total": 50
+        },
+        "limited": {
+          "correct": 0,
+          "total": 50
+        }
+      }
+    }
+  },
+  "best_sft_per_field": {
+    "Psychology": "Qwen3-30B",
+    "Economics": "Qwen3-30B",
+    "Communication": "Qwen3-30B",
+    "Sociology": "Qwen3-30B",
+    "Management": "Qwen3-4B",
+    "Pol. Science": "Qwen3-30B",
+    "Bus. & Finance": "GPT-4.1-nano",
+    "Public Admin.": "Qwen3-30B"
+  },
+  "data_sources": {
+    "management": "ground truth: data/management_deep_probe/benchmark/management_benchmark_120.jsonl; SFT: data/management_deep_probe/predictions/sft_predictions.jsonl; frontier: data/management_deep_probe/predictions/frontier_10models_8runs.jsonl",
+    "economics": "data/cross_field_standardized/predictions/economics_predictions.jsonl",
+    "six_additional_fields_qwen30b": "data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl (qwen3_30b_sft rows)",
+    "business_finance_nano": "data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl (gpt4_1_nano_sft business_finance rows)",
+    "six_additional_fields_gemini": "data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl (gemini_3_1_pro_frontier rows)"
+  }
+}

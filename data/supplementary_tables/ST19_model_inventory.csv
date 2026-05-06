@@ -1,0 +1,21 @@
+evaluator_class,model,provider,model_version_or_type,access_window,protocol
+frontier,Claude Opus 4.6,Anthropic,claude-4.6-opus-20260205,March 2026,8 samples per pitch
+frontier,GPT-5.2 High,OpenAI,gpt-5.2 (reasoning=high),March 2026,8 samples per pitch
+frontier,Gemini 2.5 Pro,Google,gemini-2.5-pro,March 2026,8 samples per pitch
+frontier,Gemini 3.1 Pro,Google,gemini-3.1-pro-preview-20260219,March 2026,8 samples per pitch
+frontier,Qwen 3.5 Plus,Alibaba,qwen3.5-plus-02-15,March 2026,8 samples per pitch
+frontier,DeepSeek V3.2,DeepSeek,deepseek-v3.2-speciale-20251201,March 2026,8 samples per pitch
+frontier,Seed 2.0 Pro,ByteDance,doubao-seed-2-0-pro-260215,March 2026,8 samples per pitch
+frontier,MiniMax M2.5,MiniMax,minimax-m2.5,March 2026,8 samples per pitch
+frontier,Kimi K2.5,Moonshot AI,kimi-k2.5,March 2026,8 samples per pitch
+frontier,Grok 4.1 Fast,xAI,grok-4.1-fast,March 2026,8 samples per pitch
+frontier,GLM-5,Zhipu AI,glm-5,March 2026,8 samples per pitch
+frontier,GPT-5.5 High,OpenAI,gpt-5.5-2026-04-23 (reasoning.effort=high),May 2026,8 samples per pitch
+chat,GPT-5.2 (chat),OpenAI,gpt-5.2,March 2026,Top-token log-probabilities
+chat,GPT-5.5 chat/log-probability,OpenAI,gpt-5.5-2026-04-23 (reasoning_effort=none),May 2026,Top-token log-probabilities
+chat,Kimi K2 (chat),Moonshot AI,kimi-k2-0905-preview,March 2026,Top-token log-probabilities
+chat,DeepSeek Chat,DeepSeek,deepseek-v3.2,March 2026,Top-token log-probabilities
+sft,Qwen3-30B-A3B-Instruct (2507),Alibaba,"open-weight MoE, 30B total / 3B active",Q1 2026,Local TRL on field-specific institutional traces
+sft,Qwen3-4B-Instruct (2507),Alibaba,open-weight dense,Q1 2026,Local TRL on field-specific institutional traces
+sft,GPT-4.1-nano,OpenAI,proprietary,Q1 2026,OpenAI Fine-Tuning API on field-specific institutional traces
+sft,GPT-4.1 (management only),OpenAI,proprietary,Q1 2026,OpenAI Fine-Tuning API on management institutional traces

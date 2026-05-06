@@ -1,0 +1,68 @@
+{
+  "evaluators": [
+    {
+      "accuracy": 0.38596491,
+      "correct": 44,
+      "evaluator": "Frontier mean (plurality of 11)",
+      "headroom_captured": 0.18128655,
+      "headroom_captured_pct": 18.12865497,
+      "n": 114
+    },
+    {
+      "accuracy": 0.43333333,
+      "correct": 52,
+      "evaluator": "Best frontier (Gemini 3.1 Pro)",
+      "headroom_captured": 0.24444444,
+      "headroom_captured_pct": 24.44444444,
+      "n": 120
+    },
+    {
+      "accuracy": 0.41573034,
+      "correct": 37,
+      "evaluator": "Expert majority (excl. ties)",
+      "headroom_captured": 0.22097378,
+      "headroom_captured_pct": 22.09737828,
+      "n": 89
+    },
+    {
+      "accuracy": 0.40776699,
+      "correct": 42,
+      "evaluator": "Junior majority (excl. ties)",
+      "headroom_captured": 0.21035599,
+      "headroom_captured_pct": 21.03559871,
+      "n": 103
+    },
+    {
+      "accuracy": 0.60833333,
+      "correct": 73,
+      "evaluator": "SFT 2-model ensemble (nano + Qwen3-30B)",
+      "headroom_captured": 0.47777778,
+      "headroom_captured_pct": 47.77777778,
+      "n": 120
+    }
+  ],
+  "metadata": {
+    "argmax_tie_break": "alphabetical (exceptional<fair<limited<strong)",
+    "chance_floor": 0.25,
+    "data_sources": {
+      "experts": "data/management_deep_probe/human_ratings/expert_ratings_deidentified.jsonl",
+      "frontier_thinking": "data/management_deep_probe/predictions/frontier_thinking_11models_singleshot.jsonl",
+      "sft_predictions": "data/management_deep_probe/predictions/sft_predictions.jsonl",
+      "students": "data/management_deep_probe/human_ratings/student_ratings_deidentified.jsonl"
+    },
+    "headroom_formula": "(accuracy - 0.25) / (1.00 - 0.25)",
+    "majority_vote_tie_policy": "exclude",
+    "primary_ensemble_key": "best_2_model_combo",
+    "primary_pair": [
+      "gpt-4.1-nano-ob",
+      "qwen3-30b-ob"
+    ],
+    "supplementary_section": "SM4"
+  },
+  "multipliers": {
+    "sft_over_best_frontier": 1.95454545,
+    "sft_over_expert_majority": 2.16214689,
+    "sft_over_frontier_mean": 2.63548387,
+    "sft_over_junior_majority": 2.27128205
+  }
+}

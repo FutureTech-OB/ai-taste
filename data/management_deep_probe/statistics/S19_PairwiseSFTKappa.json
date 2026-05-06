@@ -1,0 +1,123 @@
+{
+  "human_kappa_contrast": {
+    "expert_fleiss_min_truncation": {
+      "kappa": 0.10373927,
+      "n_raters": 2,
+      "n_subjects": 120,
+      "p_e": 0.2840625,
+      "p_o": 0.35833333
+    },
+    "expert_fleiss_modal": {
+      "kappa": 0.04909895,
+      "n_raters": 3,
+      "n_subjects": 118,
+      "p_e": 0.29593986,
+      "p_o": 0.33050847
+    },
+    "note": "Fleiss' kappa across human raters per article on the same 120-article 4-class label space. Two variants per pool: min-truncation (keep all articles, truncate to lowest rater count) and modal-truncation (drop articles below modal rater count, truncate to the mode). Both are reported so the editor can pick whichever the SI table prefers.",
+    "student_fleiss_min_truncation": {
+      "kappa": 0.03264995,
+      "n_raters": 15,
+      "n_subjects": 120,
+      "p_e": 0.26373889,
+      "p_o": 0.28777778
+    },
+    "student_fleiss_modal": {
+      "kappa": 0.02990884,
+      "n_raters": 21,
+      "n_subjects": 71,
+      "p_e": 0.26507491,
+      "p_o": 0.28705567
+    }
+  },
+  "metadata": {
+    "argmax_tie_break": "alphabetical (exceptional<fair<limited<strong)",
+    "data_sources": {
+      "experts": "data/management_deep_probe/human_ratings/expert_ratings_deidentified.jsonl",
+      "sft_predictions": "data/management_deep_probe/predictions/sft_predictions.jsonl",
+      "students": "data/management_deep_probe/human_ratings/student_ratings_deidentified.jsonl"
+    },
+    "label_space": [
+      "exceptional",
+      "strong",
+      "fair",
+      "limited"
+    ],
+    "n_articles": 120,
+    "sft_model_keys": [
+      "gpt-4.1-ob",
+      "gpt-4.1-nano-ob",
+      "qwen3-30b-ob",
+      "qwen3-4b-ob"
+    ],
+    "supplementary_table": "ST21"
+  },
+  "sft_kappa_summary": {
+    "max": 0.60347432,
+    "mean": 0.54739519,
+    "min": 0.50018932,
+    "n_pairs": 6
+  },
+  "sft_pairwise": [
+    {
+      "agreement_pct": 63.33333333,
+      "display_a": "SFT GPT-4.1",
+      "display_b": "SFT GPT-4.1-nano",
+      "kappa": 0.50018932,
+      "mean_ordinal_distance": 0.5,
+      "model_a": "gpt-4.1-ob",
+      "model_b": "gpt-4.1-nano-ob",
+      "n_articles": 120
+    },
+    {
+      "agreement_pct": 67.5,
+      "display_a": "SFT GPT-4.1",
+      "display_b": "SFT Qwen3-30B",
+      "kappa": 0.55563995,
+      "mean_ordinal_distance": 0.43333333,
+      "model_a": "gpt-4.1-ob",
+      "model_b": "qwen3-30b-ob",
+      "n_articles": 120
+    },
+    {
+      "agreement_pct": 64.16666667,
+      "display_a": "SFT GPT-4.1",
+      "display_b": "SFT Qwen3-4B",
+      "kappa": 0.51052931,
+      "mean_ordinal_distance": 0.45,
+      "model_a": "gpt-4.1-ob",
+      "model_b": "qwen3-4b-ob",
+      "n_articles": 120
+    },
+    {
+      "agreement_pct": 70.83333333,
+      "display_a": "SFT GPT-4.1-nano",
+      "display_b": "SFT Qwen3-30B",
+      "kappa": 0.60347432,
+      "mean_ordinal_distance": 0.41666667,
+      "model_a": "gpt-4.1-nano-ob",
+      "model_b": "qwen3-30b-ob",
+      "n_articles": 120
+    },
+    {
+      "agreement_pct": 70.83333333,
+      "display_a": "SFT GPT-4.1-nano",
+      "display_b": "SFT Qwen3-4B",
+      "kappa": 0.6031746,
+      "mean_ordinal_distance": 0.36666667,
+      "model_a": "gpt-4.1-nano-ob",
+      "model_b": "qwen3-4b-ob",
+      "n_articles": 120
+    },
+    {
+      "agreement_pct": 64.16666667,
+      "display_a": "SFT Qwen3-30B",
+      "display_b": "SFT Qwen3-4B",
+      "kappa": 0.51136364,
+      "mean_ordinal_distance": 0.46666667,
+      "model_a": "qwen3-30b-ob",
+      "model_b": "qwen3-4b-ob",
+      "n_articles": 120
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+field,n,sft_model,sft_acc_pct,sft_ci_lo_pct,sft_ci_hi_pct,control_label,control_acc_pct,ctrl_ci_lo_pct,ctrl_ci_hi_pct,source
+Psychology,200,Qwen3-30B SFT,85.5,79.95,89.71,Gemini 3.1 Pro,33.5,27.32,40.30,ST1 in manuscript/supplementary_information.md; data/supplementary_tables/ST1_cross_field_accuracy.csv
+Economics,200,Qwen3-30B SFT,69.5,62.80,75.46,Gemini 3.1 Pro,44.5,37.78,51.43,ST1 in manuscript/supplementary_information.md; data/supplementary_tables/ST1_cross_field_accuracy.csv
+Communication,200,Qwen3-30B SFT,67.5,60.73,73.61,Qwen3-30B base,31.5,25.46,38.24,ST1 in manuscript/supplementary_information.md; data/supplementary_tables/ST1_cross_field_accuracy.csv
+Sociology,200,Qwen3-30B SFT,65.5,58.68,71.74,GPT-5.5 High,31.9,25.83,38.65,ST1 in manuscript/supplementary_information.md; data/supplementary_tables/ST1_cross_field_accuracy.csv
+Management,120,Qwen3-4B SFT,59.2,50.25,67.58,Gemini 3.1 Pro,38.8,30.56,47.74,ST1 in manuscript/supplementary_information.md; data/supplementary_tables/ST1_cross_field_accuracy.csv
+Pol. Science,200,Qwen3-30B SFT,58.5,51.57,65.11,Gemini 3.1 Pro,35.0,28.73,41.84,ST1 in manuscript/supplementary_information.md; data/supplementary_tables/ST1_cross_field_accuracy.csv
+Bus. & Finance,200,GPT-4.1-nano SFT,55.5,48.57,62.22,Gemini 3.1 Pro,33.5,27.32,40.30,ST1 in manuscript/supplementary_information.md; data/supplementary_tables/ST1_cross_field_accuracy.csv
+Public Admin.,200,Qwen3-30B SFT,55.0,48.08,61.74,Gemini 3.1 Pro,30.0,24.07,36.68,ST1 in manuscript/supplementary_information.md; data/supplementary_tables/ST1_cross_field_accuracy.csv

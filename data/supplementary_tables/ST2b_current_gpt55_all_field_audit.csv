@@ -1,0 +1,9 @@
+field,n,gpt52_chat_accuracy_pct,gpt55_chat_logprob_accuracy_pct,delta_gpt55_minus_gpt52_chat_pp,gpt55_chat_ece,gpt55_high_pitch_mean_accuracy_pct,gpt55_high_majority_accuracy_pct
+Management,120,27.5,34.2,+6.7,0.602,27.1,25.2
+Economics,200,33.5,38.0,+4.5,0.584,36.3,35.5
+Business and Finance,200,27.0,33.0,+6.0,0.623,33.3,34.3
+Communication,200,27.0,30.0,+3.0,0.660,29.2,29.4
+Political Science,200,27.0,32.0,+5.0,0.634,32.4,33.2
+"Psychology, multidisciplinary",200,28.0,31.5,+3.5,0.641,29.5,30.2
+Public Administration,200,29.0,28.5,-0.5,0.639,27.8,28.0
+Sociology,200,27.5,32.0,+4.5,0.626,31.9,31.6

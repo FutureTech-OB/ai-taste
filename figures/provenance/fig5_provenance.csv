@@ -1,0 +1,29 @@
+panel,series,item,value,n,source
+A,top1_accuracy_pct,SFT 2-model ensemble,60.83,120,rl_predictions.jsonl + data/management_deep_probe/benchmark/management_benchmark_120.jsonl
+A,top1_accuracy_pct,RL ckpt (avg-of-8),40.0,120,rl_predictions.jsonl + data/management_deep_probe/benchmark/management_benchmark_120.jsonl
+A,top1_accuracy_pct,Best frontier,38.8,120,rl_predictions.jsonl + data/management_deep_probe/benchmark/management_benchmark_120.jsonl
+A,top1_accuracy_pct,Frontier 11-model mean,31.1,120,rl_predictions.jsonl + data/management_deep_probe/benchmark/management_benchmark_120.jsonl
+B,pairwise_weighted_pct,SFT GPT-4.1,84.33,300,pairwise/<model>/metrics.json
+B,pairwise_hard_d1_pct,SFT GPT-4.1,78.67,150,pairwise/<model>/metrics.json
+B,pairwise_weighted_pct,GPT-5.2 High,78.67,300,pairwise/<model>/metrics.json
+B,pairwise_hard_d1_pct,GPT-5.2 High,69.33,150,pairwise/<model>/metrics.json
+B,pairwise_weighted_pct,Gemini 3.1 Pro,77.33,300,pairwise/<model>/metrics.json
+B,pairwise_hard_d1_pct,Gemini 3.1 Pro,68.67,150,pairwise/<model>/metrics.json
+B,pairwise_weighted_pct,Grok 4.1 Fast,74.0,300,pairwise/<model>/metrics.json
+B,pairwise_hard_d1_pct,Grok 4.1 Fast,64.0,150,pairwise/<model>/metrics.json
+B,pairwise_weighted_pct,GPT-4.1 base,76.0,300,pairwise/<model>/metrics.json
+B,pairwise_hard_d1_pct,GPT-4.1 base,69.33,150,pairwise/<model>/metrics.json
+C,full_acc_pct,GPT-4.1 SFT,55.0,120,S15_CoreRQShortTransferStats.json
+C,short_acc_pct,GPT-4.1 SFT,49.17,120,S15_CoreRQShortTransferStats.json
+C,full_acc_pct,GPT-4.1-nano SFT,57.5,120,S15_CoreRQShortTransferStats.json
+C,short_acc_pct,GPT-4.1-nano SFT,33.33,120,S15_CoreRQShortTransferStats.json
+C,full_acc_pct,GPT-4.1 base,32.5,120,S15_CoreRQShortTransferStats.json
+C,short_acc_pct,GPT-4.1 base,29.17,120,S15_CoreRQShortTransferStats.json
+C,full_acc_pct,GPT-4.1-nano base,25.0,120,S15_CoreRQShortTransferStats.json
+C,short_acc_pct,GPT-4.1-nano base,30.83,120,S15_CoreRQShortTransferStats.json
+D,recent_traces_pct,GPT-4.1-nano,57.5,120,compute_120_accuracy.py + new_sft jsonl
+D,old_traces_pct,GPT-4.1-nano,43.33,120,sft_temporal_old_predictions.jsonl
+D,recent_traces_pct,Qwen3-30B,58.33,120,compute_120_accuracy.py + new_sft jsonl
+D,old_traces_pct,Qwen3-30B,46.67,120,sft_temporal_old_predictions.jsonl
+D,recent_traces_pct,2-model ensemble,60.83,120,compute_120_accuracy.py + new_sft jsonl
+D,old_traces_pct,2-model ensemble,47.5,120,sft_temporal_old_predictions.jsonl

@@ -1,0 +1,236 @@
+path,kind,supports,bytes
+.gitignore,support,Package support,48
+LICENSE,documentation,Package support,1113
+README.md,documentation,Package support,3988
+data/README.md,documentation,Package support,2473
+data/cross_field_standardized/README.md,documentation,Package support,1422
+data/cross_field_standardized/benchmarks/README.md,documentation,Seven-field cross-field benchmark surfaces,1411
+data/cross_field_standardized/benchmarks/business_finance_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,275123
+data/cross_field_standardized/benchmarks/communication_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,281246
+data/cross_field_standardized/benchmarks/economics_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,348445
+data/cross_field_standardized/benchmarks/political_science_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,278869
+data/cross_field_standardized/benchmarks/psychology_multidisciplinary_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,286417
+data/cross_field_standardized/benchmarks/public_administration_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,282281
+data/cross_field_standardized/benchmarks/sociology_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,279844
+data/cross_field_standardized/journal_tiers/README.md,documentation,Journal-to-tier mappings used for cross-field benchmark labels,742
+data/cross_field_standardized/journal_tiers/business_finance_final.md,data documentation,Journal-to-tier mappings used for cross-field benchmark labels,1915
+data/cross_field_standardized/journal_tiers/communication_final.md,data documentation,Journal-to-tier mappings used for cross-field benchmark labels,1833
+data/cross_field_standardized/journal_tiers/journal_rank_lookup.csv,source data,Journal-to-tier mappings used for cross-field benchmark labels,33414
+data/cross_field_standardized/journal_tiers/political_science_final.md,data documentation,Journal-to-tier mappings used for cross-field benchmark labels,2072
+data/cross_field_standardized/journal_tiers/psychology_final.md,data documentation,Journal-to-tier mappings used for cross-field benchmark labels,1646
+data/cross_field_standardized/journal_tiers/public_administration_final.md,data documentation,Journal-to-tier mappings used for cross-field benchmark labels,2015
+data/cross_field_standardized/journal_tiers/sociology_final.md,data documentation,Journal-to-tier mappings used for cross-field benchmark labels,2111
+data/cross_field_standardized/predictions/README.md,documentation,Cross-field prediction records and all-eight-field GPT-5.5 audit records,1301
+data/cross_field_standardized/predictions/economics_predictions.jsonl,source data,Cross-field prediction records and all-eight-field GPT-5.5 audit records,377332
+data/cross_field_standardized/predictions/gpt52_chat_logp_all_fields.jsonl,source data,Cross-field prediction records and all-eight-field GPT-5.5 audit records,1366458
+data/cross_field_standardized/predictions/gpt55_chat_logp_all_fields.jsonl,source data,Cross-field prediction records and all-eight-field GPT-5.5 audit records,2078759
+data/cross_field_standardized/predictions/gpt55_high_reasoning_item_summary.jsonl,source data,Cross-field prediction records and all-eight-field GPT-5.5 audit records,1290318
+data/cross_field_standardized/predictions/gpt55_high_reasoning_runs.jsonl,source data,Cross-field prediction records and all-eight-field GPT-5.5 audit records,14746937
+data/cross_field_standardized/predictions/management_sft_transfer_to_seven_fields.jsonl,source data,Cross-field prediction records and all-eight-field GPT-5.5 audit records,2398189
+data/cross_field_standardized/predictions/seven_field_core_predictions.jsonl,source data,Cross-field prediction records and all-eight-field GPT-5.5 audit records,6051666
+data/cross_field_standardized/statistics/benchmark_summary_seven_fields.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",1124
+data/cross_field_standardized/statistics/cross_field_calibration.md,data documentation,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",9815
+data/cross_field_standardized/statistics/cross_field_calibration_data.json,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",34744
+data/cross_field_standardized/statistics/ensemble_cross_field_results.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",2600
+data/cross_field_standardized/statistics/gpt52_chat_logp_band_data.json,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",8377
+data/cross_field_standardized/statistics/gpt52_chat_logp_selective_prediction.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",4946
+data/cross_field_standardized/statistics/gpt55_chat_logp_band_data.json,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",9631
+data/cross_field_standardized/statistics/gpt55_chat_logp_selective_prediction.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",5668
+data/cross_field_standardized/statistics/gpt55_high_reasoning_field_summary.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",1295
+data/cross_field_standardized/statistics/gpt55_reasoning_comparison_stats.json,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",5886
+data/cross_field_standardized/statistics/mgmt_sft_transfer_per_tier.json,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",14813
+data/cross_field_standardized/statistics/mgmt_sft_transfer_results.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",2595
+data/cross_field_standardized/statistics/rank_split_counts_six_additional_fields.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",1320
+data/cross_field_standardized/statistics/training_dataset_sizes_seven_fields.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",358
+data/cross_field_standardized/statistics/training_dataset_sizes_six_additional_fields.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",328
+data/figure_support/FIGURE_DATA_INDEX.csv,source data,Figure-to-data support index,6320
+data/management_deep_probe/README.md,documentation,Package support,830
+data/management_deep_probe/benchmark/README.md,documentation,Management 120-item benchmark,683
+data/management_deep_probe/benchmark/management_benchmark_120.jsonl,source data,Management 120-item benchmark,159373
+data/management_deep_probe/human_ratings/README.md,documentation,De-identified management human-rating analyses,911
+data/management_deep_probe/human_ratings/expert_ratings_deidentified.jsonl,source data,De-identified management human-rating analyses,91763
+data/management_deep_probe/human_ratings/reproducibility/expert_reproducibility.jsonl,source data,De-identified management human-rating analyses,99027
+data/management_deep_probe/human_ratings/reproducibility/expert_reproducibility_filtered.jsonl,source data,De-identified management human-rating analyses,86145
+data/management_deep_probe/human_ratings/reproducibility/student_reproducibility.jsonl,source data,De-identified management human-rating analyses,528464
+data/management_deep_probe/human_ratings/reproducibility/student_reproducibility_filtered.jsonl,source data,De-identified management human-rating analyses,491855
+data/management_deep_probe/human_ratings/student_ratings_deidentified.jsonl,source data,De-identified management human-rating analyses,479915
+data/management_deep_probe/pairwise/README.md,documentation,Management pairwise ranking comparisons,633
+data/management_deep_probe/pairwise/baseline_gpt4_1/metrics.json,source data,Management pairwise ranking comparisons,954
+data/management_deep_probe/pairwise/baseline_gpt4_1/pair_results.jsonl,source data,Management pairwise ranking comparisons,51408
+data/management_deep_probe/pairwise/frontier_gemini3_1_pro/metrics.json,source data,Management pairwise ranking comparisons,953
+data/management_deep_probe/pairwise/frontier_gemini3_1_pro/pair_results.jsonl,source data,Management pairwise ranking comparisons,51388
+data/management_deep_probe/pairwise/frontier_gpt5_2_high/metrics.json,source data,Management pairwise ranking comparisons,956
+data/management_deep_probe/pairwise/frontier_gpt5_2_high/pair_results.jsonl,source data,Management pairwise ranking comparisons,51390
+data/management_deep_probe/pairwise/frontier_grok4_1_fast/metrics.json,source data,Management pairwise ranking comparisons,1078
+data/management_deep_probe/pairwise/frontier_grok4_1_fast/pair_results.jsonl,source data,Management pairwise ranking comparisons,131095
+data/management_deep_probe/pairwise/sft_gpt4_1/metrics.json,source data,Management pairwise ranking comparisons,955
+data/management_deep_probe/pairwise/sft_gpt4_1/pair_results.jsonl,source data,Management pairwise ranking comparisons,51392
+data/management_deep_probe/predictions/README.md,documentation,Management deep-probe prediction records,1386
+data/management_deep_probe/predictions/chat_predictions.jsonl,source data,Management deep-probe prediction records,99050
+data/management_deep_probe/predictions/core_rq_short_transfer_predictions.jsonl,source data,Management deep-probe prediction records,275332
+data/management_deep_probe/predictions/frontier_10models_8runs.jsonl,source data,Management deep-probe prediction records,443001
+data/management_deep_probe/predictions/frontier_prompt_sensitivity_expert_12models_8runs.jsonl,source data,Management deep-probe prediction records,1296316
+data/management_deep_probe/predictions/frontier_prompt_sensitivity_journal_7models_8runs.jsonl,source data,Management deep-probe prediction records,959137
+data/management_deep_probe/predictions/frontier_prompt_sensitivity_simple_8models_8runs.jsonl,source data,Management deep-probe prediction records,948064
+data/management_deep_probe/predictions/frontier_thinking_11models_singleshot.jsonl,source data,Management deep-probe prediction records,829653
+data/management_deep_probe/predictions/rl_predictions.jsonl,source data,Management deep-probe prediction records,56157
+data/management_deep_probe/predictions/sft_predictions.jsonl,source data,Management deep-probe prediction records,180044
+data/management_deep_probe/predictions/sft_temporal_old_predictions.jsonl,source data,Management deep-probe prediction records,56790
+data/management_deep_probe/statistics/S01_FlagshipStats.json,source data,Management summary statistics used by tables and figures,31968
+data/management_deep_probe/statistics/S02_SFTStats.json,source data,Management summary statistics used by tables and figures,10695
+data/management_deep_probe/statistics/S03_ExpertStats.json,source data,Management summary statistics used by tables and figures,3202
+data/management_deep_probe/statistics/S04_StudentStats.json,source data,Management summary statistics used by tables and figures,4423
+data/management_deep_probe/statistics/S05_AIvsHumanStats.json,source data,Management summary statistics used by tables and figures,16089
+data/management_deep_probe/statistics/S06_InterraterStats.json,source data,Management summary statistics used by tables and figures,4520
+data/management_deep_probe/statistics/S07_CalibrationStats.json,source data,Management summary statistics used by tables and figures,8504
+data/management_deep_probe/statistics/S08_ErrorStats.json,source data,Management summary statistics used by tables and figures,14397
+data/management_deep_probe/statistics/S09_DomainStats.json,source data,Management summary statistics used by tables and figures,7139
+data/management_deep_probe/statistics/S10_SignificanceStats.json,source data,Management summary statistics used by tables and figures,2204
+data/management_deep_probe/statistics/S11_ConfidenceStats.json,source data,Management summary statistics used by tables and figures,30844
+data/management_deep_probe/statistics/S12_GatekeeperStats.json,source data,Management summary statistics used by tables and figures,240255
+data/management_deep_probe/statistics/S14_PairwiseRawPValues.json,source data,Management summary statistics used by tables and figures,9117
+data/management_deep_probe/statistics/S15_CoreRQShortTransferStats.json,source data,Management summary statistics used by tables and figures,12912
+data/management_deep_probe/statistics/S19_PairwiseSFTKappa.json,source data,Management summary statistics used by tables and figures,3520
+data/management_deep_probe/statistics/S20_SFTConsensusPerClass.json,source data,Management summary statistics used by tables and figures,2137
+data/management_deep_probe/statistics/S21_AIHumanComplementarity.json,source data,Management summary statistics used by tables and figures,1806
+data/management_deep_probe/statistics/S22_McNemarCompendium.json,source data,Management summary statistics used by tables and figures,3197
+data/management_deep_probe/statistics/S23_HeadroomCaptured.json,source data,Management summary statistics used by tables and figures,2107
+data/management_deep_probe/support_tables/T01_FrontierProtocol.csv,source data,Management support tables,1062
+data/management_deep_probe/support_tables/T02_FlagshipPerformance.csv,source data,Management support tables,1701
+data/management_deep_probe/support_tables/T03_SFTPerformance.csv,source data,Management support tables,691
+data/management_deep_probe/support_tables/T04_AIvsHumanSummary.csv,source data,Management support tables,1027
+data/management_deep_probe/support_tables/T05_SignificanceMain.csv,source data,Management support tables,503
+data/management_deep_probe/support_tables/T06_GatekeeperProfileMain.csv,source data,Management support tables,7778
+data/management_deep_probe/support_tables/T07_GatekeeperPerClass.csv,source data,Management support tables,7792
+data/management_deep_probe/support_tables/T08_HumanVariantsSummary.csv,source data,Management support tables,1415
+data/management_deep_probe/support_tables/T09_PairwiseMcNemarCompendium.csv,source data,Management support tables,514
+data/management_deep_probe/support_tables/T10_IndividualExpertAccuracy_Anonymized.csv,source data,Management support tables,520
+data/management_deep_probe/support_tables/T11_MonteCarloMatchedPanel.csv,source data,Management support tables,721
+data/management_deep_probe/support_tables/T12_ConfidenceComparison.csv,source data,Management support tables,3978
+data/management_deep_probe/support_tables/T13_CalibrationMetrics.csv,source data,Management support tables,654
+data/management_deep_probe/support_tables/T14_ErrorAnalysis.csv,source data,Management support tables,422
+data/management_deep_probe/support_tables/T15_HardestArticles.csv,source data,Management support tables,8143
+data/management_deep_probe/support_tables/T16_DomainPerformance.csv,source data,Management support tables,636
+data/management_deep_probe/support_tables/T17_AllModelsSummary.csv,source data,Management support tables,1724
+data/management_deep_probe/support_tables/T18_ChatModelSummary.csv,source data,Management support tables,295
+data/management_deep_probe/support_tables/T19_StudentReliabilityByPanelSize.csv,source data,Management support tables,1982
+data/management_deep_probe/support_tables/T20_ExpertReliabilityByPanelSize.csv,source data,Management support tables,1307
+data/management_deep_probe/support_tables/T21_StudentDescriptive.csv,source data,Management support tables,2371
+data/management_deep_probe/support_tables/TABLE_INDEX.csv,source data,Management support tables,2533
+data/supplementary_tables/README.md,documentation,Supplementary tables ST1-ST24 and ST2b,372
+data/supplementary_tables/ST10_journal_tier_mapping_sociology.csv,source data,Supplementary tables ST1-ST24 and ST2b,2086
+data/supplementary_tables/ST11_training_validation_sizes.csv,source data,Supplementary tables ST1-ST24 and ST2b,391
+data/supplementary_tables/ST12_per_tier_best_sft.csv,source data,Supplementary tables ST1-ST24 and ST2b,1670
+data/supplementary_tables/ST13_sft_vs_base_lift.csv,source data,Supplementary tables ST1-ST24 and ST2b,1238
+data/supplementary_tables/ST14_cross_field_ensemble_sensitivity.csv,source data,Supplementary tables ST1-ST24 and ST2b,2600
+data/supplementary_tables/ST15_top1_top2_accuracy_six_fields.csv,source data,Supplementary tables ST1-ST24 and ST2b,836
+data/supplementary_tables/ST16_selective_prediction.csv,source data,Supplementary tables ST1-ST24 and ST2b,7517
+data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv,source data,Supplementary tables ST1-ST24 and ST2b,2595
+data/supplementary_tables/ST18_label_normalization.csv,source data,Supplementary tables ST1-ST24 and ST2b,553
+data/supplementary_tables/ST19_model_inventory.csv,source data,Supplementary tables ST1-ST24 and ST2b,1924
+data/supplementary_tables/ST1_cross_field_accuracy.csv,source data,Supplementary tables ST1-ST24 and ST2b,578
+data/supplementary_tables/ST20_human_panel_filtering_sensitivity.csv,source data,Supplementary tables ST1-ST24 and ST2b,368
+data/supplementary_tables/ST21_cross_architecture_agreement_management.csv,source data,Supplementary tables ST1-ST24 and ST2b,625
+data/supplementary_tables/ST22_sft_consensus_per_class_management.csv,source data,Supplementary tables ST1-ST24 and ST2b,454
+data/supplementary_tables/ST23_ai_human_error_complementarity_management.csv,source data,Supplementary tables ST1-ST24 and ST2b,496
+data/supplementary_tables/ST24_management_mcnemar_compendium.csv,source data,Supplementary tables ST1-ST24 and ST2b,446
+data/supplementary_tables/ST2_confidence_calibration_by_field.csv,source data,Supplementary tables ST1-ST24 and ST2b,824
+data/supplementary_tables/ST2b_current_gpt55_all_field_audit.csv,source data,Supplementary tables ST1-ST24 and ST2b,606
+data/supplementary_tables/ST3_journal_tier_mapping_management.csv,source data,Supplementary tables ST1-ST24 and ST2b,718
+data/supplementary_tables/ST4_journal_tier_mapping_economics.csv,source data,Supplementary tables ST1-ST24 and ST2b,1284
+data/supplementary_tables/ST5_journal_tier_mapping_business_finance.csv,source data,Supplementary tables ST1-ST24 and ST2b,2230
+data/supplementary_tables/ST6_journal_tier_mapping_communication.csv,source data,Supplementary tables ST1-ST24 and ST2b,1894
+data/supplementary_tables/ST7_journal_tier_mapping_political_science.csv,source data,Supplementary tables ST1-ST24 and ST2b,2338
+data/supplementary_tables/ST8_journal_tier_mapping_psychology.csv,source data,Supplementary tables ST1-ST24 and ST2b,2231
+data/supplementary_tables/ST9_journal_tier_mapping_public_administration.csv,source data,Supplementary tables ST1-ST24 and ST2b,2347
+data/supplementary_tables/TABLE_INDEX.csv,source data,Supplementary tables ST1-ST24 and ST2b,2323
+docs/README.md,documentation,External release documentation,676
+docs/data_dictionary.md,documentation,External release documentation,2993
+docs/deidentification.md,documentation,External release documentation,493
+docs/journal_tier_methodology.md,documentation,External release documentation,480
+docs/release_package_report_2026-05-01.md,documentation,External release documentation,7464
+docs/reproducibility.md,documentation,External release documentation,832
+docs/reproducibility_checklist.md,documentation,External release documentation,984
+figures/main/Figure1.pdf,figure,Main manuscript figures,154146
+figures/main/Figure1.png,figure,Main manuscript figures,775367
+figures/main/Figure2.pdf,figure,Main manuscript figures,42288
+figures/main/Figure2.png,figure,Main manuscript figures,467241
+figures/main/Figure3.pdf,figure,Main manuscript figures,25973
+figures/main/Figure3.png,figure,Main manuscript figures,402502
+figures/main/Figure4.pdf,figure,Main manuscript figures,37065
+figures/main/Figure4.png,figure,Main manuscript figures,526816
+figures/main/Figure5.pdf,figure,Main manuscript figures,25121
+figures/main/Figure5.png,figure,Main manuscript figures,289848
+figures/provenance/fig1_caption.md,figure provenance,Figure caption and provenance support,1046
+figures/provenance/fig2_caption.md,figure provenance,Figure caption and provenance support,1929
+figures/provenance/fig2_panelC_stats.json,figure provenance,Figure caption and provenance support,5415
+figures/provenance/fig2_panelD_stats.json,figure provenance,Figure caption and provenance support,1384
+figures/provenance/fig2_provenance.csv,figure provenance,Figure caption and provenance support,5601
+figures/provenance/fig3_caption.md,figure provenance,Figure caption and provenance support,2622
+figures/provenance/fig3_provenance.csv,figure provenance,Figure caption and provenance support,11722
+figures/provenance/fig4_caption.md,figure provenance,Figure caption and provenance support,3755
+figures/provenance/fig4_provenance.csv,figure provenance,Figure caption and provenance support,58323
+figures/provenance/fig5_caption.md,figure provenance,Figure caption and provenance support,1714
+figures/provenance/fig5_provenance.csv,figure provenance,Figure caption and provenance support,2423
+figures/provenance/sf10_caption.md,figure provenance,Figure caption and provenance support,1675
+figures/provenance/sf10_provenance.csv,figure provenance,Figure caption and provenance support,2274
+figures/provenance/sf11_caption.md,figure provenance,Figure caption and provenance support,1676
+figures/provenance/sf11_provenance.csv,figure provenance,Figure caption and provenance support,3636
+figures/provenance/sf1_caption.md,figure provenance,Figure caption and provenance support,863
+figures/provenance/sf1_provenance.csv,figure provenance,Figure caption and provenance support,1583
+figures/provenance/sf2_caption.md,figure provenance,Figure caption and provenance support,672
+figures/provenance/sf2_provenance.csv,figure provenance,Figure caption and provenance support,1975
+figures/provenance/sf3_caption.md,figure provenance,Figure caption and provenance support,958
+figures/provenance/sf3_provenance.csv,figure provenance,Figure caption and provenance support,3040
+figures/provenance/sf4_caption.md,figure provenance,Figure caption and provenance support,1141
+figures/provenance/sf4_provenance.csv,figure provenance,Figure caption and provenance support,3374
+figures/provenance/sf5_caption.md,figure provenance,Figure caption and provenance support,1171
+figures/provenance/sf5_provenance.csv,figure provenance,Figure caption and provenance support,23905
+figures/provenance/sf6_caption.md,figure provenance,Figure caption and provenance support,1384
+figures/provenance/sf6_provenance.csv,figure provenance,Figure caption and provenance support,1049
+figures/provenance/sf7_caption.md,figure provenance,Figure caption and provenance support,1358
+figures/provenance/sf7_provenance.csv,figure provenance,Figure caption and provenance support,1444
+figures/provenance/sf8_caption.md,figure provenance,Figure caption and provenance support,1463
+figures/provenance/sf8_provenance.csv,figure provenance,Figure caption and provenance support,16944
+figures/provenance/sf9_caption.md,figure provenance,Figure caption and provenance support,935
+figures/provenance/sf9_provenance.csv,figure provenance,Figure caption and provenance support,2894
+figures/supplementary/SupplementaryFigure1.pdf,figure,Supplementary figures,19370
+figures/supplementary/SupplementaryFigure1.png,figure,Supplementary figures,160184
+figures/supplementary/SupplementaryFigure10.pdf,figure,Supplementary figures,31206
+figures/supplementary/SupplementaryFigure10.png,figure,Supplementary figures,415335
+figures/supplementary/SupplementaryFigure11.pdf,figure,Supplementary figures,23276
+figures/supplementary/SupplementaryFigure11.png,figure,Supplementary figures,157693
+figures/supplementary/SupplementaryFigure2.pdf,figure,Supplementary figures,30144
+figures/supplementary/SupplementaryFigure2.png,figure,Supplementary figures,150920
+figures/supplementary/SupplementaryFigure3.pdf,figure,Supplementary figures,29901
+figures/supplementary/SupplementaryFigure3.png,figure,Supplementary figures,185115
+figures/supplementary/SupplementaryFigure4.pdf,figure,Supplementary figures,26492
+figures/supplementary/SupplementaryFigure4.png,figure,Supplementary figures,383065
+figures/supplementary/SupplementaryFigure5.pdf,figure,Supplementary figures,28541
+figures/supplementary/SupplementaryFigure5.png,figure,Supplementary figures,390109
+figures/supplementary/SupplementaryFigure6.pdf,figure,Supplementary figures,19933
+figures/supplementary/SupplementaryFigure6.png,figure,Supplementary figures,207725
+figures/supplementary/SupplementaryFigure7.pdf,figure,Supplementary figures,31197
+figures/supplementary/SupplementaryFigure7.png,figure,Supplementary figures,378463
+figures/supplementary/SupplementaryFigure8.pdf,figure,Supplementary figures,34459
+figures/supplementary/SupplementaryFigure8.png,figure,Supplementary figures,268983
+figures/supplementary/SupplementaryFigure9.pdf,figure,Supplementary figures,21909
+figures/supplementary/SupplementaryFigure9.png,figure,Supplementary figures,199862
+manuscript/main_manuscript.md,manuscript,Paper source text and references,67629
+manuscript/references.bib,manuscript,Paper source text and references,17822
+manuscript/references.md,manuscript,Paper source text and references,6592
+manuscript/supplementary_information.md,manuscript,Paper source text and references,144279
+requirements.txt,documentation,Package support,52
+scripts/README.md,code,Validation and deterministic reproduction commands,1440
+scripts/build_release_manifest.py,code,Validation and deterministic reproduction commands,4099
+scripts/reproduce_figures.py,code,Validation and deterministic reproduction commands,1844
+scripts/reproduce_tables.py,code,Validation and deterministic reproduction commands,1595
+scripts/reproducibility/README.md,code,Validation and deterministic reproduction commands,3070
+scripts/reproducibility/_common.py,code,Validation and deterministic reproduction commands,6959
+scripts/reproducibility/compute_s19_pairwise_sft_kappa.py,code,Validation and deterministic reproduction commands,7722
+scripts/reproducibility/compute_s20_sft_consensus_per_class.py,code,Validation and deterministic reproduction commands,4716
+scripts/reproducibility/compute_s21_ai_human_complementarity.py,code,Validation and deterministic reproduction commands,6135
+scripts/reproducibility/compute_s22_mcnemar_compendium.py,code,Validation and deterministic reproduction commands,8261
+scripts/reproducibility/compute_s23_headroom_captured.py,code,Validation and deterministic reproduction commands,6543
+scripts/reproducibility/smoke_test_v6_3.py,code,Validation and deterministic reproduction commands,6959
+scripts/validate_package.py,code,Validation and deterministic reproduction commands,19513

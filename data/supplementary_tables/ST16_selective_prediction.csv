@@ -1,0 +1,169 @@
+model,field,coverage_pct,selected_n,accuracy_pct
+GPT-4.1-nano SFT,Business and finance,10,20,90.0
+GPT-4.1-nano SFT,Business and finance,15,30,83.3
+GPT-4.1-nano SFT,Business and finance,20,40,87.5
+GPT-4.1-nano SFT,Business and finance,25,50,82.0
+GPT-4.1-nano SFT,Business and finance,33,66,74.2
+GPT-4.1-nano SFT,Business and finance,50,100,66.0
+GPT-4.1-nano SFT,Business and finance,100,200,55.5
+GPT-4.1-nano SFT,Communication,10,20,100.0
+GPT-4.1-nano SFT,Communication,15,30,90.0
+GPT-4.1-nano SFT,Communication,20,40,82.5
+GPT-4.1-nano SFT,Communication,25,50,84.0
+GPT-4.1-nano SFT,Communication,33,66,78.8
+GPT-4.1-nano SFT,Communication,50,100,67.0
+GPT-4.1-nano SFT,Communication,100,200,60.5
+GPT-4.1-nano SFT,Economics,10,20,100.0
+GPT-4.1-nano SFT,Economics,15,30,100.0
+GPT-4.1-nano SFT,Economics,20,40,100.0
+GPT-4.1-nano SFT,Economics,25,50,96.0
+GPT-4.1-nano SFT,Economics,33,66,93.9
+GPT-4.1-nano SFT,Economics,50,100,85.0
+GPT-4.1-nano SFT,Economics,100,200,68.5
+GPT-4.1-nano SFT,Management,10,12,100.0
+GPT-4.1-nano SFT,Management,15,18,94.4
+GPT-4.1-nano SFT,Management,20,24,79.2
+GPT-4.1-nano SFT,Management,25,30,76.7
+GPT-4.1-nano SFT,Management,33,39,69.2
+GPT-4.1-nano SFT,Management,50,60,66.7
+GPT-4.1-nano SFT,Management,100,120,57.5
+GPT-4.1-nano SFT,Political science,10,20,90.0
+GPT-4.1-nano SFT,Political science,15,30,86.7
+GPT-4.1-nano SFT,Political science,20,40,77.5
+GPT-4.1-nano SFT,Political science,25,50,72.0
+GPT-4.1-nano SFT,Political science,33,66,71.2
+GPT-4.1-nano SFT,Political science,50,100,65.0
+GPT-4.1-nano SFT,Political science,100,200,54.0
+GPT-4.1-nano SFT,"Psychology, multidisciplinary",10,20,100.0
+GPT-4.1-nano SFT,"Psychology, multidisciplinary",15,30,100.0
+GPT-4.1-nano SFT,"Psychology, multidisciplinary",20,40,100.0
+GPT-4.1-nano SFT,"Psychology, multidisciplinary",25,50,100.0
+GPT-4.1-nano SFT,"Psychology, multidisciplinary",33,66,98.5
+GPT-4.1-nano SFT,"Psychology, multidisciplinary",50,100,96.0
+GPT-4.1-nano SFT,"Psychology, multidisciplinary",100,200,81.5
+GPT-4.1-nano SFT,Public administration,10,20,95.0
+GPT-4.1-nano SFT,Public administration,15,30,80.0
+GPT-4.1-nano SFT,Public administration,20,40,77.5
+GPT-4.1-nano SFT,Public administration,25,50,74.0
+GPT-4.1-nano SFT,Public administration,33,66,71.2
+GPT-4.1-nano SFT,Public administration,50,100,63.0
+GPT-4.1-nano SFT,Public administration,100,200,53.5
+GPT-4.1-nano SFT,Sociology,10,20,100.0
+GPT-4.1-nano SFT,Sociology,15,30,96.7
+GPT-4.1-nano SFT,Sociology,20,40,97.5
+GPT-4.1-nano SFT,Sociology,25,50,94.0
+GPT-4.1-nano SFT,Sociology,33,66,84.8
+GPT-4.1-nano SFT,Sociology,50,100,74.0
+GPT-4.1-nano SFT,Sociology,100,200,54.0
+Qwen3-30B SFT,Business and finance,10,20,95.0
+Qwen3-30B SFT,Business and finance,15,30,90.0
+Qwen3-30B SFT,Business and finance,20,40,92.5
+Qwen3-30B SFT,Business and finance,25,50,80.0
+Qwen3-30B SFT,Business and finance,33,66,74.2
+Qwen3-30B SFT,Business and finance,50,100,67.0
+Qwen3-30B SFT,Business and finance,100,200,53.5
+Qwen3-30B SFT,Communication,10,20,100.0
+Qwen3-30B SFT,Communication,15,30,96.7
+Qwen3-30B SFT,Communication,20,40,92.5
+Qwen3-30B SFT,Communication,25,50,92.0
+Qwen3-30B SFT,Communication,33,66,83.3
+Qwen3-30B SFT,Communication,50,100,79.0
+Qwen3-30B SFT,Communication,100,200,67.5
+Qwen3-30B SFT,Economics,10,20,100.0
+Qwen3-30B SFT,Economics,15,30,100.0
+Qwen3-30B SFT,Economics,20,40,97.5
+Qwen3-30B SFT,Economics,25,50,98.0
+Qwen3-30B SFT,Economics,33,66,98.5
+Qwen3-30B SFT,Economics,50,100,89.0
+Qwen3-30B SFT,Economics,100,200,69.5
+Qwen3-30B SFT,Management,10,12,100.0
+Qwen3-30B SFT,Management,15,18,88.9
+Qwen3-30B SFT,Management,20,24,75.0
+Qwen3-30B SFT,Management,25,30,73.3
+Qwen3-30B SFT,Management,33,39,71.8
+Qwen3-30B SFT,Management,50,60,70.0
+Qwen3-30B SFT,Management,100,120,58.3
+Qwen3-30B SFT,Political science,10,20,80.0
+Qwen3-30B SFT,Political science,15,30,73.3
+Qwen3-30B SFT,Political science,20,40,67.5
+Qwen3-30B SFT,Political science,25,50,72.0
+Qwen3-30B SFT,Political science,33,66,74.2
+Qwen3-30B SFT,Political science,50,100,69.0
+Qwen3-30B SFT,Political science,100,200,58.5
+Qwen3-30B SFT,"Psychology, multidisciplinary",10,20,100.0
+Qwen3-30B SFT,"Psychology, multidisciplinary",15,30,100.0
+Qwen3-30B SFT,"Psychology, multidisciplinary",20,40,97.5
+Qwen3-30B SFT,"Psychology, multidisciplinary",25,50,98.0
+Qwen3-30B SFT,"Psychology, multidisciplinary",33,66,97.0
+Qwen3-30B SFT,"Psychology, multidisciplinary",50,100,98.0
+Qwen3-30B SFT,"Psychology, multidisciplinary",100,200,85.5
+Qwen3-30B SFT,Public administration,10,20,95.0
+Qwen3-30B SFT,Public administration,15,30,93.3
+Qwen3-30B SFT,Public administration,20,40,90.0
+Qwen3-30B SFT,Public administration,25,50,86.0
+Qwen3-30B SFT,Public administration,33,66,81.8
+Qwen3-30B SFT,Public administration,50,100,69.0
+Qwen3-30B SFT,Public administration,100,200,55.0
+Qwen3-30B SFT,Sociology,10,20,95.0
+Qwen3-30B SFT,Sociology,15,30,96.7
+Qwen3-30B SFT,Sociology,20,40,95.0
+Qwen3-30B SFT,Sociology,25,50,94.0
+Qwen3-30B SFT,Sociology,33,66,87.9
+Qwen3-30B SFT,Sociology,50,100,83.0
+Qwen3-30B SFT,Sociology,100,200,65.5
+Qwen3-4B SFT,Business and finance,10,20,85.0
+Qwen3-4B SFT,Business and finance,15,30,83.3
+Qwen3-4B SFT,Business and finance,20,40,85.0
+Qwen3-4B SFT,Business and finance,25,50,82.0
+Qwen3-4B SFT,Business and finance,33,66,74.2
+Qwen3-4B SFT,Business and finance,50,100,68.0
+Qwen3-4B SFT,Business and finance,100,200,53.5
+Qwen3-4B SFT,Communication,10,20,95.0
+Qwen3-4B SFT,Communication,15,30,93.3
+Qwen3-4B SFT,Communication,20,40,95.0
+Qwen3-4B SFT,Communication,25,50,88.0
+Qwen3-4B SFT,Communication,33,66,81.8
+Qwen3-4B SFT,Communication,50,100,72.0
+Qwen3-4B SFT,Communication,100,200,61.0
+Qwen3-4B SFT,Economics,10,20,95.0
+Qwen3-4B SFT,Economics,15,30,96.7
+Qwen3-4B SFT,Economics,20,40,97.5
+Qwen3-4B SFT,Economics,25,50,96.0
+Qwen3-4B SFT,Economics,33,66,92.4
+Qwen3-4B SFT,Economics,50,100,84.0
+Qwen3-4B SFT,Economics,100,200,64.0
+Qwen3-4B SFT,Management,10,12,91.7
+Qwen3-4B SFT,Management,15,18,83.3
+Qwen3-4B SFT,Management,20,24,75.0
+Qwen3-4B SFT,Management,25,30,80.0
+Qwen3-4B SFT,Management,33,39,84.6
+Qwen3-4B SFT,Management,50,60,68.3
+Qwen3-4B SFT,Management,100,120,59.2
+Qwen3-4B SFT,Political science,10,20,75.0
+Qwen3-4B SFT,Political science,15,30,70.0
+Qwen3-4B SFT,Political science,20,40,65.0
+Qwen3-4B SFT,Political science,25,50,58.0
+Qwen3-4B SFT,Political science,33,66,59.1
+Qwen3-4B SFT,Political science,50,100,58.0
+Qwen3-4B SFT,Political science,100,200,50.5
+Qwen3-4B SFT,"Psychology, multidisciplinary",10,20,100.0
+Qwen3-4B SFT,"Psychology, multidisciplinary",15,30,100.0
+Qwen3-4B SFT,"Psychology, multidisciplinary",20,40,95.0
+Qwen3-4B SFT,"Psychology, multidisciplinary",25,50,96.0
+Qwen3-4B SFT,"Psychology, multidisciplinary",33,66,97.0
+Qwen3-4B SFT,"Psychology, multidisciplinary",50,100,96.0
+Qwen3-4B SFT,"Psychology, multidisciplinary",100,200,76.0
+Qwen3-4B SFT,Public administration,10,20,90.0
+Qwen3-4B SFT,Public administration,15,30,83.3
+Qwen3-4B SFT,Public administration,20,40,77.5
+Qwen3-4B SFT,Public administration,25,50,72.0
+Qwen3-4B SFT,Public administration,33,66,68.2
+Qwen3-4B SFT,Public administration,50,100,63.0
+Qwen3-4B SFT,Public administration,100,200,51.0
+Qwen3-4B SFT,Sociology,10,20,100.0
+Qwen3-4B SFT,Sociology,15,30,100.0
+Qwen3-4B SFT,Sociology,20,40,92.5
+Qwen3-4B SFT,Sociology,25,50,88.0
+Qwen3-4B SFT,Sociology,33,66,81.8
+Qwen3-4B SFT,Sociology,50,100,67.0
+Qwen3-4B SFT,Sociology,100,200,51.0

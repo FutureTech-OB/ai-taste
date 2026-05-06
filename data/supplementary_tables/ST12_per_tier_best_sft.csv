@@ -1,0 +1,33 @@
+field,evaluator,tier,precision_pct,recall_pct,f1_pct
+Bus. & Finance,GPT-4.1-nano SFT,exceptional,57.0,90.0,69.8
+Bus. & Finance,GPT-4.1-nano SFT,strong,46.5,40.0,43.0
+Bus. & Finance,GPT-4.1-nano SFT,fair,41.9,26.0,32.1
+Bus. & Finance,GPT-4.1-nano SFT,limited,70.2,66.0,68.0
+Communication,Qwen3-30B SFT,exceptional,52.7,58.0,55.2
+Communication,Qwen3-30B SFT,strong,73.0,54.0,62.1
+Communication,Qwen3-30B SFT,fair,61.2,82.0,70.1
+Communication,Qwen3-30B SFT,limited,92.7,76.0,83.5
+Economics,Qwen3-30B SFT,exceptional,63.9,46.0,53.5
+Economics,Qwen3-30B SFT,strong,47.6,78.0,59.1
+Economics,Qwen3-30B SFT,fair,97.4,74.0,84.1
+Economics,Qwen3-30B SFT,limited,90.9,80.0,85.1
+Management,Qwen3-4B SFT,exceptional,61.5,80.0,69.6
+Management,Qwen3-4B SFT,strong,56.7,56.7,56.7
+Management,Qwen3-4B SFT,fair,45.7,53.3,49.2
+Management,Qwen3-4B SFT,limited,87.5,46.7,60.9
+Pol. Science,Qwen3-30B SFT,exceptional,69.7,46.0,55.4
+Pol. Science,Qwen3-30B SFT,strong,48.1,76.0,58.9
+Pol. Science,Qwen3-30B SFT,fair,56.9,66.0,61.1
+Pol. Science,Qwen3-30B SFT,limited,76.7,46.0,57.5
+Psychology,Qwen3-30B SFT,exceptional,89.8,88.0,88.9
+Psychology,Qwen3-30B SFT,strong,84.9,90.0,87.4
+Psychology,Qwen3-30B SFT,fair,79.6,86.0,82.7
+Psychology,Qwen3-30B SFT,limited,88.6,78.0,83.0
+Public Admin.,Qwen3-30B SFT,exceptional,56.8,50.0,53.2
+Public Admin.,Qwen3-30B SFT,strong,44.7,68.0,54.0
+Public Admin.,Qwen3-30B SFT,fair,50.0,30.0,37.5
+Public Admin.,Qwen3-30B SFT,limited,72.0,72.0,72.0
+Sociology,Qwen3-30B SFT,exceptional,67.6,50.0,57.5
+Sociology,Qwen3-30B SFT,strong,53.7,58.0,55.8
+Sociology,Qwen3-30B SFT,fair,63.2,72.0,67.3
+Sociology,Qwen3-30B SFT,limited,78.8,82.0,80.4

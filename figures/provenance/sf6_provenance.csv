@@ -1,0 +1,7 @@
+evaluator_class,exc_pct,str_pct,fair_pct,ltd_pct,norm_entropy_pct,n_models_or_panel,n_articles_or_voted,source
+Frontier avg (11),14.03,55.75,29.26,0.96,72.53,11,120,data/management_deep_probe/statistics/S01_FlagshipStats.json
+Chat avg (3),3.33,65.28,25.83,5.56,65.07,3,120,"data/management_deep_probe/predictions/chat_predictions.jsonl (gpt-5.2, kimi-k2-0905-preview, deepseek-chat)"
+SFT single avg (4),33.12,21.67,28.75,16.46,97.58,4,120,"data/management_deep_probe/predictions/sft_predictions.jsonl (CYqJRxId, ckpt-step-304, ckppt-228, ckppt-380)"
+Best single SFT (Qwen3-4B),32.50,25.00,29.17,13.33,96.65,1,120,data/management_deep_probe/predictions/sft_predictions.jsonl (Qwen3-4B logp argmax)
+Expert majority (N=89),8.99,39.33,40.45,11.24,86.22,1,89,"data/management_deep_probe/human_ratings/archive/survey_all_expert.jsonl (majority vote per article, ties excluded)"
+Junior majority (N=103),11.65,31.07,47.57,9.71,86.09,1,103,"data/management_deep_probe/human_ratings/student_enriched_filtered.jsonl (majority vote per article, ties excluded)"

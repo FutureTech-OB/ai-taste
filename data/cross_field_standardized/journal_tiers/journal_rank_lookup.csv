@@ -1,0 +1,220 @@
+subject,tier,rank,journal,match_journal,normalized_journal,alias_type,source_file
+"BUSINESS, FINANCE",A+,exceptional,Journal of Finance,Journal of Finance,journal of finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A+,exceptional,Journal of Financial Economics,Journal of Financial Economics,journal of financial economics,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A+,exceptional,Review of Financial Studies,Review of Financial Studies,review of financial studies,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Emerging Markets Review,Emerging Markets Review,emerging markets review,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,European Accounting Review,European Accounting Review,european accounting review,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Financial Analysts Journal,Financial Analysts Journal,financial analysts journal,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Financial Management,Financial Management,financial management,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Global Finance Journal,Global Finance Journal,global finance journal,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Journal of Behavioral and Experimental Finance,Journal of Behavioral and Experimental Finance,journal of behavioral and experimental finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Journal of Empirical Finance,Journal of Empirical Finance,journal of empirical finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Journal of Financial Markets,Journal of Financial Markets,journal of financial markets,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Journal of Real Estate Finance and Economics,Journal of Real Estate Finance and Economics,journal of real estate finance and economics,canonical,business_finance_final.md
+"BUSINESS, FINANCE",B,fair,Mathematical Finance,Mathematical Finance,mathematical finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Australian Accounting Review,Australian Accounting Review,australian accounting review,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Borsa Istanbul Review,Borsa Istanbul Review,borsa istanbul review,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Financial Accountability & Management,Financial Accountability & Management,financial accountability and management,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Fiscal Studies,Fiscal Studies,fiscal studies,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,International Journal of Accounting,International Journal of Accounting,international journal of accounting,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,International Journal of Auditing,International Journal of Auditing,international journal of auditing,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,International Journal of Managerial Finance,International Journal of Managerial Finance,international journal of managerial finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Journal of Accounting Literature,Journal of Accounting Literature,journal of accounting literature,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Journal of Behavioral Finance,Journal of Behavioral Finance,journal of behavioral finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Journal of Information Systems,Journal of Information Systems,journal of information systems,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Journal of Risk Finance,Journal of Risk Finance,journal of risk finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Journal of Sustainable Finance & Investment,Journal of Sustainable Finance & Investment,journal of sustainable finance and investment,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Meditari Accountancy Research,Meditari Accountancy Research,meditari accountancy research,canonical,business_finance_final.md
+"BUSINESS, FINANCE",C,limited,Sustainability Accounting Management and Policy Journal,Sustainability Accounting Management and Policy Journal,sustainability accounting management and policy journal,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A,strong,Journal of Banking & Finance,Journal of Banking & Finance,journal of banking and finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A,strong,Journal of Corporate Finance,Journal of Corporate Finance,journal of corporate finance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A,strong,Journal of Financial and Quantitative Analysis,Journal of Financial and Quantitative Analysis,journal of financial and quantitative analysis,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A,strong,Journal of Financial Intermediation,Journal of Financial Intermediation,journal of financial intermediation,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A,strong,Journal of Monetary Economics,Journal of Monetary Economics,journal of monetary economics,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A,strong,"Journal of Money, Credit and Banking","Journal of Money, Credit and Banking",journal of money credit and banking,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A,strong,Journal of Risk and Insurance,Journal of Risk and Insurance,journal of risk and insurance,canonical,business_finance_final.md
+"BUSINESS, FINANCE",A,strong,Review of Finance,Review of Finance,review of finance,canonical,business_finance_final.md
+COMMUNICATION,A+,exceptional,Communication Research,Communication Research,communication research,canonical,communication_final.md
+COMMUNICATION,A+,exceptional,Communication Theory,Communication Theory,communication theory,canonical,communication_final.md
+COMMUNICATION,A+,exceptional,Human Communication Research,Human Communication Research,human communication research,canonical,communication_final.md
+COMMUNICATION,A+,exceptional,Journal of Communication,Journal of Communication,journal of communication,canonical,communication_final.md
+COMMUNICATION,A+,exceptional,New Media & Society,New Media & Society,new media and society,canonical,communication_final.md
+COMMUNICATION,B,fair,Communication and Critical-Cultural Studies,Communication and Critical-Cultural Studies,communication and critical cultural studies,canonical,communication_final.md
+COMMUNICATION,B,fair,Communication Culture & Critique,Communication Culture & Critique,communication culture and critique,canonical,communication_final.md
+COMMUNICATION,B,fair,Convergence,Convergence,convergence,canonical,communication_final.md
+COMMUNICATION,B,fair,European Journal of Communication,European Journal of Communication,european journal of communication,canonical,communication_final.md
+COMMUNICATION,B,fair,Journal of Advertising Research,Journal of Advertising Research,journal of advertising research,canonical,communication_final.md
+COMMUNICATION,B,fair,Journal of Language and Social Psychology,Journal of Language and Social Psychology,journal of language and social psychology,canonical,communication_final.md
+COMMUNICATION,B,fair,Journal of Public Relations Research,Journal of Public Relations Research,journal of public relations research,canonical,communication_final.md
+COMMUNICATION,B,fair,Media and Communication,Media and Communication,media and communication,canonical,communication_final.md
+COMMUNICATION,B,fair,Research on Language and Social Interaction,Research on Language and Social Interaction,research on language and social interaction,canonical,communication_final.md
+COMMUNICATION,B,fair,Television & New Media,Television & New Media,television and new media,canonical,communication_final.md
+COMMUNICATION,C,limited,Asian Journal of Communication,Asian Journal of Communication,asian journal of communication,canonical,communication_final.md
+COMMUNICATION,C,limited,Business and Professional Communication Quarterly,Business and Professional Communication Quarterly,business and professional communication quarterly,canonical,communication_final.md
+COMMUNICATION,C,limited,International Journal of Sport Communication,International Journal of Sport Communication,international journal of sport communication,canonical,communication_final.md
+COMMUNICATION,C,limited,Javnost-The Public,Javnost-The Public,javnost public,canonical,communication_final.md
+COMMUNICATION,C,limited,Journal of Business and Technical Communication,Journal of Business and Technical Communication,journal of business and technical communication,canonical,communication_final.md
+COMMUNICATION,C,limited,Journal of Family Communication,Journal of Family Communication,journal of family communication,canonical,communication_final.md
+COMMUNICATION,C,limited,Revista Latina de Comunicacion Social,Revista Latina de Comunicacion Social,revista latina de comunicacion social,canonical,communication_final.md
+COMMUNICATION,C,limited,Technical Communication Quarterly,Technical Communication Quarterly,technical communication quarterly,canonical,communication_final.md
+COMMUNICATION,A,strong,Communication Methods and Measures,Communication Methods and Measures,communication methods and measures,canonical,communication_final.md
+COMMUNICATION,A,strong,Communication Monographs,Communication Monographs,communication monographs,canonical,communication_final.md
+COMMUNICATION,A,strong,Digital Journalism,Digital Journalism,digital journalism,canonical,communication_final.md
+COMMUNICATION,A,strong,Information Communication & Society,Information Communication & Society,information communication and society,canonical,communication_final.md
+COMMUNICATION,A,strong,International Journal of Press-Politics,International Journal of Press-Politics,international journal of press politics,canonical,communication_final.md
+COMMUNICATION,A,strong,Journal of Computer-Mediated Communication,Journal of Computer-Mediated Communication,journal of computer mediated communication,canonical,communication_final.md
+COMMUNICATION,A,strong,Journalism,Journalism,journalism,canonical,communication_final.md
+COMMUNICATION,A,strong,Journalism & Mass Communication Quarterly,Journalism & Mass Communication Quarterly,journalism and mass communication quarterly,canonical,communication_final.md
+COMMUNICATION,A,strong,Mass Communication and Society,Mass Communication and Society,mass communication and society,canonical,communication_final.md
+COMMUNICATION,A,strong,Media Culture & Society,Media Culture & Society,media culture and society,canonical,communication_final.md
+POLITICAL SCIENCE,A+,exceptional,American Journal of Political Science,American Journal of Political Science,american journal of political science,canonical,political_science_final.md
+POLITICAL SCIENCE,A+,exceptional,American Political Science Review,American Political Science Review,american political science review,canonical,political_science_final.md
+POLITICAL SCIENCE,A+,exceptional,International Organization,International Organization,international organization,canonical,political_science_final.md
+POLITICAL SCIENCE,A+,exceptional,Journal of Politics,Journal of Politics,journal of politics,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,British Journal of Politics & International Relations,British Journal of Politics & International Relations,british journal of politics and international relations,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Contemporary Security Policy,Contemporary Security Policy,contemporary security policy,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Geopolitics,Geopolitics,geopolitics,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Global Environmental Politics,Global Environmental Politics,global environmental politics,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,International Journal of Press/Politics,International Journal of Press/Politics,international journal of press politics,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,International Political Science Review,International Political Science Review,international political science review,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,International Studies Review,International Studies Review,international studies review,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Latin American Politics and Society,Latin American Politics and Society,latin american politics and society,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Party Politics,Party Politics,party politics,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Policy and Society,Policy and Society,policy and society,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Political Research Quarterly,Political Research Quarterly,political research quarterly,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Political Science Quarterly,Political Science Quarterly,political science quarterly,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Politics and Governance,Politics and Governance,politics and governance,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Politics & Society,Politics & Society,politics and society,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Quarterly Journal of Political Science,Quarterly Journal of Political Science,quarterly journal of political science,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Regulation & Governance,Regulation & Governance,regulation and governance,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Review of International Organizations,Review of International Organizations,review of international organizations,canonical,political_science_final.md
+POLITICAL SCIENCE,B,fair,Review of Policy Research,Review of Policy Research,review of policy research,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,Contemporary Politics,Contemporary Politics,contemporary politics,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,Economics & Politics,Economics & Politics,economics and politics,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,Ethics & International Affairs,Ethics & International Affairs,ethics and international affairs,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,Frontiers in Political Science,Frontiers in Political Science,frontiers in political science,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,International Journal of Transitional Justice,International Journal of Transitional Justice,international journal of transitional justice,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,Journal of International Relations and Development,Journal of International Relations and Development,journal of international relations and development,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,Problems of Post-Communism,Problems of Post-Communism,problems of post communism,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,Scandinavian Political Studies,Scandinavian Political Studies,scandinavian political studies,canonical,political_science_final.md
+POLITICAL SCIENCE,C,limited,Swiss Political Science Review,Swiss Political Science Review,swiss political science review,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,Annual Review of Political Science,Annual Review of Political Science,annual review of political science,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,Comparative Political Studies,Comparative Political Studies,comparative political studies,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,Comparative Politics,Comparative Politics,comparative politics,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,International Studies Quarterly,International Studies Quarterly,international studies quarterly,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,Journal of Peace Research,Journal of Peace Research,journal of peace research,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,Political Science Research and Methods,Political Science Research and Methods,political science research and methods,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,Political Theory,Political Theory,political theory,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,Politics & Gender,Politics & Gender,politics and gender,canonical,political_science_final.md
+POLITICAL SCIENCE,A,strong,Public Opinion Quarterly,Public Opinion Quarterly,public opinion quarterly,canonical,political_science_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",A+,exceptional,Annual Review of Psychology,Annual Review of Psychology,annual review of psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",A+,exceptional,Psychological Bulletin,Psychological Bulletin,psychological bulletin,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",A+,exceptional,Psychological Review,Psychological Review,psychological review,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",A+,exceptional,Psychological Science,Psychological Science,psychological science,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,Aggression and Violent Behavior,Aggression and Violent Behavior,aggression and violent behavior,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,European Psychologist,European Psychologist,european psychologist,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,Journal of Community Psychology,Journal of Community Psychology,journal of community psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,Journal of Happiness Studies,Journal of Happiness Studies,journal of happiness studies,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,Journal of Positive Psychology,Journal of Positive Psychology,journal of positive psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,Journals of Gerontology Series B,Journals of Gerontology Series B,journals of gerontology series b,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,Psychology of Sexual Orientation and Gender Diversity,Psychology of Sexual Orientation and Gender Diversity,psychology of sexual orientation and gender diversity,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,Psychology of Women Quarterly,Psychology of Women Quarterly,psychology of women quarterly,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",B,fair,"Technology, Mind, and Behavior","Technology, Mind, and Behavior",technology mind and behavior,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Adversity and Resilience Science,Adversity and Resilience Science,adversity and resilience science,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Australian Psychologist,Australian Psychologist,australian psychologist,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Computers in Human Behavior Reports,Computers in Human Behavior Reports,computers in human behavior reports,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Ecopsychology,Ecopsychology,ecopsychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Journal of Pacific Rim Psychology,Journal of Pacific Rim Psychology,journal of pacific rim psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Journal of Reproductive and Infant Psychology,Journal of Reproductive and Infant Psychology,journal of reproductive and infant psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Psychologica Belgica,Psychologica Belgica,psychologica belgica,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Psychological Reports,Psychological Reports,psychological reports,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Psychology of Religion and Spirituality,Psychology of Religion and Spirituality,psychology of religion and spirituality,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Psychosocial Intervention,Psychosocial Intervention,psychosocial intervention,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Qualitative Research in Psychology,Qualitative Research in Psychology,qualitative research in psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Scandinavian Journal of Psychology,Scandinavian Journal of Psychology,scandinavian journal of psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",C,limited,Zeitschrift fur Psychologie - Journal of Psychology,Zeitschrift fur Psychologie - Journal of Psychology,zeitschrift fur psychologie journal of psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",A,strong,American Psychologist,American Psychologist,american psychologist,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",A,strong,Journal of Environmental Psychology,Journal of Environmental Psychology,journal of environmental psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",A,strong,Nature Reviews Psychology,Nature Reviews Psychology,nature reviews psychology,canonical,psychology_final.md
+"PSYCHOLOGY, MULTIDISCIPLINARY",A,strong,Psychological Methods,Psychological Methods,psychological methods,canonical,psychology_final.md
+PUBLIC ADMINISTRATION,A+,exceptional,Governance,Governance,governance,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,A+,exceptional,Journal of Public Administration Research and Theory (JPART),Journal of Public Administration Research and Theory,journal of public administration research and theory,strip_parenthetical,public_administration_final.md
+PUBLIC ADMINISTRATION,A+,exceptional,Journal of Public Administration Research and Theory (JPART),Journal of Public Administration Research and Theory (JPART),journal of public administration research and theory jpart,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,A+,exceptional,Journal of Public Administration Research and Theory (JPART),JPART,jpart,parenthetical_acronym,public_administration_final.md
+PUBLIC ADMINISTRATION,A+,exceptional,Public Administration Review (PAR),PAR,par,parenthetical_acronym,public_administration_final.md
+PUBLIC ADMINISTRATION,A+,exceptional,Public Administration Review (PAR),Public Administration Review,public administration review,strip_parenthetical,public_administration_final.md
+PUBLIC ADMINISTRATION,A+,exceptional,Public Administration Review (PAR),Public Administration Review (PAR),public administration review par,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,B,fair,American Review of Public Administration,American Review of Public Administration,american review of public administration,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,B,fair,Journal of Public Policy,Journal of Public Policy,journal of public policy,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,B,fair,Perspectives on Public Management and Governance,Perspectives on Public Management and Governance,perspectives on public management and governance,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,B,fair,Policy and Politics,Policy and Politics,policy and politics,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,B,fair,Policy Sciences,Policy Sciences,policy sciences,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,B,fair,Public Policy and Administration,Public Policy and Administration,public policy and administration,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,B,fair,Review of Public Personnel Administration,Review of Public Personnel Administration,review of public personnel administration,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Climate Policy,Climate Policy,climate policy,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Global Public Policy and Governance,Global Public Policy and Governance,global public policy and governance,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Journal of Accounting and Public Policy,Journal of Accounting and Public Policy,journal of accounting and public policy,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Journal of Chinese Governance,Journal of Chinese Governance,journal of chinese governance,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Journal of Comparative Policy Analysis,Journal of Comparative Policy Analysis,journal of comparative policy analysis,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Journal of Comparative Policy Analysis,Journal of Comparative Policy Analysis: Research and Practice,journal of comparative policy analysis research and practice,manual_alias,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Journal of Social Policy,Journal of Social Policy,journal of social policy,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Local Government Studies,Local Government Studies,local government studies,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Nonprofit Management & Leadership,Nonprofit Management & Leadership,nonprofit management and leadership,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Public Money & Management,Public Money & Management,public money and management,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Science and Public Policy,Science and Public Policy,science and public policy,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,C,limited,Social Policy & Administration,Social Policy & Administration,social policy and administration,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,A,strong,Journal of European Public Policy,Journal of European Public Policy,journal of european public policy,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,A,strong,Journal of Policy Analysis and Management (JPAM),Journal of Policy Analysis and Management,journal of policy analysis and management,strip_parenthetical,public_administration_final.md
+PUBLIC ADMINISTRATION,A,strong,Journal of Policy Analysis and Management (JPAM),Journal of Policy Analysis and Management (JPAM),journal of policy analysis and management jpam,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,A,strong,Journal of Policy Analysis and Management (JPAM),JPAM,jpam,parenthetical_acronym,public_administration_final.md
+PUBLIC ADMINISTRATION,A,strong,Public Administration (Wiley),Public Administration,public administration,strip_parenthetical,public_administration_final.md
+PUBLIC ADMINISTRATION,A,strong,Public Administration (Wiley),Public Administration (Wiley),public administration wiley,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,A,strong,Public Management Review,Public Management Review,public management review,canonical,public_administration_final.md
+PUBLIC ADMINISTRATION,A,strong,Regulation & Governance,Regulation & Governance,regulation and governance,canonical,public_administration_final.md
+SOCIOLOGY,A+,exceptional,American Journal of Sociology,American Journal of Sociology,american journal of sociology,canonical,sociology_final.md
+SOCIOLOGY,A+,exceptional,American Sociological Review,American Sociological Review,american sociological review,canonical,sociology_final.md
+SOCIOLOGY,A+,exceptional,Annual Review of Sociology,Annual Review of Sociology,annual review of sociology,canonical,sociology_final.md
+SOCIOLOGY,A+,exceptional,Social Forces,Social Forces,social forces,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Agriculture and Human Values,Agriculture and Human Values,agriculture and human values,canonical,sociology_final.md
+SOCIOLOGY,B,fair,American Journal of Cultural Sociology,American Journal of Cultural Sociology,american journal of cultural sociology,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Cultural Sociology,Cultural Sociology,cultural sociology,canonical,sociology_final.md
+SOCIOLOGY,B,fair,European Journal of Social Theory,European Journal of Social Theory,european journal of social theory,canonical,sociology_final.md
+SOCIOLOGY,B,fair,European Societies,European Societies,european societies,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Information Communication & Society,Information Communication & Society,information communication and society,canonical,sociology_final.md
+SOCIOLOGY,B,fair,International Political Sociology,International Political Sociology,international political sociology,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Journal for the Scientific Study of Religion,Journal for the Scientific Study of Religion,journal for scientific study of religion,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Journal of Cultural Economy,Journal of Cultural Economy,journal of cultural economy,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Media Culture & Society,Media Culture & Society,media culture and society,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Mobilization,Mobilization,mobilization,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Politics & Society,Politics & Society,politics and society,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Qualitative Sociology,Qualitative Sociology,qualitative sociology,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Race & Class,Race & Class,race and class,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Rural Sociology,Rural Sociology,rural sociology,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Social Indicators Research,Social Indicators Research,social indicators research,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Social Science Research,Social Science Research,social science research,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Sociological Quarterly,Sociological Quarterly,sociological quarterly,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Sociology of Race and Ethnicity,Sociology of Race and Ethnicity,sociology of race and ethnicity,canonical,sociology_final.md
+SOCIOLOGY,B,fair,Socius,Socius,socius,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Annals of Tourism Research,Annals of Tourism Research,annals of tourism research,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Community Work & Family,Community Work & Family,community work and family,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Critical Sociology,Critical Sociology,critical sociology,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Human Ecology,Human Ecology,human ecology,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Human Studies,Human Studies,human studies,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Scandinavian Journal of Hospitality and Tourism,Scandinavian Journal of Hospitality and Tourism,scandinavian journal of hospitality and tourism,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Social Justice Research,Social Justice Research,social justice research,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Social Science Quarterly,Social Science Quarterly,social science quarterly,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Sociological Spectrum,Sociological Spectrum,sociological spectrum,canonical,sociology_final.md
+SOCIOLOGY,C,limited,Young,Young,young,canonical,sociology_final.md
+SOCIOLOGY,A,strong,European Sociological Review,European Sociological Review,european sociological review,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Gender & Society,Gender & Society,gender and society,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Journal of Health and Social Behavior,Journal of Health and Social Behavior,journal of health and social behavior,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Journal of Marriage and Family,Journal of Marriage and Family,journal of marriage and family,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Social Networks,Social Networks,social networks,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Social Problems,Social Problems,social problems,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Socio-Economic Review,Socio-Economic Review,socio economic review,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Sociological Methods & Research,Sociological Methods & Research,sociological methods and research,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Sociological Theory,Sociological Theory,sociological theory,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Sociology (BSA),Sociology,sociology,strip_parenthetical,sociology_final.md
+SOCIOLOGY,A,strong,Sociology (BSA),Sociology (BSA),sociology bsa,canonical,sociology_final.md
+SOCIOLOGY,A,strong,Sociology (BSA),SOCIOLOGY-THE JOURNAL OF THE BRITISH SOCIOLOGICAL ASSOCIATION,sociology journal of british sociological association,manual_alias,sociology_final.md
+SOCIOLOGY,A,strong,Theory and Society,Theory and Society,theory and society,canonical,sociology_final.md

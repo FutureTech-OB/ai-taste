@@ -1,0 +1,53 @@
+{
+  "expert": {
+    "ai_only_correct": 32,
+    "both_correct": 24,
+    "both_wrong": 20,
+    "human_accuracy": 0.41573034,
+    "human_correct": 37,
+    "human_only_correct": 13,
+    "label": "expert_majority_non_tied",
+    "n_paired": 89,
+    "oracle_ceiling": 0.7752809,
+    "oracle_lift_over_human": 0.35955056,
+    "oracle_lift_over_sft": 0.14606742,
+    "sft_accuracy": 0.62921348,
+    "sft_correct": 56
+  },
+  "metadata": {
+    "argmax_tie_break": "alphabetical (exceptional<fair<limited<strong)",
+    "data_sources": {
+      "experts": "data/management_deep_probe/human_ratings/expert_ratings_deidentified.jsonl",
+      "sft_predictions": "data/management_deep_probe/predictions/sft_predictions.jsonl",
+      "students": "data/management_deep_probe/human_ratings/student_ratings_deidentified.jsonl"
+    },
+    "majority_vote_tie_policy": "exclude",
+    "n_articles_total": 120,
+    "n_expert_kept": 89,
+    "n_expert_tied_articles": 31,
+    "n_student_kept": 103,
+    "n_student_tied_articles": 17,
+    "primary_ensemble_key": "best_2_model_combo",
+    "primary_pair": [
+      "gpt-4.1-nano-ob",
+      "qwen3-30b-ob"
+    ],
+    "supplementary_table": "ST23"
+  },
+  "note": "Numbers reflect the current primary SFT ensemble pair (GPT-4.1-nano + Qwen3-30B). They do not match a hypothetical earlier version that used GPT-4.1-nano + Qwen3-4B; recompute from this package, do not copy.",
+  "student": {
+    "ai_only_correct": 34,
+    "both_correct": 30,
+    "both_wrong": 27,
+    "human_accuracy": 0.40776699,
+    "human_correct": 42,
+    "human_only_correct": 12,
+    "label": "student_majority_non_tied",
+    "n_paired": 103,
+    "oracle_ceiling": 0.73786408,
+    "oracle_lift_over_human": 0.33009709,
+    "oracle_lift_over_sft": 0.11650485,
+    "sft_accuracy": 0.62135922,
+    "sft_correct": 64
+  }
+}

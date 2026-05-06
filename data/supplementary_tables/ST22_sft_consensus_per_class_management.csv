@@ -1,0 +1,6 @@
+ground_truth_tier,tier_n,consensus_n,coverage_pct,consensus_correct,consensus_accuracy_pct,consensus_prediction_distribution
+Exceptional,30,14,46.67,14,100.00,"exceptional=14; strong=0; fair=0; limited=0"
+Strong,30,12,40.00,6,50.00,"exceptional=6; strong=6; fair=0; limited=0"
+Fair,30,9,30.00,6,66.67,"exceptional=2; strong=1; fair=6; limited=0"
+Limited,30,16,53.33,10,62.50,"exceptional=0; strong=0; fair=6; limited=10"
+All tiers,120,51,42.50,36,70.59,

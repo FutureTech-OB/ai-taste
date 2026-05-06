@@ -1,0 +1,29 @@
+model,field,display_name,n,correct,accuracy,wilson95_lo,wilson95_hi,boot95_lo,boot95_hi
+GPT-4.1 (mgmt SFT),business_finance,Bus. & Finance,200,78,0.39,0.3251,0.4591,0.325,0.455
+GPT-4.1 (mgmt SFT),communication,Communication,200,63,0.315,0.2546,0.3824,0.25,0.38
+GPT-4.1 (mgmt SFT),political_science,Pol. Science,200,80,0.4,0.3346,0.4692,0.335,0.47
+GPT-4.1 (mgmt SFT),psychology_multidisciplinary,Psychology,200,87,0.435,0.3682,0.5043,0.37,0.505
+GPT-4.1 (mgmt SFT),public_administration,Public Admin.,200,66,0.33,0.2686,0.3978,0.265,0.395
+GPT-4.1 (mgmt SFT),sociology,Sociology,200,70,0.35,0.2873,0.4184,0.285,0.415
+GPT-4.1 (mgmt SFT),economics,Economics,200,87,0.435,0.3682,0.5043,0.37,0.505
+GPT-4.1-nano (mgmt SFT),business_finance,Bus. & Finance,200,60,0.3,0.2407,0.3668,0.24,0.36
+GPT-4.1-nano (mgmt SFT),communication,Communication,200,66,0.33,0.2686,0.3978,0.27,0.4
+GPT-4.1-nano (mgmt SFT),political_science,Pol. Science,200,82,0.41,0.3442,0.4792,0.345,0.485
+GPT-4.1-nano (mgmt SFT),psychology_multidisciplinary,Psychology,200,64,0.32,0.2593,0.3875,0.255,0.385
+GPT-4.1-nano (mgmt SFT),public_administration,Public Admin.,200,50,0.25,0.1951,0.3143,0.19,0.315
+GPT-4.1-nano (mgmt SFT),sociology,Sociology,200,68,0.34,0.2779,0.4081,0.28,0.41
+GPT-4.1-nano (mgmt SFT),economics,Economics,200,74,0.37,0.3061,0.4388,0.305,0.435
+Qwen3-30B-A3B (mgmt SFT),business_finance,Bus. & Finance,200,63,0.315,0.2546,0.3824,0.255,0.375
+Qwen3-30B-A3B (mgmt SFT),communication,Communication,200,58,0.29,0.2315,0.3564,0.23,0.355
+Qwen3-30B-A3B (mgmt SFT),political_science,Pol. Science,200,82,0.41,0.3442,0.4792,0.34,0.48
+Qwen3-30B-A3B (mgmt SFT),psychology_multidisciplinary,Psychology,200,60,0.3,0.2407,0.3668,0.235,0.365
+Qwen3-30B-A3B (mgmt SFT),public_administration,Public Admin.,200,50,0.25,0.1951,0.3143,0.19,0.31
+Qwen3-30B-A3B (mgmt SFT),sociology,Sociology,200,77,0.385,0.3203,0.454,0.32,0.45
+Qwen3-30B-A3B (mgmt SFT),economics,Economics,200,76,0.38,0.3156,0.4489,0.31,0.445
+Qwen3-4B (mgmt SFT),business_finance,Bus. & Finance,200,63,0.315,0.2546,0.3824,0.25,0.38
+Qwen3-4B (mgmt SFT),communication,Communication,200,62,0.31,0.25,0.3772,0.25,0.375
+Qwen3-4B (mgmt SFT),political_science,Pol. Science,200,74,0.37,0.3061,0.4388,0.31,0.44
+Qwen3-4B (mgmt SFT),psychology_multidisciplinary,Psychology,200,65,0.325,0.2639,0.3927,0.26,0.39
+Qwen3-4B (mgmt SFT),public_administration,Public Admin.,200,51,0.255,0.1996,0.3196,0.195,0.315
+Qwen3-4B (mgmt SFT),sociology,Sociology,200,67,0.335,0.2732,0.403,0.27,0.4
+Qwen3-4B (mgmt SFT),economics,Economics,200,72,0.36,0.2967,0.4286,0.295,0.43
