@@ -2,7 +2,7 @@
 """Reproduce S21: AI-human complementarity (oracle ceiling) for the SFT
 2-model ensemble vs expert and student plurality (excluding tied articles).
 
-Backs Supplementary Table ST23.
+Backs Supplementary Table ST23. Uses only released package files.
 
 Inputs (read from this package):
     data/management_deep_probe/predictions/sft_predictions.jsonl

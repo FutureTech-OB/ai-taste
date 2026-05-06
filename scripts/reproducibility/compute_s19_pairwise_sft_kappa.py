@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Reproduce S19: pairwise Cohen's kappa across the 4 management SFT models.
 
-Backs Supplementary Table ST21 (inter-SFT pairwise agreement).
+Backs Supplementary Table ST21 (inter-SFT pairwise agreement). Uses only
+released package files.
 
 Inputs (read from this package):
     data/management_deep_probe/predictions/sft_predictions.jsonl

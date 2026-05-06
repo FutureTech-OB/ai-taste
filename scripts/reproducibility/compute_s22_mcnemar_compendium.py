@@ -3,7 +3,7 @@
 comparators (frontier-mean plurality, best frontier, expert majority, junior
 majority).
 
-Backs Supplementary Table ST24.
+Backs Supplementary Table ST24. Uses only released package files.
 
 Inputs (read from this package):
     data/management_deep_probe/predictions/sft_predictions.jsonl

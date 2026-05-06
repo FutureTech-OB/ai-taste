@@ -1,6 +1,7 @@
 # Management Benchmark
 
 `management_benchmark_120.jsonl` contains the 120 management benchmark records used for the management deep-probe analyses.
+The file is a released evaluation surface, not a training corpus.
 
 Common fields include:
 

@@ -2,7 +2,8 @@
 """Reproduce S20: SFT 4/4 unanimous consensus subset, per-class coverage and accuracy.
 
 Backs Supplementary Table ST22 (per-class consensus accuracy) and the
-"42.5% coverage / 70.59% accuracy" line in the SI prose.
+"42.5% coverage / 70.59% accuracy" line in the SI prose. Uses only released
+package files.
 
 Inputs (read from this package):
     data/management_deep_probe/predictions/sft_predictions.jsonl

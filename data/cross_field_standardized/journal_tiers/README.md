@@ -1,6 +1,7 @@
 # Journal-Tier Mappings
 
 This directory contains journal-to-tier mappings for the six additional non-management fields with released lookup files.
+The files are public lookup surfaces for the unified four-tier label scheme.
 
 | File | Field |
 |---|---|

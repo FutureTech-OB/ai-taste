@@ -1,6 +1,8 @@
 # Pairwise Evaluation Data
 
 This directory contains the pairwise ranking outcomes used in Figure 5.
+It includes aggregate metrics and per-pair outcomes needed to reproduce the
+released pairwise comparisons.
 
 ## Model Folders
 

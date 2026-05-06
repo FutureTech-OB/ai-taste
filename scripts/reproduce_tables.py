@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Reproduce the released machine-readable supplementary tables."""
+"""Reproduce the released machine-readable supplementary tables.
+
+This script reads only package-relative table files and writes deterministic
+checksums under reproduced/tables/.
+"""
 
 from __future__ import annotations
 

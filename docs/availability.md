@@ -6,8 +6,8 @@ Reproducibility package:
 
 https://github.com/FutureTech-OB/ai-taste
 
-Training resources, including training code, training-data preparation and
-release notes, and open-weight checkpoints:
+Training resources, including training code, training-data preparation
+documentation, and open-weight checkpoints:
 
 https://github.com/FutureTech-OB/AI-Taste-Training
 
@@ -16,7 +16,7 @@ https://github.com/FutureTech-OB/AI-Taste-Training
 Data, figure assets, provenance files, validation scripts, and deterministic
 reproduction scripts are available at
 `https://github.com/FutureTech-OB/ai-taste`. Training code, training-data
-preparation and release notes, and open-weight checkpoints are maintained at
+preparation documentation, and open-weight checkpoints are maintained at
 `https://github.com/FutureTech-OB/AI-Taste-Training`.
 
 ## Scope

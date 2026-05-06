@@ -1,6 +1,8 @@
 # Management Prediction Records
 
 This directory contains prediction records for analyses on the 120-item management benchmark.
+It contains released prediction outputs only; provider request logs and
+training logs are not included.
 
 | File | Use |
 |---|---|

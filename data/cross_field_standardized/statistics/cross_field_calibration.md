@@ -1,5 +1,8 @@
 # Cross-Field Calibration and Selective Prediction Analysis
 
+This released summary documents calibration and selective-prediction statistics
+using package-relative data files.
+
 **Date:** 2026-04-29
 **Fields:** 8 (management, economics, + 6 new social science fields)
 **Models:** 3 SFT families (Qwen3-30B, Qwen3-4B, GPT-4.1-nano)

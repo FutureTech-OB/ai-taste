@@ -14,7 +14,7 @@ The package is organized so a researcher can validate the released data files, r
 | `figures/supplementary/` | Final supplementary figure assets |
 | `figures/provenance/` | Figure captions, panel-level provenance files, and support statistics |
 | `data/management_deep_probe/` | Management 120-item benchmark, prediction records, human ratings, pairwise comparisons, statistics, and support tables |
-| `data/cross_field_standardized/` | Seven-field benchmark and prediction records plus GPT-5.2 historical chat/log-probability comparator records and GPT-5.5 all-field audit records |
+| `data/cross_field_standardized/` | Seven-field benchmark and prediction records plus GPT-5.2 historical chat/log-probability comparator records and GPT-5.5 all-field comparison records |
 | `data/supplementary_tables/` | Machine-readable Supplementary Tables ST1-ST24 and ST2b |
 | `data/figure_support/` | Figure-to-data support index |
 | `scripts/` | Validation, table reproduction, figure asset reproduction, manifest generation, and statistics-reproduction scripts |
@@ -23,7 +23,7 @@ The package is organized so a researcher can validate the released data files, r
 ## Availability Links
 
 - Reproducibility package: [FutureTech-OB/ai-taste](https://github.com/FutureTech-OB/ai-taste)
-- Training code, training-data preparation and release notes, and open-weight checkpoints: [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training)
+- Training code, training-data preparation documentation, and open-weight checkpoints: [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training)
 
 Use the reproducibility package as the main public repository for released data, validation scripts, table outputs, and figure assets. Use the training repository only for training resources and checkpoints.
 
@@ -93,7 +93,7 @@ five outputs against the package reference numbers.
 
 ## Scope Notes
 
-The package includes the minimized data files needed to verify the reported tables, figure data, and final figure assets, including the GPT-5.5 all-field audit used by Figure 4b, Supplementary Table ST2b, and Supplementary Figure 11. Live model inference, model training runs, provider-hosted model weights, and unreleased model checkpoints are not redistributed. Provider model names, access windows, and prediction records are documented in `data/supplementary_tables/ST19_model_inventory.csv`.
+The package includes the minimized data files needed to verify the reported tables, figure data, and final figure assets, including the GPT-5.5 all-field comparison used by Figure 4b, Supplementary Table ST2b, and Supplementary Figure 11. Live model inference, model training runs, provider-hosted model weights, and unreleased model checkpoints are not redistributed. Provider model names, access windows, and prediction records are documented in `data/supplementary_tables/ST19_model_inventory.csv`.
 
 For paper-facing availability text, see `docs/availability.md`.
 

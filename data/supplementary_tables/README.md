@@ -1,6 +1,8 @@
 # Supplementary Tables
 
-This directory contains machine-readable CSV versions of Supplementary Tables ST1-ST24 plus ST2b, the current GPT-5.5 all-field audit table.
+This directory contains machine-readable CSV versions of Supplementary Tables ST1-ST24 plus ST2b, the current GPT-5.5 all-field comparison table.
+The table files are the released machine-readable table surface used by the
+reproduction scripts.
 
 Use:
 

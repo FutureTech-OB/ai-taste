@@ -1,7 +1,7 @@
 table_id,filename,description
 ST1,ST1_cross_field_accuracy.csv,Cross-field best SFT accuracy and best control accuracy by field
 ST2,ST2_confidence_calibration_by_field.csv,Confidence calibration by field
-ST2b,ST2b_current_gpt55_all_field_audit.csv,May 2026 GPT-5.5 all-field audit and GPT-5.2 chat historical comparator
+ST2b,ST2b_gpt55_all_field_comparison.csv,GPT-5.5 all-field comparison and GPT-5.2 chat historical comparator
 ST3,ST3_journal_tier_mapping_management.csv,Management journal-to-tier mapping
 ST4,ST4_journal_tier_mapping_economics.csv,Economics journal-to-tier mapping
 ST5,ST5_journal_tier_mapping_business_finance.csv,Business and finance journal-to-tier mapping

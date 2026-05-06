@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Reproduce the released figure asset bundle and checksums."""
+"""Reproduce the released figure asset bundle and checksums.
+
+This script reads only package-relative figure files and writes deterministic
+checksums under reproduced/figures/.
+"""
 
 from __future__ import annotations
 

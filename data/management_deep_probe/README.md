@@ -1,6 +1,8 @@
 # Management Deep-Probe Data
 
 This block contains the management-specific analyses built around the 120-item benchmark.
+It is scoped to released benchmark, prediction, rater, pairwise, statistic, and
+support-table files.
 
 | Path | Purpose |
 |---|---|

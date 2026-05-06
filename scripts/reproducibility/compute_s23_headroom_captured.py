@@ -4,7 +4,8 @@ for the SFT 2-model ensemble and four comparators (frontier-mean plurality,
 best frontier, expert majority, junior majority).
 
 Backs the headroom note in Supplementary Methods SM4 and the headroom
-multiplier reported alongside main-text accuracy.
+multiplier reported alongside main-text accuracy. Uses only released package
+files.
 
 Inputs (read from this package):
     data/management_deep_probe/predictions/sft_predictions.jsonl

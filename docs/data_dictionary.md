@@ -1,5 +1,9 @@
 # Data Dictionary
 
+This dictionary describes the released data files in repository-relative terms.
+It is intended for external users working from a clean clone and does not
+depend on nonpublic project paths.
+
 ## Management Deep-Probe Data
 
 `data/management_deep_probe/benchmark/management_benchmark_120.jsonl` contains the 120 management benchmark records. Management prediction files are under `data/management_deep_probe/predictions/`.

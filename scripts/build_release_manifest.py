@@ -51,9 +51,9 @@ def support(path: Path) -> str:
     if rel.startswith("data/cross_field_standardized/benchmarks/"):
         return "Seven-field cross-field benchmark surfaces"
     if rel.startswith("data/cross_field_standardized/predictions/"):
-        return "Cross-field prediction records and all-eight-field GPT-5.5 audit records"
+        return "Cross-field prediction records and all-eight-field GPT-5.5 comparison records"
     if rel.startswith("data/cross_field_standardized/statistics/"):
-        return "Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics"
+        return "Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 comparison statistics"
     if rel.startswith("data/cross_field_standardized/journal_tiers/"):
         return "Journal-to-tier mappings used for cross-field benchmark labels"
     if rel.startswith("data/supplementary_tables/"):

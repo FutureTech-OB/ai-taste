@@ -1,6 +1,7 @@
 # Human Ratings
 
-This directory contains de-identified management human-rating files used for the paper.
+This directory contains de-identified management human-rating files used for
+reported analyses.
 
 | File | Use |
 |---|---|

@@ -1,6 +1,7 @@
 # Cross-Field Benchmarks
 
 This directory contains one 200-item benchmark file for each of the seven non-management fields:
+These benchmark files are released evaluation surfaces with a shared schema.
 
 | File | Field |
 |---|---|

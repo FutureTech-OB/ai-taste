@@ -1,6 +1,8 @@
 # Cross-Field Prediction Records
 
-This directory contains standardized prediction records for the seven non-management fields plus all-eight-field GPT-5.2/GPT-5.5 current-model audit records.
+This directory contains standardized prediction records for the seven non-management fields plus all-eight-field GPT-5.2/GPT-5.5 current-model comparison records.
+It contains released model-output records only; live inference calls and
+provider logs are outside the package.
 
 | File | Use |
 |---|---|
