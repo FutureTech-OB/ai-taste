@@ -21,6 +21,10 @@ The package is organized so a researcher can inspect the manuscript source, vali
 | `scripts/` | Validation, table reproduction, figure asset reproduction, manifest generation, and the v6.3 statistics-reproduction subdirectory |
 | `docs/` | Data dictionary, reproducibility instructions, checklist, manifest, and release report |
 
+## Training Resources
+
+Training code, training-data preparation and release notes, and open-weight checkpoints for this project are maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).
+
 ## Environment
 
 Requirements:
