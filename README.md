@@ -20,9 +20,12 @@ The package is organized so a researcher can validate the released data files, r
 | `scripts/` | Validation, table reproduction, figure asset reproduction, manifest generation, and statistics-reproduction scripts |
 | `docs/` | Data dictionary, reproducibility instructions, checklist, and manifest |
 
-## Training Resources
+## Availability Links
 
-Training code, training-data preparation and release notes, and open-weight checkpoints for this project are maintained separately at [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training).
+- Reproducibility package: [FutureTech-OB/ai-taste](https://github.com/FutureTech-OB/ai-taste)
+- Training code, training-data preparation and release notes, and open-weight checkpoints: [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training)
+
+Use the reproducibility package as the main public repository for released data, validation scripts, table outputs, and figure assets. Use the training repository only for training resources and checkpoints.
 
 ## Environment
 
@@ -91,6 +94,8 @@ five outputs against the package reference numbers.
 ## Scope Notes
 
 The package includes the minimized data files needed to verify the reported tables, figure data, and final figure assets, including the GPT-5.5 all-field audit used by Figure 4b, Supplementary Table ST2b, and Supplementary Figure 11. Live model inference, model training runs, provider-hosted model weights, and unreleased model checkpoints are not redistributed. Provider model names, access windows, and prediction records are documented in `data/supplementary_tables/ST19_model_inventory.csv`.
+
+For paper-facing availability text, see `docs/availability.md`.
 
 ## License
 

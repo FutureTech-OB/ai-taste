@@ -2,6 +2,7 @@
 
 | File | Purpose |
 |---|---|
+| `availability.md` | Public repository links and paper-facing availability wording |
 | `data_dictionary.md` | Field descriptions for released data files |
 | `deidentification.md` | Notes on de-identified rater identifiers and excluded raw exports |
 | `journal_tier_methodology.md` | Notes on the four-tier label scheme and journal-tier lookup files |

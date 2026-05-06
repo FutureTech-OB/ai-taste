@@ -1,7 +1,7 @@
 path,kind,supports,bytes
 .gitignore,support,Package support,48
 LICENSE,documentation,Package support,1113
-README.md,documentation,Package support,4012
+README.md,documentation,Package support,4337
 data/README.md,documentation,Package support,2458
 data/cross_field_standardized/README.md,documentation,Package support,1398
 data/cross_field_standardized/benchmarks/README.md,documentation,Seven-field cross-field benchmark surfaces,1411
@@ -144,12 +144,13 @@ data/supplementary_tables/ST7_journal_tier_mapping_political_science.csv,source 
 data/supplementary_tables/ST8_journal_tier_mapping_psychology.csv,source data,Supplementary tables ST1-ST24 and ST2b,2231
 data/supplementary_tables/ST9_journal_tier_mapping_public_administration.csv,source data,Supplementary tables ST1-ST24 and ST2b,2347
 data/supplementary_tables/TABLE_INDEX.csv,source data,Supplementary tables ST1-ST24 and ST2b,2323
-docs/README.md,documentation,External release documentation,604
+docs/README.md,documentation,External release documentation,690
+docs/availability.md,documentation,External release documentation,903
 docs/data_dictionary.md,documentation,External release documentation,2993
 docs/deidentification.md,documentation,External release documentation,493
 docs/journal_tier_methodology.md,documentation,External release documentation,480
-docs/reproducibility.md,documentation,External release documentation,832
-docs/reproducibility_checklist.md,documentation,External release documentation,947
+docs/reproducibility.md,documentation,External release documentation,1400
+docs/reproducibility_checklist.md,documentation,External release documentation,1023
 figures/main/Figure1.pdf,figure,Main figure assets,154146
 figures/main/Figure1.png,figure,Main figure assets,775367
 figures/main/Figure2.pdf,figure,Main figure assets,42288
@@ -228,4 +229,4 @@ scripts/reproducibility/compute_s21_ai_human_complementarity.py,code,Validation 
 scripts/reproducibility/compute_s22_mcnemar_compendium.py,code,Validation and deterministic reproduction commands,8261
 scripts/reproducibility/compute_s23_headroom_captured.py,code,Validation and deterministic reproduction commands,6543
 scripts/reproducibility/smoke_test_management_stats.py,code,Validation and deterministic reproduction commands,6953
-scripts/validate_package.py,code,Validation and deterministic reproduction commands,19260
+scripts/validate_package.py,code,Validation and deterministic reproduction commands,19316

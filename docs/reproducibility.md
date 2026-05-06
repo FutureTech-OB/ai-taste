@@ -42,6 +42,23 @@ Outputs:
 - `reproduced/figures/supplementary/*`
 - `reproduced/figures/figure_asset_checksums.csv`
 
+## Reproduce Management Statistics
+
+```bash
+python3 scripts/reproducibility/compute_s19_pairwise_sft_kappa.py
+python3 scripts/reproducibility/compute_s20_sft_consensus_per_class.py
+python3 scripts/reproducibility/compute_s21_ai_human_complementarity.py
+python3 scripts/reproducibility/compute_s22_mcnemar_compendium.py
+python3 scripts/reproducibility/compute_s23_headroom_captured.py
+python3 scripts/reproducibility/smoke_test_management_stats.py
+```
+
+Expected smoke-test result:
+
+```text
+Smoke test passed: all package reference numbers reproduced from S19-S23.
+```
+
 ## Refresh Manifest
 
 ```bash

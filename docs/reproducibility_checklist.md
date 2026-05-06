@@ -10,6 +10,7 @@ External-user verification checklist:
 - [x] Confirm `reproduced/tables/table_checksums.csv` is created.
 - [x] Run `python3 scripts/reproduce_figures.py`.
 - [x] Confirm `reproduced/figures/figure_asset_checksums.csv` is created.
+- [x] Run `python3 scripts/reproducibility/smoke_test_management_stats.py`.
 - [x] Run `python3 scripts/build_release_manifest.py`.
 - [x] Confirm `docs/release_manifest.csv` is current.
 - [x] Search for machine-specific paths.
