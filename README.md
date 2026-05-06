@@ -4,22 +4,21 @@ This repository contains the external-use reproducibility package for:
 
 **LLMs learn scientific taste from institutional traces across the social sciences**
 
-The package is organized so a researcher can inspect the manuscript source, validate the released data files, reproduce the machine-readable supplementary tables, and reproduce the released figure asset bundle from a clean clone.
+The package is organized so a researcher can validate the released data files, reproduce the machine-readable supplementary tables, and reproduce the released figure asset bundle from a clean clone.
 
 ## Contents
 
 | Path | Contents |
 |---|---|
-| `manuscript/` | Main manuscript, Supplementary Information, and references |
 | `figures/main/` | Final main figure assets |
 | `figures/supplementary/` | Final supplementary figure assets |
 | `figures/provenance/` | Figure captions, panel-level provenance files, and support statistics |
 | `data/management_deep_probe/` | Management 120-item benchmark, prediction records, human ratings, pairwise comparisons, statistics, and support tables |
-| `data/cross_field_standardized/` | Seven-field benchmark and prediction records plus GPT-5.2 historical chat/log-probability comparator records and the May 2026 GPT-5.5 all-field audit records |
+| `data/cross_field_standardized/` | Seven-field benchmark and prediction records plus GPT-5.2 historical chat/log-probability comparator records and GPT-5.5 all-field audit records |
 | `data/supplementary_tables/` | Machine-readable Supplementary Tables ST1-ST24 and ST2b |
 | `data/figure_support/` | Figure-to-data support index |
-| `scripts/` | Validation, table reproduction, figure asset reproduction, manifest generation, and the v6.3 statistics-reproduction subdirectory |
-| `docs/` | Data dictionary, reproducibility instructions, checklist, manifest, and release report |
+| `scripts/` | Validation, table reproduction, figure asset reproduction, manifest generation, and statistics-reproduction scripts |
+| `docs/` | Data dictionary, reproducibility instructions, checklist, and manifest |
 
 ## Training Resources
 
@@ -72,8 +71,8 @@ python3 scripts/build_release_manifest.py
 
 Generated outputs are written under `reproduced/`, which is ignored by version control.
 
-Reproduce the five v6.3 statistics that back Supplementary Tables ST21-ST24
-and the Supplementary Methods SM4 headroom note:
+Reproduce the five management statistics that back Supplementary Tables ST21-ST24
+and the headroom note:
 
 ```bash
 python3 scripts/reproducibility/compute_s19_pairwise_sft_kappa.py
@@ -81,17 +80,17 @@ python3 scripts/reproducibility/compute_s20_sft_consensus_per_class.py
 python3 scripts/reproducibility/compute_s21_ai_human_complementarity.py
 python3 scripts/reproducibility/compute_s22_mcnemar_compendium.py
 python3 scripts/reproducibility/compute_s23_headroom_captured.py
-python3 scripts/reproducibility/smoke_test_v6_3.py
+python3 scripts/reproducibility/smoke_test_management_stats.py
 ```
 
 Each script writes a JSON file under
 `data/management_deep_probe/statistics/` (S19-S23) with byte-stable
 formatting (sorted keys, fixed precision). The smoke test verifies all
-five outputs against the v6.3 reference numbers.
+five outputs against the package reference numbers.
 
 ## Scope Notes
 
-The package includes the minimized data files needed to verify the reported tables, figure data, and final figure assets, including the May 2026 GPT-5.5 all-field audit used by Figure 4b, SI Table ST2b, and Supplementary Figure 11. Live model inference, model training runs, provider-hosted model weights, and unreleased model checkpoints are not redistributed. Provider model names, access windows, and prediction records used in the paper are documented in the manuscript, Supplementary Information, and `data/supplementary_tables/ST19_model_inventory.csv`.
+The package includes the minimized data files needed to verify the reported tables, figure data, and final figure assets, including the GPT-5.5 all-field audit used by Figure 4b, Supplementary Table ST2b, and Supplementary Figure 11. Live model inference, model training runs, provider-hosted model weights, and unreleased model checkpoints are not redistributed. Provider model names, access windows, and prediction records are documented in `data/supplementary_tables/ST19_model_inventory.csv`.
 
 ## License
 

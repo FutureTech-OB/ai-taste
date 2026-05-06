@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Smoke test: assert that the package's S19-S23 outputs reproduce the
-v6.3 reference numbers exactly (within float tolerance).
+package reference numbers exactly (within float tolerance).
 
-The reference numbers are hard-coded from the v6.3 numbers report so this
-test is self-contained and runs without access to the upstream working tree.
+The reference numbers are hard-coded here so this test is self-contained and
+runs without access to the upstream working tree.
 Float comparisons use a 1e-6 absolute tolerance; integer and string fields
 are compared exactly.
 
 Run from the package root:
-    python3 scripts/reproducibility/smoke_test_v6_3.py
+    python3 scripts/reproducibility/smoke_test_management_stats.py
 """
 
 from __future__ import annotations
@@ -182,7 +182,7 @@ def main() -> int:
     check_s21()
     check_s22()
     check_s23()
-    print("Smoke test passed: all v6.3 reference numbers reproduced from S19-S23.")
+    print("Smoke test passed: all package reference numbers reproduced from S19-S23.")
     return 0
 
 

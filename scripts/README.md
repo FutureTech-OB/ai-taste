@@ -34,12 +34,13 @@ python3 scripts/build_release_manifest.py
 
 Regenerates `docs/release_manifest.csv`.
 
-## Reproduce v6.3 Statistics
+## Reproduce Management Statistics
 
-The five statistics added in the v6.3 update are reproduced by scripts in
+The five management statistics used by Supplementary Tables ST21-ST24 and the
+headroom note are reproduced by scripts in
 `scripts/reproducibility/`. See
 [`scripts/reproducibility/README.md`](reproducibility/README.md) for the
-mapping from each script to its Supplementary Table or Section.
+mapping from each script to its released output.
 
 Quick run:
 
@@ -49,5 +50,5 @@ python3 scripts/reproducibility/compute_s20_sft_consensus_per_class.py
 python3 scripts/reproducibility/compute_s21_ai_human_complementarity.py
 python3 scripts/reproducibility/compute_s22_mcnemar_compendium.py
 python3 scripts/reproducibility/compute_s23_headroom_captured.py
-python3 scripts/reproducibility/smoke_test_v6_3.py
+python3 scripts/reproducibility/smoke_test_management_stats.py
 ```

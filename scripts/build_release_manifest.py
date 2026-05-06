@@ -17,8 +17,6 @@ SKIP_NAMES = {".DS_Store"}
 def category(path: Path) -> str:
     parts = path.parts
     suffix = path.suffix.lower()
-    if parts[0] == "manuscript":
-        return "manuscript"
     if parts[0] == "figures":
         return "figure" if suffix in {".png", ".pdf"} else "figure provenance"
     if parts[0] == "scripts":
@@ -32,10 +30,8 @@ def category(path: Path) -> str:
 
 def support(path: Path) -> str:
     rel = path.as_posix()
-    if rel.startswith("manuscript/"):
-        return "Paper source text and references"
     if rel.startswith("figures/main/"):
-        return "Main manuscript figures"
+        return "Main figure assets"
     if rel.startswith("figures/supplementary/"):
         return "Supplementary figures"
     if rel.startswith("figures/provenance/"):

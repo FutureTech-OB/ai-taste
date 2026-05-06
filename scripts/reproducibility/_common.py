@@ -1,11 +1,11 @@
-"""Shared helpers for the v6.3 reproduction scripts in this package.
+"""Shared helpers for the management statistics reproduction scripts.
 
 Conventions
 -----------
 - Label space (4-class): exceptional, strong, fair, limited.
 - argmax over per-label logp uses alphabetical tie-break in the ordering
   exceptional < fair < limited < strong (the canonical AI-label-space
-  alphabetical tie-break used throughout the manuscript). Implemented via
+  alphabetical tie-break used throughout the released analyses). Implemented via
   ``sorted()`` to avoid the dict-insertion-order trap.
 - Plurality vote among rater labels uses ``tie_policy='exclude'``: tied
   articles are dropped from the denominator.

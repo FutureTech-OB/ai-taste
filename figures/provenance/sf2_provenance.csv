@@ -1,27 +1,27 @@
 field,arch,lift_pp,source
-Psychology,Qwen3-30B,+54.0,ST13 in manuscript/supplementary_information.md
-Psychology,Qwen3-4B,+51.0,ST13 in manuscript/supplementary_information.md
-Psychology,GPT-4.1-nano,+51.5,ST13 in manuscript/supplementary_information.md
-Economics,Qwen3-30B,+44.0,ST13 in manuscript/supplementary_information.md
-Economics,Qwen3-4B,+39.0,ST13 in manuscript/supplementary_information.md
-Economics,GPT-4.1-nano,+43.5,ST13 in manuscript/supplementary_information.md
-Communication,Qwen3-30B,+36.0,ST13 in manuscript/supplementary_information.md
-Communication,Qwen3-4B,+36.0,ST13 in manuscript/supplementary_information.md
-Communication,GPT-4.1-nano,+36.5,ST13 in manuscript/supplementary_information.md
-Sociology,Qwen3-30B,+37.5,ST13 in manuscript/supplementary_information.md
-Sociology,Qwen3-4B,+26.5,ST13 in manuscript/supplementary_information.md
-Sociology,GPT-4.1-nano,+27.5,ST13 in manuscript/supplementary_information.md
-Management,Qwen3-30B,+35.8,ST13 in manuscript/supplementary_information.md
-Management,Qwen3-4B,+32.5,ST13 in manuscript/supplementary_information.md
-Management,GPT-4.1-nano,+32.5,ST13 in manuscript/supplementary_information.md
-Pol. Science,Qwen3-30B,+34.0,ST13 in manuscript/supplementary_information.md
-Pol. Science,Qwen3-4B,+25.5,ST13 in manuscript/supplementary_information.md
-Pol. Science,GPT-4.1-nano,+28.0,ST13 in manuscript/supplementary_information.md
-Bus. & Finance,Qwen3-30B,+25.0,ST13 in manuscript/supplementary_information.md
-Bus. & Finance,Qwen3-4B,+28.0,ST13 in manuscript/supplementary_information.md
-Bus. & Finance,GPT-4.1-nano,+29.5,ST13 in manuscript/supplementary_information.md
-Public Admin.,Qwen3-30B,+31.5,ST13 in manuscript/supplementary_information.md
-Public Admin.,Qwen3-4B,+26.0,ST13 in manuscript/supplementary_information.md
-Public Admin.,GPT-4.1-nano,+29.5,ST13 in manuscript/supplementary_information.md
+Psychology,Qwen3-30B,+54.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Psychology,Qwen3-4B,+51.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Psychology,GPT-4.1-nano,+51.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Economics,Qwen3-30B,+44.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Economics,Qwen3-4B,+39.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Economics,GPT-4.1-nano,+43.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Communication,Qwen3-30B,+36.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Communication,Qwen3-4B,+36.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Communication,GPT-4.1-nano,+36.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Sociology,Qwen3-30B,+37.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Sociology,Qwen3-4B,+26.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Sociology,GPT-4.1-nano,+27.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Management,Qwen3-30B,+35.8,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Management,Qwen3-4B,+32.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Management,GPT-4.1-nano,+32.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Pol. Science,Qwen3-30B,+34.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Pol. Science,Qwen3-4B,+25.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Pol. Science,GPT-4.1-nano,+28.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Bus. & Finance,Qwen3-30B,+25.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Bus. & Finance,Qwen3-4B,+28.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Bus. & Finance,GPT-4.1-nano,+29.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Public Admin.,Qwen3-30B,+31.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Public Admin.,Qwen3-4B,+26.0,data/supplementary_tables/ST13_sft_vs_base_lift.csv
+Public Admin.,GPT-4.1-nano,+29.5,data/supplementary_tables/ST13_sft_vs_base_lift.csv
 row_mean,across_archs,+35.03,computed
 grand_mean,across_all,+35.03,computed

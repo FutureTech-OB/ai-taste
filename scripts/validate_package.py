@@ -19,10 +19,6 @@ REQUIRED_FILES = [
     "LICENSE",
     "requirements.txt",
     ".gitignore",
-    "manuscript/main_manuscript.md",
-    "manuscript/supplementary_information.md",
-    "manuscript/references.bib",
-    "manuscript/references.md",
     "data/README.md",
     "data/management_deep_probe/README.md",
     "data/management_deep_probe/benchmark/README.md",
@@ -46,17 +42,15 @@ REQUIRED_FILES = [
     "scripts/reproducibility/compute_s21_ai_human_complementarity.py",
     "scripts/reproducibility/compute_s22_mcnemar_compendium.py",
     "scripts/reproducibility/compute_s23_headroom_captured.py",
-    "scripts/reproducibility/smoke_test_v6_3.py",
+    "scripts/reproducibility/smoke_test_management_stats.py",
     "docs/README.md",
     "docs/data_dictionary.md",
     "docs/reproducibility.md",
     "docs/reproducibility_checklist.md",
     "docs/release_manifest.csv",
-    "docs/release_package_report_2026-05-01.md",
 ]
 
 REQUIRED_DIRS = [
-    "manuscript",
     "figures/main",
     "figures/supplementary",
     "figures/provenance",
@@ -266,7 +260,6 @@ JOURNAL_TARGET_CHECK_PATHS = {
     "docs/journal_tier_methodology.md",
     "docs/reproducibility.md",
     "docs/reproducibility_checklist.md",
-    "docs/release_package_report_2026-05-01.md",
 }
 
 

@@ -1,9 +1,9 @@
 path,kind,supports,bytes
 .gitignore,support,Package support,48
 LICENSE,documentation,Package support,1113
-README.md,documentation,Package support,4233
-data/README.md,documentation,Package support,2473
-data/cross_field_standardized/README.md,documentation,Package support,1422
+README.md,documentation,Package support,4012
+data/README.md,documentation,Package support,2458
+data/cross_field_standardized/README.md,documentation,Package support,1398
 data/cross_field_standardized/benchmarks/README.md,documentation,Seven-field cross-field benchmark surfaces,1411
 data/cross_field_standardized/benchmarks/business_finance_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,275123
 data/cross_field_standardized/benchmarks/communication_benchmark_200.jsonl,source data,Seven-field cross-field benchmark surfaces,281246
@@ -43,7 +43,7 @@ data/cross_field_standardized/statistics/mgmt_sft_transfer_results.csv,source da
 data/cross_field_standardized/statistics/rank_split_counts_six_additional_fields.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",1320
 data/cross_field_standardized/statistics/training_dataset_sizes_seven_fields.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",358
 data/cross_field_standardized/statistics/training_dataset_sizes_six_additional_fields.csv,source data,"Cross-field calibration, ensemble, transfer, benchmark summary, and GPT-5.5 audit statistics",328
-data/figure_support/FIGURE_DATA_INDEX.csv,source data,Figure-to-data support index,6320
+data/figure_support/FIGURE_DATA_INDEX.csv,source data,Figure-to-data support index,6250
 data/management_deep_probe/README.md,documentation,Package support,830
 data/management_deep_probe/benchmark/README.md,documentation,Management 120-item benchmark,683
 data/management_deep_probe/benchmark/management_benchmark_120.jsonl,source data,Management 120-item benchmark,159373
@@ -144,23 +144,22 @@ data/supplementary_tables/ST7_journal_tier_mapping_political_science.csv,source 
 data/supplementary_tables/ST8_journal_tier_mapping_psychology.csv,source data,Supplementary tables ST1-ST24 and ST2b,2231
 data/supplementary_tables/ST9_journal_tier_mapping_public_administration.csv,source data,Supplementary tables ST1-ST24 and ST2b,2347
 data/supplementary_tables/TABLE_INDEX.csv,source data,Supplementary tables ST1-ST24 and ST2b,2323
-docs/README.md,documentation,External release documentation,676
+docs/README.md,documentation,External release documentation,604
 docs/data_dictionary.md,documentation,External release documentation,2993
 docs/deidentification.md,documentation,External release documentation,493
 docs/journal_tier_methodology.md,documentation,External release documentation,480
-docs/release_package_report_2026-05-01.md,documentation,External release documentation,7464
 docs/reproducibility.md,documentation,External release documentation,832
-docs/reproducibility_checklist.md,documentation,External release documentation,984
-figures/main/Figure1.pdf,figure,Main manuscript figures,154146
-figures/main/Figure1.png,figure,Main manuscript figures,775367
-figures/main/Figure2.pdf,figure,Main manuscript figures,42288
-figures/main/Figure2.png,figure,Main manuscript figures,467241
-figures/main/Figure3.pdf,figure,Main manuscript figures,25973
-figures/main/Figure3.png,figure,Main manuscript figures,402502
-figures/main/Figure4.pdf,figure,Main manuscript figures,37065
-figures/main/Figure4.png,figure,Main manuscript figures,526816
-figures/main/Figure5.pdf,figure,Main manuscript figures,25121
-figures/main/Figure5.png,figure,Main manuscript figures,289848
+docs/reproducibility_checklist.md,documentation,External release documentation,947
+figures/main/Figure1.pdf,figure,Main figure assets,154146
+figures/main/Figure1.png,figure,Main figure assets,775367
+figures/main/Figure2.pdf,figure,Main figure assets,42288
+figures/main/Figure2.png,figure,Main figure assets,467241
+figures/main/Figure3.pdf,figure,Main figure assets,25973
+figures/main/Figure3.png,figure,Main figure assets,402502
+figures/main/Figure4.pdf,figure,Main figure assets,37065
+figures/main/Figure4.png,figure,Main figure assets,526816
+figures/main/Figure5.pdf,figure,Main figure assets,25121
+figures/main/Figure5.png,figure,Main figure assets,289848
 figures/provenance/fig1_caption.md,figure provenance,Figure caption and provenance support,1046
 figures/provenance/fig2_caption.md,figure provenance,Figure caption and provenance support,1929
 figures/provenance/fig2_panelC_stats.json,figure provenance,Figure caption and provenance support,5415
@@ -172,16 +171,16 @@ figures/provenance/fig4_caption.md,figure provenance,Figure caption and provenan
 figures/provenance/fig4_provenance.csv,figure provenance,Figure caption and provenance support,58323
 figures/provenance/fig5_caption.md,figure provenance,Figure caption and provenance support,1714
 figures/provenance/fig5_provenance.csv,figure provenance,Figure caption and provenance support,2423
-figures/provenance/sf10_caption.md,figure provenance,Figure caption and provenance support,1675
+figures/provenance/sf10_caption.md,figure provenance,Figure caption and provenance support,1672
 figures/provenance/sf10_provenance.csv,figure provenance,Figure caption and provenance support,2274
 figures/provenance/sf11_caption.md,figure provenance,Figure caption and provenance support,1676
 figures/provenance/sf11_provenance.csv,figure provenance,Figure caption and provenance support,3636
 figures/provenance/sf1_caption.md,figure provenance,Figure caption and provenance support,863
-figures/provenance/sf1_provenance.csv,figure provenance,Figure caption and provenance support,1583
+figures/provenance/sf1_provenance.csv,figure provenance,Figure caption and provenance support,1199
 figures/provenance/sf2_caption.md,figure provenance,Figure caption and provenance support,672
-figures/provenance/sf2_provenance.csv,figure provenance,Figure caption and provenance support,1975
+figures/provenance/sf2_provenance.csv,figure provenance,Figure caption and provenance support,2047
 figures/provenance/sf3_caption.md,figure provenance,Figure caption and provenance support,958
-figures/provenance/sf3_provenance.csv,figure provenance,Figure caption and provenance support,3040
+figures/provenance/sf3_provenance.csv,figure provenance,Figure caption and provenance support,3292
 figures/provenance/sf4_caption.md,figure provenance,Figure caption and provenance support,1141
 figures/provenance/sf4_provenance.csv,figure provenance,Figure caption and provenance support,3374
 figures/provenance/sf5_caption.md,figure provenance,Figure caption and provenance support,1171
@@ -216,21 +215,17 @@ figures/supplementary/SupplementaryFigure8.pdf,figure,Supplementary figures,3445
 figures/supplementary/SupplementaryFigure8.png,figure,Supplementary figures,268983
 figures/supplementary/SupplementaryFigure9.pdf,figure,Supplementary figures,21909
 figures/supplementary/SupplementaryFigure9.png,figure,Supplementary figures,199862
-manuscript/main_manuscript.md,manuscript,Paper source text and references,67629
-manuscript/references.bib,manuscript,Paper source text and references,17822
-manuscript/references.md,manuscript,Paper source text and references,6592
-manuscript/supplementary_information.md,manuscript,Paper source text and references,144279
 requirements.txt,documentation,Package support,52
-scripts/README.md,code,Validation and deterministic reproduction commands,1440
-scripts/build_release_manifest.py,code,Validation and deterministic reproduction commands,4099
+scripts/README.md,code,Validation and deterministic reproduction commands,1490
+scripts/build_release_manifest.py,code,Validation and deterministic reproduction commands,3945
 scripts/reproduce_figures.py,code,Validation and deterministic reproduction commands,1844
 scripts/reproduce_tables.py,code,Validation and deterministic reproduction commands,1595
-scripts/reproducibility/README.md,code,Validation and deterministic reproduction commands,3070
-scripts/reproducibility/_common.py,code,Validation and deterministic reproduction commands,6959
+scripts/reproducibility/README.md,code,Validation and deterministic reproduction commands,3082
+scripts/reproducibility/_common.py,code,Validation and deterministic reproduction commands,6967
 scripts/reproducibility/compute_s19_pairwise_sft_kappa.py,code,Validation and deterministic reproduction commands,7722
 scripts/reproducibility/compute_s20_sft_consensus_per_class.py,code,Validation and deterministic reproduction commands,4716
 scripts/reproducibility/compute_s21_ai_human_complementarity.py,code,Validation and deterministic reproduction commands,6135
 scripts/reproducibility/compute_s22_mcnemar_compendium.py,code,Validation and deterministic reproduction commands,8261
 scripts/reproducibility/compute_s23_headroom_captured.py,code,Validation and deterministic reproduction commands,6543
-scripts/reproducibility/smoke_test_v6_3.py,code,Validation and deterministic reproduction commands,6959
-scripts/validate_package.py,code,Validation and deterministic reproduction commands,19513
+scripts/reproducibility/smoke_test_management_stats.py,code,Validation and deterministic reproduction commands,6953
+scripts/validate_package.py,code,Validation and deterministic reproduction commands,19260

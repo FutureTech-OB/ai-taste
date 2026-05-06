@@ -1,7 +1,7 @@
-# v6.3 Reproduction Scripts
+# Management Statistics Reproduction Scripts
 
-These scripts reproduce the five Supplementary statistics added in the v6.3
-update. Each script reads only files inside `data/management_deep_probe/`
+These scripts reproduce five released management statistics. Each script reads
+only files inside `data/management_deep_probe/`
 and writes a single JSON output under
 `data/management_deep_probe/statistics/`. Outputs are byte-stable across
 machines (sorted dict keys, fixed float precision).
@@ -17,7 +17,7 @@ machines (sorted dict keys, fixed float precision).
 ## Usage
 
 Run each script from the package root. Each prints a one-line confirmation
-matching the v6.3 reference numbers:
+matching the package reference numbers:
 
 ```bash
 python3 scripts/reproducibility/compute_s19_pairwise_sft_kappa.py
@@ -27,10 +27,10 @@ python3 scripts/reproducibility/compute_s22_mcnemar_compendium.py
 python3 scripts/reproducibility/compute_s23_headroom_captured.py
 ```
 
-To verify all outputs against the v6.3 reference numbers:
+To verify all outputs against the package reference numbers:
 
 ```bash
-python3 scripts/reproducibility/smoke_test_v6_3.py
+python3 scripts/reproducibility/smoke_test_management_stats.py
 ```
 
 ## Conventions

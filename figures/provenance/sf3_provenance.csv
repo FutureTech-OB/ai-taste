@@ -1,30 +1,30 @@
 arch,field,transfer_acc_pct,n,in_domain_mgmt_acc_pct,n_mgmt,source
-GPT-4.1,Psychology,43.5,200,55.0,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1,Economics,43.5,200,55.0,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1,Communication,31.5,200,55.0,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1,Sociology,35.0,200,55.0,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1,Pol. Science,40.0,200,55.0,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1,Bus. & Finance,39.0,200,55.0,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1,Public Admin.,33.0,200,55.0,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1-nano,Psychology,32.0,200,57.5,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1-nano,Economics,37.0,200,57.5,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1-nano,Communication,33.0,200,57.5,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1-nano,Sociology,34.0,200,57.5,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1-nano,Pol. Science,41.0,200,57.5,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1-nano,Bus. & Finance,30.0,200,57.5,120,ST17 panels a–d in manuscript/supplementary_information.md
-GPT-4.1-nano,Public Admin.,25.0,200,57.5,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-30B-A3B,Psychology,30.0,200,58.3,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-30B-A3B,Economics,38.0,200,58.3,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-30B-A3B,Communication,29.0,200,58.3,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-30B-A3B,Sociology,38.5,200,58.3,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-30B-A3B,Pol. Science,41.0,200,58.3,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-30B-A3B,Bus. & Finance,31.5,200,58.3,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-30B-A3B,Public Admin.,25.0,200,58.3,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-4B,Psychology,32.5,200,59.2,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-4B,Economics,36.0,200,59.2,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-4B,Communication,31.0,200,59.2,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-4B,Sociology,33.5,200,59.2,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-4B,Pol. Science,37.0,200,59.2,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-4B,Bus. & Finance,31.5,200,59.2,120,ST17 panels a–d in manuscript/supplementary_information.md
-Qwen3-4B,Public Admin.,25.5,200,59.2,120,ST17 panels a–d in manuscript/supplementary_information.md
+GPT-4.1,Psychology,43.5,200,55.0,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1,Economics,43.5,200,55.0,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1,Communication,31.5,200,55.0,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1,Sociology,35.0,200,55.0,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1,Pol. Science,40.0,200,55.0,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1,Bus. & Finance,39.0,200,55.0,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1,Public Admin.,33.0,200,55.0,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1-nano,Psychology,32.0,200,57.5,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1-nano,Economics,37.0,200,57.5,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1-nano,Communication,33.0,200,57.5,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1-nano,Sociology,34.0,200,57.5,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1-nano,Pol. Science,41.0,200,57.5,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1-nano,Bus. & Finance,30.0,200,57.5,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+GPT-4.1-nano,Public Admin.,25.0,200,57.5,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-30B-A3B,Psychology,30.0,200,58.3,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-30B-A3B,Economics,38.0,200,58.3,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-30B-A3B,Communication,29.0,200,58.3,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-30B-A3B,Sociology,38.5,200,58.3,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-30B-A3B,Pol. Science,41.0,200,58.3,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-30B-A3B,Bus. & Finance,31.5,200,58.3,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-30B-A3B,Public Admin.,25.0,200,58.3,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-4B,Psychology,32.5,200,59.2,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-4B,Economics,36.0,200,59.2,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-4B,Communication,31.0,200,59.2,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-4B,Sociology,33.5,200,59.2,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-4B,Pol. Science,37.0,200,59.2,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-4B,Bus. & Finance,31.5,200,59.2,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
+Qwen3-4B,Public Admin.,25.5,200,59.2,120,data/supplementary_tables/ST17_management_sft_cross_field_transfer.csv
 mean_transfer_per_arch,across 7 fields,37.93/33.14/33.29/32.43,,,,computed
