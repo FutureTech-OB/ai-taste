@@ -23,9 +23,10 @@ The package is organized so a researcher can validate the released data files, r
 ## Availability Links
 
 - Reproducibility package: [FutureTech-OB/ai-taste](https://github.com/FutureTech-OB/ai-taste)
-- Training code, training-data preparation documentation, and open-weight checkpoints: [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training)
+- Training code and training-data preparation documentation: [FutureTech-OB/AI-Taste-Training](https://github.com/FutureTech-OB/AI-Taste-Training)
+- Open model weights and training-data files: [Hugging Face AI-taste-scientific collection](https://huggingface.co/collections/K1mG0ng/ai-taste-scientific)
 
-Use the reproducibility package as the main public repository for released data, validation scripts, table outputs, and figure assets. Use the training repository only for training resources and checkpoints.
+Use the reproducibility package as the main public repository for released data, validation scripts, table outputs, and figure assets. Use the training repository for training/validation code, and use the Hugging Face collection for downloadable training JSONL files and open-weight checkpoints.
 
 ## Environment
 
